@@ -86,7 +86,11 @@ function initMobileMenu() {
   };
 
   const closeMenu = () => {
-    menu.classList.add('-translate-x-full', 'translate-x-full');
+    if (dir() === 'rtl') {
+      menu.classList.add('translate-x-full');
+    } else {
+      menu.classList.add('-translate-x-full');
+    }
     overlay?.classList.add('opacity-0', 'pointer-events-none');
     document.body.style.overflow = '';
   };
