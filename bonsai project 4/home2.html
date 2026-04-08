@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bonsai Nursery — Home II · Zen Living</title>
+  <meta name="description" content="Discover a different perspective on bonsai living — minimal, meditative, and rooted in nature." />
+  <script>
+    (function(){
+      var t=localStorage.getItem('bonsai-theme'),p=window.matchMedia('(prefers-color-scheme:dark)').matches;
+      if(t==='dark'||(t===null&&p))document.documentElement.classList.add('dark');
+      var d=localStorage.getItem('bonsai-dir')||'ltr';
+      document.documentElement.setAttribute('dir',d);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={darkMode:'class',theme:{extend:{fontFamily:{cormorant:['"Cormorant Garamond"','Georgia','serif'],dm:['"DM Sans"','system-ui','sans-serif'],mono:['"DM Mono"','monospace']}}}}</script>
+  <style>
+    body{font-family:'DM Sans',system-ui,sans-serif;}
+    .font-cormorant{font-family:'Cormorant Garamond',Georgia,serif;}
+    .font-mono-dm{font-family:'DM Mono',monospace;}
+    [data-sr]{opacity:0;transform:translateY(32px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+    [data-sr].sr-visible{opacity:1;transform:translateY(0);}
+    [data-sr][data-delay="100"]{transition-delay:100ms}[data-sr][data-delay="200"]{transition-delay:200ms}[data-sr][data-delay="300"]{transition-delay:300ms}[data-sr][data-delay="400"]{transition-delay:400ms}[data-sr][data-delay="500"]{transition-delay:500ms}
+    #navbar{transition:all .4s cubic-bezier(.16,1,.3,1);}
+    #navbar.nav-scrolled{backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 1px 0 rgba(0,0,0,.06),0 4px 24px rgba(0,0,0,.05);}
+    html:not(.dark) #navbar.nav-scrolled{background:rgba(255,255,255,.95);}
+    html.dark #navbar.nav-scrolled{background:rgba(12,10,9,.95);}
+    /* Hero H2 - split layout */
+    .h2-hero{background:linear-gradient(to bottom,#fafaf9 0%,#f0fdf4 100%);}
+    html.dark .h2-hero{background:linear-gradient(to bottom,#0c0a09 0%,#051a0e 100%);}
+    /* Split hero line */
+    .split-line{width:1px;background:linear-gradient(to bottom,transparent,#059669,transparent);opacity:.3;}
+    .card-lift{transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s ease;}
+    .card-lift:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(0,0,0,.1);}
+    .btn-cta{transition:background .25s ease,transform .2s ease,box-shadow .25s ease;}
+    .btn-cta:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(5,150,105,.35);}
+    .mobile-panel{transition:transform .4s cubic-bezier(.16,1,.3,1);}
+    .nav-link{position:relative;}
+    .nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:#059669;transition:width .3s ease;}
+    html[dir="rtl"] .nav-link::after{left:auto;right:0;}
+    .nav-link:hover::after,.nav-link.active::after{width:100%;}
+    .nav-link.active{color:#059669;}
+    html.dark .nav-link.active{color:#34d399;}
+    /* Marquee */
+    @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .marquee-track{animation:marquee 20s linear infinite;display:flex;gap:3rem;white-space:nowrap;}
+    html[dir="rtl"] .marquee-track{animation-direction:reverse;}
+    /* Grain */
+    .grain{background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.02;pointer-events:none;}
+    /* Horizontal rule with ornament */
+    .ornament-hr{display:flex;align-items:center;gap:1rem;}
+    .ornament-hr::before,.ornament-hr::after{content:'';flex:1;height:1px;background:currentColor;opacity:.15;}
+    /* Season badge */
+    .season-badge{writing-mode:vertical-rl;text-orientation:mixed;}
+    /* Feature grid hover */
+    .feature-block{transition:background .3s ease,border-color .3s ease;}
+    .feature-block:hover{background:rgba(5,150,105,.04);}
+    html.dark .feature-block:hover{background:rgba(5,150,105,.06);}
+    /* Tag */
+    .tag-pill{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;}
+    /* Dot grid */
+    .dot-grid{background-image:radial-gradient(circle,rgba(5,150,105,.15) 1px,transparent 1px);background-size:24px 24px;}
+    /* Glass */
+    .glass-card{background:rgba(255,255,255,.7);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.6);}
+    html.dark .glass-card{background:rgba(28,25,23,.7);border-color:rgba(255,255,255,.06);}
+    #progress-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,#059669,#34d399);z-index:9999;transition:width .1s linear;width:0;}
+    html[dir="rtl"] #progress-bar{left:auto;right:0;}
+  </style>
+</head>
+<body class="bg-stone-50 dark:bg-stone-950 text-stone-800 dark:text-stone-200 transition-colors duration-300 antialiased">
+<div id="progress-bar"></div>
+
+<!-- NAVBAR (shared) -->
+<header id="navbar" class="fixed inset-x-0 top-0 z-50">
+  <div class="max-w-7xl mx-auto px-5 py-3.5 flex items-center justify-between gap-4">
+    <a href="index.html" class="flex items-center gap-2.5 group flex-shrink-0">
+      <div class="w-8 h-8 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform">
+        <svg viewBox="0 0 40 50" fill="none"><path d="M20 46 Q19 38 17 31 Q15 25 18 19 Q20 14 19 8" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M19 19 Q12 16 7 14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M19 12 Q24 9 29 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><ellipse cx="20" cy="6" rx="11" ry="9" fill="currentColor" opacity=".75"/><ellipse cx="8" cy="13" rx="8" ry="7" fill="currentColor" opacity=".65"/><ellipse cx="29" cy="8" rx="7" ry="6" fill="currentColor" opacity=".6"/><path d="M12 44 L28 44 L26 50 L14 50 Z" fill="currentColor" opacity=".5"/><rect x="10" y="40" width="20" height="5" rx="2.5" fill="currentColor" opacity=".55"/></svg>
+      </div>
+      <div class="leading-tight">
+        <span class="font-cormorant text-[1.05rem] font-semibold text-stone-800 dark:text-stone-100 block leading-none tracking-wide">Bonsai Nursery</span>
+        <span class="font-mono-dm text-[0.58rem] tracking-[0.2em] uppercase text-emerald-700 dark:text-emerald-500">& Care Workshop</span>
+      </div>
+    </a>
+    <nav class="hidden lg:flex items-center gap-7">
+      <a href="index.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5">Home</a>
+      <a href="home2.html" class="nav-link active text-sm font-medium text-stone-700 dark:text-stone-300 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5">Home 2</a>
+      <a href="blog.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5">Blog</a>
+      <a href="about.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5">About</a>
+      <a href="services.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5">Workshops</a>
+    </nav>
+    <div class="flex items-center gap-1.5">
+      <button data-dir-toggle aria-label="Switch direction" class="h-8 px-2.5 rounded-lg flex items-center gap-1 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors border border-stone-200 dark:border-stone-700">
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/></svg>
+        <span data-dir-label class="font-mono-dm text-[0.6rem] font-medium tracking-wider">RTL</span>
+      </button>
+      <button data-theme-toggle aria-label="Toggle theme" class="w-8 h-8 rounded-lg flex items-center justify-center text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors border border-stone-200 dark:border-stone-700">
+        <svg data-moon-icon class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        <svg data-sun-icon class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+      </button>
+      <a href="login.html" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold tracking-wide bg-emerald-700 hover:bg-emerald-600 text-white transition-colors btn-cta shadow-sm ms-1">Client Portal</a>
+      <button id="mobileMenuBtn" class="lg:hidden w-8 h-8 flex items-center justify-center text-stone-600 dark:text-stone-400 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+<div id="mobileOverlay" class="fixed inset-0 z-40 bg-stone-950/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"></div>
+<div id="mobileMenu" class="mobile-panel fixed top-0 start-0 bottom-0 z-50 w-72 bg-white dark:bg-stone-900 shadow-2xl -translate-x-full lg:hidden flex flex-col">
+  <div class="flex items-center justify-between px-5 py-4 border-b border-stone-100 dark:border-stone-800">
+    <span class="font-cormorant text-xl font-semibold text-stone-800 dark:text-stone-200 tracking-wide">Menu</span>
+    <button id="mobileMenuClose" class="w-8 h-8 rounded-lg flex items-center justify-center text-stone-500 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+  </div>
+  <nav class="flex flex-col gap-0.5 px-3 py-4 flex-1">
+    <a href="index.html" class="px-3 py-2.5 rounded-xl text-sm font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Home</a>
+    <a href="home2.html" class="px-3 py-2.5 rounded-xl text-sm font-medium text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40">Home 2</a>
+    <a href="blog.html" class="px-3 py-2.5 rounded-xl text-sm font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Blog</a>
+    <a href="about.html" class="px-3 py-2.5 rounded-xl text-sm font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">About</a>
+    <a href="services.html" class="px-3 py-2.5 rounded-xl text-sm font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Workshops</a>
+    <div class="mt-3 flex gap-2 px-1">
+      <button data-dir-toggle class="flex-1 h-9 rounded-xl border border-stone-200 dark:border-stone-700 flex items-center justify-center gap-1.5 text-stone-500 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/></svg>
+        <span data-dir-label class="font-mono-dm text-[0.6rem] tracking-wider">RTL</span>
+      </button>
+      <button data-theme-toggle class="flex-1 h-9 rounded-xl border border-stone-200 dark:border-stone-700 flex items-center justify-center gap-1.5 text-stone-500 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">
+        <svg data-moon-icon class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        <svg data-sun-icon class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        <span class="font-mono-dm text-[0.6rem] tracking-wider">Mode</span>
+      </button>
+    </div>
+    <a href="login.html" class="mt-2 mx-1 py-2.5 rounded-xl text-sm font-semibold text-center bg-emerald-700 text-white hover:bg-emerald-600 transition-colors">Client Portal</a>
+  </nav>
+  <div class="px-5 py-4 border-t border-stone-100 dark:border-stone-800">
+    <p class="font-mono-dm text-[0.6rem] text-stone-400 tracking-wider uppercase">Bonsai Nursery © 2026</p>
+  </div>
+</div>
+
+<!-- ═══ HERO — EDITORIAL SPLIT ═══ -->
+<section class="h2-hero min-h-screen pt-20 pb-0 flex flex-col relative overflow-hidden">
+  <div class="grain absolute inset-0"></div>
+  <!-- Vertical accent line -->
+  <div class="split-line absolute top-0 bottom-0 left-1/2 -translate-x-1/2 hidden lg:block"></div>
+
+  <div class="flex-1 flex items-center">
+    <div class="max-w-7xl mx-auto px-5 w-full grid lg:grid-cols-2 gap-0 min-h-[70vh]">
+      <!-- Left: Large typographic -->
+      <div class="flex flex-col justify-center pe-12 py-16" data-sr>
+        <span class="font-mono-dm text-[0.65rem] tracking-[0.3em] uppercase text-emerald-700 dark:text-emerald-500 mb-8 block">2026 Collection · Bengaluru</span>
+        <h1 class="font-cormorant text-7xl sm:text-8xl lg:text-9xl font-bold leading-[0.92] text-stone-800 dark:text-stone-100 mb-10">
+          Still.<br/>
+          <em class="text-emerald-700 dark:text-emerald-400">Alive.</em><br/>
+          Ancient.
+        </h1>
+        <p class="text-stone-500 dark:text-stone-400 text-base leading-relaxed max-w-sm mb-10">
+          Bonsai is not just horticulture — it is a philosophy. Each tree holds decades of quiet intention. We are its stewards.
+        </p>
+        <div class="flex gap-3">
+          <a href="services.html" class="btn-cta px-7 py-3.5 rounded-2xl bg-emerald-700 hover:bg-emerald-600 text-white font-medium text-sm inline-flex items-center gap-2">
+            Explore Workshops <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="about.html" class="px-7 py-3.5 rounded-2xl border border-stone-300 dark:border-stone-600 text-stone-600 dark:text-stone-400 hover:border-emerald-600 hover:text-emerald-700 dark:hover:text-emerald-400 font-medium text-sm transition-all">Our Story</a>
+        </div>
+      </div>
+
+      <!-- Right: Illustrated feature grid -->
+      <div class="flex flex-col justify-center ps-12 py-16 border-s border-stone-200/50 dark:border-stone-800/50" data-sr data-delay="200">
+        <!-- Large bonsai display -->
+        <div class="bg-stone-100 dark:bg-stone-800/60 rounded-3xl p-8 mb-6 flex items-center gap-6 border border-stone-200 dark:border-stone-700">
+          <svg viewBox="0 0 80 100" fill="none" class="w-20 h-24 text-emerald-700 dark:text-emerald-500 flex-shrink-0">
+            <path d="M40 90Q39 76 37 65Q35 55 38 46Q40 38 39 28" stroke="currentColor" stroke-width="5" stroke-linecap="round" opacity=".7"/>
+            <path d="M38 46Q30 42 22 39" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" opacity=".6"/>
+            <path d="M39 28Q48 23 55 20" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+            <ellipse cx="40" cy="16" rx="22" ry="18" fill="currentColor" opacity=".55"/>
+            <ellipse cx="20" cy="36" rx="17" ry="14" fill="currentColor" opacity=".5"/>
+            <ellipse cx="57" cy="20" rx="15" ry="12" fill="currentColor" opacity=".45"/>
+            <rect x="32" y="86" width="16" height="10" rx="3" fill="currentColor" opacity=".4"/>
+            <path d="M28 86 L52 86 L50 94 L30 94 Z" fill="currentColor" opacity=".35"/>
+          </svg>
+          <div>
+            <p class="font-cormorant text-2xl font-semibold text-stone-800 dark:text-stone-100">Japanese Maple</p>
+            <p class="font-mono-dm text-[0.65rem] text-stone-400 tracking-wide mt-0.5">Acer palmatum · 25 Years</p>
+            <p class="text-stone-500 dark:text-stone-400 text-sm mt-2">Brilliant seasonal colour, from deep green to fiery red.</p>
+            <div class="flex items-center gap-3 mt-3">
+              <span class="font-cormorant text-xl font-bold text-emerald-700 dark:text-emerald-400">$480</span>
+              <a href="services.html" class="text-xs text-emerald-700 dark:text-emerald-400 underline underline-offset-2">Inquire</a>
+            </div>
+          </div>
+        </div>
+        <!-- Mini stats -->
+        <div class="grid grid-cols-3 gap-3">
+          <div class="bg-emerald-700 rounded-2xl p-4 text-center">
+            <p class="font-cormorant text-3xl font-bold text-white">37</p>
+            <p class="font-mono-dm text-[0.6rem] text-emerald-200 tracking-wide mt-1">YEARS</p>
+          </div>
+          <div class="bg-stone-100 dark:bg-stone-800 rounded-2xl p-4 text-center border border-stone-200 dark:border-stone-700">
+            <p class="font-cormorant text-3xl font-bold text-stone-800 dark:text-stone-100">200+</p>
+            <p class="font-mono-dm text-[0.6rem] text-stone-400 tracking-wide mt-1">TREES</p>
+          </div>
+          <div class="bg-stone-100 dark:bg-stone-800 rounded-2xl p-4 text-center border border-stone-200 dark:border-stone-700">
+            <p class="font-cormorant text-3xl font-bold text-stone-800 dark:text-stone-100">6</p>
+            <p class="font-mono-dm text-[0.6rem] text-stone-400 tracking-wide mt-1">MASTERS</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Marquee band -->
+  <div class="bg-emerald-700 dark:bg-emerald-800 py-4 overflow-hidden">
+    <div class="marquee-track">
+      <span class="font-cormorant text-sm italic text-emerald-100 opacity-80">Patience · Presence · Beauty</span>
+      <span class="text-emerald-400">✦</span>
+      <span class="font-mono-dm text-[0.7rem] text-emerald-200 tracking-widest uppercase">Kyoto Tradition Since 1987</span>
+      <span class="text-emerald-400">✦</span>
+      <span class="font-cormorant text-sm italic text-emerald-100 opacity-80">Living Sculpture for Living Spaces</span>
+      <span class="text-emerald-400">✦</span>
+      <span class="font-mono-dm text-[0.7rem] text-emerald-200 tracking-widest uppercase">200+ Specimens Available</span>
+      <span class="text-emerald-400">✦</span>
+      <span class="font-cormorant text-sm italic text-emerald-100 opacity-80">Patience · Presence · Beauty</span>
+      <span class="text-emerald-400">✦</span>
+      <span class="font-mono-dm text-[0.7rem] text-emerald-200 tracking-widest uppercase">Kyoto Tradition Since 1987</span>
+      <span class="text-emerald-400">✦</span>
+      <span class="font-cormorant text-sm italic text-emerald-100 opacity-80">Living Sculpture for Living Spaces</span>
+      <span class="text-emerald-400">✦</span>
+      <span class="font-mono-dm text-[0.7rem] text-emerald-200 tracking-widest uppercase">200+ Specimens Available</span>
+      <span class="text-emerald-400">✦</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SEASONAL SELECTION ═══ -->
+<section class="py-28 bg-white dark:bg-stone-900">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center mb-16" data-sr>
+      <div class="ornament-hr text-stone-300 dark:text-stone-700 mb-6 text-sm font-mono-dm tracking-widest uppercase">Spring 2026 Selection</div>
+      <h2 class="font-cormorant text-5xl md:text-6xl font-bold text-stone-800 dark:text-stone-100 leading-tight">Four Seasons. One Practice.</h2>
+      <p class="text-stone-500 dark:text-stone-400 mt-4 max-w-lg mx-auto">Our curated seasonal collection reflects the living rhythm of the natural world.</p>
+    </div>
+
+    <div class="grid md:grid-cols-4 gap-5">
+      <!-- Spring -->
+      <div data-sr data-delay="100" class="card-lift bg-gradient-to-b from-emerald-50 to-stone-50 dark:from-emerald-950/30 dark:to-stone-900 rounded-3xl p-6 border border-emerald-100 dark:border-emerald-900/40">
+        <div class="text-3xl mb-4">🌸</div>
+        <span class="tag-pill text-emerald-700 dark:text-emerald-500">Spring</span>
+        <h3 class="font-cormorant text-2xl font-semibold text-stone-800 dark:text-stone-100 mt-2 mb-3">Sakura Plum</h3>
+        <p class="text-stone-500 dark:text-stone-400 text-sm leading-relaxed mb-4">Delicate pink flowers emerge in late February — a harbinger of the season's renewal.</p>
+        <div class="flex items-center justify-between">
+          <span class="font-cormorant text-xl font-bold text-emerald-700 dark:text-emerald-400">$220</span>
+          <a href="services.html" class="text-xs font-medium text-emerald-700 dark:text-emerald-400 hover:underline">Reserve →</a>
+        </div>
+      </div>
+      <!-- Summer -->
+      <div data-sr data-delay="200" class="card-lift bg-gradient-to-b from-amber-50 to-stone-50 dark:from-amber-950/20 dark:to-stone-900 rounded-3xl p-6 border border-amber-100 dark:border-amber-900/30">
+        <div class="text-3xl mb-4">☀️</div>
+        <span class="tag-pill text-amber-700 dark:text-amber-500">Summer</span>
+        <h3 class="font-cormorant text-2xl font-semibold text-stone-800 dark:text-stone-100 mt-2 mb-3">Fukien Tea</h3>
+        <p class="text-stone-500 dark:text-stone-400 text-sm leading-relaxed mb-4">Tiny white flowers and glossy leaves — thrives in warm, humid conditions indoors.</p>
+        <div class="flex items-center justify-between">
+          <span class="font-cormorant text-xl font-bold text-amber-700 dark:text-amber-400">$175</span>
+          <a href="services.html" class="text-xs font-medium text-amber-700 dark:text-amber-400 hover:underline">Reserve →</a>
+        </div>
+      </div>
+      <!-- Autumn -->
+      <div data-sr data-delay="300" class="card-lift bg-gradient-to-b from-orange-50 to-stone-50 dark:from-orange-950/20 dark:to-stone-900 rounded-3xl p-6 border border-orange-100 dark:border-orange-900/30">
+        <div class="text-3xl mb-4">🍂</div>
+        <span class="tag-pill text-orange-700 dark:text-orange-500">Autumn</span>
+        <h3 class="font-cormorant text-2xl font-semibold text-stone-800 dark:text-stone-100 mt-2 mb-3">Japanese Maple</h3>
+        <p class="text-stone-500 dark:text-stone-400 text-sm leading-relaxed mb-4">The most dramatic seasonal display — leaves turn from green to vivid crimson.</p>
+        <div class="flex items-center justify-between">
+          <span class="font-cormorant text-xl font-bold text-orange-700 dark:text-orange-400">$480</span>
+          <a href="services.html" class="text-xs font-medium text-orange-700 dark:text-orange-400 hover:underline">Reserve →</a>
+        </div>
+      </div>
+      <!-- Winter -->
+      <div data-sr data-delay="400" class="card-lift bg-gradient-to-b from-blue-50 to-stone-50 dark:from-blue-950/20 dark:to-stone-900 rounded-3xl p-6 border border-blue-100 dark:border-blue-900/30">
+        <div class="text-3xl mb-4">❄️</div>
+        <span class="tag-pill text-blue-700 dark:text-blue-400">Winter</span>
+        <h3 class="font-cormorant text-2xl font-semibold text-stone-800 dark:text-stone-100 mt-2 mb-3">Hinoki Cypress</h3>
+        <p class="text-stone-500 dark:text-stone-400 text-sm leading-relaxed mb-4">Evergreen foliage with a distinctive fragrance — steadfast through the cold months.</p>
+        <div class="flex items-center justify-between">
+          <span class="font-cormorant text-xl font-bold text-blue-700 dark:text-blue-400">$310</span>
+          <a href="services.html" class="text-xs font-medium text-blue-700 dark:text-blue-400 hover:underline">Reserve →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PHILOSOPHY ═══ -->
+<section class="py-28 bg-stone-50 dark:bg-stone-950 relative overflow-hidden">
+  <div class="absolute inset-0 dot-grid opacity-30"></div>
+  <div class="max-w-5xl mx-auto px-5 text-center relative z-10" data-sr>
+    <p class="font-cormorant text-6xl md:text-8xl font-bold text-stone-800 dark:text-stone-100 leading-[1.05] mb-10">
+      "A tree that is<br/> <em class="text-emerald-700 dark:text-emerald-400">never rushed</em><br/> is the most beautiful."
+    </p>
+    <div class="ornament-hr text-stone-300 dark:text-stone-700 mb-8"></div>
+    <p class="text-stone-500 dark:text-stone-400 max-w-lg mx-auto leading-relaxed mb-8">This principle guides everything we do — from the selection of our specimens to the way we teach our workshops.</p>
+    <a href="about.html" class="inline-flex items-center gap-2 text-emerald-700 dark:text-emerald-400 font-medium hover:gap-3 transition-all text-sm">Read our philosophy <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+  </div>
+</section>
+
+<!-- ═══ PROCESS STEPS ═══ -->
+<section class="py-28 bg-white dark:bg-stone-900">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center mb-16" data-sr>
+      <h2 class="font-cormorant text-5xl font-bold text-stone-800 dark:text-stone-100">How It Works</h2>
+      <p class="text-stone-500 dark:text-stone-400 mt-4">From first visit to ongoing mastery — a clear path forward.</p>
+    </div>
+    <div class="grid md:grid-cols-4 gap-6">
+      <div data-sr data-delay="100" class="text-center group">
+        <div class="w-14 h-14 rounded-2xl bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mx-auto mb-4 group-hover:bg-emerald-700 transition-colors">
+          <span class="font-cormorant text-2xl font-bold text-emerald-700 group-hover:text-white transition-colors">01</span>
+        </div>
+        <h3 class="font-cormorant text-xl font-semibold text-stone-800 dark:text-stone-100 mb-2">Choose a Tree</h3>
+        <p class="text-stone-500 dark:text-stone-400 text-sm leading-relaxed">Browse our collection of 200+ specimens and find the one that speaks to you.</p>
+      </div>
+      <div data-sr data-delay="200" class="text-center group">
+        <div class="w-14 h-14 rounded-2xl bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mx-auto mb-4 group-hover:bg-emerald-700 transition-colors">
+          <span class="font-cormorant text-2xl font-bold text-emerald-700 group-hover:text-white transition-colors">02</span>
+        </div>
+        <h3 class="font-cormorant text-xl font-semibold text-stone-800 dark:text-stone-100 mb-2">Attend a Workshop</h3>
+        <p class="text-stone-500 dark:text-stone-400 text-sm leading-relaxed">Learn the fundamentals directly from our master gardeners in small, intimate sessions.</p>
+      </div>
+      <div data-sr data-delay="300" class="text-center group">
+        <div class="w-14 h-14 rounded-2xl bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mx-auto mb-4 group-hover:bg-emerald-700 transition-colors">
+          <span class="font-cormorant text-2xl font-bold text-emerald-700 group-hover:text-white transition-colors">03</span>
+        </div>
+        <h3 class="font-cormorant text-xl font-semibold text-stone-800 dark:text-stone-100 mb-2">Access the Portal</h3>
+        <p class="text-stone-500 dark:text-stone-400 text-sm leading-relaxed">Track your tree's progress, get reminders, and connect with our care community.</p>
+      </div>
+      <div data-sr data-delay="400" class="text-center group">
+        <div class="w-14 h-14 rounded-2xl bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mx-auto mb-4 group-hover:bg-emerald-700 transition-colors">
+          <span class="font-cormorant text-2xl font-bold text-emerald-700 group-hover:text-white transition-colors">04</span>
+        </div>
+        <h3 class="font-cormorant text-xl font-semibold text-stone-800 dark:text-stone-100 mb-2">Grow with Practice</h3>
+        <p class="text-stone-500 dark:text-stone-400 text-sm leading-relaxed">Advance through our curriculum from beginner to master at your own pace.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA BANNER ═══ -->
+<section class="py-20 bg-emerald-700 dark:bg-emerald-800 relative overflow-hidden">
+  <div class="absolute inset-0 dot-grid opacity-10"></div>
+  <div class="max-w-4xl mx-auto px-5 text-center relative z-10" data-sr>
+    <h2 class="font-cormorant text-5xl md:text-6xl font-bold text-white mb-6">Ready to Begin Your Practice?</h2>
+    <p class="text-emerald-100 text-lg mb-10 max-w-xl mx-auto">Join over 1,800 practitioners who have found patience, beauty, and calm through the art of bonsai.</p>
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      <a href="services.html" class="px-8 py-4 rounded-2xl bg-white text-emerald-800 font-semibold hover:bg-emerald-50 transition-colors text-sm">Browse Workshops</a>
+      <a href="about.html" class="px-8 py-4 rounded-2xl border border-white/40 text-white hover:bg-white/10 transition-colors text-sm font-medium">Learn About Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-stone-900 dark:bg-stone-950 text-stone-400">
+  <div class="max-w-7xl mx-auto px-5 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+    <div class="md:col-span-1">
+      <div class="flex items-center gap-2.5 mb-5">
+        <div class="w-7 h-7 text-emerald-500"><svg viewBox="0 0 40 50" fill="none"><path d="M20 46 Q19 38 17 31 Q15 25 18 19 Q20 14 19 8" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><ellipse cx="20" cy="6" rx="11" ry="9" fill="currentColor" opacity=".75"/><ellipse cx="8" cy="13" rx="8" ry="7" fill="currentColor" opacity=".65"/></svg></div>
+        <span class="font-cormorant text-lg text-stone-200 font-semibold tracking-wide">Bonsai Nursery</span>
+      </div>
+      <p class="text-sm leading-relaxed text-stone-500 max-w-xs mb-5">A sanctuary for the ancient art of bonsai cultivation since 1987. Rooted in Kyoto tradition.</p>
+    </div>
+    <div>
+      <h4 class="text-stone-300 font-semibold text-sm mb-5 tracking-wide">Explore</h4>
+      <ul class="space-y-3 text-sm">
+        <li><a href="index.html" class="hover:text-emerald-400 transition-colors">Home</a></li>
+        <li><a href="home2.html" class="hover:text-emerald-400 transition-colors">Home 2</a></li>
+        <li><a href="blog.html" class="hover:text-emerald-400 transition-colors">Blog</a></li>
+        <li><a href="about.html" class="hover:text-emerald-400 transition-colors">Our Story</a></li>
+        <li><a href="services.html" class="hover:text-emerald-400 transition-colors">Workshops</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-stone-300 font-semibold text-sm mb-5 tracking-wide">Resources</h4>
+      <ul class="space-y-3 text-sm">
+        <li><a href="login.html" class="hover:text-emerald-400 transition-colors">Client Portal</a></li>
+        <li><a href="blog.html" class="hover:text-emerald-400 transition-colors">Care Guides</a></li>
+        <li><a href="blog.html" class="hover:text-emerald-400 transition-colors">Species Library</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-stone-300 font-semibold text-sm mb-5 tracking-wide">Contact</h4>
+      <ul class="space-y-3 text-sm">
+        <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>12 Zen Garden Lane, Bengaluru 560001</li>
+        <li class="flex items-center gap-2"><svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg><a href="mailto:hello@bonsainursery.in" class="hover:text-emerald-400 transition-colors">hello@bonsainursery.in</a></li>
+        <li class="flex items-center gap-2"><svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Tue–Sun, 9 AM – 5 PM IST</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-stone-800 py-6 px-5">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="font-mono-dm text-[0.65rem] text-stone-600 tracking-wide">© 2026 Bonsai Nursery & Care Workshop. All rights reserved.</p>
+      <p class="font-mono-dm text-[0.65rem] text-stone-600 tracking-wide">Crafted with patience & precision 🌿</p>
+    </div>
+  </div>
+</footer>
+
+<script src="src/js/main.js"></script>
+<script>
+  window.addEventListener('scroll',()=>{
+    const doc=document.documentElement;
+    const p=(doc.scrollTop/(doc.scrollHeight-doc.clientHeight))*100;
+    document.getElementById('progress-bar').style.width=p+'%';
+  },{passive:true});
+</script>
+</body>
+</html>

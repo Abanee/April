@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Bonsai Nursery & Care Workshop</title>
+  <script>
+    (function(){
+      var t=localStorage.getItem('bonsai-theme'),p=window.matchMedia('(prefers-color-scheme:dark)').matches;
+      if(t==='dark'||(t===null&&p))document.documentElement.classList.add('dark');
+      var d=localStorage.getItem('bonsai-dir')||'ltr';
+      document.documentElement.setAttribute('dir',d);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={darkMode:'class',theme:{extend:{fontFamily:{cormorant:['"Cormorant Garamond"','Georgia','serif'],dm:['"DM Sans"','system-ui','sans-serif'],mono:['"DM Mono"','monospace']}}}}</script>
+  <style>
+    body{font-family:'DM Sans',system-ui,sans-serif;}
+    .font-playfair,.font-cormorant{font-family:'Cormorant Garamond',Georgia,serif;}
+    .font-mono-dm{font-family:'DM Mono',monospace;}
+    [data-sr]{opacity:0;transform:translateY(32px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+    [data-sr].sr-visible{opacity:1;transform:translateY(0);}
+    [data-sr][data-delay="100"]{transition-delay:100ms}[data-sr][data-delay="200"]{transition-delay:200ms}[data-sr][data-delay="300"]{transition-delay:300ms}[data-sr][data-delay="400"]{transition-delay:400ms}[data-sr][data-delay="500"]{transition-delay:500ms}
+    #navbar{transition:all .4s cubic-bezier(.16,1,.3,1);}
+    #navbar.nav-scrolled{backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 1px 0 rgba(0,0,0,.06),0 4px 24px rgba(0,0,0,.05);}
+    html:not(.dark) #navbar.nav-scrolled{background:rgba(250,250,249,.94);}
+    html.dark #navbar.nav-scrolled{background:rgba(12,10,9,.94);}
+    .page-hero{background:linear-gradient(160deg,#1a2f1c 0%,#0c1a0e 60%,#111 100%);}
+    .timeline-line::before{content:'';position:absolute;left:50%;transform:translateX(-50%);top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,#4ade80,#4ade80,transparent);opacity:.25;}
+    html[dir="rtl"] .timeline-line::before{left:auto;right:50%;}
+    .mobile-panel{transition:transform .4s cubic-bezier(.16,1,.3,1);}
+    .btn-cta{transition:background .25s ease,transform .2s ease,box-shadow .25s ease;}
+    .btn-cta:hover{transform:translateY(-2px);}
+    .card-lift{transition:transform .3s ease,box-shadow .3s ease;}
+    .card-lift:hover{transform:translateY(-4px);}
+    .nav-link{position:relative;}
+    .nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:#059669;transition:width .3s ease;}
+    html[dir="rtl"] .nav-link::after{left:auto;right:0;}
+    .nav-link:hover::after,.nav-link.active::after{width:100%;}
+    .nav-link.active{color:#059669;}
+    html.dark .nav-link.active{color:#34d399;}
+    .grain{background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.025;pointer-events:none;}
+    #progress-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,#059669,#34d399);z-index:9999;width:0;}
+    html[dir="rtl"] #progress-bar{left:auto;right:0;}
+  </style>
+</head>
+<body class="bg-stone-50 dark:bg-stone-950 text-stone-800 dark:text-stone-200 transition-colors duration-300 antialiased">
+
+
+<div id="progress-bar"></div>
+<!-- NAVBAR -->
+<header id="navbar" class="fixed inset-x-0 top-0 z-50">
+  <div class="max-w-7xl mx-auto px-5 py-3.5 flex items-center justify-between gap-4">
+    <a href="index.html" class="flex items-center gap-2.5 group flex-shrink-0">
+      <div class="w-8 h-8 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform">
+        <svg viewBox="0 0 40 50" fill="none"><path d="M20 46 Q19 38 17 31 Q15 25 18 19 Q20 14 19 8" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M19 19 Q12 16 7 14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M19 12 Q24 9 29 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><ellipse cx="20" cy="6" rx="11" ry="9" fill="currentColor" opacity=".75"/><ellipse cx="8" cy="13" rx="8" ry="7" fill="currentColor" opacity=".65"/><ellipse cx="29" cy="8" rx="7" ry="6" fill="currentColor" opacity=".6"/><path d="M12 44 L28 44 L26 50 L14 50 Z" fill="currentColor" opacity=".5"/><rect x="10" y="40" width="20" height="5" rx="2.5" fill="currentColor" opacity=".55"/></svg>
+      </div>
+      <div class="leading-tight">
+        <span class="font-cormorant text-[1.05rem] font-semibold text-stone-800 dark:text-stone-100 block leading-none tracking-wide">Bonsai Nursery</span>
+        <span class="font-mono-dm text-[0.58rem] tracking-[0.2em] uppercase text-emerald-700 dark:text-emerald-500">& Care Workshop</span>
+      </div>
+    </a>
+    <nav class="hidden lg:flex items-center gap-7">
+      <a href="index.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5">Home</a>
+      <a href="home2.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5">Home 2</a>
+      <a href="blog.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5">Blog</a>
+      <a href="about.html" class="nav-link active text-sm font-medium text-stone-700 dark:text-stone-300 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5">About</a>
+      <a href="services.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5">Workshops</a>
+    </nav>
+    <div class="flex items-center gap-1.5">
+      <button data-dir-toggle aria-label="Switch direction" class="h-8 px-2.5 rounded-lg flex items-center gap-1 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors border border-stone-200 dark:border-stone-700">
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/></svg>
+        <span data-dir-label class="font-mono-dm text-[0.6rem] font-medium tracking-wider">RTL</span>
+      </button>
+      <button data-theme-toggle aria-label="Toggle theme" class="w-8 h-8 rounded-lg flex items-center justify-center text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors border border-stone-200 dark:border-stone-700">
+        <svg data-moon-icon class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        <svg data-sun-icon class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+      </button>
+      <a href="login.html" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold tracking-wide bg-emerald-700 hover:bg-emerald-600 text-white transition-colors btn-cta shadow-sm ms-1">Client Portal</a>
+      <button id="mobileMenuBtn" class="lg:hidden w-8 h-8 flex items-center justify-center text-stone-600 dark:text-stone-400 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+<div id="mobileOverlay" class="fixed inset-0 z-40 bg-stone-950/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"></div>
+<div id="mobileMenu" class="mobile-panel fixed top-0 start-0 bottom-0 z-50 w-72 bg-white dark:bg-stone-900 shadow-2xl -translate-x-full lg:hidden flex flex-col">
+  <div class="flex items-center justify-between px-5 py-4 border-b border-stone-100 dark:border-stone-800">
+    <span class="font-cormorant text-xl font-semibold text-stone-800 dark:text-stone-200 tracking-wide">Menu</span>
+    <button id="mobileMenuClose" class="w-8 h-8 rounded-lg flex items-center justify-center text-stone-500 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+  </div>
+  <nav class="flex flex-col gap-0.5 px-3 py-4 flex-1">
+    <a href="index.html" class="px-3 py-2.5 rounded-xl text-sm font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Home</a>
+    <a href="home2.html" class="px-3 py-2.5 rounded-xl text-sm font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Home 2</a>
+    <a href="blog.html" class="px-3 py-2.5 rounded-xl text-sm font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Blog</a>
+    <a href="about.html" class="px-3 py-2.5 rounded-xl text-sm font-medium text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40">About</a>
+    <a href="services.html" class="px-3 py-2.5 rounded-xl text-sm font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Workshops</a>
+    <div class="mt-3 flex gap-2 px-1">
+      <button data-dir-toggle class="flex-1 h-9 rounded-xl border border-stone-200 dark:border-stone-700 flex items-center justify-center gap-1.5 text-stone-500 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/></svg>
+        <span data-dir-label class="font-mono-dm text-[0.6rem] tracking-wider">RTL</span>
+      </button>
+      <button data-theme-toggle class="flex-1 h-9 rounded-xl border border-stone-200 dark:border-stone-700 flex items-center justify-center gap-1.5 text-stone-500 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">
+        <svg data-moon-icon class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        <svg data-sun-icon class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        <span class="font-mono-dm text-[0.6rem] tracking-wider">Mode</span>
+      </button>
+    </div>
+    <a href="login.html" class="mt-2 mx-1 py-2.5 rounded-xl text-sm font-semibold text-center bg-emerald-700 text-white hover:bg-emerald-600 transition-colors">Client Portal</a>
+  </nav>
+  <div class="px-5 py-4 border-t border-stone-100 dark:border-stone-800">
+    <p class="font-mono-dm text-[0.6rem] text-stone-400 tracking-wider uppercase">Bonsai Nursery © 2026</p>
+  </div>
+</div>
+      <div class="leading-tight">
+        <span class="font-playfair text-[1.1rem] font-semibold text-stone-800 dark:text-stone-100 block leading-none">Bonsai Nursery</span>
+        <span class="text-[0.65rem] tracking-[0.18em] uppercase text-emerald-700 dark:text-emerald-500 font-medium">& Care Workshop</span>
+      </div>
+    </a>
+    <nav class="hidden md:flex items-center gap-8">
+      <a href="index.html" class="text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-stone-800 dark:hover:text-stone-200 transition-colors">Home</a>
+      <a href="about.html" class="text-sm font-medium text-emerald-700 dark:text-emerald-400 border-b border-emerald-600 dark:border-emerald-500 pb-0.5">About</a>
+      <a href="services.html" class="text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-stone-800 dark:hover:text-stone-200 transition-colors">Workshops</a>
+    </nav>
+    <div class="flex items-center gap-2.5">
+      <button data-theme-toggle aria-label="Toggle theme" class="w-9 h-9 rounded-full flex items-center justify-center text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+        <svg data-moon-icon class="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        <svg data-sun-icon class="w-[18px] h-[18px] hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+      </button>
+      <a href="login.html" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium bg-emerald-700 hover:bg-emerald-600 text-white transition-colors btn-primary shadow-sm">Client Portal</a>
+      <button id="mobileMenuBtn" class="md:hidden w-9 h-9 flex items-center justify-center text-stone-600 dark:text-stone-400 rounded-full hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="mobileOverlay" class="fixed inset-0 z-40 bg-stone-950/50 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"></div>
+<div id="mobileMenu" class="mobile-menu-panel fixed top-0 left-0 bottom-0 z-50 w-72 bg-white dark:bg-stone-900 shadow-2xl -translate-x-full md:hidden flex flex-col">
+  <div class="flex items-center justify-between px-6 py-5 border-b border-stone-100 dark:border-stone-800">
+    <span class="font-playfair text-lg font-semibold text-stone-800 dark:text-stone-200">Menu</span>
+    <button id="mobileMenuClose" class="w-8 h-8 rounded-full flex items-center justify-center text-stone-500 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <nav class="flex flex-col gap-1 px-4 py-6">
+    <a href="index.html" class="px-4 py-3 rounded-xl text-sm font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Home</a>
+    <a href="about.html" class="px-4 py-3 rounded-xl text-sm font-medium text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40">About</a>
+    <a href="services.html" class="px-4 py-3 rounded-xl text-sm font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Workshops</a>
+    <a href="login.html" class="mt-4 px-4 py-3 rounded-xl text-sm font-medium text-center bg-emerald-700 text-white hover:bg-emerald-600 transition-colors">Client Portal</a>
+  </nav>
+</div>
+
+<!-- ═══ PAGE HERO ═══ -->
+<section class="page-hero pt-32 pb-20 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-[0.04]">
+    <div class="absolute -top-20 -right-20 w-96 h-96 rounded-full border border-emerald-400"></div>
+    <div class="absolute bottom-0 left-1/3 w-64 h-64 rounded-full border border-emerald-300"></div>
+  </div>
+  <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+    <div class="flex items-center justify-center gap-3 mb-5">
+      <div class="h-px w-8 bg-emerald-500"></div>
+      <span class="text-emerald-400 text-xs tracking-[0.25em] uppercase font-medium">Our Story</span>
+      <div class="h-px w-8 bg-emerald-500"></div>
+    </div>
+    <h1 class="font-playfair text-5xl md:text-6xl lg:text-7xl font-bold text-stone-100 leading-[1.06] mb-6">
+      Rooted in Tradition.<br />
+      <em class="text-emerald-400">Growing</em> in Practice.
+    </h1>
+    <p class="text-stone-400 text-lg leading-relaxed max-w-xl mx-auto">
+      For nearly four decades, we have tended the living art of bonsai — bridging Kyoto's ancient gardens with homes around the world.
+    </p>
+  </div>
+</section>
+
+<!-- ═══ PHILOSOPHY ═══ -->
+<section class="py-28 bg-stone-50 dark:bg-stone-950">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+    <!-- Decorative left -->
+    <div class="relative" data-sr>
+      <div class="aspect-square max-w-sm mx-auto relative">
+        <div class="absolute inset-0 rounded-3xl bg-gradient-to-br from-emerald-100 to-stone-100 dark:from-emerald-950/50 dark:to-stone-900"></div>
+        <div class="absolute inset-4 rounded-2xl border border-dashed border-emerald-300 dark:border-emerald-800 flex flex-col items-center justify-center gap-4 p-8">
+          <div class="text-6xl">🍃</div>
+          <p class="font-playfair text-2xl text-stone-700 dark:text-stone-300 italic text-center leading-snug">
+            "Wabi-sabi: the beauty of imperfection, impermanence, and incompleteness."
+          </p>
+          <div class="w-8 h-px bg-emerald-400 mx-auto"></div>
+          <p class="text-xs text-stone-400 tracking-widest uppercase text-center">Japanese Aesthetic</p>
+        </div>
+      </div>
+    </div>
+    <!-- Text -->
+    <div data-sr data-delay="200">
+      <div class="flex items-center gap-3 mb-5">
+        <div class="h-px w-8 bg-emerald-600"></div>
+        <span class="text-emerald-700 dark:text-emerald-500 text-xs tracking-[0.2em] uppercase font-medium">Our Philosophy</span>
+      </div>
+      <h2 class="font-playfair text-4xl md:text-5xl font-bold text-stone-800 dark:text-stone-100 mb-6 leading-tight">
+        The Art &amp;<br />the Patience.
+      </h2>
+      <div class="space-y-4 text-stone-500 dark:text-stone-400 leading-relaxed">
+        <p>Bonsai is not simply a plant in a small pot. It is a conversation between the gardener and nature — a negotiation across years and seasons, where every branch tells a story of intention and surrender.</p>
+        <p>Our philosophy is rooted in the Japanese concepts of <em class="text-stone-600 dark:text-stone-300 font-medium">wabi-sabi</em> (beauty in imperfection), <em class="text-stone-600 dark:text-stone-300 font-medium">ma</em> (negative space), and <em class="text-stone-600 dark:text-stone-300 font-medium">michi</em> (the way, the path). Bonsai is as much about cultivating the gardener as it is about cultivating the tree.</p>
+        <p>Each specimen in our collection carries decades of mindful observation. We do not rush. We do not force. We guide, and we wait. And in that waiting, something remarkable emerges.</p>
+      </div>
+
+      <div class="mt-8 grid grid-cols-2 gap-4">
+        <div class="bg-emerald-50 dark:bg-emerald-950/30 rounded-2xl p-5 border border-emerald-100 dark:border-emerald-900/50">
+          <div class="text-2xl mb-2">🌱</div>
+          <p class="font-semibold text-stone-700 dark:text-stone-300 text-sm mb-1">Living Art</p>
+          <p class="text-stone-500 dark:text-stone-500 text-xs leading-relaxed">Every tree is unique, shaped by time and care.</p>
+        </div>
+        <div class="bg-stone-100 dark:bg-stone-800/50 rounded-2xl p-5 border border-stone-200 dark:border-stone-700">
+          <div class="text-2xl mb-2">⏳</div>
+          <p class="font-semibold text-stone-700 dark:text-stone-300 text-sm mb-1">Patience</p>
+          <p class="text-stone-500 dark:text-stone-500 text-xs leading-relaxed">Great bonsai cannot be rushed. Decades shape masters.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HISTORY TIMELINE ═══ -->
+<section class="py-28 bg-white dark:bg-stone-900">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="text-center mb-16" data-sr>
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <div class="h-px w-8 bg-emerald-600"></div>
+        <span class="text-emerald-700 dark:text-emerald-500 text-xs tracking-[0.2em] uppercase font-medium">Our Journey</span>
+        <div class="h-px w-8 bg-emerald-600"></div>
+      </div>
+      <h2 class="font-playfair text-4xl md:text-5xl font-bold text-stone-800 dark:text-stone-100">A History of Growth</h2>
+    </div>
+
+    <div class="relative timeline-line space-y-0">
+      <!-- Event 1 -->
+      <div class="grid grid-cols-2 gap-8 relative py-10" data-sr>
+        <div class="text-right pr-8 md:pr-12">
+          <span class="text-emerald-700 dark:text-emerald-500 font-bold text-lg font-playfair">1987</span>
+          <h3 class="font-playfair text-xl font-semibold text-stone-800 dark:text-stone-200 mt-1">The First Seed</h3>
+          <p class="text-stone-500 dark:text-stone-400 text-sm mt-2 leading-relaxed">Master Rajan Pillai returns from a three-year apprenticeship in Kyoto and plants the first seeds of the nursery in Bengaluru's cool hills.</p>
+        </div>
+        <div class="pl-8 md:pl-12">
+          <div class="w-4 h-4 rounded-full bg-emerald-600 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-white dark:border-stone-900 z-10 shadow-md"></div>
+          <div class="text-4xl mt-4">🌱</div>
+        </div>
+      </div>
+      <!-- Event 2 -->
+      <div class="grid grid-cols-2 gap-8 relative py-10" data-sr data-delay="150">
+        <div class="text-right pr-8 md:pr-12 order-2">
+          <div class="text-4xl mt-4 text-right">🏛️</div>
+        </div>
+        <div class="pl-8 md:pl-12 order-1 text-left">
+          <div class="w-4 h-4 rounded-full bg-emerald-600 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-white dark:border-stone-900 z-10 shadow-md"></div>
+          <span class="text-emerald-700 dark:text-emerald-500 font-bold text-lg font-playfair">1995</span>
+          <h3 class="font-playfair text-xl font-semibold text-stone-800 dark:text-stone-200 mt-1">The Workshop Opens</h3>
+          <p class="text-stone-500 dark:text-stone-400 text-sm mt-2 leading-relaxed">We host our first public workshop — eight students, one juniper, and a lifetime of lessons. The waiting list for the next class forms within a week.</p>
+        </div>
+      </div>
+      <!-- Event 3 -->
+      <div class="grid grid-cols-2 gap-8 relative py-10" data-sr data-delay="300">
+        <div class="text-right pr-8 md:pr-12">
+          <span class="text-emerald-700 dark:text-emerald-500 font-bold text-lg font-playfair">2008</span>
+          <h3 class="font-playfair text-xl font-semibold text-stone-800 dark:text-stone-200 mt-1">National Recognition</h3>
+          <p class="text-stone-500 dark:text-stone-400 text-sm mt-2 leading-relaxed">Our collection wins Gold at the National Bonsai Exhibition, Delhi. The Japanese consul visits our nursery and gifts us a century-old Shimpaku Juniper.</p>
+        </div>
+        <div class="pl-8 md:pl-12">
+          <div class="w-4 h-4 rounded-full bg-emerald-600 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-white dark:border-stone-900 z-10 shadow-md"></div>
+          <div class="text-4xl mt-4">🥇</div>
+        </div>
+      </div>
+      <!-- Event 4 -->
+      <div class="grid grid-cols-2 gap-8 relative py-10" data-sr data-delay="450">
+        <div class="text-right pr-8 md:pr-12 order-2">
+          <div class="text-4xl mt-4 text-right">💻</div>
+        </div>
+        <div class="pl-8 md:pl-12 order-1">
+          <div class="w-4 h-4 rounded-full bg-emerald-600 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-white dark:border-stone-900 z-10 shadow-md"></div>
+          <span class="text-emerald-700 dark:text-emerald-500 font-bold text-lg font-playfair">2024</span>
+          <h3 class="font-playfair text-xl font-semibold text-stone-800 dark:text-stone-200 mt-1">The Client Portal</h3>
+          <p class="text-stone-500 dark:text-stone-400 text-sm mt-2 leading-relaxed">We launch our digital care portal, allowing clients to track their trees, schedule workshops, and receive personalised care reminders from our master gardeners.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MASTER GARDENER BIOS ═══ -->
+<section class="py-28 bg-stone-50 dark:bg-stone-950">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16" data-sr>
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <div class="h-px w-8 bg-emerald-600"></div>
+        <span class="text-emerald-700 dark:text-emerald-500 text-xs tracking-[0.2em] uppercase font-medium">The Team</span>
+        <div class="h-px w-8 bg-emerald-600"></div>
+      </div>
+      <h2 class="font-playfair text-4xl md:text-5xl font-bold text-stone-800 dark:text-stone-100 mb-4">Master Gardeners</h2>
+      <p class="text-stone-500 dark:text-stone-400 max-w-md mx-auto leading-relaxed">Each member of our team brings decades of practice, study, and a deep reverence for the living art.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Gardener 1 -->
+      <div class="card-hover bg-white dark:bg-stone-900 rounded-2xl p-8 border border-stone-100 dark:border-stone-800 shadow-sm text-center" data-sr>
+        <div class="w-24 h-24 rounded-full bg-gradient-to-br from-emerald-100 to-stone-200 dark:from-emerald-900/60 dark:to-stone-800 mx-auto mb-5 flex items-center justify-center text-4xl shadow-sm">🧑‍🌾</div>
+        <h3 class="font-playfair text-xl font-semibold text-stone-800 dark:text-stone-100 mb-1">Rajan Pillai</h3>
+        <p class="text-emerald-700 dark:text-emerald-500 text-xs tracking-wide font-medium uppercase mb-3">Founder & Head Master</p>
+        <p class="text-stone-500 dark:text-stone-400 text-sm leading-relaxed">Trained under Kimura Masahiko in Kyoto. 40 years of practice in formal upright and literati styles. The quiet authority behind every specimen in our collection.</p>
+        <div class="mt-5 flex items-center justify-center gap-2 flex-wrap">
+          <span class="bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400 text-xs px-3 py-1 rounded-full">Juniperus</span>
+          <span class="bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400 text-xs px-3 py-1 rounded-full">Pines</span>
+          <span class="bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400 text-xs px-3 py-1 rounded-full">Deadwood</span>
+        </div>
+      </div>
+
+      <!-- Gardener 2 -->
+      <div class="card-hover bg-white dark:bg-stone-900 rounded-2xl p-8 border border-stone-100 dark:border-stone-800 shadow-sm text-center" data-sr data-delay="200">
+        <div class="w-24 h-24 rounded-full bg-gradient-to-br from-stone-100 to-emerald-100 dark:from-stone-800 dark:to-emerald-900/50 mx-auto mb-5 flex items-center justify-center text-4xl shadow-sm">👩‍🌾</div>
+        <h3 class="font-playfair text-xl font-semibold text-stone-800 dark:text-stone-100 mb-1">Priya Menon</h3>
+        <p class="text-emerald-700 dark:text-emerald-500 text-xs tracking-wide font-medium uppercase mb-3">Workshop Director</p>
+        <p class="text-stone-500 dark:text-stone-400 text-sm leading-relaxed">Graduate of the Omiya Bonsai Village school. Specialises in tropical species and the pedagogy of teaching bonsai to first-time practitioners. Her workshops are meditative experiences.</p>
+        <div class="mt-5 flex items-center justify-center gap-2 flex-wrap">
+          <span class="bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400 text-xs px-3 py-1 rounded-full">Ficus</span>
+          <span class="bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400 text-xs px-3 py-1 rounded-full">Tropical</span>
+          <span class="bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400 text-xs px-3 py-1 rounded-full">Teaching</span>
+        </div>
+      </div>
+
+      <!-- Gardener 3 -->
+      <div class="card-hover bg-white dark:bg-stone-900 rounded-2xl p-8 border border-stone-100 dark:border-stone-800 shadow-sm text-center" data-sr data-delay="400">
+        <div class="w-24 h-24 rounded-full bg-gradient-to-br from-emerald-200 to-emerald-100 dark:from-emerald-800/60 dark:to-stone-800 mx-auto mb-5 flex items-center justify-center text-4xl shadow-sm">🧑‍🎨</div>
+        <h3 class="font-playfair text-xl font-semibold text-stone-800 dark:text-stone-100 mb-1">Arjun Varma</h3>
+        <p class="text-emerald-700 dark:text-emerald-500 text-xs tracking-wide font-medium uppercase mb-3">Curator & Horticulturalist</p>
+        <p class="text-stone-500 dark:text-stone-400 text-sm leading-relaxed">A trained botanist turned bonsai artist. Manages species health, soil science, and the acquisition of new specimens. His attention to root structure and health is unparalleled.</p>
+        <div class="mt-5 flex items-center justify-center gap-2 flex-wrap">
+          <span class="bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400 text-xs px-3 py-1 rounded-full">Maples</span>
+          <span class="bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400 text-xs px-3 py-1 rounded-full">Soil Science</span>
+          <span class="bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400 text-xs px-3 py-1 rounded-full">Repotting</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA BAND ═══ -->
+<section class="py-20 bg-emerald-700 dark:bg-emerald-800">
+  <div class="max-w-3xl mx-auto px-6 text-center" data-sr>
+    <h2 class="font-playfair text-3xl md:text-4xl font-bold text-white mb-4">Ready to Begin Your Practice?</h2>
+    <p class="text-emerald-100 mb-8 leading-relaxed">Join hundreds of students who have found stillness, focus, and joy through the art of bonsai.</p>
+    <a href="services.html" class="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-white text-emerald-800 font-semibold hover:bg-emerald-50 transition-colors shadow-lg">
+      Explore Workshops
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-stone-900 dark:bg-stone-950 text-stone-400">
+  <div class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-3 gap-12">
+    <div>
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-8 h-8 text-emerald-500">
+          <svg viewBox="0 0 40 50" fill="none"><path d="M20 46 Q19 38 17 31 Q15 25 18 19 Q20 14 19 8" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><ellipse cx="20" cy="6" rx="11" ry="9" fill="currentColor" opacity=".75"/><ellipse cx="8" cy="13" rx="8" ry="7" fill="currentColor" opacity=".65"/></svg>
+        </div>
+        <span class="font-playfair text-lg text-stone-200 font-semibold">Bonsai Nursery</span>
+      </div>
+      <p class="text-sm leading-relaxed text-stone-500 max-w-xs">A sanctuary for the ancient art of bonsai cultivation since 1987. Rooted in Kyoto tradition, grown in your home.</p>
+    </div>
+    <div>
+      <h4 class="text-stone-300 font-semibold text-sm mb-4 tracking-wide">Explore</h4>
+      <ul class="space-y-2.5 text-sm">
+        <li><a href="index.html" class="hover:text-emerald-400 transition-colors">Home</a></li>
+        <li><a href="about.html" class="hover:text-emerald-400 transition-colors">Our Story</a></li>
+        <li><a href="services.html" class="hover:text-emerald-400 transition-colors">Workshops & Services</a></li>
+        <li><a href="login.html" class="hover:text-emerald-400 transition-colors">Client Portal</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-stone-300 font-semibold text-sm mb-4 tracking-wide">Contact</h4>
+      <ul class="space-y-2.5 text-sm">
+        <li class="flex items-center gap-2"><svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>12 Zen Garden Lane, Bengaluru 560001</li>
+        <li class="flex items-center gap-2"><svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg><a href="mailto:hello@bonsainursery.in" class="hover:text-emerald-400 transition-colors">hello@bonsainursery.in</a></li>
+        <li class="flex items-center gap-2"><svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Tue–Sun, 9 AM – 5 PM IST</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-stone-800 py-6 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-stone-600">
+      <p>© 2026 Bonsai Nursery & Care Workshop. All rights reserved.</p>
+      <p>Craf

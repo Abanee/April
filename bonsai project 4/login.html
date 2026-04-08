@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — Bonsai Nursery & Care Workshop</title>
+  <script>
+    (function(){
+      var t=localStorage.getItem('bonsai-theme'),p=window.matchMedia('(prefers-color-scheme:dark)').matches;
+      if(t==='dark'||(t===null&&p))document.documentElement.classList.add('dark');
+      var d=localStorage.getItem('bonsai-dir')||'ltr';
+      document.documentElement.setAttribute('dir',d);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={darkMode:'class',theme:{extend:{fontFamily:{cormorant:['"Cormorant Garamond"','Georgia','serif'],dm:['"DM Sans"','system-ui','sans-serif'],mono:['"DM Mono"','monospace']}}}}</script>
+<style>
+    body{font-family:'DM Sans',system-ui,sans-serif;}
+    .font-cormorant,.font-cormorant{font-family:'Cormorant Garamond',Georgia,serif;}
+    .font-mono-dm{font-family:'DM Mono',monospace;}
+    [data-sr]{opacity:0;transform:translateY(32px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+    [data-sr].sr-visible{opacity:1;transform:translateY(0);}
+    [data-sr][data-delay="100"]{transition-delay:100ms}[data-sr][data-delay="200"]{transition-delay:200ms}[data-sr][data-delay="300"]{transition-delay:300ms}[data-sr][data-delay="400"]{transition-delay:400ms}[data-sr][data-delay="500"]{transition-delay:500ms}
+    #navbar{transition:all .4s cubic-bezier(.16,1,.3,1);}
+    #navbar.nav-scrolled{backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 1px 0 rgba(0,0,0,.06),0 4px 24px rgba(0,0,0,.05);}
+    html:not(.dark) #navbar.nav-scrolled{background:rgba(250,250,249,.94);}
+    html.dark #navbar.nav-scrolled{background:rgba(12,10,9,.94);}
+    .mobile-panel{transition:transform .4s cubic-bezier(.16,1,.3,1);}
+    .btn-cta{transition:background .25s ease,transform .2s ease,box-shadow .25s ease;}
+    .btn-cta:hover{transform:translateY(-2px);}
+    .nav-link{position:relative;}
+    .nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:#059669;transition:width .3s ease;}
+    html[dir="rtl"] .nav-link::after{left:auto;right:0;}
+    .nav-link:hover::after,.nav-link.active::after{width:100%;}
+    .nav-link.active{color:#059669;}
+    html.dark .nav-link.active{color:#34d399;}
+    #progress-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,#059669,#34d399);z-index:9999;width:0;}
+    html[dir="rtl"] #progress-bar{left:auto;right:0;}
+
+    .font-cormorant { font-family: 'Cormorant Garamond', Georgia, serif; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+
+    /* ── Split layout backgrounds ── */
+    .left-panel {
+      background: linear-gradient(160deg, #0c1a0e 0%, #1a3320 50%, #0c1a0e 100%);
+    }
+
+    /* ── Floating bonsai animation ── */
+    @keyframes floatY {
+      0%, 100% { transform: translateY(0px) rotate(-1deg); }
+      50% { transform: translateY(-14px) rotate(1deg); }
+    }
+    .float-bonsai { animation: floatY 8s ease-in-out infinite; }
+
+    /* ── Enso ring spin ── */
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    .enso-spin { animation: spinSlow 40s linear infinite; }
+
+    /* ── Scroll reveal ── */
+    [data-sr] { opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
+    [data-sr].sr-visible { opacity:1; transform:translateY(0); }
+    [data-sr][data-delay="100"]{transition-delay:100ms}
+    [data-sr][data-delay="200"]{transition-delay:200ms}
+    [data-sr][data-delay="300"]{transition-delay:300ms}
+
+    /* ── Input focus ring ── */
+    .field-input {
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .field-input:focus {
+      outline: none;
+      border-color: #059669;
+      box-shadow: 0 0 0 3px rgba(5,150,105,.12);
+    }
+    .field-input.error {
+      border-color: #f87171;
+      box-shadow: 0 0 0 3px rgba(248,113,113,.12);
+    }
+    .field-input.success {
+      border-color: #34d399;
+    }
+
+    /* ── Button ── */
+    .btn-submit {
+      transition: background .2s, transform .15s, box-shadow .2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-submit:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 28px rgba(5,150,105,.4);
+    }
+    .btn-submit:active:not(:disabled) { transform: translateY(0); }
+    .btn-submit::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* ── Ripple on card load ── */
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(24px) scale(.98); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .card-appear { animation: cardIn .55s cubic-bezier(.4,0,.2,1) forwards; }
+
+    /* ── Shimmer loader ── */
+    @keyframes shimmer {
+      0%   { background-position: -200% 0; }
+      100% { background-position:  200% 0; }
+    }
+    .shimmer-btn {
+      background: linear-gradient(90deg, #059669 25%, #10b981 50%, #059669 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+    }
+
+    /* ── Decorative particles ── */
+    @keyframes drift {
+      0%   { transform: translateY(0) translateX(0) rotate(0deg); opacity: .6; }
+      100% { transform: translateY(-80px) translateX(20px) rotate(180deg); opacity: 0; }
+    }
+    .particle { animation: drift linear infinite; position: absolute; border-radius: 50%; }
+  </style>
+</head>
+
+<body class="bg-stone-50 dark:bg-stone-950 text-stone-800 dark:text-stone-200 transition-colors duration-300 antialiased min-h-screen">
+
+<!-- ═══════════════════════════════════════════════
+     THEME TOGGLE  (top-right, always visible)
+════════════════════════════════════════════════ -->
+<div class="fixed top-5 end-5 z-50 flex items-center gap-2">
+  <!-- RTL/LTR Toggle -->
+  <button data-dir-toggle aria-label="Switch direction"
+    class="h-9 px-3 rounded-full flex items-center gap-1.5 bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 shadow-sm text-stone-500 dark:text-stone-400 hover:shadow-md transition-all duration-200">
+    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/></svg>
+    <span data-dir-label class="font-mono-dm text-[0.6rem] font-medium tracking-wider">RTL</span>
+  </button>
+  <!-- Theme Toggle -->
+  <button data-theme-toggle aria-label="Toggle theme"
+    class="w-9 h-9 rounded-full flex items-center justify-center bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 shadow-sm text-stone-500 dark:text-stone-400 hover:shadow-md transition-all duration-200">
+    <svg data-moon-icon class="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+    <svg data-sun-icon class="w-[18px] h-[18px] hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+  </button>
+  <a href="index.html" class="hidden sm:flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 shadow-sm text-stone-500 dark:text-stone-400 hover:shadow-md hover:text-stone-700 dark:hover:text-stone-200 transition-all text-xs font-medium">
+    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+    Back to site
+  </a>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     MAIN LAYOUT  (split: decorative left + form right)
+════════════════════════════════════════════════ -->
+<div class="min-h-screen flex">
+
+  <!-- ── LEFT DECORATIVE PANEL (hidden on mobile) ── -->
+  <div class="left-panel hidden lg:flex lg:w-[52%] xl:w-[55%] flex-col items-center justify-center relative overflow-hidden p-12">
+
+    <!-- Decorative enso rings -->
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div class="enso-spin w-[520px] h-[520px] rounded-full border border-emerald-500/10"></div>
+    </div>
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div class="w-[380px] h-[380px] rounded-full border border-emerald-500/08"></div>
+    </div>
+
+    <!-- Floating particles -->
+    <div class="particle w-1.5 h-1.5 bg-emerald-400/40" style="top:72%;left:18%;animation-duration:6s;animation-delay:0s;"></div>
+    <div class="particle w-1 h-1 bg-emerald-300/30" style="top:60%;left:80%;animation-duration:9s;animation-delay:2s;"></div>
+    <div class="particle w-2 h-2 bg-emerald-500/25" style="top:82%;left:55%;animation-duration:7s;animation-delay:4s;"></div>
+    <div class="particle w-1 h-1 bg-emerald-200/30" style="top:50%;left:30%;animation-duration:11s;animation-delay:1s;"></div>
+
+    <!-- Central content -->
+    <div class="relative z-10 text-center max-w-md">
+      <!-- Bonsai SVG -->
+      <div class="float-bonsai mb-10 flex justify-center">
+        <svg viewBox="0 0 200 280" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-40 h-auto drop-shadow-2xl">
+          <!-- pot -->
+          <path d="M80 230 L120 230 L115 254 L85 254 Z" fill="rgba(120,113,108,0.5)"/>
+          <rect x="75" y="222" width="50" height="10" rx="5" fill="rgba(120,113,108,0.6)"/>
+          <!-- trunk -->
+          <path d="M100 222 Q97 200 93 182 Q90 166 95 150 Q99 136 96 118 Q94 102 98 84 Q102 66 99 50"
+                stroke="rgba(200,188,170,0.65)" fill="none" stroke-width="7" stroke-linecap="round"/>
+          <!-- branches -->
+          <path d="M95 150 Q82 143 68 138" stroke="rgba(200,188,170,0.55)" fill="none" stroke-width="4.5" stroke-linecap="round"/>
+          <path d="M96 118 Q110 110 122 106" stroke="rgba(200,188,170,0.5)" fill="none" stroke-width="4" stroke-linecap="round"/>
+          <path d="M68 138 Q58 128 60 116" stroke="rgba(200,188,170,0.45)" fill="none" stroke-width="3" stroke-linecap="round"/>
+          <path d="M68 138 Q54 140 48 150" stroke="rgba(200,188,170,0.4)" fill="none" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- foliage -->
+          <ellipse cx="100" cy="36" rx="42" ry="36" fill="rgba(16,110,74,0.55)"/>
+          <ellipse cx="97" cy="32" rx="30" ry="26" fill="rgba(16,180,110,0.14)"/>
+          <ellipse cx="58" cy="110" rx="34" ry="28" fill="rgba(16,110,74,0.50)"/>
+          <ellipse cx="55" cy="107" rx="24" ry="20" fill="rgba(16,180,110,0.12)"/>
+          <ellipse cx="124" cy="96" rx="28" ry="23" fill="rgba(16,110,74,0.48)"/>
+          <ellipse cx="47" cy="142" rx="20" ry="17" fill="rgba(16,110,74,0.42)"/>
+          <!-- sparkles -->
+          <circle cx="88" cy="26" r="2.5" fill="rgba(110,231,183,0.45)"/>
+          <circle cx="56" cy="102" r="2"   fill="rgba(110,231,183,0.38)"/>
+          <circle cx="126" cy="90" r="1.8" fill="rgba(110,231,183,0.32)"/>
+        </svg>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="font-cormorant text-4xl xl:text-5xl font-bold text-stone-100 leading-[1.08] mb-5">
+        Welcome<br />
+        <em class="text-emerald-400">Back.</em>
+      </h1>
+      <p class="text-stone-400 text-base leading-relaxed mb-10 max-w-sm mx-auto">
+        Your trees are waiting. Sign in to check care reminders, upcoming workshops, and your personal bonsai collection.
+      </p>
+
+      <!-- Feature list -->
+      <ul class="space-y-3 text-left max-w-xs mx-auto">
+        <li class="flex items-center gap-3 text-stone-400 text-sm">
+          <div class="w-6 h-6 rounded-full bg-emerald-700/50 flex items-center justify-center flex-shrink-0">
+            <svg class="w-3 h-3 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+          </div>
+          Personalised care reminders
+        </li>
+        <li class="flex items-center gap-3 text-stone-400 text-sm">
+          <div class="w-6 h-6 rounded-full bg-emerald-700/50 flex items-center justify-center flex-shrink-0">
+            <svg class="w-3 h-3 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+          </div>
+          Workshop schedule & booking
+        </li>
+        <li class="flex items-center gap-3 text-stone-400 text-sm">
+          <div class="w-6 h-6 rounded-full bg-emerald-700/50 flex items-center justify-center flex-shrink-0">
+            <svg class="w-3 h-3 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+          </div>
+          Your tree purchase history
+        </li>
+      </ul>
+    </div>
+
+    <!-- Bottom attribution -->
+    <div class="absolute bottom-8 text-center">
+      <p class="text-stone-700 text-xs tracking-widest uppercase">Bonsai Nursery & Care Workshop</p>
+      <p class="text-stone-800 text-xs mt-0.5">Est. 1987 · Bengaluru, India</p>
+    </div>
+  </div>
+
+  <!-- ── RIGHT: LOGIN CARD ── -->
+  <div class="flex-1 flex items-center justify-center p-6 sm:p-10 bg-stone-50 dark:bg-stone-950">
+    <div class="w-full max-w-[420px] card-appear">
+
+      <!-- Mobile logo (shown only on small screens) -->
+      <div class="flex flex-col items-center mb-10 lg:hidden">
+        <div class="w-12 h-12 text-emerald-600 dark:text-emerald-500 mb-3">
+          <svg viewBox="0 0 40 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 46 Q19 38 17 31 Q15 25 18 19 Q20 14 19 8" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M19 19 Q12 16 7 14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M19 12 Q24 9 29 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <ellipse cx="20" cy="6" rx="11" ry="9" fill="currentColor" opacity=".75"/>
+            <ellipse cx="8" cy="13" rx="8" ry="7" fill="currentColor" opacity=".65"/>
+            <ellipse cx="29" cy="8" rx="7" ry="6" fill="currentColor" opacity=".6"/>
+            <path d="M12 44 L28 44 L26 50 L14 50 Z" fill="currentColor" opacity=".5"/>
+            <rect x="10" y="40" width="20" height="5" rx="2.5" fill="currentColor" opacity=".55"/>
+          </svg>
+        </div>
+        <h2 class="font-cormorant text-2xl font-bold text-stone-800 dark:text-stone-100">Bonsai Nursery</h2>
+        <p class="text-xs text-emerald-700 dark:text-emerald-500 tracking-widest uppercase font-medium mt-0.5">Client Portal</p>
+      </div>
+
+      <!-- Card -->
+      <div class="bg-white dark:bg-stone-900 rounded-3xl shadow-xl dark:shadow-stone-950/50 border border-stone-100 dark:border-stone-800 p-8 sm:p-10">
+
+        <!-- Heading -->
+        <div class="mb-8">
+          <h2 class="font-cormorant text-3xl font-bold text-stone-800 dark:text-stone-100 mb-1">Sign In</h2>
+          <p class="text-stone-500 dark:text-stone-400 text-sm">Access your personal bonsai dashboard.</p>
+        </div>
+
+        <!-- General error -->
+        <div id="generalError" class="hidden mb-5 flex items-start gap-3 bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 text-sm px-4 py-3 rounded-xl">
+          <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span></span>
+        </div>
+
+        <!-- FORM -->
+        <form id="loginForm" novalidate class="space-y-5">
+
+          <!-- Email -->
+          <div>
+            <label for="email" class="block text-xs font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-wider mb-2">
+              Email Address
+            </label>
+            <div class="relative">
+              <div class="absolute left-4 top-1/2 -translate-y-1/2 text-stone-400 dark:text-stone-500 pointer-events-none">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <input
+                id="email"
+                type="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                class="field-input w-full pl-11 pr-4 py-3.5 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-200 text-sm placeholder:text-stone-300 dark:placeholder:text-stone-600"
+              />
+            </div>
+            <p id="emailError" class="hidden mt-2 text-xs text-red-500 flex items-center gap-1">
+              <svg class="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+              <span></span>
+            </p>
+          </div>
+
+          <!-- Password -->
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <label for="password" class="block text-xs font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-wider">
+                Password
+              </label>
+              <a href="#" class="text-xs text-emerald-700 dark:text-emerald-400 hover:underline font-medium">
+                Forgot password?
+              </a>
+            </div>
+            <div class="relative">
+              <div class="absolute left-4 top-1/2 -translate-y-1/2 text-stone-400 dark:text-stone-500 pointer-events-none">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                </svg>
+              </div>
+              <input
+                id="password"
+                type="password"
+                autocomplete="current-password"
+                placeholder="••••••••"
+                class="field-input w-full pl-11 pr-12 py-3.5 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-200 text-sm placeholder:text-stone-300 dark:placeholder:text-stone-600"
+              />
+              <!-- Toggle password visibility -->
+              <button
+                type="button"
+                id="togglePassword"
+                class="absolute right-3.5 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 rounded-lg transition-colors"
+                aria-label="Toggle password visibility">
+                <!-- Eye open (password hidden) -->
+                <svg id="eyeOpen" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                </svg>
+                <!-- Eye closed (password visible) -->
+                <svg id="eyeClosed" class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>
+                </svg>
+              </button>
+            </div>
+            <p id="passwordError" class="hidden mt-2 text-xs text-red-500 flex items-center gap-1">
+              <svg class="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+              <span></span>
+            </p>
+          </div>
+
+          <!-- Remember me -->
+          <div class="flex items-center justify-between">
+            <label class="flex items-center gap-2.5 cursor-pointer group">
+              <div class="relative">
+                <input type="checkbox" id="rememberMe" class="sr-only peer" />
+                <div class="w-9 h-5 rounded-full bg-stone-200 dark:bg-stone-700 peer-checked:bg-emerald-600 transition-colors"></div>
+                <div class="absolute left-0.5 top-0.5 w-4 h-4 rounded-full bg-white shadow transition-transform peer-checked:translate-x-4"></div>
+              </div>
+              <span class="text-xs text-stone-500 dark:text-stone-400 font-medium group-hover:text-stone-700 dark:group-hover:text-stone-300 transition-colors">
+                Remember me for 30 days
+              </span>
+            </label>
+          </div>
+
+          <!-- Submit -->
+          <button
+            id="submitBtn"
+            type="submit"
+            class="btn-submit w-full py-4 px-6 rounded-xl bg-emerald-700 hover:bg-emerald-600 disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold text-sm mt-2 flex items-center justify-center gap-2">
+            Sign In to Portal
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </button>
+
+          <!-- Demo hint -->
+          <div class="flex items-start gap-2.5 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900 rounded-xl px-4 py-3 mt-1">
+            <svg class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <p class="text-xs text-emerald-700 dark:text-emerald-400 leading-relaxed">
+              <strong>Demo:</strong> Enter any valid email &amp; a password of 6+ characters to access the dashboard.
+            </p>
+          </div>
+        </form>
+
+        <!-- Divider -->
+        <div class="flex items-center gap-4 my-7">
+          <div class="flex-1 h-px bg-stone-100 dark:bg-stone-800"></div>
+          <span class="text-xs text-stone-400 dark:text-stone-600 font-medium">or</span>
+          <div class="flex-1 h-px bg-stone-100 dark:bg-stone-800"></div>
+        </div>
+
+        <!-- Social / alternate sign-in -->
+        <button class="w-full flex items-center justify-center gap-3 py-3.5 px-4 rounded-xl border border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-400 text-sm font-medium hover:bg-stone-50 dark:hover:bg-stone-800 hover:border-stone-300 dark:hover:border-stone-600 transition-all duration-200 group">
+          <svg class="w-4.5 h-4.5 w-[18px] h-[18px]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          Continue with Google
+        </button>
+
+      </div>
+
+      <!-- Sign up link -->
+      <p class="text-center text-sm text-stone-500 dark:text-stone-400 mt-6">
+        Not yet a client?
+        <a href="services.html" class="text-emerald-700 dark:text-emerald-400 font-semibold hover:underline">Book a workshop to get started →</a>
+      </p>
+
+      <!-- Back to site (mobile) -->
+      <div class="flex justify-center mt-4 lg:hidden">
+        <a href="index.html" class="flex items-center gap-1.5 text-xs text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 transition-colors">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          Back to main site
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="src/js/main.js"></script>
+<script src="src/js/auth.js"></script>
+<div style="position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);font-size:.6rem;color:#78716c;font-family:DM Mono,monospace;letter-spacing:.1em;">© 2026 BONSAI NURSERY</div>
+</body>
+</html>
