@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CRUX Studio — Commission</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+
+<div id="cursor-dot" aria-hidden="true"></div>
+
+<!-- NAV -->
+<header id="main-nav" class="nav-glass fixed top-0 inset-x-0 z-50">
+  <nav class="max-w-site h-16 flex items-center justify-between gap-4">
+    <a href="index.html" class="font-display text-3xl tracking-widest" style="color:#e8ff00;">CRUX</a>
+    <ul class="hidden md:flex items-center gap-8 list-none">
+      <li><a href="index.html"      class="nav-link" data-page="index.html">Home</a></li>
+      <li><a href="gallery.html"    class="nav-link" data-page="gallery.html">Gallery</a></li>
+      <li><a href="commission.html" class="nav-link" data-page="commission.html">Commission</a></li>
+      <li><a href="about.html"      class="nav-link" data-page="about.html">About</a></li>
+      <li><a href="login.html"      class="nav-link" data-page="login.html">Portal</a></li>
+    </ul>
+    <div class="flex items-center gap-3">
+      <button id="dir-toggle" onclick="toggleDir()" style="font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .75rem;border:1px solid #2c2c2c;border-radius:2px;background:transparent;color:#888;cursor:pointer;">RTL</button>
+      <button onclick="toggleTheme()" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid #2c2c2c;border-radius:2px;background:transparent;cursor:pointer;">
+        <svg class="dark-icon" style="width:16px;height:16px;color:#e8ff00;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg class="light-icon" style="display:none;width:16px;height:16px;color:#0d0d0d;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+      <button onclick="toggleMobileMenu()" class="md:hidden" style="width:36px;height:36px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;border:none;cursor:pointer;">
+        <span style="display:block;width:22px;height:2px;background:currentColor;"></span>
+        <span style="display:block;width:22px;height:2px;background:currentColor;"></span>
+        <span style="display:block;width:14px;height:2px;background:currentColor;align-self:flex-start;margin-inline-start:4px;"></span>
+      </button>
+    </div>
+  </nav>
+  <div id="mobile-menu" style="border-top:1px solid #1e1e1e;">
+    <ul style="display:flex;flex-direction:column;gap:1.2rem;padding:1.25rem;list-style:none;">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+      <li><a href="commission.html" class="nav-link">Commission</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="login.html" class="nav-link">Portal</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-bg clip-hero relative" style="padding-top:10rem;padding-bottom:6rem;overflow:hidden;">
+  <div style="position:absolute;inset:0;">
+    <img src="https://images.unsplash.com/photo-1547826039-bde8c7e6e1e4?w=1600&auto=format&fit=crop" alt="" aria-hidden="true" style="width:100%;height:100%;object-fit:cover;opacity:.08;"/>
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,8,8,.92),rgba(8,8,8,.75));"></div>
+  </div>
+  <div class="max-w-site" style="position:relative;">
+    <p class="section-label reveal mb-4">— Commission Process</p>
+    <h1 class="headline-xl reveal rd1" style="color:#f0ebe4;max-width:700px;">
+      Let's Build<br>Something<br><span style="color:#e8ff00;" class="glow-y neon-flicker">Unforgettable.</span>
+    </h1>
+    <p class="reveal rd2 mt-5" style="font-size:.95rem;line-height:1.75;color:#666;max-width:420px;">From a single wall to an entire building facade — we handle every stage of the process, from concept to completion.</p>
+  </div>
+</section>
+
+<!-- SERVICE CARDS -->
+<section style="padding:5rem 0;" class="max-w-site">
+  <p class="section-label reveal mb-3">— Our Services</p>
+  <h2 class="headline-lg reveal rd1 mb-12" style="color:#f0ebe4;">What We <span style="color:#ff2d78;" class="glow-p">Offer.</span></h2>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;">
+
+    <!-- Card 1 -->
+    <div class="card reveal rd1" style="padding:2.5rem 2rem;">
+      <div class="card-accent"></div>
+      <p class="section-label mb-5">01 / Commercial</p>
+      <h3 class="headline-md mb-4" style="color:#f0ebe4;">Commercial Facades</h3>
+      <div style="border-radius:2px;overflow:hidden;aspect-ratio:16/9;margin-bottom:1.25rem;">
+        <img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=600&auto=format&fit=crop" alt="Commercial facade example" style="width:100%;height:100%;object-fit:cover;opacity:.7;transition:transform .6s,opacity .4s;" onmouseover="this.style.transform='scale(1.05)';this.style.opacity='1'" onmouseout="this.style.transform='scale(1)';this.style.opacity='.7'"/>
+      </div>
+      <p style="font-size:.86rem;line-height:1.7;color:#666;margin-bottom:1.25rem;">Transform your building exterior into a landmark. We work with architects, property developers, and brand teams.</p>
+      <ul style="display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.5rem;">
+        <li style="display:flex;gap:.75rem;align-items:center;font-family:'DM Mono',monospace;font-size:.7rem;color:#888;">
+          <svg style="width:13px;height:13px;flex-shrink:0;" fill="none" stroke="#e8ff00" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Full-building coverage
+        </li>
+        <li style="display:flex;gap:.75rem;align-items:center;font-family:'DM Mono',monospace;font-size:.7rem;color:#888;">
+          <svg style="width:13px;height:13px;flex-shrink:0;" fill="none" stroke="#e8ff00" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Brand alignment & concept design
+        </li>
+        <li style="display:flex;gap:.75rem;align-items:center;font-family:'DM Mono',monospace;font-size:.7rem;color:#888;">
+          <svg style="width:13px;height:13px;flex-shrink:0;" fill="none" stroke="#e8ff00" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Weatherproof sealant
+        </li>
+        <li style="display:flex;gap:.75rem;align-items:center;font-family:'DM Mono',monospace;font-size:.7rem;color:#888;">
+          <svg style="width:13px;height:13px;flex-shrink:0;" fill="none" stroke="#e8ff00" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>5-year maintenance warranty
+        </li>
+      </ul>
+      <div style="margin-bottom:1.25rem;">
+        <span class="section-label">Starting from</span>
+        <div class="headline-md" style="color:#e8ff00;margin-top:.25rem;">$12,000</div>
+      </div>
+      <a href="#commission-form" class="btn btn-yellow btn-full">Get a Quote</a>
+    </div>
+
+    <!-- Card 2 — Recommended -->
+    <div class="card reveal rd2" style="padding:2.5rem 2rem;border-color:rgba(232,255,0,.35);box-shadow:0 0 0 1px rgba(232,255,0,.15),0 8px 48px rgba(232,255,0,.08);">
+      <div class="card-accent" style="height:100%;"></div>
+      <div class="recommended-badge">Most Popular</div>
+      <p class="section-label mb-5">02 / Private</p>
+      <h3 class="headline-md mb-4" style="color:#f0ebe4;">Private Interiors</h3>
+      <div style="border-radius:2px;overflow:hidden;aspect-ratio:16/9;margin-bottom:1.25rem;">
+        <img src="https://images.unsplash.com/photo-1571624436279-b272aff752b5?w=600&auto=format&fit=crop" alt="Interior mural example" style="width:100%;height:100%;object-fit:cover;opacity:.7;transition:transform .6s,opacity .4s;" onmouseover="this.style.transform='scale(1.05)';this.style.opacity='1'" onmouseout="this.style.transform='scale(1)';this.style.opacity='.7'"/>
+      </div>
+      <p style="font-size:.86rem;line-height:1.7;color:#666;margin-bottom:1.25rem;">Bring raw urban energy into your home, office, or retail space. Custom commissions tailored to your dimensions and aesthetic.</p>
+      <ul style="display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.5rem;">
+        <li style="display:flex;gap:.75rem;align-items:center;font-family:'DM Mono',monospace;font-size:.7rem;color:#888;">
+          <svg style="width:13px;height:13px;flex-shrink:0;" fill="none" stroke="#e8ff00" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Custom surface types
+        </li>
+        <li style="display:flex;gap:.75rem;align-items:center;font-family:'DM Mono',monospace;font-size:.7rem;color:#888;">
+          <svg style="width:13px;height:13px;flex-shrink:0;" fill="none" stroke="#e8ff00" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Low-odour interior-safe paint
+        </li>
+        <li style="display:flex;gap:.75rem;align-items:center;font-family:'DM Mono',monospace;font-size:.7rem;color:#888;">
+          <svg style="width:13px;height:13px;flex-shrink:0;" fill="none" stroke="#e8ff00" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>3 concept sketches upfront
+        </li>
+        <li style="display:flex;gap:.75rem;align-items:center;font-family:'DM Mono',monospace;font-size:.7rem;color:#888;">
+          <svg style="width:13px;height:13px;flex-shrink:0;" fill="none" stroke="#e8ff00" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>White-glove finish & cleanup
+        </li>
+      </ul>
+      <div style="margin-bottom:1.25rem;">
+        <span class="section-label">Starting from</span>
+        <div class="headline-md" style="color:#e8ff00;margin-top:.25rem;">$3,500</div>
+      </div>
+      <a href="#commission-form" class="btn btn-yellow btn-full">Get a Quote</a>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card reveal rd3" style="padding:2.5rem 2rem;">
+      <div class="card-accent" style="background:#ff2d78;"></div>
+      <p class="section-label mb-5">03 / Festival</p>
+      <h3 class="headline-md mb-4" style="color:#f0ebe4;">Festival Installations</h3>
+      <div style="border-radius:2px;overflow:hidden;aspect-ratio:16/9;margin-bottom:1.25rem;">
+        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&auto=format&fit=crop" alt="Festival installation example" style="width:100%;height:100%;object-fit:cover;opacity:.7;transition:transform .6s,opacity .4s;" onmouseover="this.style.transform='scale(1.05)';this.style.opacity='1'" onmouseout="this.style.transform='scale(1)';this.style.opacity='.7'"/>
+      </div>
+      <p style="font-size:.86rem;line-height:1.7;color:#666;margin-bottom:1.25rem;">Ephemeral or permanent large-scale installations for arts festivals, cultural events, and public plazas.</p>
+      <ul style="display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.5rem;">
+        <li style="display:flex;gap:.75rem;align-items:center;font-family:'DM Mono',monospace;font-size:.7rem;color:#888;">
+          <svg style="width:13px;height:13px;flex-shrink:0;" fill="none" stroke="#ff2d78" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Multi-artist collaborations
+        </li>
+        <li style="display:flex;gap:.75rem;align-items:center;font-family:'DM Mono',monospace;font-size:.7rem;color:#888;">
+          <svg style="width:13px;height:13px;flex-shrink:0;" fill="none" stroke="#ff2d78" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Full permitting support
+        </li>
+        <li style="display:flex;gap:.75rem;align-items:center;font-family:'DM Mono',monospace;font-size:.7rem;color:#888;">
+          <svg style="width:13px;height:13px;flex-shrink:0;" fill="none" stroke="#ff2d78" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Live painting performance option
+        </li>
+        <li style="display:flex;gap:.75rem;align-items:center;font-family:'DM Mono',monospace;font-size:.7rem;color:#888;">
+          <svg style="width:13px;height:13px;flex-shrink:0;" fill="none" stroke="#ff2d78" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>International artist sourcing
+        </li>
+      </ul>
+      <div style="margin-bottom:1.25rem;">
+        <span class="section-label">Starting from</span>
+        <div class="headline-md" style="color:#ff2d78;margin-top:.25rem;">$25,000</div>
+      </div>
+      <a href="#commission-form" class="btn btn-outline-y btn-full" style="color:#ff2d78;border-color:#ff2d78;">Get a Quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section-dark" style="padding:5rem 0;">
+  <div class="max-w-site">
+    <p class="section-label reveal mb-3">— How It Works</p>
+    <h2 class="headline-lg reveal rd1 mb-12" style="color:#f0ebe4;">The Process.</h2>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;">
+      <div class="reveal rd1">
+        <div class="font-display" style="font-size:5rem;color:#1a1a1a;line-height:1;">01</div>
+        <div style="width:100%;height:2px;background:#e8ff00;margin:.75rem 0;"></div>
+        <h3 class="headline-sm mb-2" style="color:#f0ebe4;">Brief & Vision</h3>
+        <p style="font-size:.82rem;line-height:1.7;color:#666;">Submit your inquiry. We'll schedule a discovery call within 48 hours to understand your space, goals, and vision.</p>
+      </div>
+      <div class="reveal rd2">
+        <div class="font-display" style="font-size:5rem;color:#1a1a1a;line-height:1;">02</div>
+        <div style="width:100%;height:2px;background:#ff2d78;margin:.75rem 0;"></div>
+        <h3 class="headline-sm mb-2" style="color:#f0ebe4;">Concept Design</h3>
+        <p style="font-size:.82rem;line-height:1.7;color:#666;">Our artists produce 3 distinct concept sketches. We iterate based on feedback until the vision is locked.</p>
+      </div>
+      <div class="reveal rd3">
+        <div class="font-display" style="font-size:5rem;color:#1a1a1a;line-height:1;">03</div>
+        <div style="width:100%;height:2px;background:#00f0ff;margin:.75rem 0;"></div>
+        <h3 class="headline-sm mb-2" style="color:#f0ebe4;">Execution</h3>
+        <p style="font-size:.82rem;line-height:1.7;color:#666;">Our crew brings the concept to life. You receive daily progress photos and can visit the site any time.</p>
+      </div>
+      <div class="reveal rd4">
+        <div class="font-display" style="font-size:5rem;color:#1a1a1a;line-height:1;">04</div>
+        <div style="width:100%;height:2px;background:#39ff14;margin:.75rem 0;"></div>
+        <h3 class="headline-sm mb-2" style="color:#f0ebe4;">Delivery</h3>
+        <p style="font-size:.82rem;line-height:1.7;color:#666;">Final walkthrough, professional photography shoot, and sealing. Your wall is now part of the city's story.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INQUIRY FORM -->
+<section id="commission-form" style="padding:5rem 0;background:#0a0a0a;">
+  <div class="max-w-site" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;">
+
+    <!-- Left -->
+    <div>
+      <p class="section-label reveal mb-4">— Start a commission</p>
+      <h2 class="headline-lg reveal rd1 mb-6" style="color:#f0ebe4;">Tell Us About<br>Your <span style="color:#e8ff00;" class="glow-y">Wall.</span></h2>
+      <p class="reveal rd2" style="font-size:.88rem;line-height:1.7;color:#666;margin-bottom:2rem;">Fill in the details below and we'll respond within 2 business days. All information is kept strictly confidential.</p>
+
+      <!-- Step dots -->
+      <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem;" class="reveal rd3">
+        <div class="step-dot active" id="dot-1"></div>
+        <div style="flex:1;height:1px;background:#1e1e1e;"></div>
+        <div class="step-dot" id="dot-2"></div>
+        <div style="flex:1;height:1px;background:#1e1e1e;"></div>
+        <div class="step-dot" id="dot-3"></div>
+      </div>
+      <p id="step-label" class="section-label reveal rd4" style="font-size:.65rem;">Step 1 / 3 — Your Details</p>
+
+      <div style="margin-top:2.5rem;border-radius:3px;overflow:hidden;aspect-ratio:4/3;" class="reveal">
+        <img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=700&auto=format&fit=crop" alt="Commission example" style="width:100%;height:100%;object-fit:cover;opacity:.5;"/>
+      </div>
+    </div>
+
+    <!-- Right: form -->
+    <div>
+      <form id="inquiry-form" novalidate>
+
+        <!-- Step 1 -->
+        <div class="form-step active" id="step-1">
+          <p class="section-label mb-5">Your Details</p>
+          <div style="display:flex;flex-direction:column;gap:1rem;">
+            <div class="form-field">
+              <input type="text" id="f-name" class="form-input" placeholder=" " autocomplete="name" required/>
+              <label for="f-name" class="form-label">Full Name *</label>
+              <p class="form-error" id="e-name">Please enter your full name.</p>
+            </div>
+            <div class="form-field">
+              <input type="email" id="f-email" class="form-input" placeholder=" " autocomplete="email" required/>
+              <label for="f-email" class="form-label">Email Address *</label>
+              <p class="form-error" id="e-email">Please enter a valid email address.</p>
+            </div>
+            <div class="form-field">
+              <input type="tel" id="f-phone" class="form-input" placeholder=" " autocomplete="tel"/>
+              <label for="f-phone" class="form-label">Phone (optional)</label>
+            </div>
+            <div class="form-field">
+              <select id="f-service" class="form-input" required>
+                <option value="" disabled selected hidden></option>
+                <option value="commercial">Commercial Facade</option>
+                <option value="interior">Private Interior</option>
+                <option value="festival">Festival Installation</option>
+                <option value="other">Other / Not Sure</option>
+              </select>
+              <label for="f-service" class="form-label" style="top:.5rem;font-size:.6rem;color:#555;transform:none;">Service Type *</label>
+              <p class="form-error" id="e-service">Please select a service type.</p>
+            </div>
+          </div>
+          <button type="button" onclick="nextStep(1)" class="btn btn-yellow btn-full" style="margin-top:1.5rem;">
+            Continue <svg style="width:15px;height:15px;" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="form-step" id="step-2">
+          <p class="section-label mb-5">Project Details</p>
+          <div style="display:flex;flex-direction:column;gap:1rem;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;">
+              <div class="form-field">
+                <input type="number" id="f-width" class="form-input" placeholder=" " min="1" required/>
+                <label for="f-width" class="form-label">Width (m) *</label>
+                <p class="form-error" id="e-width">Required.</p>
+              </div>
+              <div class="form-field">
+                <input type="number" id="f-height" class="form-input" placeholder=" " min="1" required/>
+                <label for="f-height" class="form-label">Height (m) *</label>
+                <p class="form-error" id="e-height">Required.</p>
+              </div>
+            </div>
+            <div class="form-field">
+              <select id="f-style" class="form-input" required>
+                <option value="" disabled selected hidden></option>
+                <option value="geometric">Geometric / Abstract</option>
+                <option value="figurative">Figurative / Portraiture</option>
+                <option value="typographic">Typographic / Lettering</option>
+                <option value="surrealism">Surrealism / Fantasy</option>
+                <option value="graffiti">Classic Graffiti</option>
+                <option value="open">Open — Artist's Choice</option>
+              </select>
+              <label for="f-style" class="form-label" style="top:.5rem;font-size:.6rem;color:#555;transform:none;">Desired Style *</label>
+              <p class="form-error" id="e-style">Please select a style.</p>
+            </div>
+            <div class="form-field">
+              <textarea id="f-desc" class="form-input" placeholder=" " rows="4"></textarea>
+              <label for="f-desc" class="form-label">Project Description</label>
+            </div>
+            <!-- Budget -->
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.65rem;">
+                <label class="section-label" for="budget-slider">Budget Estimate</label>
+                <span id="budget-display" style="font-family:'DM Mono',monospace;font-size:.88rem;color:#e8ff00;">$10,000</span>
+              </div>
+              <input type="range" id="budget-slider" min="2000" max="100000" step="500" value="10000" oninput="updateBudget(this.value)"/>
+              <div style="display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:.62rem;color:#444;margin-top:.35rem;">
+                <span>$2,000</span><span>$100,000</span>
+              </div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1.5rem;">
+            <button type="button" onclick="prevStep(2)" class="btn btn-outline-dark">
+              <svg style="width:14px;height:14px;" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Back
+            </button>
+            <button type="button" onclick="nextStep(2)" class="btn btn-yellow">
+              Continue <svg style="width:14px;height:14px;" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="form-step" id="step-3">
+          <p class="section-label mb-5">References & Submit</p>
+          <div style="display:flex;flex-direction:column;gap:1rem;">
+            <div>
+              <p class="section-label mb-2" style="font-size:.62rem;">Reference Images</p>
+              <div class="file-drop" id="file-drop" onclick="document.getElementById('file-input').click()"
+                   ondragover="this.classList.add('dragover');event.preventDefault();"
+                   ondragleave="this.classList.remove('dragover');"
+                   ondrop="handleFileDrop(event)">
+                <input type="file" id="file-input" multiple accept="image/*" style="display:none;" onchange="handleFileInput(this)"/>
+                <svg style="width:28px;height:28px;margin:0 auto .75rem;display:block;color:#444;" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+                <p style="font-family:'DM Mono',monospace;font-size:.72rem;color:#555;">Drop files or <span style="color:#e8ff00;">browse</span></p>
+                <p style="font-family:'DM Mono',monospace;font-size:.62rem;color:#333;margin-top:.3rem;">PNG, JPG, WEBP up to 10MB</p>
+              </div>
+              <div id="file-list"></div>
+            </div>
+            <div class="form-field">
+              <textarea id="f-notes" class="form-input" placeholder=" " rows="3"></textarea>
+              <label for="f-notes" class="form-label">Additional Notes</label>
+            </div>
+            <label class="custom-check">
+              <input type="checkbox" id="consent"/>
+              <span class="checkmark"></span>
+              <span style="font-family:'DM Mono',monospace;font-size:.7rem;line-height:1.5;color:#666;">I agree to CRUX Studio's <a href="#" style="color:#e8ff00;text-decoration:underline;">commission terms</a> and consent to being contacted.</span>
+            </label>
+            <p class="form-error" id="e-consent">Please accept the terms to continue.</p>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1.5rem;">
+            <button type="button" onclick="prevStep(3)" class="btn btn-outline-dark">
+              <svg style="width:14px;height:14px;" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Back
+            </button>
+            <button type="submit" class="btn btn-yellow" id="submit-btn" style="justify-content:center;">
+              <span id="submit-text">Send Inquiry</span>
+              <div class="spinner" id="submit-spin"></div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Success -->
+        <div class="form-step" id="step-success" style="text-align:center;padding:3.5rem 1rem;">
+          <div style="font-size:3.5rem;margin-bottom:1rem;">🎨</div>
+          <h3 class="headline-md mb-4" style="color:#f0ebe4;">We Got It!</h3>
+          <p style="font-size:.88rem;color:#666;line-height:1.7;margin-bottom:2rem;">Your inquiry has been received. We'll be in touch within 2 business days. In the meantime, explore our full portfolio.</p>
+          <a href="gallery.html" class="btn btn-outline-y" style="display:inline-flex;">View Portfolio</a>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer" style="padding:2.5rem 0;">
+  <div class="max-w-site" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;">
+    <span class="font-display" style="font-size:1.8rem;letter-spacing:.2em;color:#1e1e1e;">CRUX STUDIO</span>
+    <p style="font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.1em;color:#444;">© 2026 CRUX Studio — All walls belong to art.</p>
+    <div style="display:flex;gap:1.5rem;">
+      <a href="gallery.html" style="font-family:'DM Mono',monospace;font-size:.65rem;color:#444;text-decoration:none;" onmouseover="this.style.color='#e8ff00'" onmouseout="this.style.color='#444'">Gallery</a>
+      <a href="about.html" style="font-family:'DM Mono',monospace;font-size:.65rem;color:#444;text-decoration:none;" onmouseover="this.style.color='#e8ff00'" onmouseout="this.style.color='#444'">About</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<style>
+  html.light .dark-icon{display:none!important;}
+  html.dark .light-icon{display:none!important;}
+  html.light .light-icon{display:block!important;}
+  @media(max-width:768px){
+    div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+    div[style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important;}
+    div[style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important;}
+  }
+</style>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CRUX Studio — About</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+
+<div id="cursor-dot" aria-hidden="true"></div>
+
+<!-- NAV -->
+<header id="main-nav" class="nav-glass fixed top-0 inset-x-0 z-50">
+  <nav class="max-w-site h-16 flex items-center justify-between gap-4">
+    <a href="index.html" class="font-display text-3xl tracking-widest" style="color:#e8ff00;">CRUX</a>
+    <ul class="hidden md:flex items-center gap-8 list-none">
+      <li><a href="index.html"      class="nav-link" data-page="index.html">Home</a></li>
+      <li><a href="gallery.html"    class="nav-link" data-page="gallery.html">Gallery</a></li>
+      <li><a href="commission.html" class="nav-link" data-page="commission.html">Commission</a></li>
+      <li><a href="about.html"      class="nav-link" data-page="about.html">About</a></li>
+      <li><a href="login.html"      class="nav-link" data-page="login.html">Portal</a></li>
+    </ul>
+    <div class="flex items-center gap-3">
+      <button id="dir-toggle" onclick="toggleDir()" style="font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .75rem;border:1px solid #2c2c2c;border-radius:2px;background:transparent;color:#888;cursor:pointer;">RTL</button>
+      <button onclick="toggleTheme()" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid #2c2c2c;border-radius:2px;background:transparent;cursor:pointer;">
+        <svg class="dark-icon" style="width:16px;height:16px;color:#e8ff00;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg class="light-icon" style="display:none;width:16px;height:16px;color:#0d0d0d;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+      <button onclick="toggleMobileMenu()" class="md:hidden" style="width:36px;height:36px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;border:none;cursor:pointer;">
+        <span style="display:block;width:22px;height:2px;background:currentColor;"></span>
+        <span style="display:block;width:22px;height:2px;background:currentColor;"></span>
+        <span style="display:block;width:14px;height:2px;background:currentColor;align-self:flex-start;margin-inline-start:4px;"></span>
+      </button>
+    </div>
+  </nav>
+  <div id="mobile-menu" style="border-top:1px solid #1e1e1e;">
+    <ul style="display:flex;flex-direction:column;gap:1.2rem;padding:1.25rem;list-style:none;">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+      <li><a href="commission.html" class="nav-link">Commission</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="login.html" class="nav-link">Portal</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-bg" style="padding-top:10rem;padding-bottom:6rem;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;">
+    <img src="https://images.unsplash.com/photo-1541544537156-7627a7a4aa1c?w=1600&auto=format&fit=crop" alt="" aria-hidden="true"
+         style="width:100%;height:100%;object-fit:cover;opacity:.08;"/>
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(8,8,8,.96),rgba(8,8,8,.7));"></div>
+  </div>
+  <div class="max-w-site" style="position:relative;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+    <div>
+      <p class="section-label reveal mb-4">Est. 2019 · Barcelona, Spain</p>
+      <h1 class="headline-xl reveal rd1" style="color:#f0ebe4;max-width:600px;">
+        We Are<br><span style="color:#e8ff00;" class="glow-y">CRUX.</span>
+      </h1>
+      <p class="reveal rd2 mt-6" style="font-size:1rem;line-height:1.8;color:#777;max-width:420px;">
+        Born in the alleyways of Barcelona's Gràcia neighbourhood, CRUX Studio emerged from the belief that every city deserves art it can live inside. We are artists, strategists, and fabricators — united by spray cans and an obsession with scale.
+      </p>
+      <div class="reveal rd3 flex flex-wrap gap-3 mt-8">
+        <a href="commission.html" class="btn btn-yellow">Work With Us</a>
+        <a href="gallery.html" class="btn btn-outline-y">Our Work</a>
+      </div>
+    </div>
+    <div class="reveal rd2" style="position:relative;">
+      <div style="position:relative;border-radius:3px;overflow:hidden;aspect-ratio:4/5;">
+        <img src="https://images.unsplash.com/photo-1610370651866-30dbdc1f34d2?w=700&auto=format&fit=crop" alt="CRUX Studio at work" style="width:100%;height:100%;object-fit:cover;"/>
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.7),transparent 50%);"></div>
+      </div>
+      <!-- floating stat card -->
+      <div style="position:absolute;bottom:-1.5rem;inset-inline-start:-1.5rem;background:#e8ff00;padding:1.25rem 1.5rem;border-radius:2px;min-width:160px;">
+        <div class="headline-md" style="color:#080808;line-height:1;">340+</div>
+        <div style="font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:#333;margin-top:.2rem;">Murals worldwide</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="padding:5rem 0;" class="section-dark">
+  <div class="max-w-site">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;">
+      <div class="stat-card reveal">
+        <div class="headline-lg" style="color:#e8ff00;">2019</div>
+        <div class="section-label" style="margin-top:.5rem;">Year Founded</div>
+        <p style="font-size:.82rem;color:#666;margin-top:.75rem;line-height:1.6;">Started in a Barcelona parking lot with two artists and a rented scaffolding tower.</p>
+      </div>
+      <div class="stat-card reveal rd1" style="border-inline-start:none;">
+        <div class="headline-lg" style="color:#ff2d78;">12</div>
+        <div class="section-label" style="margin-top:.5rem;">Resident Artists</div>
+        <p style="font-size:.82rem;color:#666;margin-top:.75rem;line-height:1.6;">From 9 countries, speaking 14 languages, painting in one shared tongue.</p>
+      </div>
+      <div class="stat-card reveal rd2" style="border-inline-start:none;">
+        <div class="headline-lg" style="color:#00f0ff;">28</div>
+        <div class="section-label" style="margin-top:.5rem;">Cities Covered</div>
+        <p style="font-size:.82rem;color:#666;margin-top:.75rem;line-height:1.6;">From São Paulo to Seoul, every project leaves a permanent mark on the city's visual identity.</p>
+      </div>
+      <div class="stat-card reveal rd3" style="border-inline-start:none;">
+        <div class="headline-lg" style="color:#39ff14;">98%</div>
+        <div class="section-label" style="margin-top:.5rem;">Client Satisfaction</div>
+        <p style="font-size:.82rem;color:#666;margin-top:.75rem;line-height:1.6;">Based on 340+ completed commissions and post-project client surveys.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section style="padding:6rem 0;">
+  <div class="max-w-site" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;">
+    <div>
+      <p class="section-label reveal mb-4">— Our Story</p>
+      <h2 class="headline-lg reveal rd1 mb-8" style="color:#f0ebe4;">Paint First.<br>Ask Later.</h2>
+      <div style="display:flex;flex-direction:column;gap:1.25rem;">
+        <p class="reveal rd1" style="font-size:.92rem;line-height:1.85;color:#777;">
+          CRUX started as an illegal operation. Two friends, Mateo and Lena, spent 2018 painting abandoned industrial buildings around Barcelona's Zona Franca. They weren't hired — they just believed the walls needed colour.
+        </p>
+        <p class="reveal rd2" style="font-size:.92rem;line-height:1.85;color:#777;">
+          When a local developer offered to commission them for a new mixed-use complex, the studio was born. That first wall, a 40-metre geometric composition on Carrer de l'Almogàvers, still stands.
+        </p>
+        <p class="reveal rd3" style="font-size:.92rem;line-height:1.85;color:#777;">
+          Today, CRUX is a collective of 12 full-time artists operating across four continents. We handle everything — concept, permits, scaffolding, painting, and the 5-year maintenance warranty that keeps our work looking sharp long after the cameras leave.
+        </p>
+      </div>
+      <div style="margin-top:2rem;padding:1.5rem;background:#181818;border-inline-start:3px solid #e8ff00;border-radius:0 2px 2px 0;">
+        <blockquote class="reveal" style="font-family:'DM Mono',monospace;font-size:.85rem;font-style:italic;line-height:1.7;color:#bbb;">
+          "We didn't build a studio. We built a permission to be loud."
+        </blockquote>
+        <cite class="section-label" style="margin-top:.75rem;display:block;">— Mateo Reyes, Co-founder</cite>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:.75rem;">
+      <div style="border-radius:3px;overflow:hidden;aspect-ratio:16/9;">
+        <img src="https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?w=800&auto=format&fit=crop" alt="Artists at work on large mural" style="width:100%;height:100%;object-fit:cover;"/>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;">
+        <div style="border-radius:3px;overflow:hidden;aspect-ratio:4/3;">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&auto=format&fit=crop" alt="Spray paint detail" style="width:100%;height:100%;object-fit:cover;"/>
+        </div>
+        <div style="border-radius:3px;overflow:hidden;aspect-ratio:4/3;">
+          <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=500&auto=format&fit=crop" alt="Finished mural installation" style="width:100%;height:100%;object-fit:cover;"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section-alt" style="padding:5rem 0;">
+  <div class="max-w-site">
+    <p class="section-label reveal mb-4">— The Team</p>
+    <h2 class="headline-lg reveal rd1 mb-12" style="color:#f0ebe4;">12 Artists.<br><span style="color:#ff2d78;" class="glow-p">One Voice.</span></h2>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;">
+      <!-- Artist 1 -->
+      <div class="team-card reveal rd1">
+        <div class="team-card-img" style="aspect-ratio:3/4;">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop" alt="Mateo Reyes" loading="lazy"/>
+        </div>
+        <div style="padding:1.1rem;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.4rem;">
+            <h3 class="headline-sm" style="color:#f0ebe4;">Mateo Reyes</h3>
+            <span class="tag tag-y" style="font-size:.55rem;">Co-founder</span>
+          </div>
+          <p class="section-label" style="margin-bottom:.6rem;">Geometric · Surrealism</p>
+          <p style="font-size:.78rem;line-height:1.6;color:#666;">Barcelona-born, world-travelled. Mateo's hallmark is impossible geometry that only makes sense from 50 metres away.</p>
+        </div>
+      </div>
+      <!-- Artist 2 -->
+      <div class="team-card reveal rd2">
+        <div class="team-card-img" style="aspect-ratio:3/4;">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop" alt="Lena Morrow" loading="lazy"/>
+        </div>
+        <div style="padding:1.1rem;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.4rem;">
+            <h3 class="headline-sm" style="color:#f0ebe4;">Lena Morrow</h3>
+            <span class="tag tag-p" style="font-size:.55rem;">Co-founder</span>
+          </div>
+          <p class="section-label" style="margin-bottom:.6rem;">Typographic · Brutalist</p>
+          <p style="font-size:.78rem;line-height:1.6;color:#666;">A former graphic designer who discovered spray paint and never looked back. Lena makes letters feel like architecture.</p>
+        </div>
+      </div>
+      <!-- Artist 3 -->
+      <div class="team-card reveal rd3">
+        <div class="team-card-img" style="aspect-ratio:3/4;">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&auto=format&fit=crop" alt="Dex Okafor" loading="lazy"/>
+        </div>
+        <div style="padding:1.1rem;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.4rem;">
+            <h3 class="headline-sm" style="color:#f0ebe4;">Dex Okafor</h3>
+            <span class="tag tag-c" style="font-size:.55rem;">Senior</span>
+          </div>
+          <p class="section-label" style="margin-bottom:.6rem;">Afrofuturism · Large Scale</p>
+          <p style="font-size:.78rem;line-height:1.6;color:#666;">Lagos to London to everywhere. Dex specialises in wall-to-building-scale figurative work rooted in Afrofuturist mythology.</p>
+        </div>
+      </div>
+      <!-- Artist 4 -->
+      <div class="team-card reveal rd4">
+        <div class="team-card-img" style="aspect-ratio:3/4;">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=500&auto=format&fit=crop" alt="Sia Nakamura" loading="lazy"/>
+        </div>
+        <div style="padding:1.1rem;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.4rem;">
+            <h3 class="headline-sm" style="color:#f0ebe4;">Sia Nakamura</h3>
+            <span class="tag tag-g" style="font-size:.55rem;">Newest</span>
+          </div>
+          <p class="section-label" style="margin-bottom:.6rem;">Abstract · Neo-graffiti</p>
+          <p style="font-size:.78rem;line-height:1.6;color:#666;">Osaka-trained, Berlin-refined. Sia fuses traditional Japanese spatial philosophy with raw neo-graffiti aesthetics.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:3rem;">
+      <p class="section-label" style="margin-bottom:1rem;">+ 8 more artists across our global collective</p>
+      <a href="login.html" class="btn btn-outline-dark">Join as an Artist</a>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section style="padding:5rem 0;">
+  <div class="max-w-site">
+    <p class="section-label reveal mb-4">— What We Stand For</p>
+    <h2 class="headline-lg reveal rd1 mb-12" style="color:#f0ebe4;">The <span style="color:#e8ff00;" class="glow-y">Code.</span></h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+      <div class="card reveal rd1" style="padding:2.5rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="card-accent"></div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:#1e1e1e;line-height:1;flex-shrink:0;">01</div>
+        <div>
+          <h3 class="headline-sm mb-3" style="color:#f0ebe4;">Art belongs on the street.</h3>
+          <p style="font-size:.85rem;line-height:1.7;color:#666;">Galleries are for Sundays. We believe the greatest art canvases in the world are the facades of buildings that millions of people walk past daily — often without looking up.</p>
+        </div>
+      </div>
+      <div class="card reveal rd2" style="padding:2.5rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="card-accent"></div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:#1e1e1e;line-height:1;flex-shrink:0;">02</div>
+        <div>
+          <h3 class="headline-sm mb-3" style="color:#f0ebe4;">The artist's vision is the brief.</h3>
+          <p style="font-size:.85rem;line-height:1.7;color:#666;">We guide clients on style, scale, and concept — but we don't compromise the artist's language to fit a committee's comfort zone. That's how you get great work.</p>
+        </div>
+      </div>
+      <div class="card reveal rd3" style="padding:2.5rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="card-accent"></div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:#1e1e1e;line-height:1;flex-shrink:0;">03</div>
+        <div>
+          <h3 class="headline-sm mb-3" style="color:#f0ebe4;">Scale changes everything.</h3>
+          <p style="font-size:.85rem;line-height:1.7;color:#666;">A design that works at A4 rarely works at 40 metres. We think in dimensions. Every concept is stress-tested for the wall before a single nozzle is pressed.</p>
+        </div>
+      </div>
+      <div class="card reveal rd4" style="padding:2.5rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="card-accent"></div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:#1e1e1e;line-height:1;flex-shrink:0;">04</div>
+        <div>
+          <h3 class="headline-sm mb-3" style="color:#f0ebe4;">Cities remember what they see.</h3>
+          <p style="font-size:.85rem;line-height:1.7;color:#666;">A great mural becomes part of a city's identity. We take that responsibility seriously, which is why every commission comes with our 5-year quality guarantee.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS STRIP -->
+<section class="section-dark" style="padding:3.5rem 0;">
+  <div class="max-w-site">
+    <p class="section-label" style="text-align:center;margin-bottom:2rem;">As seen in</p>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:3rem;opacity:.35;">
+      <span class="font-display" style="font-size:2rem;letter-spacing:.15em;">VOGUE</span>
+      <span class="font-display" style="font-size:2rem;letter-spacing:.15em;">WIRED</span>
+      <span class="font-display" style="font-size:2rem;letter-spacing:.15em;">DEZEEN</span>
+      <span class="font-display" style="font-size:2rem;letter-spacing:.15em;">MONOCLE</span>
+      <span class="font-display" style="font-size:2rem;letter-spacing:.15em;">HYPEBEAST</span>
+      <span class="font-display" style="font-size:2rem;letter-spacing:.15em;">WALLPAPER*</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding:5rem 0;background:#e8ff00;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;opacity:.06;">
+    <img src="https://images.unsplash.com/photo-1547826039-bde8c7e6e1e4?w=1400&auto=format&fit=crop" alt="" style="width:100%;height:100%;object-fit:cover;"/>
+  </div>
+  <div class="max-w-site" style="position:relative;text-align:center;">
+    <h2 class="headline-lg" style="color:#080808;">Ready to Paint?</h2>
+    <p style="color:#333;font-size:.95rem;margin-top:.75rem;max-width:380px;margin-inline:auto;line-height:1.7;">Whether you have a wall and an idea, or just a wall — we'll make it work.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem;">
+      <a href="commission.html" class="btn" style="background:#080808;color:#e8ff00;font-family:'Bebas Neue',sans-serif;letter-spacing:.12em;padding:.8rem 2rem;border-radius:2px;text-decoration:none;">Commission a Mural</a>
+      <a href="gallery.html" class="btn" style="background:transparent;color:#080808;border:1.5px solid #080808;font-family:'Bebas Neue',sans-serif;letter-spacing:.12em;padding:.8rem 2rem;border-radius:2px;text-decoration:none;">View Our Gallery</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer" style="padding:2.5rem 0;">
+  <div class="max-w-site" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;">
+    <span class="font-display" style="font-size:1.8rem;letter-spacing:.2em;color:#1e1e1e;">CRUX STUDIO</span>
+    <p style="font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.1em;color:#444;">© 2026 CRUX Studio — All walls belong to art.</p>
+    <div style="display:flex;gap:1.5rem;">
+      <a href="gallery.html" style="font-family:'DM Mono',monospace;font-size:.65rem;color:#444;text-decoration:none;transition:color .3s;" onmouseover="this.style.color='#e8ff00'" onmouseout="this.style.color='#444'">Gallery</a>
+      <a href="commission.html" style="font-family:'DM Mono',monospace;font-size:.65rem;color:#444;text-decoration:none;transition:color .3s;" onmouseover="this.style.color='#e8ff00'" onmouseout="this.style.color='#444'">Commission</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<style>
+  html.light .dark-icon { display:none !important; }
+  html.dark .light-icon { display:none !important; }
+  html.light .light-icon { display:block !important; }
+  @media (max-width:768px) {
+    section > .max-w-site[style*="grid-template-columns:1fr 1fr"] { grid-template-columns:1fr !important; }
+    div[style*="grid-template-columns:repeat(4,1fr)"] { grid-template-columns:repeat(2,1fr) !important; }
+    div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns:1fr !important; }
+  }
+</style>
+</body>
+</html>
