@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CRUX Studio — Join the Collective</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body style="overflow:hidden;">
+
+<div id="cursor-dot" aria-hidden="true"></div>
+
+<!-- Minimal nav strip -->
+<header style="position:fixed;top:0;inset-x:0;z-index:50;padding:.9rem 1.5rem;display:flex;align-items:center;justify-content:space-between;">
+  <a href="index.html" class="font-display" style="font-size:2rem;letter-spacing:.2em;color:#e8ff00;text-decoration:none;">CRUX</a>
+  <div style="display:flex;align-items:center;gap:.75rem;">
+    <button id="dir-toggle" onclick="toggleDir()" style="font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;padding:.3rem .7rem;border:1px solid #2c2c2c;border-radius:2px;background:transparent;color:#666;cursor:pointer;">RTL</button>
+    <button onclick="toggleTheme()" style="width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid #2c2c2c;border-radius:2px;background:transparent;cursor:pointer;">
+      <svg class="dark-icon" style="width:14px;height:14px;color:#e8ff00;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="light-icon" style="display:none;width:14px;height:14px;color:#0d0d0d;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- SPLIT LAYOUT -->
+<div class="login-layout">
+
+  <!-- LEFT — Artist Image -->
+  <div class="login-img-side" style="position:relative;overflow:hidden;">
+    <img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=900&auto=format&fit=crop"
+         alt="Join CRUX Collective" style="width:100%;height:100%;object-fit:cover;" loading="eager"/>
+    <!-- Gradient overlays -->
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(8,8,8,.8) 0%,transparent 50%),linear-gradient(to top,rgba(8,8,8,.95) 0%,transparent 40%);"></div>
+    
+    <!-- Content overlay -->
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:7rem 3.5rem 3.5rem;">
+      <div>
+        <span class="tag tag-p">Collective Membership</span>
+      </div>
+      <div>
+        <h2 class="font-display" style="font-size:clamp(2.5rem,5vw,4.5rem);color:#fff;line-height:0.9;max-width:480px;margin-bottom:1.5rem;">
+          CLAIM YOUR<br><span style="color:#ff2d78;" class="glow-p">SPACE.</span>
+        </h2>
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <div style="width:40px;height:40px;border-radius:50%;background:#ff2d78;display:flex;items-center;justify-content:center;font-display;color:white;font-size:1.2rem;padding-top:4px;">C</div>
+          <div>
+            <div style="font-family:'DM Mono',monospace;font-size:.72rem;color:#f0ebe4;">CRUX COLLECTIVE</div>
+            <div class="section-label" style="font-size:.6rem;">Global Artist Network</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT — Register form -->
+  <div style="display:flex;flex-direction:column;justify-content:center;padding:2.5rem;background:#0a0a0a;overflow-y:auto;">
+    <div style="max-width:420px;width:100%;margin:auto;padding-top:4rem;padding-bottom:3rem;">
+
+      <div style="margin-bottom:2.5rem;">
+        <p class="section-label mb-3">Become a Resident</p>
+        <h1 class="headline-lg" style="color:#f0ebe4;">
+          Create <span style="color:#ff2d78;" class="glow-p">Identity.</span>
+        </h1>
+        <p style="font-size:.85rem;color:#666;margin-top:.5rem;line-height:1.6;">Join our roster of elite urban artists or manage your client commissions.</p>
+      </div>
+
+      <!-- Social login -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:2rem;">
+        <button type="button" class="social-btn" style="justify-content:center;padding:0.75rem 0.5rem;">
+          <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          Google
+        </button>
+        <button type="button" class="social-btn" style="justify-content:center;padding:0.75rem 0.5rem;">
+          <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+          </svg>
+          Apple
+        </button>
+      </div>
+
+      <form id="signup-form" class="space-y-4">
+        <div class="grid grid-cols-2 gap-4">
+          <div class="form-field">
+            <input type="text" id="s-first" class="form-input" placeholder=" " required/>
+            <label for="s-first" class="form-label">First Name</label>
+          </div>
+          <div class="form-field">
+            <input type="text" id="s-last" class="form-input" placeholder=" " required/>
+            <label for="s-last" class="form-label">Last Name</label>
+          </div>
+        </div>
+        <div class="form-field">
+          <input type="email" id="s-email" class="form-input" placeholder=" " required/>
+          <label for="s-email" class="form-label">Email Address</label>
+        </div>
+        <div class="form-field">
+          <select id="s-type" class="form-input">
+            <option value="artist">I am an Artist</option>
+            <option value="client">I am a Client</option>
+            <option value="other">Collaborator</option>
+          </select>
+          <label class="form-label" style="top:.5rem;font-size:.6rem;transform:none;">Profile Type</label>
+        </div>
+        <div class="form-field">
+          <input type="password" id="s-pass" class="form-input" placeholder=" " required/>
+          <label for="s-pass" class="form-label">Password</label>
+        </div>
+        
+        <label class="custom-check mt-6">
+          <input type="checkbox" id="s-terms" required/>
+          <span class="checkmark" style="background:transparent; border-color:#2c2c2c;"></span>
+          <span style="font-family:'DM Mono',monospace;font-size:.65rem;color:#555;">I agree to the <a href="#" class="text-[#ff2d78] underline">Manifesto</a> and Terms.</span>
+        </label>
+
+        <button type="submit" class="btn btn-full" style="background:#ff2d78; color:white; margin-top:2rem;">Join Collective</button>
+      </form>
+
+      <p style="font-family:'DM Mono',monospace;font-size:.68rem;text-align:center;margin-top:2rem;color:#444;">
+        Already a Resident?&nbsp;
+        <a href="login.html" style="color:#777;text-decoration:underline;transition:color .3s;" onmouseover="this.style.color='#ff2d78'" onmouseout="this.style.color='#777'">Sign In</a>
+      </p>
+
+      <div style="margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid #1a1a1a;text-align:center;">
+        <a href="index.html" style="font-family:'DM Mono',monospace;font-size:.65rem;color:#3a3a3a;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;transition:color .3s;" onmouseover="this.style.color='#888'" onmouseout="this.style.color='#3a3a3a'">
+          <svg style="width:13px;height:13px;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Back to CRUX Studio
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/main.js"></script>
+<style>
+  html.light .dark-icon{display:none!important;}
+  html.dark .light-icon{display:none!important;}
+  html.light .light-icon{display:block!important;}
+  html.light body { overflow: hidden; background: #f0ebe4; }
+  html.light .login-layout > div:last-child { background:#f0ebe4; }
+  .glow-p { text-shadow: 0 0 15px rgba(255,45,120,0.5); }
+</style>
+</body>
+</html>

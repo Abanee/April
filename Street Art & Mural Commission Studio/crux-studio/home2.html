@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CRUX Studio — Home V2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+
+<div id="cursor-dot" aria-hidden="true"></div>
+
+<!-- ═══ NAV ═══════════════════════════════════════════════════ -->
+<header id="main-nav" class="nav-glass fixed top-0 inset-x-0 z-50">
+  <nav class="max-w-site h-16 flex items-center justify-between gap-4">
+    <a href="index.html" class="font-display text-3xl tracking-widest text-[#e8ff00] hover:opacity-75 transition-opacity" style="color:#e8ff00;">CRUX</a>
+    <ul class="hidden md:flex items-center gap-6 list-none">
+      <li><a href="index.html"      class="nav-link" data-page="index.html">Home</a></li>
+      <li><a href="home2.html"      class="nav-link active" data-page="home2.html">Home 2</a></li>
+      <li><a href="gallery.html"    class="nav-link" data-page="gallery.html">Gallery</a></li>
+      <li><a href="commission.html" class="nav-link" data-page="commission.html">Commission</a></li>
+      <li><a href="about.html"      class="nav-link" data-page="about.html">About</a></li>
+      <li><a href="contact.html"    class="nav-link" data-page="contact.html">Contact</a></li>
+      <li><a href="login.html"      class="nav-link" data-page="login.html">Portal</a></li>
+      <li><a href="signup.html"     class="nav-link" data-page="signup.html">Join</a></li>
+    </ul>
+    <div class="flex items-center gap-3">
+      <button id="dir-toggle" onclick="toggleDir()" aria-label="Toggle text direction"
+        style="font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .75rem;border:1px solid #2c2c2c;border-radius:2px;background:transparent;color:#888;cursor:pointer;transition:all .3s;">RTL</button>
+      <button onclick="toggleTheme()" aria-label="Toggle theme"
+        style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid #2c2c2c;border-radius:2px;background:transparent;cursor:pointer;transition:border-color .3s;">
+        <svg class="dark-icon" style="width:16px;height:16px;color:#e8ff00;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg class="light-icon" style="width:16px;height:16px;color:#0d0d0d;display:none;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+      <button onclick="toggleMobileMenu()" class="md:hidden" style="width:36px;height:36px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;border:none;cursor:pointer;">
+        <span style="display:block;width:22px;height:2px;background:currentColor;"></span>
+        <span style="display:block;width:22px;height:2px;background:currentColor;"></span>
+        <span style="display:block;width:14px;height:2px;background:currentColor;align-self:flex-start;margin-inline-start:4px;"></span>
+      </button>
+    </div>
+  </nav>
+  <div id="mobile-menu" style="border-top:1px solid #1e1e1e;">
+    <ul style="display:flex;flex-direction:column;gap:1.2rem;padding:1.25rem;list-style:none;">
+      <li><a href="index.html"      class="nav-link">Home</a></li>
+      <li><a href="home2.html"      class="nav-link active">Home 2</a></li>
+      <li><a href="gallery.html"    class="nav-link">Gallery</a></li>
+      <li><a href="commission.html" class="nav-link">Commission</a></li>
+      <li><a href="about.html"      class="nav-link">About</a></li>
+      <li><a href="contact.html"    class="nav-link">Contact</a></li>
+      <li><a href="login.html"      class="nav-link">Portal</a></li>
+      <li><a href="signup.html"     class="nav-link">Join</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- ═══ CENTERED HERO ══════════════════════════════════════════ -->
+<section class="hero-bg relative min-h-screen flex flex-col justify-center items-center text-center overflow-hidden px-4">
+  <div style="position:absolute;inset:0;z-index:0;">
+    <img src="https://images.unsplash.com/photo-1541544537156-7627a7a4aa1c?w=1600&auto=format&fit=crop&q=80"
+         alt="" loading="eager" aria-hidden="true"
+         style="width:100%;height:100%;object-fit:cover;opacity:.15;filter:grayscale(1) contrast(1.2);">
+    <div style="position:absolute;inset:0;background:radial-gradient(circle at center, transparent 0%, rgba(8,8,8,.95) 80%);"></div>
+  </div>
+
+  <div class="relative z-10 max-w-4xl pt-16">
+    <div class="reveal flex justify-center gap-3 mb-8">
+      <span class="tag tag-p">Berlin</span>
+      <span class="tag tag-y">Tokyo</span>
+      <span class="tag tag-c">New York</span>
+    </div>
+    <h1 class="headline-xl reveal rd1" style="color:#f0ebe4; line-height: 0.85;">
+      URBAN<br>
+      <span style="color:#ff2d78;" class="glow-p neon-flicker">INTERVENTION</span>
+    </h1>
+    <p class="reveal rd2 mt-10 text-xl md:text-2xl font-mono text-gray-400 uppercase tracking-tighter">
+      Beyond the canvas. Beyond the wall.
+    </p>
+    <div class="reveal rd3 flex flex-wrap justify-center gap-6 mt-12">
+      <a href="commission.html" class="btn btn-yellow">Start a Project</a>
+      <a href="gallery.html" class="btn btn-outline-dark">View Archives</a>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div style="position:absolute;bottom:3rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;animation:float 3s ease-in-out infinite;z-index:2;" aria-hidden="true">
+    <svg width="20" height="30" viewBox="0 0 20 30" fill="none" stroke="#ff2d78" stroke-width="2">
+      <rect x="1" y="1" width="18" height="28" rx="9"/>
+      <line x1="10" y1="8" x2="10" y2="16" stroke="#ff2d78" stroke-linecap="round">
+        <animate attributeName="y2" values="16;22;16" dur="1.5s" repeatCount="indefinite"/>
+      </line>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══ STREET LAB SECTION ═════════════════════════════════════ -->
+<section style="padding:8rem 0; background: #080808;" class="overflow-hidden">
+  <div class="max-w-site">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <div class="reveal">
+        <p class="section-label mb-4">— Innovation</p>
+        <h2 class="headline-lg mb-8" style="color:#f0ebe4;">The <span style="color:#00f0ff;" class="glow-c">Street Lab.</span></h2>
+        <div class="space-y-6 text-gray-400 leading-relaxed text-lg">
+          <p>We don't just paint. We experiment. Our Street Lab in Berlin is dedicated to testing new mediums — from light-reactive pigments to AR-integrated murals.</p>
+          <p>Every commission goes through a prototyping phase where we simulate environmental lighting and structural aging to ensure your art outlasts the building itself.</p>
+        </div>
+        <div class="mt-10 grid grid-cols-2 gap-8">
+          <div>
+            <div class="headline-md text-[#00f0ff]">400+</div>
+            <p class="section-label text-xs">Experiments</p>
+          </div>
+          <div>
+            <div class="headline-md text-[#ff2d78]">14</div>
+            <p class="section-label text-xs">Patents Pending</p>
+          </div>
+        </div>
+      </div>
+      <div class="relative reveal rd2">
+        <div style="aspect-ratio: 1/1; background: #111; border: 1px solid #1e1e1e; padding: 20px; position: relative; border-radius: 4px;">
+          <img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=800&auto=format&fit=crop" 
+               alt="Street Lab Setup" class="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 transition-all duration-700">
+          <div style="position:absolute; top: -1px; left: -1px; width: 40px; height: 40px; border-top: 2px solid #00f0ff; border-left: 2px solid #00f0ff;"></div>
+          <div style="position:absolute; bottom: -1px; right: -1px; width: 40px; height: 40px; border-bottom: 2px solid #00f0ff; border-right: 2px solid #00f0ff;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INTERACTIVE PROJECTIONS ════════════════════════════════ -->
+<section class="section-dark" style="padding:8rem 0;">
+  <div class="max-w-site">
+    <div class="text-center mb-16">
+      <p class="section-label reveal mb-4">— Future Tech</p>
+      <h2 class="headline-lg reveal rd1" style="color:#f0ebe4;">Interactive <span style="color:#e8ff00;" class="glow-y">Projections.</span></h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="card reveal rd1" style="padding: 2.5rem;">
+        <div class="card-accent" style="background:#00f0ff;"></div>
+        <div class="font-mono text-[rgb(0,240,255)] text-xs mb-4">SYSTEM_01</div>
+        <h3 class="headline-sm mb-4 text-white">Motion Sync</h3>
+        <p class="text-sm text-gray-500 leading-relaxed">Murals that react to the movement of pedestrians. Light patterns that follow life on the street in real-time.</p>
+      </div>
+      <div class="card reveal rd2" style="padding: 2.5rem;">
+        <div class="card-accent" style="background:#ff2d78;"></div>
+        <div class="font-mono text-[rgb(255,45,120)] text-xs mb-4">SYSTEM_02</div>
+        <h3 class="headline-sm mb-4 text-white">Sonic Layer</h3>
+        <p class="text-sm text-gray-400 leading-relaxed">Integrated soundscapes transmitted via bone conduction panels or mobile synchronization via NFC.</p>
+      </div>
+      <div class="card reveal rd3" style="padding: 2.5rem;">
+        <div class="card-accent" style="background:#e8ff00;"></div>
+        <div class="font-mono text-[rgb(232,255,0)] text-xs mb-4">SYSTEM_03</div>
+        <h3 class="headline-sm mb-4 text-white">Data Painting</h3>
+        <p class="text-sm text-gray-400 leading-relaxed">Visualizations of local air quality, traffic flow, or social sentiment projected directly onto painted surfaces.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA BAND ═══════════════════════════════════════════════ -->
+<section style="padding:6rem 0;background:#ff2d78;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;opacity:.1;" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1541544537156-7627a7a4aa1c?w=1400&auto=format&fit=crop" style="width:100%;height:100%;object-fit:cover;" alt=""/>
+  </div>
+  <div class="max-w-site text-center relative">
+    <h2 class="headline-lg" style="color:#fff;line-height:.95;">The Future Is<br>Unwritten.</h2>
+    <div class="flex justify-center gap-4 mt-8">
+      <a href="commission.html" class="btn" style="background:#080808;color:#ff2d78; padding: 1rem 3rem;">Define It</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════ -->
+<footer class="site-footer" style="padding:4rem 0;">
+  <div class="max-w-site grid grid-cols-1 md:grid-cols-4 gap-12">
+    <div class="col-span-1 md:col-span-2">
+      <span class="font-display text-4xl tracking-widest text-white">CRUX STUDIO</span>
+      <p class="mt-6 text-gray-500 text-sm max-w-sm">An international collective of urban interventionists, defining the visual landscape of the 21st-century city.</p>
+    </div>
+    <div>
+      <h4 class="font-mono text-xs text-gray-400 uppercase tracking-widest mb-6">Explore</h4>
+      <ul class="space-y-3 font-mono text-[10px] uppercase text-gray-600">
+        <li><a href="gallery.html" class="hover:text-[#e8ff00]">Gallery</a></li>
+        <li><a href="home2.html" class="hover:text-[#e8ff00]">Street Lab</a></li>
+        <li><a href="commission.html" class="hover:text-[#e8ff00]">Intervention</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-mono text-xs text-gray-400 uppercase tracking-widest mb-6">Contact</h4>
+      <ul class="space-y-3 font-mono text-[10px] uppercase text-gray-600">
+        <li>studio@crux.com</li>
+        <li>Berlin / NYC / Tokyo</li>
+        <li>+49 157 8892 00</li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-site mt-16 pt-8 border-t border-gray-900 flex justify-between items-center">
+    <p class="font-mono text-[9px] text-gray-700">© 2026 CRUX Studio — ALL WALLS BELONG TO ART.</p>
+    <div class="flex gap-4">
+      <div class="w-8 h-[1px] bg-gray-800"></div>
+      <div class="w-8 h-[1px] bg-gray-800"></div>
+      <div class="w-8 h-[1px] bg-gray-800"></div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<style>
+  html.light .dark-icon { display: none !important; }
+  html.dark .light-icon { display: none !important; }
+  html.light .light-icon { display: block !important; }
+  @keyframes float { 0%,100%{transform:translateY(0) rotate(-1deg);} 50%{transform:translateY(-12px) rotate(1deg);} }
+</style>
+</body>
+</html>
