@@ -101,6 +101,8 @@
 <!-- NAVBAR -->
 <header id="navbar" class="fixed inset-x-0 top-0 z-50">
   <div class="max-w-7xl mx-auto px-5 py-3.5 flex items-center justify-between gap-4">
+
+    <!-- Logo -->
     <a href="index.html" class="flex items-center gap-2.5 group flex-shrink-0">
       <div class="w-10 h-10 group-hover:scale-110 transition-transform">
         <img src="src/logo.png" alt="Bonsai Nursery Logo" class="w-full h-full object-contain">
@@ -110,22 +112,39 @@
         <span class="font-mono-dm text-[0.58rem] tracking-[0.2em] uppercase text-emerald-700 dark:text-emerald-500">& Care Workshop</span>
       </div>
     </a>
+
+    <!-- Desktop Nav -->
     <nav class="hidden lg:flex items-center gap-6">
       <a href="index.html" class="nav-link text-base font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5">Home</a>
+      <a href="home2.html" class="nav-link text-base font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5">Home 2</a>
       <a href="projects.html" class="nav-link text-base font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5">Projects</a>
       <a href="gallery.html" class="nav-link text-base font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5">Gallery</a>
       <a href="blog.html" class="nav-link text-base font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5">Blog</a>
       <a href="about.html" class="nav-link text-base font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5">About</a>
+      <a href="services.html" class="nav-link text-base font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5">Workshops</a>
       <a href="contact.html" class="nav-link active text-base font-medium text-emerald-700 dark:text-emerald-400 transition-colors pb-0.5">Contact</a>
     </nav>
+
+    <!-- Right Controls -->
     <div class="flex items-center gap-3">
+      <!-- User Actions (Desktop) -->
       <div class="hidden sm:flex items-center gap-2 border-s border-stone-200 dark:border-stone-800 ps-4">
         <a href="login.html" class="px-4 py-2 rounded-xl text-base font-semibold border border-emerald-700 text-emerald-700 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-all">Sign In</a>
         <a href="dashboard.html" class="px-4 py-2 rounded-xl text-base font-semibold bg-emerald-700 hover:bg-emerald-600 text-white transition-all shadow-md shadow-emerald-900/20">Dashboard</a>
       </div>
-      <button id="mobileMenuBtn" class="lg:hidden w-8 h-8 flex items-center justify-center text-stone-600 dark:text-stone-400 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
-        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
+
+      <div class="flex items-center gap-1.5">
+        <button data-dir-toggle aria-label="Switch direction" class="h-8 px-2 rounded-lg flex items-center gap-1 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors border border-stone-200 dark:border-stone-700">
+          <span data-dir-label class="font-mono-dm text-[0.6rem] font-medium tracking-wider">RTL</span>
+        </button>
+        <button data-theme-toggle aria-label="Toggle theme" class="w-8 h-8 rounded-lg flex items-center justify-center text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors border border-stone-200 dark:border-stone-700">
+          <svg data-moon-icon class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          <svg data-sun-icon class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        </button>
+        <button id="mobileMenuBtn" class="lg:hidden w-8 h-8 flex items-center justify-center text-stone-600 dark:text-stone-400 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
     </div>
   </div>
 </header>
@@ -244,7 +263,7 @@
   <div class="max-w-7xl mx-auto px-5 py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 text-start">
     <div class="md:col-span-1 border-stone-800">
       <div class="flex items-center gap-2.5 mb-5">
-        <div class="w-8 h-8 text-emerald-500">
+        <div class="w-8 h-8">
           <img src="src/logo.png" alt="Bonsai Nursery Logo" class="w-full h-full object-contain">
         </div>
         <span class="font-cormorant text-lg text-stone-200 font-semibold tracking-wide">Bonsai Nursery</span>
