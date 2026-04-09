@@ -25,13 +25,21 @@
     [data-sr]{opacity:0;transform:translateY(32px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
     [data-sr].sr-visible{opacity:1;transform:translateY(0);}
     [data-sr][data-delay="100"]{transition-delay:100ms}[data-sr][data-delay="200"]{transition-delay:200ms}[data-sr][data-delay="300"]{transition-delay:300ms}
+    /* Navbar */
     #navbar { background: #fafaf9; border-bottom: 1px solid rgba(0,0,0,.05); transition: all .3s ease; }
     html.dark #navbar { background: #0c0a09; border-bottom: 1px solid rgba(255,255,255,.05); }
-    .nav-link{position:relative;}
-    .nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:#059669;transition:width .3s ease;}
-    .nav-link:hover::after,.nav-link.active::after{width:100%;}
-    .nav-link.active{color:#059669;}
-    html.dark .nav-link.active{color:#34d399;}
+    #navbar.nav-scrolled { backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); box-shadow:0 1px 0 rgba(0,0,0,.06),0 4px 24px rgba(0,0,0,.05); }
+    html:not(.dark) #navbar.nav-scrolled { background:rgba(250,250,249,.94); }
+    html.dark #navbar.nav-scrolled { background:rgba(12,10,9,.94); }
+    .mobile-panel { transition:transform .4s cubic-bezier(.16,1,.3,1); }
+
+    /* Nav link underline animation */
+    .nav-link { position:relative; }
+    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:1.5px; background:#059669; transition:width .3s ease; }
+    html[dir="rtl"] .nav-link::after { left:auto; right:0; }
+    .nav-link:hover::after, .nav-link.active::after { width:100%; }
+    .nav-link.active { color:#059669; }
+    html.dark .nav-link.active { color:#34d399; }
     .page-hero { background: linear-gradient(160deg, #1a3a2a 0%, #0c1a0e 60%, #0a0a0a 100%); }
     .project-card { transition: transform .3s ease, box-shadow .3s ease; }
     .project-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
@@ -39,42 +47,41 @@
 </head>
 <body class="bg-stone-50 dark:bg-stone-950 text-stone-800 dark:text-stone-200 transition-colors duration-300 antialiased">
 
-<!-- NAVBAR (shared) -->
-<header id="navbar" class="fixed inset-x-0 top-0 z-50">
-  <div class="max-w-7xl mx-auto px-5 py-3.5 flex items-center justify-between gap-4">
+<!-- NAVBAR -->
+<header id="navbar" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-5 py-3.5 flex items-center justify-between gap-4 flex-nowrap">
 
     <!-- Logo -->
     <a href="index.html" class="flex items-center gap-2.5 group flex-shrink-0">
       <div class="w-10 h-10 group-hover:scale-110 transition-transform">
         <img src="src/logo.png" alt="Bonsai Nursery Logo" class="w-full h-full object-contain">
       </div>
-      <div class="leading-tight">
+      <div class="leading-tight hidden sm:block">
         <span class="font-cormorant text-[1.05rem] font-semibold text-stone-800 dark:text-stone-100 block leading-none tracking-wide">Bonsai Nursery</span>
         <span class="font-mono-dm text-[0.58rem] tracking-[0.2em] uppercase text-emerald-700 dark:text-emerald-500">& Care Workshop</span>
       </div>
     </a>
 
     <!-- Desktop Nav -->
-    <nav class="hidden lg:flex items-center gap-6">
-      <a href="index.html" class="nav-link text-base font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5">Home</a>
-      <a href="home2.html" class="nav-link text-base font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5">Home 2</a>
-      <a href="projects.html" class="nav-link active text-base font-medium text-emerald-700 dark:text-emerald-400 transition-colors pb-0.5">Projects</a>
-      <a href="gallery.html" class="nav-link text-base font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5">Gallery</a>
-      <a href="blog.html" class="nav-link text-base font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5">Blog</a>
-      <a href="about.html" class="nav-link text-base font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5">About</a>
-      <a href="services.html" class="nav-link text-base font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5">Workshops</a>
-      <a href="contact.html" class="nav-link text-base font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5">Contact</a>
+    <nav class="hidden xl:flex items-center gap-5">
+      <a href="index.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Home</a>
+      <a href="projects.html" class="nav-link active text-sm font-medium text-emerald-700 dark:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Projects</a>
+      <a href="gallery.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Gallery</a>
+      <a href="blog.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Blog</a>
+      <a href="about.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">About</a>
+      <a href="services.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Workshops</a>
+      <a href="contact.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Contact</a>
     </nav>
 
     <!-- Right Controls -->
-    <div class="flex items-center gap-3">
-      <!-- User Actions (Desktop) -->
-      <div class="hidden sm:flex items-center gap-2 border-s border-stone-200 dark:border-stone-800 ps-4">
-        <a href="login.html" class="px-4 py-2 rounded-xl text-base font-semibold border border-emerald-700 text-emerald-700 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-all">Sign In</a>
-        <a href="dashboard.html" class="px-4 py-2 rounded-xl text-base font-semibold bg-emerald-700 hover:bg-emerald-600 text-white transition-all shadow-md shadow-emerald-900/20">Dashboard</a>
+    <div class="flex items-center gap-2 sm:gap-3">
+      <!-- Actions (Desktop/Tablet) -->
+      <div class="hidden md:flex items-center gap-2 border-s border-stone-200 dark:border-stone-800 ps-4">
+        <a href="login.html" class="px-4 py-2 rounded-xl text-sm font-semibold border border-emerald-700 text-emerald-700 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-all">Sign In</a>
+        <a href="dashboard.html" class="px-4 py-2 rounded-xl text-sm font-semibold bg-emerald-700 hover:bg-emerald-600 text-white transition-all shadow-md shadow-emerald-900/20">Dashboard</a>
       </div>
 
-      <div class="flex items-center gap-1.5">
+      <div class="hidden md:flex items-center gap-1.5 ms-2">
         <button data-dir-toggle aria-label="Switch direction" class="h-8 px-2 rounded-lg flex items-center gap-1 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors border border-stone-200 dark:border-stone-700">
           <span data-dir-label class="font-mono-dm text-[0.6rem] font-medium tracking-wider">RTL</span>
         </button>
@@ -82,28 +89,31 @@
           <svg data-moon-icon class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
           <svg data-sun-icon class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
         </button>
-        <button id="mobileMenuBtn" class="lg:hidden w-8 h-8 flex items-center justify-center text-stone-600 dark:text-stone-400 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-        </button>
       </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button id="mobileMenuBtn" class="xl:hidden w-9 h-9 flex items-center justify-center text-stone-600 dark:text-stone-400 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
     </div>
   </div>
 </header>
 
-<div id="mobileOverlay" class="fixed inset-0 z-40 bg-stone-950/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"></div>
+<div id="mobileOverlay" class="fixed inset-0 z-40 bg-stone-950/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 xl:hidden"></div>
 
-<div id="mobileMenu" class="mobile-panel fixed top-0 start-0 bottom-0 z-50 w-72 bg-white dark:bg-stone-900 shadow-2xl -translate-x-full lg:hidden flex flex-col">
+<div id="mobileMenu" class="mobile-panel fixed top-0 start-0 bottom-0 z-50 w-72 bg-white dark:bg-stone-900 shadow-2xl -translate-x-full xl:hidden flex flex-col">
   <div class="flex items-center justify-between px-5 py-4 border-b border-stone-100 dark:border-stone-800">
     <span class="font-cormorant text-xl font-semibold text-stone-800 dark:text-stone-200 tracking-wide">Menu</span>
     <button id="mobileMenuClose" class="w-8 h-8 rounded-lg flex items-center justify-center text-stone-500 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
       <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
   </div>
+
   <nav class="flex flex-col gap-0.5 px-3 py-4 flex-1">
     <a href="index.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Home</a>
-    <a href="home2.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Home 2</a>
-    <a href="projects.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 transition-colors">Projects</a>
+    <a href="projects.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40">Projects</a>
     <a href="gallery.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Gallery</a>
+    <a href="blog.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Blog</a>
     <a href="about.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">About</a>
     <a href="services.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Workshops</a>
     <a href="contact.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Contact</a>
@@ -113,17 +123,21 @@
       <a href="dashboard.html" class="px-3 py-2.5 rounded-xl text-base font-semibold text-center bg-emerald-700 text-white hover:bg-emerald-600 transition-colors">Dashboard</a>
     </div>
 
-    <div class="mt-4 flex gap-2 px-1">
-      <button data-dir-toggle class="flex-1 h-9 rounded-xl border border-stone-200 dark:border-stone-700 flex items-center justify-center gap-1.5 text-stone-500 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">
-        <span data-dir-label class="font-mono-dm text-[0.6rem] tracking-wider">RTL</span>
+    <div class="mt-4 flex gap-2 pt-4 border-t border-stone-100 dark:border-stone-800">
+      <button data-dir-toggle class="flex-1 h-10 rounded-xl border border-stone-200 dark:border-stone-700 flex items-center justify-center gap-2 text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors text-sm font-medium">
+        <span class="w-4 h-4 flex items-center justify-center border border-current rounded text-[0.5rem] font-bold">R</span>
+        RTL Mode
       </button>
-      <button data-theme-toggle class="flex-1 h-9 rounded-xl border border-stone-200 dark:border-stone-700 flex items-center justify-center gap-1.5 text-stone-500 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">
+      <button data-theme-toggle class="flex-1 h-10 rounded-xl border border-stone-200 dark:border-stone-700 flex items-center justify-center gap-2 text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors text-sm font-medium">
         <svg data-moon-icon class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-        <svg data-sun-icon class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-        <span class="font-mono-dm text-[0.6rem] tracking-wider">Mode</span>
+        Dark Mode
       </button>
     </div>
   </nav>
+
+  <div class="px-5 py-4 border-t border-stone-100 dark:border-stone-800">
+    <p class="font-mono-dm text-[0.6rem] text-stone-400 tracking-wider uppercase">Bonsai Nursery © 2026</p>
+  </div>
 </div>
 
 <!-- PAGE HERO -->
