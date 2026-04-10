@@ -448,7 +448,9 @@ html.light .paint-drip { opacity: .09; }
 /* ── Footer ──────────────────────────────────────────────── */
 .site-footer {
   border-top: 1px solid var(--urban-border);
-  background: #060606;
+  background: var(--bg-theme);
+  padding: 5rem 0 2rem;
+  margin-top: auto;
 }
 html.light .site-footer { background: #e8e3dc; }
 
@@ -597,13 +599,7 @@ html.light .section-alt  { background: #f5f0ea; }
 #mobile-menu { display: none; }
 #mobile-menu.open { display: block; }
 
-/* ── Professional Footer ─────────────────────────────────── */
-.site-footer {
-  border-top: 1px solid var(--urban-border);
-  background: var(--urban-bg);
-  padding: 5rem 0 2rem;
-  margin-top: auto;
-}
+
 .footer-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
