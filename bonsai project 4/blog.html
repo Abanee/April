@@ -41,6 +41,7 @@
     .nav-link:hover::after, .nav-link.active::after { width:100%; }
     .nav-link.active { color:#059669; }
     html.dark .nav-link.active { color:#34d399; }
+    .page-hero { background: linear-gradient(160deg, #1a2f3a 0%, #0c1a1e 60%, #0a0a0a 100%); }
     .tag-pill{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;}
     .grain{background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.025;pointer-events:none;}
     .dot-grid{background-image:radial-gradient(circle,rgba(5,150,105,.15) 1px,transparent 1px);background-size:24px 24px;}
@@ -74,6 +75,7 @@
     <!-- Desktop Nav -->
     <nav class="hidden xl:flex items-center gap-5">
       <a href="index.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Home</a>
+      <a href="home2.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Home 2</a>
       <a href="projects.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Projects</a>
       <a href="gallery.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Gallery</a>
       <a href="blog.html" class="nav-link active text-sm font-medium text-emerald-700 dark:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Blog</a>
@@ -120,6 +122,7 @@
 
   <nav class="flex flex-col gap-0.5 px-3 py-4 flex-1">
     <a href="index.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Home</a>
+    <a href="home2.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Home 2</a>
     <a href="projects.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Projects</a>
     <a href="gallery.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Gallery</a>
     <a href="blog.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40">Blog</a>
@@ -150,19 +153,13 @@
 </div>
 
 <!-- PAGE HERO -->
-<section class="page-hero pt-32 pb-20 relative overflow-hidden">
-  <div class="grain absolute inset-0"></div>
-  <div class="absolute -top-20 -end-20 w-96 h-96 rounded-full border border-emerald-400/10"></div>
-  <div class="max-w-5xl mx-auto px-5 text-center relative z-10">
-    <div class="flex items-center justify-center gap-3 mb-5">
-      <div class="h-px w-8 bg-emerald-500"></div>
-      <span class="font-mono-dm text-emerald-400 text-[0.65rem] tracking-[0.25em] uppercase">From the Garden</span>
-      <div class="h-px w-8 bg-emerald-500"></div>
-    </div>
-    <h1 class="font-cormorant text-6xl md:text-7xl font-bold text-stone-100 leading-[1.05] mb-6">
+<section class="page-hero pt-40 pb-24 relative overflow-hidden text-center">
+  <div class="max-w-4xl mx-auto px-6 relative z-10">
+    <span class="text-emerald-400 text-xs tracking-[0.4em] uppercase font-bold mb-4 block">From the Garden</span>
+    <h1 class="font-cormorant text-5xl md:text-7xl font-bold text-stone-100 leading-tight mb-6">
       Cultivating <em class="text-emerald-400">Knowledge</em>
     </h1>
-    <p class="text-stone-400 text-lg leading-relaxed max-w-xl mx-auto">
+    <p class="text-stone-400 text-lg max-w-xl mx-auto leading-relaxed">
       Care guides, techniques, philosophy, and stories from four decades of tending living sculptures.
     </p>
   </div>

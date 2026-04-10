@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CRUX Studio — The Process</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+
+<div id="cursor-dot" aria-hidden="true"></div>
+
+<!-- NAV -->
+<header id="main-nav" class="nav-glass fixed top-0 inset-x-0 z-50">
+  <nav class="max-w-site h-16 flex items-center justify-between gap-4">
+    <a href="index.html" class="font-display text-3xl tracking-widest" style="color:var(--accent-brand);">CRUX</a>
+    <ul class="hidden md:flex items-center gap-6 list-none">
+      <li><a href="index.html"      class="nav-link" data-page="index.html">Home</a></li>
+      <li><a href="home2.html"      class="nav-link" data-page="home2.html">Home 2</a></li>
+      <li><a href="gallery.html"    class="nav-link" data-page="gallery.html">Gallery</a></li>
+      <li><a href="commission.html" class="nav-link" data-page="commission.html">Commission</a></li>
+      <li><a href="about.html"      class="nav-link" data-page="about.html">About</a></li>
+      <li><a href="process.html"    class="nav-link active" data-page="process.html">Process</a></li>
+      <li><a href="faq.html"        class="nav-link" data-page="faq.html">FAQ</a></li>
+      <li><a href="contact.html"    class="nav-link" data-page="contact.html">Contact</a></li>
+    </ul>
+    <div class="flex items-center gap-3">
+      <div class="hidden md:flex items-center gap-2 mr-2">
+        <a href="login.html" class="btn-nav-outline">Sign In</a>
+        <a href="signup.html" class="btn-nav-fill">Sign Up</a>
+      </div>
+      <button onclick="toggleTheme()" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid var(--urban-border);border-radius:2px;background:transparent;cursor:pointer;">
+        <svg class="dark-icon" style="width:16px;height:16px;color:var(--accent-brand);" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg class="light-icon" style="display:none;width:16px;height:16px;color:var(--text-main);" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+      <button onclick="toggleMobileMenu()" class="flex flex-col items-center justify-center gap-[5px] md:hidden bg-transparent border-none cursor-pointer w-[36px] h-[36px]">
+        <span style="display:block;width:22px;height:2px;background:currentColor;"></span>
+        <span style="display:block;width:22px;height:2px;background:currentColor;"></span>
+        <span style="display:block;width:14px;height:2px;background:currentColor;align-self:flex-start;margin-inline-start:4px;"></span>
+      </button>
+    </div>
+  </nav>
+  <div id="mobile-menu" class="md:hidden" style="border-top:1px solid #1e1e1e;">
+    <ul style="display:flex;flex-direction:column;gap:1.2rem;padding:1.25rem;list-style:none;">
+      <li><a href="index.html"      class="nav-link" data-page="index.html">Home</a></li>
+      <li><a href="gallery.html"    class="nav-link" data-page="gallery.html">Gallery</a></li>
+      <li><a href="commission.html" class="nav-link" data-page="commission.html">Commission</a></li>
+      <li><a href="about.html"      class="nav-link" data-page="about.html">About</a></li>
+      <li><a href="process.html"    class="nav-link active" data-page="process.html">Process</a></li>
+      <li><a href="faq.html"        class="nav-link" data-page="faq.html">FAQ</a></li>
+      <li><a href="contact.html"    class="nav-link" data-page="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-bg relative" style="padding-top:11rem;padding-bottom:7rem;overflow:hidden;">
+  <div style="position:absolute;inset:0;">
+    <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=1600&auto=format&fit=crop" alt="" aria-hidden="true" 
+         style="width:100%;height:100%;object-fit:cover;opacity:.12;filter:grayscale(1) contrast(1.1);"/>
+    <div style="position:absolute;inset:0;background:var(--hero-overlay);"></div>
+  </div>
+  <div class="max-w-site relative">
+    <p class="section-label reveal mb-4">Architecture of Intervention</p>
+    <h1 class="headline-xl reveal rd1" style="color:var(--text-main);max-width:800px;">
+      The Lifecycle<br>of a <span style="color:var(--accent-brand);">Mural.</span>
+    </h1>
+    <p class="reveal rd2 mt-6" style="font-size:1.1rem;line-height:1.7;color:var(--text-muted);max-width:540px;">
+      A world-class mural isn't just painted — it's engineered. From the first site survey to the final UV-protective seal, we follow a rigorous technical process.
+    </p>
+  </div>
+</section>
+
+<!-- THE 8 STEPS -->
+<section style="padding:6rem 0;" class="max-w-site">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-16">
+    
+    <!-- Step 1 -->
+    <div class="reveal">
+      <div style="display:flex;align-items:flex-end;gap:1rem;margin-bottom:1.5rem;">
+        <span class="font-display" style="font-size:4rem;line-height:1;color:var(--accent-brand);">01</span>
+        <h2 class="headline-md" style="color:var(--text-main);margin-bottom:.4rem;">Site Audit & Analysis</h2>
+      </div>
+      <p style="color:var(--text-muted);line-height:1.7;">We don't just look at the wall; we study it. We analyze the surface material (brick, concrete, stucco), moisture levels, and sun exposure to select the correct primers and pigments for longevity.</p>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="reveal rd1">
+      <div style="display:flex;align-items:flex-end;gap:1rem;margin-bottom:1.5rem;">
+        <span class="font-display" style="font-size:4rem;line-height:1;color:#ff2d78;">02</span>
+        <h2 class="headline-md" style="color:var(--text-main);margin-bottom:.4rem;">Conceptual Blueprinting</h2>
+      </div>
+      <p style="color:var(--text-muted);line-height:1.7;">Our artists transform the brief into architectural-scale blueprints. We use digital mockups to simulate how the design interacts with the building's specific geometry and perspective from street level.</p>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="reveal">
+      <div style="display:flex;align-items:flex-end;gap:1rem;margin-bottom:1.5rem;">
+        <span class="font-display" style="font-size:4rem;line-height:1;color:#00f0ff;">03</span>
+        <h2 class="headline-md" style="color:var(--text-main);margin-bottom:.4rem;">Permitting & Legal</h2>
+      </div>
+      <p style="color:var(--text-muted);line-height:1.7;">Urban art requires navigation. We handle all city permitting, heritage approvals, and insurance requirements, ensuring the project is fully compliant with local regulations.</p>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="reveal rd1">
+      <div style="display:flex;align-items:flex-end;gap:1rem;margin-bottom:1.5rem;">
+        <span class="font-display" style="font-size:4rem;line-height:1;color:#39ff14;">04</span>
+        <h2 class="headline-md" style="color:var(--text-main);margin-bottom:.4rem;">Surface Infrastructure</h2>
+      </div>
+      <p style="color:var(--text-muted);line-height:1.7;">Safety first. We deploy professional scaffolding, boom lifts, or industrial rope access teams. The surface is deep-cleaned and treated with high-bond industrial primers.</p>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="reveal">
+      <div style="display:flex;align-items:flex-end;gap:1rem;margin-bottom:1.5rem;">
+        <span class="font-display" style="font-size:4rem;line-height:1;color:var(--accent-brand);">05</span>
+        <h2 class="headline-md" style="color:var(--text-main);margin-bottom:.4rem;">Scaling & Layout</h2>
+      </div>
+      <p style="color:var(--text-muted);line-height:1.7;">We use precision techniques — from the 'doodle grid' system to laser projection — to ensure the digital concept is accurately scaled to the massive physical surface.</p>
+    </div>
+
+    <!-- Step 6 -->
+    <div class="reveal rd1">
+      <div style="display:flex;align-items:flex-end;gap:1rem;margin-bottom:1.5rem;">
+        <span class="font-display" style="font-size:4rem;line-height:1;color:#ff2d78;">06</span>
+        <h2 class="headline-md" style="color:var(--text-main);margin-bottom:.4rem;">The Intervention</h2>
+      </div>
+      <p style="color:var(--text-muted);line-height:1.7;">The painting phase. Using premium low-VOC aerosols and mineral-based facade paints, our artists build the mural layer by layer, starting with large blocks and finishing with fine detail.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- MATERIALS -->
+<section class="section-dark" style="padding:6rem 0;">
+  <div class="max-w-site grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <div class="reveal">
+      <p class="section-label mb-4">— Materials</p>
+      <h2 class="headline-lg mb-8" style="color:var(--text-main);">Built to <span style="color:var(--accent-brand);">Outlast.</span></h2>
+      <div class="space-y-6">
+        <div style="display:flex;gap:1.5rem;">
+          <div style="width:40px;height:2px;background:var(--accent-brand);margin-top:10px;flex-shrink:0;"></div>
+          <div>
+            <h4 class="headline-sm mb-2" style="color:var(--text-main);">UV-Resistant Pigments</h4>
+            <p style="font-size:.9rem;color:var(--text-muted);line-height:1.6;">We use specialized mineral paints from Germany and high-solid aerosols that resist fading even in direct equatorial sun.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:1.5rem;">
+          <div style="width:40px;height:2px;background:#00f0ff;margin-top:10px;flex-shrink:0;"></div>
+          <div>
+            <h4 class="headline-sm mb-2" style="color:var(--text-main);">Anti-Breathable Sealants</h4>
+            <p style="font-size:.9rem;color:var(--text-muted);line-height:1.6;">The wall needs to breathe. Our sealants allow moisture to escape while protecting the art from environmental pollutants and rain.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal rd2" style="border-radius:3px;overflow:hidden;aspect-ratio:1/1;">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format&fit=crop" alt="High detail mural texture" style="width:100%;height:100%;object-fit:cover;"/>
+    </div>
+  </div>
+</section>
+
+<!-- MAINTENANCE -->
+<section style="padding:6rem 0;" class="max-w-site text-center">
+  <div class="reveal">
+    <p class="section-label mb-4">— Preservation</p>
+    <h2 class="headline-lg mb-6" style="color:var(--text-main);">5-Year Warranty.</h2>
+    <p style="color:var(--text-muted);max-width:500px;margin:0 auto 3rem;line-height:1.7;">Urban art is alive. Every commission includes a 5-year maintenance warranty covering peeling, excessive fading, and minor surface vandalism.</p>
+    <a href="commission.html" class="btn btn-yellow">Inquire About Commission</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="max-w-site">
+    <div class="footer-grid">
+      <!-- Col 1: Logo -->
+      <div>
+        <a href="index.html" class="font-display text-4xl block mb-6" style="color:var(--accent-brand);">CRUX</a>
+        <p class="footer-text">
+          Defining the visual landscape of the 21st-century city through high-impact mural art and street narratives.
+        </p>
+      </div>
+      <!-- Col 2: Studio -->
+      <div>
+        <h4 class="footer-heading">Studio</h4>
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="gallery.html" class="footer-link">Gallery</a>
+        <a href="about.html" class="footer-link">About</a>
+        <a href="process.html" class="footer-link">The Process</a>
+      </div>
+      <!-- Col 3: Services -->
+      <div>
+        <h4 class="footer-heading">Intervene</h4>
+        <a href="commission.html" class="footer-link">Commissions</a>
+        <a href="contact.html" class="footer-link">Contact</a>
+        <a href="faq.html" class="footer-link">FAQ</a>
+        <a href="login.html" class="footer-link">Portal</a>
+      </div>
+      <!-- Col 4: Direct -->
+      <div>
+        <h4 class="footer-heading">Direct</h4>
+        <p class="footer-text" style="font-family:'DM Mono',monospace; font-size:11px;">STUDIO@CRUX.ART</p>
+        <p class="footer-text" style="font-family:'DM Mono',monospace; font-size:11px;">BERLIN / NYC / TOKYO</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 CRUX Studio — All walls belong to art.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
