@@ -135,6 +135,23 @@ html.light .nav-glass {
   border-bottom: 1px solid rgba(13,13,13,.1);
 }
 
+.nav-container {
+  max-width: var(--site-width, 1400px);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-logo-container {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
 .nav-link { 
   position: relative; font-family: 'DM Mono', monospace; font-size: .72rem; 
   letter-spacing: .12em; text-transform: uppercase; color: var(--text-muted); 
