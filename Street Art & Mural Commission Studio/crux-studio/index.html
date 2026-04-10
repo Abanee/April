@@ -19,7 +19,7 @@
   <nav class="max-w-site h-16 flex items-center justify-between gap-4">
     <a href="index.html" class="font-display text-3xl tracking-widest hover:opacity-75 transition-opacity" style="color:var(--accent-brand);">CRUX</a>
     <ul class="hidden md:flex items-center gap-6 list-none">
-      <li><a href="index.html"      class="nav-link" data-page="index.html">Home</a></li>
+      <li><a href="index.html"      class="nav-link active" data-page="index.html">Home</a></li>
       <li><a href="home2.html"      class="nav-link" data-page="home2.html">Home 2</a></li>
       <li><a href="gallery.html"    class="nav-link" data-page="gallery.html">Gallery</a></li>
       <li><a href="commission.html" class="nav-link" data-page="commission.html">Commission</a></li>
@@ -38,14 +38,14 @@
         <svg class="dark-icon" style="width:16px;height:16px;color:var(--accent-brand);" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
         <svg class="light-icon" style="width:16px;height:16px;color:var(--text-main);display:none;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
       </button>
-      <button onclick="toggleMobileMenu()" class="md:hidden" style="width:36px;height:36px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;border:none;cursor:pointer;">
+      <button onclick="toggleMobileMenu()" class="flex flex-col items-center justify-center gap-[5px] md:hidden bg-transparent border-none cursor-pointer w-[36px] h-[36px]">
         <span style="display:block;width:22px;height:2px;background:currentColor;"></span>
         <span style="display:block;width:22px;height:2px;background:currentColor;"></span>
         <span style="display:block;width:14px;height:2px;background:currentColor;align-self:flex-start;margin-inline-start:4px;"></span>
       </button>
     </div>
   </nav>
-  <div id="mobile-menu" style="border-top:1px solid #1e1e1e;">
+  <div id="mobile-menu" class="md:hidden" style="border-top:1px solid #1e1e1e;">
     <ul style="display:flex;flex-direction:column;gap:1.2rem;padding:1.25rem 1.25rem 1.5rem;list-style:none;">
       <li><a href="index.html"      class="nav-link" style="font-size:.8rem;">Home</a></li>
       <li><a href="home2.html"      class="nav-link" style="font-size:.8rem;">Home 2</a></li>
@@ -62,12 +62,11 @@
 <!-- ═══ HERO ════════════════════════════════════════════════════ -->
 <section class="hero-bg relative min-h-screen flex flex-col justify-center overflow-hidden pt-16" style="clip-path:polygon(0 0,100% 0,100% 90%,55% 100%,0 92%);">
 
-  <!-- Background mural image -->
   <div style="position:absolute;inset:0;z-index:0;">
-    <img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=1600&auto=format&fit=crop&q=80"
+    <img src="https://images.unsplash.com/photo-1541544224047-49d9741441b8?w=1600&auto=format&fit=crop&q=80"
          alt="" loading="eager" aria-hidden="true"
-         style="width:100%;height:100%;object-fit:cover;opacity:.12;filter:saturate(1.4);">
-    <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(8,8,8,.95) 0%,rgba(8,8,8,.6) 60%,rgba(8,8,8,.85) 100%);"></div>
+         style="width:100%;height:100%;object-fit:cover;opacity:.15;filter:saturate(1.2);">
+    <div style="position:absolute;inset:0;background:var(--hero-overlay);"></div>
   </div>
 
   <!-- Paint drip SVG -->
@@ -152,27 +151,22 @@
 <!-- ═══ FEATURED IMAGES — Full-bleed strip ════════════════════ -->
 <section style="display:grid;grid-template-columns:repeat(4,1fr);height:280px;gap:0;">
   <div style="overflow:hidden;position:relative;">
-    <img src="https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?w=500&auto=format&fit=crop" alt="Neon Meridian mural, Berlin"
-         style="width:100%;height:100%;object-fit:cover;transition:transform .7s ease;filter:brightness(.85);" loading="lazy"
-         onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"/>
-    <div style="position:absolute;bottom:0;left:0;right:0;padding:.75rem;background:linear-gradient(to top,rgba(8,8,8,.9),transparent);opacity:0;transition:opacity .3s;"
-         onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
-      <p class="font-display" style="color:#fff;font-size:1.1rem;">Neon Meridian</p>
-      <p style="font-family:'DM Mono',monospace;font-size:.62rem;color:#aaa;">Berlin, DE</p>
-    </div>
-  </div>
-  <div style="overflow:hidden;position:relative;">
-    <img src="https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=500&auto=format&fit=crop" alt="Concrete Dreams mural, NYC"
+    <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=500&auto=format&fit=crop" alt="Neon Pulse mural"
          style="width:100%;height:100%;object-fit:cover;transition:transform .7s ease;filter:brightness(.85);" loading="lazy"
          onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"/>
   </div>
   <div style="overflow:hidden;position:relative;">
-    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&auto=format&fit=crop" alt="Tokyo Surge mural"
+    <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed2bb4?w=500&auto=format&fit=crop" alt="Abstract Wall"
          style="width:100%;height:100%;object-fit:cover;transition:transform .7s ease;filter:brightness(.85);" loading="lazy"
          onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"/>
   </div>
   <div style="overflow:hidden;position:relative;">
-    <img src="https://images.unsplash.com/photo-1547826039-bde8c7e6e1e4?w=500&auto=format&fit=crop" alt="Type and Territory mural, London"
+    <img src="https://images.unsplash.com/photo-1533134486753-c81769d7607?w=500&auto=format&fit=crop" alt="NYC Mural"
+         style="width:100%;height:100%;object-fit:cover;transition:transform .7s ease;filter:brightness(.85);" loading="lazy"
+         onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"/>
+  </div>
+  <div style="overflow:hidden;position:relative;">
+    <img src="https://images.unsplash.com/photo-1563089145-599997674d42?w=500&auto=format&fit=crop" alt="London Mural"
          style="width:100%;height:100%;object-fit:cover;transition:transform .7s ease;filter:brightness(.85);" loading="lazy"
          onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"/>
   </div>
@@ -195,39 +189,39 @@
 
   <div class="home-gallery reveal">
     <article class="gallery-item hg-1">
-      <img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=900&auto=format&fit=crop" alt="Geometric Bloom mural, Barcelona" loading="lazy"/>
+      <img src="https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?w=900&auto=format&fit=crop" alt="Artists at work" loading="lazy"/>
       <div class="gallery-overlay">
-        <span class="tag tag-p" style="margin-bottom:.5rem;align-self:flex-start;">Barcelona, ES</span>
-        <h3 class="font-display" style="font-size:1.7rem;color:#fff;line-height:1.1;">Geometric Bloom</h3>
-        <p style="font-family:'DM Mono',monospace;font-size:.65rem;color:#aaa;margin-top:.25rem;">Commercial Facade · 2024</p>
-      </div>
-    </article>
-    <article class="gallery-item hg-2">
-      <img src="https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?w=600&auto=format&fit=crop" alt="Neon Meridian mural, Berlin" loading="lazy"/>
-      <div class="gallery-overlay">
-        <span class="tag tag-y" style="margin-bottom:.5rem;align-self:flex-start;">Berlin, DE</span>
-        <h3 class="font-display" style="font-size:1.5rem;color:#fff;line-height:1.1;">Neon Meridian</h3>
+        <span class="tag tag-p" style="margin-bottom:.5rem;align-self:flex-start;">Berlin, DE</span>
+        <h3 class="font-display" style="font-size:1.7rem;color:#fff;line-height:1.1;">Urban Pulse</h3>
         <p style="font-family:'DM Mono',monospace;font-size:.65rem;color:#aaa;margin-top:.25rem;">Festival · 2025</p>
       </div>
     </article>
+    <article class="gallery-item hg-2">
+      <img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=800&auto=format&fit=crop" alt="Geometric Wall" loading="lazy"/>
+      <div class="gallery-overlay">
+        <span class="tag tag-y" style="margin-bottom:.5rem;align-self:flex-start;">Barcelona, ES</span>
+        <h3 class="font-display" style="font-size:1.5rem;color:#fff;line-height:1.1;">Geometric Bloom</h3>
+        <p style="font-family:'DM Mono',monospace;font-size:.65rem;color:#aaa;margin-top:.25rem;">Public Art · 2024</p>
+      </div>
+    </article>
     <article class="gallery-item hg-3">
-      <img src="https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=600&auto=format&fit=crop" alt="Concrete Dreams mural, NYC" loading="lazy"/>
+      <img src="https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=800&auto=format&fit=crop" alt="Concrete Dreams" loading="lazy"/>
       <div class="gallery-overlay">
         <span class="tag tag-c" style="margin-bottom:.5rem;align-self:flex-start;">NYC, US</span>
         <h3 class="font-display" style="font-size:1.5rem;color:#fff;line-height:1.1;">Concrete Dreams</h3>
-        <p style="font-family:'DM Mono',monospace;font-size:.65rem;color:#aaa;margin-top:.25rem;">Public Art · 2025</p>
+        <p style="font-family:'DM Mono',monospace;font-size:.65rem;color:#aaa;margin-top:.25rem;">Masterpiece · 2025</p>
       </div>
     </article>
     <article class="gallery-item hg-4">
-      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&auto=format&fit=crop" alt="Tokyo Surge mural" loading="lazy"/>
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format&fit=crop" alt="Techno Surge" loading="lazy"/>
       <div class="gallery-overlay">
-        <span class="tag tag-p" style="margin-bottom:.5rem;align-self:flex-start;">Tokyo, JP</span>
-        <h3 class="font-display" style="font-size:1.5rem;color:#fff;line-height:1.1;">Tokyo Surge</h3>
+        <span class="tag tag-p" style="margin-bottom:.5rem;align-self:flex-start;">Industrial</span>
+        <h3 class="font-display" style="font-size:1.5rem;color:#fff;line-height:1.1;">Tunnel Vision</h3>
         <p style="font-family:'DM Mono',monospace;font-size:.65rem;color:#aaa;margin-top:.25rem;">Private · 2024</p>
       </div>
     </article>
     <article class="gallery-item hg-5">
-      <img src="https://images.unsplash.com/photo-1547826039-bde8c7e6e1e4?w=700&auto=format&fit=crop" alt="Type and Territory mural, London" loading="lazy"/>
+      <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed2bb4?w=800&auto=format&fit=crop" alt="Abstract Mural" loading="lazy"/>
       <div class="gallery-overlay">
         <span class="tag tag-y" style="margin-bottom:.5rem;align-self:flex-start;">London, UK</span>
         <h3 class="font-display" style="font-size:1.5rem;color:#fff;line-height:1.1;">Type & Territory</h3>
@@ -235,7 +229,7 @@
       </div>
     </article>
     <article class="gallery-item hg-6">
-      <img src="https://images.unsplash.com/photo-1541544537156-7627a7a4aa1c?w=700&auto=format&fit=crop" alt="Faces of the City mural, São Paulo" loading="lazy"/>
+      <img src="https://images.unsplash.com/photo-1541544537156-7627a7a4aa1c?w=800&auto=format&fit=crop" alt="Faces of the City" loading="lazy"/>
       <div class="gallery-overlay">
         <span class="tag tag-c" style="margin-bottom:.5rem;align-self:flex-start;">São Paulo, BR</span>
         <h3 class="font-display" style="font-size:1.5rem;color:#fff;line-height:1.1;">Faces of the City</h3>
@@ -243,10 +237,10 @@
       </div>
     </article>
     <article class="gallery-item hg-7">
-      <img src="https://images.unsplash.com/photo-1610370651866-30dbdc1f34d2?w=700&auto=format&fit=crop" alt="Chromatic Burst mural, Melbourne" loading="lazy"/>
+      <img src="https://images.unsplash.com/photo-1561053720-76cd73ff22c3?w=700&auto=format&fit=crop" alt="Abstract Surge mural, Melbourne" loading="lazy"/>
       <div class="gallery-overlay">
         <span class="tag tag-p" style="margin-bottom:.5rem;align-self:flex-start;">Melbourne, AU</span>
-        <h3 class="font-display" style="font-size:1.5rem;color:#fff;line-height:1.1;">Chromatic Burst</h3>
+        <h3 class="font-display" style="font-size:1.5rem;color:#fff;line-height:1.1;">Abstract Surge</h3>
         <p style="font-family:'DM Mono',monospace;font-size:.65rem;color:#aaa;margin-top:.25rem;">Commercial · 2025</p>
       </div>
     </article>
@@ -406,17 +400,52 @@
 </section>
 
 <!-- ═══ FOOTER ════════════════════════════════════════════════ -->
-<footer class="site-footer" style="padding:4rem 0;">
-  <div class="max-w-site flex flex-col md:flex-row justify-between items-center gap-6">
-    <span class="font-display text-3xl" style="color:var(--text-main);">CRUX</span>
-    <p class="font-mono text-[10px] text-gray-500 uppercase">© 2026 CRUX Studio — All rights reserved</p>
-    <div class="flex gap-4">
-      <a href="#" class="w-8 h-8 flex items-center justify-center border border-gray-800 rounded-full hover:border-[var(--accent-brand)] transition-colors">
-        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.245 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.332 2.633-1.308 3.608-.975.975-2.242 1.245-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.332-3.608-1.308-.975-.975-1.245-2.242-1.308-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.332-2.633 1.308-3.608.975-.975 2.242-1.245 3.608-1.308 1.266-.058 1.646-.07 4.85-.07zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.355 2.618 6.778 6.98 6.978 1.28.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.668-.072-4.948-.197-4.354-2.612-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 10.001 12.324A6.162 6.162 0 0012 5.838zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-      </a>
-      <a href="#" class="w-8 h-8 flex items-center justify-center border border-gray-800 rounded-full hover:border-[var(--accent-brand)] transition-colors">
-        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
-      </a>
+<footer class="site-footer">
+  <div class="max-w-site">
+    <div class="footer-grid">
+      <!-- Col 1: Logo & Summary -->
+      <div>
+        <a href="index.html" class="font-display text-4xl block mb-6 hover:opacity-80 transition-opacity" style="color:var(--accent-brand);">CRUX</a>
+        <p class="footer-text">
+          An international collective of urban interventionists, defining the visual landscape of the 21st-century city through high-impact mural art and street narratives.
+        </p>
+        <div class="flex gap-3">
+          <a href="#" class="footer-social-link" aria-label="Instagram">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.245 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.332 2.633-1.308 3.608-.975.975-2.242 1.245-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.332-3.608-1.308-.975-.975-1.245-2.242-1.308-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.332-2.633 1.308-3.608.975-.975 2.242-1.245 3.608-1.308 1.266-.058 1.646-.07 4.85-.07zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.355 2.618 6.778 6.98 6.978 1.28.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.668-.072-4.948-.197-4.354-2.612-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 10.001 12.324A6.162 6.162 0 0012 5.838zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="Twitter">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+          </a>
+        </div>
+      </div>
+      <!-- Col 2: Studio -->
+      <div>
+        <h4 class="footer-heading">Studio</h4>
+        <a href="index.html" class="footer-link">Home Base</a>
+        <a href="gallery.html" class="footer-link">The Gallery</a>
+        <a href="about.html" class="footer-link">Our Story</a>
+        <a href="home2.html" class="footer-link">Street Lab</a>
+      </div>
+      <!-- Col 3: Services -->
+      <div>
+        <h4 class="footer-heading">Intervene</h4>
+        <a href="commission.html" class="footer-link">Commissions</a>
+        <a href="contact.html" class="footer-link">Contact Us</a>
+        <a href="login.html" class="footer-link">Artist Portal</a>
+        <a href="signup.html" class="footer-link">Join Collective</a>
+      </div>
+      <!-- Col 4: Reach Out -->
+      <div>
+        <h4 class="footer-heading">Direct</h4>
+        <p class="footer-text" style="font-family:'DM Mono',monospace; font-size:11px; margin-bottom:0.5rem;">STUDIO@CRUX.ART</p>
+        <p class="footer-text" style="font-family:'DM Mono',monospace; font-size:11px;">BERLIN / NYC / TOKYO</p>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <p>© 2026 CRUX Studio — All rights received</p>
+      <p>ALL WALLS BELONG TO ART.</p>
     </div>
   </div>
 </footer>

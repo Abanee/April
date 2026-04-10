@@ -14,20 +14,40 @@
 
 <div id="cursor-dot" aria-hidden="true"></div>
 
-<!-- Minimal nav strip -->
-<header style="position:fixed;top:0;inset-x:0;z-index:50;padding:.9rem 1.5rem;display:flex;align-items:center;justify-content:space-between;">
-  <a href="index.html" class="font-display" style="font-size:2rem;letter-spacing:.2em;color:var(--accent-brand);text-decoration:none;">CRUX</a>
-  <div style="display:flex;align-items:center;gap:.75rem;">
-    <button id="dir-toggle" onclick="toggleDir()" style="font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;padding:.3rem .7rem;border:1px solid #2c2c2c;border-radius:2px;background:transparent;color:var(--text-muted);cursor:pointer;">RTL</button>
-    <button onclick="toggleTheme()" style="width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid var(--urban-border);border-radius:2px;background:transparent;cursor:pointer;">
-      <svg class="dark-icon" style="width:14px;height:14px;color:var(--accent-brand);" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-      <svg class="light-icon" style="display:none;width:14px;height:14px;color:var(--text-main);" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-    </button>
-  </div>
+<header id="main-nav" class="nav-glass fixed top-0 inset-x-0 z-50">
+  <nav class="max-w-site h-16 flex items-center justify-between gap-4">
+    <a href="index.html" class="font-display text-3xl tracking-widest hover:opacity-75 transition-opacity" style="color:var(--accent-brand);">CRUX</a>
+    <ul class="hidden md:flex items-center gap-6 list-none">
+      <li><a href="index.html"      class="nav-link">Home</a></li>
+      <li><a href="home2.html"      class="nav-link">Home 2</a></li>
+      <li><a href="gallery.html"    class="nav-link">Gallery</a></li>
+      <li><a href="commission.html" class="nav-link">Commission</a></li>
+      <li><a href="about.html"      class="nav-link">About</a></li>
+      <li><a href="contact.html"    class="nav-link">Contact</a></li>
+    </ul>
+    <div class="flex items-center gap-3">
+      <div class="hidden md:flex items-center gap-2 mr-2">
+        <a href="login.html" class="btn-nav-outline">Sign In</a>
+        <a href="signup.html" class="btn-nav-fill">Sign Up</a>
+      </div>
+      <button id="dir-toggle" onclick="toggleDir()" aria-label="Toggle text direction"
+        style="font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .75rem;border:1px solid #2c2c2c;border-radius:2px;background:transparent;color:var(--text-muted);cursor:pointer;transition:all .3s;">RTL</button>
+      <button onclick="toggleTheme()" aria-label="Toggle theme"
+        style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid var(--urban-border);border-radius:2px;background:transparent;cursor:pointer;transition:border-color .3s;">
+        <svg class="dark-icon" style="width:16px;height:16px;color:var(--accent-brand);" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg class="light-icon" style="width:16px;height:16px;color:var(--text-main);display:none;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+      <button onclick="toggleMobileMenu()" class="flex flex-col items-center justify-center gap-[5px] md:hidden bg-transparent border-none cursor-pointer w-[36px] h-[36px]">
+        <span style="display:block;width:22px;height:2px;background:currentColor;"></span>
+        <span style="display:block;width:22px;height:2px;background:currentColor;"></span>
+        <span style="display:block;width:14px;height:2px;background:currentColor;align-self:flex-start;margin-inline-start:4px;"></span>
+      </button>
+    </div>
+  </nav>
 </header>
 
 <!-- SPLIT LAYOUT -->
-<div class="login-layout">
+<div class="login-layout" style="margin-top:64px;">
 
   <!-- LEFT — Artist Image -->
   <div class="login-img-side" style="position:relative;overflow:hidden;">
@@ -57,7 +77,7 @@
   </div>
 
   <!-- RIGHT — Register form -->
-  <div style="display:flex;flex-direction:column;justify-content:center;padding:2.5rem;background:#0a0a0a;overflow-y:auto;">
+  <div class="auth-form-side">
     <div style="max-width:420px;width:100%;margin:auto;padding-top:4rem;padding-bottom:3rem;">
 
       <div style="margin-bottom:2.5rem;">
@@ -129,8 +149,8 @@
         <a href="login.html" style="color:var(--text-muted);text-decoration:underline;transition:color .3s;" onmouseover="this.style.color='#ff2d78'" onmouseout="this.style.color='#777'">Sign In</a>
       </p>
 
-      <div style="margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid #1a1a1a;text-align:center;">
-        <a href="index.html" style="font-family:'DM Mono',monospace;font-size:.65rem;color:#3a3a3a;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;transition:color .3s;" onmouseover="this.style.color='#888'" onmouseout="this.style.color='#3a3a3a'">
+      <div style="margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--urban-border);text-align:center;">
+        <a href="index.html" style="font-family:'DM Mono',monospace;font-size:.65rem;color:var(--text-muted);text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;transition:color .3s;" onmouseover="this.style.color='var(--accent-brand)'" onmouseout="this.style.color='var(--text-muted)'">
           <svg style="width:13px;height:13px;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
           Back to CRUX Studio
         </a>
@@ -140,12 +160,62 @@
 
 </div>
 
+<!-- ═══ FOOTER ════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="max-w-site">
+    <div class="footer-grid">
+      <!-- Col 1: Logo & Summary -->
+      <div>
+        <a href="index.html" class="font-display text-4xl block mb-6 hover:opacity-80 transition-opacity" style="color:var(--accent-brand);">CRUX</a>
+        <p class="footer-text">
+          An international collective of urban interventionists, defining the visual landscape of the 21st-century city through high-impact mural art and street narratives.
+        </p>
+        <div class="flex gap-3">
+          <a href="#" class="footer-social-link" aria-label="Instagram">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.245 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.332 2.633-1.308 3.608-.975.975-2.242 1.245-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.332-3.608-1.308-.975-.975-1.245-2.242-1.308-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.332-2.633 1.308-3.608.975-.975 2.242-1.245 3.608-1.308 1.266-.058 1.646-.07 4.85-.07zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.355 2.618 6.778 6.98 6.978 1.28.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.668-.072-4.948-.197-4.354-2.612-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 10.001 12.324A6.162 6.162 0 0012 5.838zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="Twitter">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+          </a>
+        </div>
+      </div>
+      <!-- Col 2: Studio -->
+      <div>
+        <h4 class="footer-heading">Studio</h4>
+        <a href="index.html" class="footer-link">Home Base</a>
+        <a href="gallery.html" class="footer-link">The Gallery</a>
+        <a href="about.html" class="footer-link">Our Story</a>
+        <a href="home2.html" class="footer-link">Street Lab</a>
+      </div>
+      <!-- Col 3: Services -->
+      <div>
+        <h4 class="footer-heading">Intervene</h4>
+        <a href="commission.html" class="footer-link">Commissions</a>
+        <a href="contact.html" class="footer-link">Contact Us</a>
+        <a href="login.html" class="footer-link">Artist Portal</a>
+        <a href="signup.html" class="footer-link">Join Collective</a>
+      </div>
+      <!-- Col 4: Reach Out -->
+      <div>
+        <h4 class="footer-heading">Direct</h4>
+        <p class="footer-text" style="font-family:'DM Mono',monospace; font-size:11px; margin-bottom:0.5rem;">STUDIO@CRUX.ART</p>
+        <p class="footer-text" style="font-family:'DM Mono',monospace; font-size:11px;">BERLIN / NYC / TOKYO</p>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <p>© 2026 CRUX Studio — All rights received</p>
+      <p>ALL WALLS BELONG TO ART.</p>
+    </div>
+  </div>
+</footer>
+
 <script src="js/main.js"></script>
 <style>
   html.light .dark-icon{display:none!important;}
   html.dark .light-icon{display:none!important;}
   html.light .light-icon{display:block!important;}
-  html.light body { overflow: hidden; background: #f0ebe4; }
   html.light .login-layout > div:last-child { background:#f0ebe4; }
   .glow-p { text-shadow: 0 0 15px rgba(255,45,120,0.5); }
 </style>
