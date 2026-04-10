@@ -686,3 +686,15 @@ html.light .section-alt  { background: #f5f0ea; }
   color: var(--accent-text);
   border-color: var(--accent-brand);
 }
+.site-logo {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+  transition: opacity 0.3s;
+}
+.site-logo:hover {
+  opacity: 0.8;
+}
+html.light .site-logo {
+  filter: invert(1);
+}

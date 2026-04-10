@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="icon" type="image/png" href="img/logo.png">
 </head>
 <body>
 
@@ -17,7 +18,10 @@
 <!-- NAV -->
 <header id="main-nav" class="nav-glass fixed top-0 inset-x-0 z-50">
   <nav class="max-w-site h-16 flex items-center justify-between gap-4">
-    <a href="index.html" class="font-display text-3xl tracking-widest" style="color:var(--accent-brand);">CRUX</a>
+    <a href="index.html" class="flex items-center gap-3 group">
+      <img src="img/logo.png" alt="CRUX Logo" class="site-logo">
+      <span class="font-display text-3xl tracking-widest transition-colors group-hover:text-white" style="color:var(--accent-brand);">CRUX</span>
+    </a>
     <ul class="hidden md:flex items-center gap-6 list-none">
       <li><a href="index.html"      class="nav-link">Home</a></li>
       <li><a href="home2.html"      class="nav-link">Home 2</a></li>
@@ -66,7 +70,7 @@
   <div style="position:absolute;inset:0;z-index:0;">
     <img src="img/gallery_banner.png" alt="Featured Urban Mural" aria-hidden="true"
          style="width:100%;height:100%;object-fit:cover;opacity:.15;filter:saturate(1.2) contrast(1.1);"/>
-    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,8,8,0.92) 0%,rgba(8,8,8,0.4) 50%,rgba(8,8,8,0.85) 100%);"></div>
+    <div style="position:absolute;inset:0;background:var(--hero-overlay);"></div>
   </div>
   <div class="max-w-site" style="position:relative;z-index:1;">
     <p class="section-label reveal mb-4">340+ Works · 28 Cities · 2019–2025</p>
@@ -218,7 +222,10 @@
     <div class="footer-grid">
       <!-- Col 1: Logo & Summary -->
       <div>
-        <a href="index.html" class="font-display text-4xl block mb-6 hover:opacity-80 transition-opacity" style="color:var(--accent-brand);">CRUX</a>
+        <a href="index.html" class="flex items-center gap-4 mb-6 group">
+          <img src="img/logo.png" alt="CRUX Logo" class="site-logo" style="height:44px;">
+          <span class="font-display text-4xl tracking-widest transition-colors group-hover:text-white" style="color:var(--accent-brand);">CRUX</span>
+        </a>
         <p class="footer-text">
           An international collective of urban interventionists, defining the visual landscape of the 21st-century city through high-impact mural art and street narratives.
         </p>

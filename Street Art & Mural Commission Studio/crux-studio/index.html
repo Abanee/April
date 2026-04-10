@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="icon" type="image/png" href="img/logo.png">
 </head>
 <body>
 
@@ -17,7 +18,10 @@
 <!-- ═══ NAV ═══════════════════════════════════════════════════ -->
 <header id="main-nav" class="nav-glass fixed top-0 inset-x-0 z-50">
   <nav class="max-w-site h-16 flex items-center justify-between gap-4">
-    <a href="index.html" class="font-display text-3xl tracking-widest hover:opacity-75 transition-opacity" style="color:var(--accent-brand);">CRUX</a>
+    <a href="index.html" class="flex items-center gap-3 group">
+      <img src="img/logo.png" alt="CRUX Logo" class="site-logo">
+      <span class="font-display text-3xl tracking-widest transition-colors group-hover:text-white" style="color:var(--accent-brand);">CRUX</span>
+    </a>
     <ul class="hidden md:flex items-center gap-6 list-none">
       <li><a href="index.html"      class="nav-link active" data-page="index.html">Home</a></li>
       <li><a href="home2.html"      class="nav-link" data-page="home2.html">Home 2</a></li>
@@ -307,17 +311,17 @@
         <div class="section-label" style="margin-top:.25rem;">avg. artist experience</div>
       </div>
       <!-- Stat 2 -->
-      <div class="bg-s2" style="background:#141414;border:1px solid #1e1e1e;border-radius:3px;display:flex;flex-direction:column;justify-content:center;padding:1rem 1.25rem;">
+      <div class="bg-s2" style="background:var(--urban-card);border:1px solid var(--urban-border);border-radius:3px;display:flex;flex-direction:column;justify-content:center;padding:1rem 1.25rem;">
         <div class="headline-sm" style="color:#ff2d78;">98%</div>
         <div class="section-label" style="font-size:.58rem;">client sat.</div>
       </div>
       <!-- Stat 3 -->
-      <div class="bg-s3" style="background:#141414;border:1px solid #1e1e1e;border-radius:3px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35rem;">
+      <div class="bg-s3" style="background:var(--urban-card);border:1px solid var(--urban-border);border-radius:3px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35rem;">
         <svg style="width:28px;height:28px;" fill="none" stroke="#00f0ff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         <div class="section-label" style="font-size:.58rem;">Insured</div>
       </div>
       <!-- CTA wide -->
-      <div class="bg-wide" style="background:#181818;border:1px solid #1e1e1e;border-radius:3px;padding:2rem;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;">
+      <div class="bg-wide" style="background:var(--urban-card);border:1px solid var(--urban-border);border-radius:3px;padding:2rem;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;">
         <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(232,255,0,.07),transparent 60%);pointer-events:none;"></div>
         <div>
           <div class="section-label" style="margin-bottom:.75rem; color:var(--text-muted);">— Join the roster</div>
@@ -409,7 +413,10 @@
     <div class="footer-grid">
       <!-- Col 1: Logo & Summary -->
       <div>
-        <a href="index.html" class="font-display text-4xl block mb-6 hover:opacity-80 transition-opacity" style="color:var(--accent-brand);">CRUX</a>
+        <a href="index.html" class="flex items-center gap-4 mb-6 group">
+          <img src="img/logo.png" alt="CRUX Logo" class="site-logo" style="height:44px;">
+          <span class="font-display text-4xl tracking-widest transition-colors group-hover:text-white" style="color:var(--accent-brand);">CRUX</span>
+        </a>
         <p class="footer-text">
           An international collective of urban interventionists, defining the visual landscape of the 21st-century city through high-impact mural art and street narratives.
         </p>

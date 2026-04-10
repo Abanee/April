@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="icon" type="image/png" href="img/logo.png">
 </head>
 <body>
 
@@ -17,7 +18,10 @@
 <!-- NAV -->
 <header id="main-nav" class="nav-glass fixed top-0 inset-x-0 z-50">
   <nav class="max-w-site h-16 flex items-center justify-between gap-4">
-    <a href="index.html" class="font-display text-3xl tracking-widest" style="color:var(--accent-brand);">CRUX</a>
+    <a href="index.html" class="flex items-center gap-3 group">
+      <img src="img/logo.png" alt="CRUX Logo" class="site-logo">
+      <span class="font-display text-3xl tracking-widest transition-colors group-hover:text-white" style="color:var(--accent-brand);">CRUX</span>
+    </a>
     <ul class="hidden md:flex items-center gap-6 list-none">
       <li><a href="index.html"      class="nav-link" data-page="index.html">Home</a></li>
       <li><a href="home2.html"      class="nav-link" data-page="home2.html">Home 2</a></li>
@@ -181,7 +185,10 @@
     <div class="footer-grid">
       <!-- Col 1: Logo -->
       <div>
-        <a href="index.html" class="font-display text-4xl block mb-6" style="color:var(--accent-brand);">CRUX</a>
+        <a href="index.html" class="flex items-center gap-4 mb-6 group">
+          <img src="img/logo.png" alt="CRUX Logo" class="site-logo" style="height:44px;">
+          <span class="font-display text-4xl tracking-widest transition-colors group-hover:text-white" style="color:var(--accent-brand);">CRUX</span>
+        </a>
         <p class="footer-text">
           Defining the visual landscape of the 21st-century city through high-impact mural art and street narratives.
         </p>
