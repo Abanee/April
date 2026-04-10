@@ -16,12 +16,12 @@
 
 <!-- Minimal nav strip -->
 <header style="position:fixed;top:0;inset-x:0;z-index:50;padding:.9rem 1.5rem;display:flex;align-items:center;justify-content:space-between;">
-  <a href="index.html" class="font-display" style="font-size:2rem;letter-spacing:.2em;color:#e8ff00;text-decoration:none;">CRUX</a>
+  <a href="index.html" class="font-display" style="font-size:2rem;letter-spacing:.2em;color:var(--accent-brand);text-decoration:none;">CRUX</a>
   <div style="display:flex;align-items:center;gap:.75rem;">
-    <button id="dir-toggle" onclick="toggleDir()" style="font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;padding:.3rem .7rem;border:1px solid #2c2c2c;border-radius:2px;background:transparent;color:#666;cursor:pointer;">RTL</button>
-    <button onclick="toggleTheme()" style="width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid #2c2c2c;border-radius:2px;background:transparent;cursor:pointer;">
-      <svg class="dark-icon" style="width:14px;height:14px;color:#e8ff00;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-      <svg class="light-icon" style="display:none;width:14px;height:14px;color:#0d0d0d;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    <button id="dir-toggle" onclick="toggleDir()" style="font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;padding:.3rem .7rem;border:1px solid #2c2c2c;border-radius:2px;background:transparent;color:var(--text-muted);cursor:pointer;">RTL</button>
+    <button onclick="toggleTheme()" style="width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid var(--urban-border);border-radius:2px;background:transparent;cursor:pointer;">
+      <svg class="dark-icon" style="width:14px;height:14px;color:var(--accent-brand);" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="light-icon" style="display:none;width:14px;height:14px;color:var(--text-main);" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
     </button>
   </div>
 </header>
@@ -48,7 +48,7 @@
         <div style="display:flex;align-items:center;gap:.75rem;">
           <div style="width:40px;height:40px;border-radius:50%;background:#ff2d78;display:flex;items-center;justify-content:center;font-display;color:white;font-size:1.2rem;padding-top:4px;">C</div>
           <div>
-            <div style="font-family:'DM Mono',monospace;font-size:.72rem;color:#f0ebe4;">CRUX COLLECTIVE</div>
+            <div style="font-family:'DM Mono',monospace;font-size:.72rem;color:var(--text-main);">CRUX COLLECTIVE</div>
             <div class="section-label" style="font-size:.6rem;">Global Artist Network</div>
           </div>
         </div>
@@ -62,10 +62,10 @@
 
       <div style="margin-bottom:2.5rem;">
         <p class="section-label mb-3">Become a Resident</p>
-        <h1 class="headline-lg" style="color:#f0ebe4;">
+        <h1 class="headline-lg" style="color:var(--text-main);">
           Create <span style="color:#ff2d78;" class="glow-p">Identity.</span>
         </h1>
-        <p style="font-size:.85rem;color:#666;margin-top:.5rem;line-height:1.6;">Join our roster of elite urban artists or manage your client commissions.</p>
+        <p style="font-size:.85rem;color:var(--text-muted);margin-top:.5rem;line-height:1.6;">Join our roster of elite urban artists or manage your client commissions.</p>
       </div>
 
       <!-- Social login -->
@@ -118,15 +118,15 @@
         <label class="custom-check mt-6">
           <input type="checkbox" id="s-terms" required/>
           <span class="checkmark" style="background:transparent; border-color:#2c2c2c;"></span>
-          <span style="font-family:'DM Mono',monospace;font-size:.65rem;color:#555;">I agree to the <a href="#" class="text-[#ff2d78] underline">Manifesto</a> and Terms.</span>
+          <span style="font-family:'DM Mono',monospace;font-size:.65rem;color:var(--text-muted);">I agree to the <a href="#" class="text-[#ff2d78] underline">Manifesto</a> and Terms.</span>
         </label>
 
         <button type="submit" class="btn btn-full" style="background:#ff2d78; color:white; margin-top:2rem;">Join Collective</button>
       </form>
 
-      <p style="font-family:'DM Mono',monospace;font-size:.68rem;text-align:center;margin-top:2rem;color:#444;">
+      <p style="font-family:'DM Mono',monospace;font-size:.68rem;text-align:center;margin-top:2rem;color:var(--text-muted);">
         Already a Resident?&nbsp;
-        <a href="login.html" style="color:#777;text-decoration:underline;transition:color .3s;" onmouseover="this.style.color='#ff2d78'" onmouseout="this.style.color='#777'">Sign In</a>
+        <a href="login.html" style="color:var(--text-muted);text-decoration:underline;transition:color .3s;" onmouseover="this.style.color='#ff2d78'" onmouseout="this.style.color='#777'">Sign In</a>
       </p>
 
       <div style="margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid #1a1a1a;text-align:center;">

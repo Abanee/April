@@ -221,7 +221,7 @@ function renderFileList(files) {
   container.style.marginTop = '.75rem';
   container.innerHTML = [...files].map(f => `
     <div style="display:flex;align-items:center;gap:.6rem;padding:.45rem .75rem;background:#181818;border-radius:2px;border:1px solid #1e1e1e;">
-      <svg style="width:14px;height:14px;flex-shrink:0;color:#e8ff00;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+      <svg style="width:14px;height:14px;flex-shrink:0;color:var(--accent-brand);" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
       <span style="font-family:'DM Mono',monospace;font-size:.68rem;color:#888;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${f.name}</span>
       <span style="font-family:'DM Mono',monospace;font-size:.62rem;color:#444;">${(f.size/1024).toFixed(0)}KB</span>
     </div>`).join('');
