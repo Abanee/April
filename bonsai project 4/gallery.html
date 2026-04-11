@@ -40,10 +40,10 @@
     .nav-link.active { color:#059669; }
     html.dark .nav-link.active { color:#34d399; }
     .page-hero { background: linear-gradient(160deg, #1a2f3a 0%, #0c1a1e 60%, #0a0a0a 100%); }
-    .gallery-item { position: relative; overflow: hidden; border-radius: 24px; cursor: pointer; }
-    .gallery-item img { transition: transform .6s cubic-bezier(0.16, 1, 0.3, 1); }
-    .gallery-item:hover img { transform: scale(1.08); }
-    .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%); opacity: 0; transition: opacity .4s ease; display: flex; align-items: flex-end; padding: 24px; }
+    .gallery-item { position: relative; overflow: hidden; cursor: pointer; }
+    .gallery-item img { transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .gallery-item:hover img { transform: scale(1.15); }
+    .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%); opacity: 0; transition: opacity .4s ease; display: flex; align-items: flex-end; padding: 24px; }
     .gallery-item:hover .gallery-overlay { opacity: 1; }
 </style>
 </head>
@@ -51,7 +51,7 @@
 
 <!-- NAVBAR -->
 <header id="navbar" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
-  <div class="max-w-7xl mx-auto px-5 py-3.5 flex items-center justify-between gap-4 flex-nowrap">
+  <div class="max-w-7xl mx-auto px-5 py-3.5 flex items-center justify-between gap-4">
 
     <!-- Logo -->
     <a href="index.html" class="flex items-center gap-2.5 group flex-shrink-0">
@@ -65,14 +65,13 @@
     </a>
 
     <!-- Desktop Nav -->
-    <nav class="hidden xl:flex items-center gap-5">
+    <nav class="hidden xl:flex items-center gap-4">
       <a href="index.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Home</a>
       <a href="home2.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Home 2</a>
-      <a href="projects.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Projects</a>
-      <a href="gallery.html" class="nav-link active text-sm font-medium text-emerald-700 dark:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Gallery</a>
-      <a href="blog.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Blog</a>
       <a href="about.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">About</a>
+      <a href="gallery.html" class="nav-link text-sm font-medium text-emerald-700 dark:text-emerald-400 border-b-2 border-emerald-700 dark:border-emerald-400 pb-0.5 whitespace-nowrap font-semibold">Gallery</a>
       <a href="services.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Workshops</a>
+      <a href="blog.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Blog</a>
       <a href="contact.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Contact</a>
     </nav>
 
@@ -146,70 +145,99 @@
 
 <!-- PAGE HERO -->
 <section class="page-hero pt-40 pb-24 relative overflow-hidden text-center">
+  <div class="absolute inset-0 z-0">
+    <img src="src/img/gallery_hero_bg.png" alt="Gallery Hero" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-stone-950/60 backdrop-blur-[1px]"></div>
+  </div>
   <div class="max-w-4xl mx-auto px-6 relative z-10">
     <span class="text-emerald-400 text-xs tracking-[0.4em] uppercase font-bold mb-4 block">Visual Serenity</span>
     <h1 class="font-cormorant text-5xl md:text-7xl font-bold text-stone-100 leading-tight mb-6">
       The <em class="text-emerald-400">Gallery</em>
     </h1>
-    <p class="text-stone-400 text-lg max-w-xl mx-auto leading-relaxed">
+    <p class="text-stone-300 text-lg max-w-xl mx-auto leading-relaxed">
       A curated collection of our finest specimens, workshop moments, and the quiet beauty of our nursery.
     </p>
   </div>
 </section>
 
 <!-- GALLERY GRID -->
-<section class="py-24 max-w-7xl mx-auto px-6">
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<section class="max-w-full overflow-hidden">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
     <!-- Item 1 -->
-    <div class="gallery-item aspect-[4/5]" data-sr>
-      <img src="src/img/gallery1.png" alt="Bonsai Workshop" class="w-full h-full object-cover">
+    <div class="gallery-item group" data-sr>
+      <div class="aspect-square sm:aspect-video lg:aspect-square w-full overflow-hidden">
+        <img src="src/img/gallery1.png" alt="Bonsai Workshop" class="w-full h-full object-cover">
+      </div>
       <div class="gallery-overlay">
         <div>
           <span class="text-emerald-400 text-[0.6rem] uppercase tracking-widest font-bold">Workshop</span>
-          <h4 class="text-white font-cormorant text-xl font-semibold">The Artist's Hands</h4>
+          <h4 class="text-white font-cormorant text-2xl font-semibold">The Artist's Hands</h4>
         </div>
       </div>
     </div>
     
     <!-- Item 2 -->
-    <div class="gallery-item aspect-square lg:col-span-2 lg:aspect-video" data-sr data-delay="100">
-      <img src="src/img/gallery3.png" alt="Bonsai Exhibition" class="w-full h-full object-cover">
+    <div class="gallery-item group" data-sr data-delay="100">
+      <div class="aspect-square sm:aspect-video lg:aspect-square w-full overflow-hidden">
+        <img src="src/img/gallery3.png" alt="Bonsai Exhibition" class="w-full h-full object-cover">
+      </div>
       <div class="gallery-overlay">
         <div>
           <span class="text-emerald-400 text-[0.6rem] uppercase tracking-widest font-bold">Exhibition</span>
-          <h4 class="text-white font-cormorant text-2xl font-semibold">Seasonal Showcase 2026</h4>
+          <h4 class="text-white font-cormorant text-2xl font-semibold">Seasonal Showcase</h4>
         </div>
       </div>
     </div>
 
     <!-- Item 3 -->
-    <div class="gallery-item aspect-square" data-sr data-delay="200">
-      <img src="src/img/gallery2.png" alt="Miniature Collection" class="w-full h-full object-cover">
+    <div class="gallery-item group" data-sr data-delay="200">
+      <div class="aspect-square sm:aspect-video lg:aspect-square w-full overflow-hidden">
+        <img src="src/img/gallery2.png" alt="Miniature Collection" class="w-full h-full object-cover">
+      </div>
       <div class="gallery-overlay">
         <div>
           <span class="text-emerald-400 text-[0.6rem] uppercase tracking-widest font-bold">Collection</span>
-          <h4 class="text-white font-cormorant text-xl font-semibold">Shohin Masterpieces</h4>
+          <h4 class="text-white font-cormorant text-2xl font-semibold">Shohin Masterpieces</h4>
         </div>
       </div>
     </div>
 
     <!-- Item 4 -->
-    <div class="gallery-item aspect-[4/5]" data-sr data-delay="300">
-      <img src="src/img/project1.png" alt="Black Pine" class="w-full h-full object-cover">
+    <div class="gallery-item group" data-sr data-delay="300">
+      <div class="aspect-square sm:aspect-video lg:aspect-square w-full overflow-hidden">
+        <img src="src/img/project1.png" alt="Black Pine" class="w-full h-full object-cover">
+      </div>
       <div class="gallery-overlay">
         <div>
           <span class="text-emerald-400 text-[0.6rem] uppercase tracking-widest font-bold">Specimen</span>
-          <h4 class="text-white font-cormorant text-xl font-semibold">Ancient Black Pine</h4>
+          <h4 class="text-white font-cormorant text-2xl font-semibold">Ancient Black Pine</h4>
         </div>
       </div>
     </div>
 
     <!-- Item 5 -->
-    <div class="gallery-item aspect-square flex items-center justify-center bg-emerald-900 p-8 text-center" data-sr data-delay="400">
-      <div>
-        <h4 class="font-cormorant text-3xl font-bold text-white mb-4">The Tools of the Trade</h4>
-        <p class="text-emerald-200/60 text-sm mb-8">Japanese steel, honed to perfection for every delicate cut.</p>
-        <img src="src/img/gallery4.png" alt="Bonsai Tools" class="w-32 h-32 object-cover rounded-full mx-auto border-2 border-emerald-400/30">
+    <div class="gallery-item group" data-sr data-delay="400">
+      <div class="aspect-square sm:aspect-video lg:aspect-square w-full overflow-hidden">
+        <img src="src/img/milestone_workshop.png" alt="Care Workshop" class="w-full h-full object-cover">
+      </div>
+      <div class="gallery-overlay">
+        <div>
+          <span class="text-emerald-400 text-[0.6rem] uppercase tracking-widest font-bold">Education</span>
+          <h4 class="text-white font-cormorant text-2xl font-semibold">Collective Practice</h4>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 6: The Full Bleed Feature -->
+    <div class="gallery-item group" data-sr data-delay="500">
+      <div class="aspect-square sm:aspect-video lg:aspect-square w-full overflow-hidden">
+        <img src="src/img/gallery4.png" alt="The Tools" class="w-full h-full object-cover">
+      </div>
+      <div class="gallery-overlay">
+        <div>
+          <span class="text-emerald-400 text-[0.6rem] uppercase tracking-widest font-bold">Craftsmanship</span>
+          <h4 class="text-white font-cormorant text-2xl font-semibold">Tools of the Trade</h4>
+        </div>
       </div>
     </div>
   </div>

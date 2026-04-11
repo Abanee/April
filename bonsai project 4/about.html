@@ -19,7 +19,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config={darkMode:'class',theme:{extend:{fontFamily:{cormorant:['"Cormorant Garamond"','Georgia','serif'],dm:['"DM Sans"','system-ui','sans-serif'],mono:['"DM Mono"','monospace']}}}}</script>
   <style>
-    body{font-family:'DM Sans',system-ui,sans-serif;}
+    body{font-family:'DM Sans',system-ui,sans-serif; overflow-x: hidden;}
     .font-cormorant,.font-cormorant{font-family:'Cormorant Garamond',Georgia,serif;}
     .font-mono-dm{font-family:'DM Mono',monospace;}
     [data-sr]{opacity:0;transform:translateY(32px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
@@ -52,7 +52,7 @@
 <div id="progress-bar"></div>
 <!-- NAVBAR -->
 <header id="navbar" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
-  <div class="max-w-7xl mx-auto px-5 py-3.5 flex items-center justify-between gap-4 flex-nowrap">
+  <div class="max-w-7xl mx-auto px-5 py-3.5 flex items-center justify-between gap-4">
 
     <!-- Logo -->
     <a href="index.html" class="flex items-center gap-2.5 group flex-shrink-0">
@@ -66,14 +66,13 @@
     </a>
 
     <!-- Desktop Nav -->
-    <nav class="hidden xl:flex items-center gap-5">
+    <nav class="hidden xl:flex items-center gap-4">
       <a href="index.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Home</a>
       <a href="home2.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Home 2</a>
-      <a href="projects.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Projects</a>
+      <a href="about.html" class="nav-link text-sm font-medium text-emerald-700 dark:text-emerald-400 border-b-2 border-emerald-700 dark:border-emerald-400 pb-0.5 whitespace-nowrap font-semibold">About</a>
       <a href="gallery.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Gallery</a>
-      <a href="blog.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Blog</a>
-      <a href="about.html" class="nav-link active text-sm font-medium text-emerald-700 dark:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">About</a>
       <a href="services.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Workshops</a>
+      <a href="blog.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Blog</a>
       <a href="contact.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Contact</a>
     </nav>
 
@@ -116,11 +115,10 @@
   <nav class="flex flex-col gap-0.5 px-3 py-4 flex-1">
     <a href="index.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Home</a>
     <a href="home2.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Home 2</a>
-    <a href="projects.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Projects</a>
-    <a href="gallery.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Gallery</a>
-    <a href="blog.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Blog</a>
     <a href="about.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40">About</a>
+    <a href="gallery.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Gallery</a>
     <a href="services.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Workshops</a>
+    <a href="blog.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Blog</a>
     <a href="contact.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Contact</a>
     
     <div class="mt-4 pt-4 border-t border-stone-100 dark:border-stone-800 flex flex-col gap-2">
@@ -148,12 +146,16 @@
 
 <!-- PAGE HERO -->
 <section class="page-hero pt-40 pb-24 relative overflow-hidden text-center">
+  <div class="absolute inset-0 z-0">
+    <img src="src/img/milestone_portal.png" alt="About Hero" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-stone-950/60 backdrop-blur-[1px]"></div>
+  </div>
   <div class="max-w-4xl mx-auto px-6 relative z-10">
     <span class="text-emerald-400 text-xs tracking-[0.4em] uppercase font-bold mb-4 block">Our Story</span>
     <h1 class="font-cormorant text-5xl md:text-7xl font-bold text-stone-100 leading-tight mb-6">
       Rooted in Tradition. <em class="text-emerald-400">Growing</em> in Practice.
     </h1>
-    <p class="text-stone-400 text-lg max-w-xl mx-auto leading-relaxed">
+    <p class="text-stone-300 text-lg max-w-xl mx-auto leading-relaxed">
       For nearly four decades, we have tended the living art of bonsai — bridging Kyoto's ancient gardens with homes around the world.
     </p>
   </div>
@@ -208,64 +210,105 @@
 </section>
 
 <!-- ═══ HISTORY TIMELINE ═══ -->
-<section class="py-28 bg-white dark:bg-stone-900">
-  <div class="max-w-4xl mx-auto px-6">
-    <div class="text-center mb-16" data-sr>
-      <div class="flex items-center justify-center gap-3 mb-4">
-        <div class="h-px w-8 bg-emerald-600"></div>
-        <span class="text-emerald-700 dark:text-emerald-500 text-xs tracking-[0.2em] uppercase font-medium">Our Journey</span>
-        <div class="h-px w-8 bg-emerald-600"></div>
+<section class="py-32 bg-white dark:bg-stone-900 relative overflow-hidden">
+  <!-- Decorative background elements -->
+  <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-50 dark:bg-emerald-950/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 opacity-50"></div>
+  <div class="absolute bottom-0 left-0 w-96 h-96 bg-stone-100 dark:bg-stone-800/30 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 opacity-50"></div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-24" data-sr>
+      <div class="flex items-center justify-center gap-3 mb-6">
+        <div class="h-px w-10 bg-emerald-600"></div>
+        <span class="text-emerald-700 dark:text-emerald-500 text-xs tracking-[0.3em] uppercase font-bold">The Narrative Arc</span>
+        <div class="h-px w-10 bg-emerald-600"></div>
       </div>
-      <h2 class="font-cormorant text-4xl md:text-5xl font-bold text-stone-800 dark:text-stone-100">A History of Growth</h2>
+      <h2 class="font-cormorant text-5xl md:text-6xl font-bold text-stone-800 dark:text-stone-100 mb-6">A History of <em class="text-emerald-700 dark:text-emerald-400">Patience</em></h2>
+      <p class="text-stone-500 dark:text-stone-400 max-w-2xl mx-auto leading-relaxed text-lg">Four decades of tending to the miniature, bridging the gap between ancient Kyoto and contemporary Bengaluru.</p>
     </div>
 
-    <div class="relative timeline-line space-y-0">
-      <!-- Event 1 -->
-      <div class="grid grid-cols-2 gap-8 relative py-10" data-sr>
-        <div class="text-right pr-8 md:pr-12">
-          <span class="text-emerald-700 dark:text-emerald-500 font-bold text-lg font-cormorant">1987</span>
-          <h3 class="font-cormorant text-xl font-semibold text-stone-800 dark:text-stone-200 mt-1">The First Seed</h3>
-          <p class="text-stone-500 dark:text-stone-400 text-sm mt-2 leading-relaxed">Master Rajan Pillai returns from a three-year apprenticeship in Kyoto and plants the first seeds of the nursery in Bengaluru's cool hills.</p>
+    <div class="relative">
+      <!-- Central vertical line (Desktop) -->
+      <div class="absolute left-1/2 top-0 bottom-0 w-px bg-stone-200 dark:bg-stone-800 hidden lg:block -translate-x-1/2"></div>
+
+      <div class="space-y-24 lg:space-y-40">
+        <!-- Event 1 -->
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center relative" data-sr>
+          <div class="lg:text-right">
+            <div class="inline-block bg-emerald-700 text-white font-mono-dm text-sm px-4 py-1.5 rounded-full mb-6 shadow-md shadow-emerald-900/20">1987</div>
+            <h3 class="font-cormorant text-3xl md:text-4xl font-bold text-stone-800 dark:text-stone-100 mb-5">The First Seed in Bengaluru</h3>
+            <p class="text-stone-500 dark:text-stone-400 text-lg leading-relaxed mb-6">Master Rajan Pillai, fresh from a rigorous three-year apprenticeship in the Ueno district of Kyoto, returns with a cargo of seeds and a vision. He plants the very first Shimpaku and Black Pine seedlings in the cool, mist-laden hills surrounding the city.</p>
+            <div class="flex items-center lg:justify-end gap-4 text-emerald-700 dark:text-emerald-500 font-medium">
+              <span class="text-sm">Kyoto Tradition</span>
+              <div class="w-8 h-px bg-current"></div>
+            </div>
+          </div>
+          <div class="relative group">
+            <!-- Center Dot (Desktop) -->
+            <div class="w-5 h-5 rounded-full bg-emerald-600 absolute -left-[4.15rem] top-1/2 -translate-y-1/2 border-4 border-white dark:border-stone-900 z-20 hidden lg:block shadow-lg"></div>
+            <div class="rounded-3xl overflow-hidden shadow-2xl border border-stone-100 dark:border-stone-800 group-hover:scale-[1.02] transition-transform duration-700">
+              <img src="src/img/milestone_seedling.png" alt="1987 Milestone" class="w-full aspect-[4/3] object-cover">
+            </div>
+          </div>
         </div>
-        <div class="pl-8 md:pl-12">
-          <div class="w-4 h-4 rounded-full bg-emerald-600 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-white dark:border-stone-900 z-10 shadow-md"></div>
-          <div class="text-4xl mt-4">🌱</div>
+
+        <!-- Event 2 -->
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center relative" data-sr data-delay="150">
+          <div class="order-2 lg:order-1 relative group">
+            <!-- Center Dot (Desktop) -->
+            <div class="w-5 h-5 rounded-full bg-emerald-600 absolute -right-[4.1rem] top-1/2 -translate-y-1/2 border-4 border-white dark:border-stone-900 z-20 hidden lg:block shadow-lg"></div>
+            <div class="rounded-3xl overflow-hidden shadow-2xl border border-stone-100 dark:border-stone-800 group-hover:scale-[1.02] transition-transform duration-700">
+              <img src="src/img/milestone_workshop.png" alt="1995 Milestone" class="w-full aspect-[4/3] object-cover">
+            </div>
+          </div>
+          <div class="order-1 lg:order-2 text-left">
+            <div class="inline-block bg-emerald-700 text-white font-mono-dm text-sm px-4 py-1.5 rounded-full mb-6 shadow-md shadow-emerald-900/20">1995</div>
+            <h3 class="font-cormorant text-3xl md:text-4xl font-bold text-stone-800 dark:text-stone-100 mb-5">The Open Workshop</h3>
+            <p class="text-stone-500 dark:text-stone-400 text-lg leading-relaxed mb-6">Transitioning from a private nursery to a center of education, we hosted our first public masterclass. What was meant to be a small gathering of eight enthusiasts turned into the foundation of our community. A three-month waiting list formed within hours.</p>
+            <div class="flex items-center gap-4 text-emerald-700 dark:text-emerald-500 font-medium">
+              <div class="w-8 h-px bg-current"></div>
+              <span class="text-sm">Spreading the Art</span>
+            </div>
+          </div>
         </div>
-      </div>
-      <!-- Event 2 -->
-      <div class="grid grid-cols-2 gap-8 relative py-10" data-sr data-delay="150">
-        <div class="text-right pr-8 md:pr-12 order-2">
-          <div class="text-4xl mt-4 text-right">🏛️</div>
+
+        <!-- Event 3 -->
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center relative" data-sr data-delay="300">
+          <div class="lg:text-right">
+            <div class="inline-block bg-emerald-700 text-white font-mono-dm text-sm px-4 py-1.5 rounded-full mb-6 shadow-md shadow-emerald-900/20">2008</div>
+            <h3 class="font-cormorant text-3xl md:text-4xl font-bold text-stone-800 dark:text-stone-100 mb-5">A Century-Old Gift</h3>
+            <p class="text-stone-500 dark:text-stone-400 text-lg leading-relaxed mb-6">Following a Gold Win at the National Bonsai Exhibition, the nursery achieved international acclaim. During a formal visit, the Japanese consul presented us with a legendary 120-year-old Juniper, a symbol of the enduring bond between our gardens.</p>
+            <div class="flex items-center lg:justify-end gap-4 text-emerald-700 dark:text-emerald-500 font-medium">
+              <span class="text-sm">National Recognition</span>
+              <div class="w-8 h-px bg-current"></div>
+            </div>
+          </div>
+          <div class="relative group">
+            <!-- Center Dot (Desktop) -->
+            <div class="w-5 h-5 rounded-full bg-emerald-600 absolute -left-[4.15rem] top-1/2 -translate-y-1/2 border-4 border-white dark:border-stone-900 z-20 hidden lg:block shadow-lg"></div>
+            <div class="rounded-3xl overflow-hidden shadow-2xl border border-stone-100 dark:border-stone-800 group-hover:scale-[1.02] transition-transform duration-700">
+              <img src="src/img/milestone_recognition.png" alt="2008 Milestone" class="w-full aspect-[4/3] object-cover">
+            </div>
+          </div>
         </div>
-        <div class="pl-8 md:pl-12 order-1 text-left">
-          <div class="w-4 h-4 rounded-full bg-emerald-600 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-white dark:border-stone-900 z-10 shadow-md"></div>
-          <span class="text-emerald-700 dark:text-emerald-500 font-bold text-lg font-cormorant">1995</span>
-          <h3 class="font-cormorant text-xl font-semibold text-stone-800 dark:text-stone-200 mt-1">The Workshop Opens</h3>
-          <p class="text-stone-500 dark:text-stone-400 text-sm mt-2 leading-relaxed">We host our first public workshop — eight students, one juniper, and a lifetime of lessons. The waiting list for the next class forms within a week.</p>
-        </div>
-      </div>
-      <!-- Event 3 -->
-      <div class="grid grid-cols-2 gap-8 relative py-10" data-sr data-delay="300">
-        <div class="text-right pr-8 md:pr-12">
-          <span class="text-emerald-700 dark:text-emerald-500 font-bold text-lg font-cormorant">2008</span>
-          <h3 class="font-cormorant text-xl font-semibold text-stone-800 dark:text-stone-200 mt-1">National Recognition</h3>
-          <p class="text-stone-500 dark:text-stone-400 text-sm mt-2 leading-relaxed">Our collection wins Gold at the National Bonsai Exhibition, Delhi. The Japanese consul visits our nursery and gifts us a century-old Shimpaku Juniper.</p>
-        </div>
-        <div class="pl-8 md:pl-12">
-          <div class="w-4 h-4 rounded-full bg-emerald-600 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-white dark:border-stone-900 z-10 shadow-md"></div>
-          <div class="text-4xl mt-4">🥇</div>
-        </div>
-      </div>
-      <!-- Event 4 -->
-      <div class="grid grid-cols-2 gap-8 relative py-10" data-sr data-delay="450">
-        <div class="text-right pr-8 md:pr-12 order-2">
-          <div class="text-4xl mt-4 text-right">💻</div>
-        </div>
-        <div class="pl-8 md:pl-12 order-1">
-          <div class="w-4 h-4 rounded-full bg-emerald-600 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-white dark:border-stone-900 z-10 shadow-md"></div>
-          <span class="text-emerald-700 dark:text-emerald-500 font-bold text-lg font-cormorant">2024</span>
-          <h3 class="font-cormorant text-xl font-semibold text-stone-800 dark:text-stone-200 mt-1">The Client Portal</h3>
-          <p class="text-stone-500 dark:text-stone-400 text-sm mt-2 leading-relaxed">We launch our digital care portal, allowing clients to track their trees, schedule workshops, and receive personalised care reminders from our master gardeners.</p>
+
+        <!-- Event 4 -->
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center relative" data-sr data-delay="450">
+          <div class="order-2 lg:order-1 relative group">
+            <!-- Center Dot (Desktop) -->
+            <div class="w-5 h-5 rounded-full bg-emerald-600 absolute -right-[4.1rem] top-1/2 -translate-y-1/2 border-4 border-white dark:border-stone-900 z-20 hidden lg:block shadow-lg"></div>
+            <div class="rounded-3xl overflow-hidden shadow-2xl border border-stone-100 dark:border-stone-800 group-hover:scale-[1.02] transition-transform duration-700">
+              <img src="src/img/milestone_portal.png" alt="2024 Milestone" class="w-full aspect-[4/3] object-cover">
+            </div>
+          </div>
+          <div class="order-1 lg:order-2 text-left">
+            <div class="inline-block bg-emerald-700 text-white font-mono-dm text-sm px-4 py-1.5 rounded-full mb-6 shadow-md shadow-emerald-900/20">2024</div>
+            <h3 class="font-cormorant text-3xl md:text-4xl font-bold text-stone-800 dark:text-stone-100 mb-5">The Digital Companion</h3>
+            <p class="text-stone-500 dark:text-stone-400 text-lg leading-relaxed mb-6">Bridging ancient practice with modern life, we introduced the Care Portal. Now, every tree we tend to can be tracked digitally, ensuring that the years of training are continued with precision in its new home.</p>
+            <div class="flex items-center gap-4 text-emerald-700 dark:text-emerald-500 font-medium">
+              <div class="w-8 h-px bg-current"></div>
+              <span class="text-sm">Future of the Craft</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>

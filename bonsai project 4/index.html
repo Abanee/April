@@ -42,7 +42,7 @@
       --stone-dark: #0c0a09;
     }
     * { box-sizing: border-box; }
-    body { font-family: 'DM Sans', system-ui, sans-serif; }
+    body { font-family: 'DM Sans', system-ui, sans-serif; overflow-x: hidden; }
     .font-cormorant { font-family: 'Cormorant Garamond', Georgia, serif; }
     .font-mono-dm { font-family: 'DM Mono', monospace; }
 
@@ -154,7 +154,7 @@
 
 <!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
 <header id="navbar" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
-  <div class="max-w-7xl mx-auto px-5 py-3.5 flex items-center justify-between gap-4 flex-nowrap">
+  <div class="max-w-7xl mx-auto px-5 py-3.5 flex items-center justify-between gap-4">
 
     <!-- Logo -->
     <a href="index.html" class="flex items-center gap-2.5 group flex-shrink-0">
@@ -168,14 +168,13 @@
     </a>
 
     <!-- Desktop Nav -->
-    <nav class="hidden xl:flex items-center gap-5">
-      <a href="index.html" class="nav-link active text-sm font-medium text-emerald-700 dark:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Home</a>
+    <nav class="hidden xl:flex items-center gap-4">
+      <a href="index.html" class="nav-link text-sm font-medium text-emerald-700 dark:text-emerald-400 border-b-2 border-emerald-700 dark:border-emerald-400 pb-0.5 whitespace-nowrap font-semibold">Home</a>
       <a href="home2.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Home 2</a>
-      <a href="projects.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Projects</a>
-      <a href="gallery.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Gallery</a>
-      <a href="blog.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Blog</a>
       <a href="about.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">About</a>
+      <a href="gallery.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Gallery</a>
       <a href="services.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Workshops</a>
+      <a href="blog.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Blog</a>
       <a href="contact.html" class="nav-link text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors pb-0.5 whitespace-nowrap">Contact</a>
     </nav>
 
@@ -222,11 +221,10 @@
   <nav class="flex flex-col gap-0.5 px-3 py-4 flex-1">
     <a href="index.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40">Home</a>
     <a href="home2.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Home 2</a>
-    <a href="projects.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Projects</a>
-    <a href="gallery.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Gallery</a>
-    <a href="blog.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Blog</a>
     <a href="about.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">About</a>
+    <a href="gallery.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Gallery</a>
     <a href="services.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Workshops</a>
+    <a href="blog.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Blog</a>
     <a href="contact.html" class="px-3 py-2.5 rounded-xl text-base font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">Contact</a>
     
     <div class="mt-4 pt-4 border-t border-stone-100 dark:border-stone-800 flex flex-col gap-2">
@@ -252,13 +250,17 @@
 </div>
 
 <!-- ═══════════════════════ HERO ═══════════════════════ -->
-<section class="hero-bg min-h-screen relative flex items-center overflow-hidden">
+<section class="page-hero min-h-[85vh] relative flex items-center overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <img src="src/img/hero-bonsai.png" alt="Home Hero" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-stone-950/60 backdrop-blur-[1px]"></div>
+  </div>
   <div class="absolute inset-0 grain"></div>
   
   <!-- Subtle Dot Grid Overlay -->
   <div class="absolute inset-0 dot-grid opacity-20"></div>
 
-  <div class="max-w-7xl mx-auto px-5 pt-28 pb-20 w-full relative z-10 text-center md:text-start">
+  <div class="max-w-7xl mx-auto px-5 pt-28 pb-20 w-full relative z-10 text-center">
     <div class="max-w-3xl">
       <div class="inline-flex items-center gap-2 mb-8 px-3 py-1.5 rounded-full border border-emerald-700/40 bg-emerald-900/30 backdrop-blur-md" data-sr>
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -286,12 +288,7 @@
         </a>
       </div>
 
-      <div class="mt-20 flex items-center justify-center md:justify-start gap-3" data-sr data-delay="500">
-        <div class="scroll-hint w-5 h-8 rounded-full border border-stone-600 flex items-start justify-center pt-1.5">
-          <div class="w-1 h-1.5 bg-emerald-500 rounded-full"></div>
-        </div>
-        <span class="font-mono-dm text-[0.6rem] tracking-[0.25em] uppercase text-stone-500">Scroll to explore gallery</span>
-      </div>
+      <!-- Scroll hint removed -->
     </div>
   </div>
 
@@ -482,18 +479,12 @@
 <!-- ═══════════════════════ WORKSHOP SPLIT ═══════════════════════ -->
 <section class="py-28 bg-white dark:bg-stone-900">
   <div class="max-w-7xl mx-auto px-5 grid md:grid-cols-2 gap-16 items-center">
-    <div class="relative flex items-center justify-center" data-sr>
-      <div class="w-64 h-64 rounded-full bg-stone-100 dark:bg-stone-800 relative">
-        <div class="absolute inset-4 rounded-full border-2 border-dashed border-emerald-200 dark:border-emerald-900"></div>
-        <div class="absolute inset-0 flex items-center justify-center">
-          <div class="text-center px-6">
-            <div class="text-6xl mb-3">🌿</div>
-            <p class="font-cormorant text-stone-500 dark:text-stone-500 italic text-sm leading-snug">"Patience is the art of bonsai."</p>
-          </div>
-        </div>
+    <div class="relative group" data-sr>
+      <div class="aspect-square rounded-[2rem] overflow-hidden shadow-2xl border border-stone-200 dark:border-stone-800">
+        <img src="src/img/workshop_hero.png" alt="Bonsai Workshop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
       </div>
-      <div class="absolute top-4 -end-4 bg-emerald-700 text-white rounded-2xl px-4 py-2 shadow-lg text-xs font-medium">🏡 In-Person & Online</div>
-      <div class="absolute bottom-8 -start-4 glass-card rounded-2xl px-4 py-2 shadow-md text-xs font-medium text-stone-700 dark:text-stone-300">✓ All skill levels welcome</div>
+      <div class="absolute -top-4 -right-4 bg-emerald-700 text-white rounded-2xl px-5 py-2.5 shadow-xl text-xs font-semibold backdrop-blur-md">🏡 In-Person & Online</div>
+      <div class="absolute -bottom-4 -left-4 glass-card rounded-2xl px-5 py-2.5 shadow-lg text-xs font-semibold text-stone-700 dark:text-stone-300 border border-white/40">✓ All skill levels welcome</div>
     </div>
     <div data-sr data-delay="200">
       <div class="flex items-center gap-3 mb-4">
@@ -531,7 +522,11 @@
 <section class="py-24 bg-stone-50 dark:bg-stone-950">
   <div class="max-w-3xl mx-auto px-5 text-center" data-sr>
     <div class="inline-flex mb-8">
-      <div class="w-14 h-14 rounded-full bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center text-3xl">🎋</div>
+      <div class="w-16 h-16 rounded-2xl bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center text-emerald-700 dark:text-emerald-400">
+        <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-7.714 2.143L11 21l-2.286-6.857L1 12l7.714-2.143L11 3z" />
+        </svg>
+      </div>
     </div>
     <blockquote class="font-cormorant text-3xl md:text-4xl text-stone-700 dark:text-stone-300 italic leading-relaxed mb-8">
       "The juniper I purchased three years ago has become the centrepiece of my home. The team's guidance through the care portal made all the difference."
@@ -614,7 +609,7 @@
           <span class="font-mono-dm text-[0.58rem] tracking-[0.2em] uppercase text-emerald-500">& Care Workshop</span>
         </div>
       </a>
-      <p class="text-sm leading-relaxed text-stone-500 max-w-xs mb-5">A sanctuary for the ancient art of bonsai cultivation since 1987. Rooted in Kyoto tradition, grown in your home.</p>
+      <p class="text-sm leading-relaxed text-stone-500 max-w-xs mb-5">A sanctuary for the ancient art of bonsai cultivation since 1987. Rooted in Kyoto tradition, <span class="text-emerald-600 dark:text-emerald-500 font-medium italic">grown in your home.</span></p>
       <div class="flex gap-3">
         <a href="#" class="w-8 h-8 rounded-lg bg-stone-800 hover:bg-emerald-700 flex items-center justify-center transition-colors">
           <svg class="w-3.5 h-3.5 text-stone-400" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
