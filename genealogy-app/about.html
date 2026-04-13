@@ -203,8 +203,8 @@
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
           <div class="team-card reveal">
-            <div class="h-44 flex items-center justify-center" style="background:linear-gradient(135deg,var(--color-bg-alt),var(--color-bg))">
-              <div class="w-20 h-20 rounded-full flex items-center justify-center text-4xl border-2" style="background:var(--color-bg-card);border-color:var(--color-accent)">👩‍🔬</div>
+            <div class="h-44 overflow-hidden" style="background:linear-gradient(135deg,var(--color-bg-alt),var(--color-bg))">
+              <img src="assets/team-siobhan.png" alt="Dr. Siobhan O'Brien" class="w-full h-full object-cover">
             </div>
             <div class="p-5">
               <h3 class="font-display text-xl font-semibold">Dr. Siobhan O'Brien</h3>
@@ -214,8 +214,8 @@
           </div>
 
           <div class="team-card reveal" style="animation-delay:0.1s">
-            <div class="h-44 flex items-center justify-center" style="background:linear-gradient(135deg,var(--color-bg-alt),var(--color-bg))">
-              <div class="w-20 h-20 rounded-full flex items-center justify-center text-4xl border-2" style="background:var(--color-bg-card);border-color:var(--color-accent)">👨‍💼</div>
+            <div class="h-44 overflow-hidden" style="background:linear-gradient(135deg,var(--color-bg-alt),var(--color-bg))">
+              <img src="assets/team-klaus.png" alt="Prof. Klaus Bergmann" class="w-full h-full object-cover">
             </div>
             <div class="p-5">
               <h3 class="font-display text-xl font-semibold">Prof. Klaus Bergmann</h3>
@@ -225,8 +225,8 @@
           </div>
 
           <div class="team-card reveal" style="animation-delay:0.2s">
-            <div class="h-44 flex items-center justify-center" style="background:linear-gradient(135deg,var(--color-bg-alt),var(--color-bg))">
-              <div class="w-20 h-20 rounded-full flex items-center justify-center text-4xl border-2" style="background:var(--color-bg-card);border-color:var(--color-accent)">👩‍🏫</div>
+            <div class="h-44 overflow-hidden" style="background:linear-gradient(135deg,var(--color-bg-alt),var(--color-bg))">
+              <img src="assets/team-amara.png" alt="Dr. Amara Diallo" class="w-full h-full object-cover">
             </div>
             <div class="p-5">
               <h3 class="font-display text-xl font-semibold">Dr. Amara Diallo</h3>
@@ -236,8 +236,8 @@
           </div>
 
           <div class="team-card reveal" style="animation-delay:0.3s">
-            <div class="h-44 flex items-center justify-center" style="background:linear-gradient(135deg,var(--color-bg-alt),var(--color-bg))">
-              <div class="w-20 h-20 rounded-full flex items-center justify-center text-4xl border-2" style="background:var(--color-bg-card);border-color:var(--color-accent)">👨‍🎓</div>
+            <div class="h-44 overflow-hidden" style="background:linear-gradient(135deg,var(--color-bg-alt),var(--color-bg))">
+              <img src="assets/team-david.png" alt="David Kowalczyk" class="w-full h-full object-cover">
             </div>
             <div class="p-5">
               <h3 class="font-display text-xl font-semibold">David Kowalczyk</h3>
@@ -352,8 +352,11 @@
   <footer style="background:var(--color-bg-alt);border-top:1px solid var(--color-border)" role="contentinfo">
     <div class="max-w-7xl mx-auto px-6 py-16">
       <div class="grid md:grid-cols-4 gap-12">
+        <!-- Brand -->
         <div class="md:col-span-1">
-          <a href="index.html" data-vt class="flex items-center gap-2 mb-4"><span class="font-display text-2xl font-semibold">Rootbound</span></a>
+          <a href="index.html" data-vt class="flex items-center gap-2 mb-4">
+            <span class="font-display text-2xl font-semibold">Rootbound</span>
+          </a>
           <p class="font-body text-sm" style="color:var(--color-text-muted)">Professional genealogy research and family history services since 2009.</p>
           <div class="flex gap-3 mt-5">
             <a href="#" class="w-8 h-8 rounded-full flex items-center justify-center border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all font-ui text-xs" style="color:var(--color-text-faint)" aria-label="Facebook">f</a>
@@ -361,6 +364,7 @@
             <a href="#" class="w-8 h-8 rounded-full flex items-center justify-center border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all font-ui text-xs" style="color:var(--color-text-faint)" aria-label="Instagram">ig</a>
           </div>
         </div>
+        <!-- Navigation -->
         <div>
           <h3 class="font-ui text-xs font-semibold tracking-widest uppercase mb-4" style="color:var(--color-text-faint)">Navigate</h3>
           <ul class="flex flex-col gap-2.5">
@@ -374,6 +378,7 @@
             <li><a href="dashboard.html" data-vt class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Dashboard</a></li>
           </ul>
         </div>
+        <!-- Resources -->
         <div>
           <h3 class="font-ui text-xs font-semibold tracking-widest uppercase mb-4" style="color:var(--color-text-faint)">Resources</h3>
           <ul class="flex flex-col gap-2.5">
@@ -383,15 +388,17 @@
             <li><a href="#" class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Privacy Policy</a></li>
           </ul>
         </div>
+        <!-- Newsletter -->
         <div>
           <h3 class="font-ui text-xs font-semibold tracking-widest uppercase mb-4" style="color:var(--color-text-faint)">Heritage Dispatch</h3>
           <p class="font-body text-sm mb-4" style="color:var(--color-text-muted)">Monthly genealogy tips and archival discoveries.</p>
           <div class="flex gap-2">
             <input type="email" placeholder="your@email.com" class="form-input flex-1 text-sm py-2" aria-label="Email for newsletter"/>
-            <button class="btn-primary py-2 px-4 text-sm shrink-0" aria-label="Subscribe">→</button>
+            <button class="btn-primary py-2 px-4 text-sm shrink-0" aria-label="Subscribe to newsletter">→</button>
           </div>
         </div>
       </div>
+
       <hr class="mt-12 mb-6" style="border-color:var(--color-border)"/>
       <div class="flex flex-wrap items-center justify-between gap-4">
         <p class="font-ui text-xs" style="color:var(--color-text-faint)">© 2026 Rootbound Genealogy Research. All rights reserved.</p>

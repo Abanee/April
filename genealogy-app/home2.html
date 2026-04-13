@@ -185,8 +185,8 @@
 
           <!-- Genealogist 1 -->
           <div class="team-card reveal" data-tilt>
-            <div class="h-52 flex items-center justify-center" style="background:linear-gradient(135deg,var(--color-bg-alt),var(--color-bg))">
-              <div class="w-24 h-24 rounded-full flex items-center justify-center text-5xl border-2" style="background:var(--color-bg-card);border-color:var(--color-accent)">👩‍🔬</div>
+            <div class="h-52 overflow-hidden" style="background:linear-gradient(135deg,var(--color-bg-alt),var(--color-bg))">
+              <img src="assets/team-siobhan.png" alt="Dr. Siobhan O'Brien" class="w-full h-full object-cover">
             </div>
             <div class="p-6">
               <span class="badge mb-3">Lead Genealogist</span>
@@ -202,8 +202,8 @@
 
           <!-- Genealogist 2 -->
           <div class="team-card reveal" data-tilt style="animation-delay:0.12s">
-            <div class="h-52 flex items-center justify-center" style="background:linear-gradient(135deg,var(--color-bg-alt),var(--color-bg))">
-              <div class="w-24 h-24 rounded-full flex items-center justify-center text-5xl border-2" style="background:var(--color-bg-card);border-color:var(--color-accent)">👨‍💼</div>
+            <div class="h-52 overflow-hidden" style="background:linear-gradient(135deg,var(--color-bg-alt),var(--color-bg))">
+              <img src="assets/team-klaus.png" alt="Prof. Klaus Bergmann" class="w-full h-full object-cover">
             </div>
             <div class="p-6">
               <span class="badge mb-3">Senior Researcher</span>
@@ -219,8 +219,8 @@
 
           <!-- Genealogist 3 -->
           <div class="team-card reveal" data-tilt style="animation-delay:0.24s">
-            <div class="h-52 flex items-center justify-center" style="background:linear-gradient(135deg,var(--color-bg-alt),var(--color-bg))">
-              <div class="w-24 h-24 rounded-full flex items-center justify-center text-5xl border-2" style="background:var(--color-bg-card);border-color:var(--color-accent)">👩‍🏫</div>
+            <div class="h-52 overflow-hidden" style="background:linear-gradient(135deg,var(--color-bg-alt),var(--color-bg))">
+              <img src="assets/team-amara.png" alt="Dr. Amara Diallo" class="w-full h-full object-cover">
             </div>
             <div class="p-6">
               <span class="badge mb-3">DNA Specialist</span>
@@ -256,13 +256,8 @@
         <!-- Featured large card -->
         <div class="glass-card p-0 overflow-hidden mb-8 reveal">
           <div class="grid lg:grid-cols-2">
-            <div class="lg:h-full min-h-[240px] flex items-center justify-center" style="background:linear-gradient(135deg,#D4C5A0,#B8A07A)">
-              <!-- Parchment-like decorative illustration -->
-              <div class="text-center p-8">
-                <div class="text-6xl mb-4">📜</div>
-                <p class="font-display text-xl font-semibold" style="color:#4A3728">Naturalization Record</p>
-                <p class="font-ui text-sm mt-1" style="color:#6B5040">New York County, 1873</p>
-              </div>
+            <div class="lg:h-full min-h-[240px] overflow-hidden">
+              <img src="assets/doc-naturalization.png" alt="Naturalization Record" class="w-full h-full object-cover">
             </div>
             <div class="p-8 lg:p-12 flex flex-col justify-center">
               <span class="badge mb-4">Featured Discovery</span>
@@ -281,11 +276,8 @@
         <!-- Two secondary cards -->
         <div class="grid md:grid-cols-2 gap-8">
           <div class="story-card reveal">
-            <div class="story-card-img">
-              <div class="text-center p-6">
-                <div class="text-4xl mb-2">⚓</div>
-                <p class="font-ui text-sm" style="color:var(--color-text-muted)">Ship Manifest · Hamburg, 1902</p>
-              </div>
+            <div class="story-card-img h-48 overflow-hidden">
+              <img src="assets/doc-manifest.png" alt="Ship Manifest" class="w-full h-full object-cover">
             </div>
             <div class="p-6">
               <span class="badge mb-3">DNA + Document</span>
@@ -297,7 +289,9 @@
           <div class="story-card reveal" style="animation-delay:0.15s">
             <div class="story-card-img">
               <div class="text-center p-6">
-                <div class="text-4xl mb-2">🕌</div>
+                <div class="mb-3">
+                  <img src="assets/doc_ottoman.png" alt="Ottoman Registry" class="w-16 h-16 object-cover rounded shadow-sm mx-auto">
+                </div>
                 <p class="font-ui text-sm" style="color:var(--color-text-muted)">Ottoman Registry · Baghdad, 1891</p>
               </div>
             </div>
@@ -479,6 +473,7 @@
   <footer style="background:var(--color-bg-alt);border-top:1px solid var(--color-border)" role="contentinfo">
     <div class="max-w-7xl mx-auto px-6 py-16">
       <div class="grid md:grid-cols-4 gap-12">
+        <!-- Brand -->
         <div class="md:col-span-1">
           <a href="index.html" data-vt class="flex items-center gap-2 mb-4">
             <span class="font-display text-2xl font-semibold">Rootbound</span>
@@ -490,6 +485,7 @@
             <a href="#" class="w-8 h-8 rounded-full flex items-center justify-center border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all font-ui text-xs" style="color:var(--color-text-faint)" aria-label="Instagram">ig</a>
           </div>
         </div>
+        <!-- Navigation -->
         <div>
           <h3 class="font-ui text-xs font-semibold tracking-widest uppercase mb-4" style="color:var(--color-text-faint)">Navigate</h3>
           <ul class="flex flex-col gap-2.5">
@@ -503,6 +499,7 @@
             <li><a href="dashboard.html" data-vt class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Dashboard</a></li>
           </ul>
         </div>
+        <!-- Resources -->
         <div>
           <h3 class="font-ui text-xs font-semibold tracking-widest uppercase mb-4" style="color:var(--color-text-faint)">Resources</h3>
           <ul class="flex flex-col gap-2.5">
@@ -512,15 +509,17 @@
             <li><a href="#" class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Privacy Policy</a></li>
           </ul>
         </div>
+        <!-- Newsletter -->
         <div>
           <h3 class="font-ui text-xs font-semibold tracking-widest uppercase mb-4" style="color:var(--color-text-faint)">Heritage Dispatch</h3>
           <p class="font-body text-sm mb-4" style="color:var(--color-text-muted)">Monthly genealogy tips and archival discoveries.</p>
           <div class="flex gap-2">
             <input type="email" placeholder="your@email.com" class="form-input flex-1 text-sm py-2" aria-label="Email for newsletter"/>
-            <button class="btn-primary py-2 px-4 text-sm shrink-0" aria-label="Subscribe">→</button>
+            <button class="btn-primary py-2 px-4 text-sm shrink-0" aria-label="Subscribe to newsletter">→</button>
           </div>
         </div>
       </div>
+
       <hr class="mt-12 mb-6" style="border-color:var(--color-border)"/>
       <div class="flex flex-wrap items-center justify-between gap-4">
         <p class="font-ui text-xs" style="color:var(--color-text-faint)">© 2026 Rootbound Genealogy Research. All rights reserved.</p>
