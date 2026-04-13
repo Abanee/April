@@ -639,12 +639,13 @@ html.light .section-alt  { background: #f5f0ea; }
   opacity: 0.9;
 }
 .footer-text {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.85rem;
-  line-height: 1.6;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  line-height: 1.7;
   color: var(--text-muted);
   margin-bottom: 1.5rem;
   max-width: 320px;
+  letter-spacing: 0.02em;
 }
 .footer-link {
   font-family: 'DM Mono', monospace;
