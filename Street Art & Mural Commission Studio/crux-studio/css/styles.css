@@ -44,13 +44,13 @@ html.light ::-webkit-scrollbar-thumb { background: #ff2d78; }
 /* ── Fluid Headlines ────────────────────────────────────── */
 .headline-xl {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(3.2rem, 13vw, 13rem);
+  font-size: clamp(3rem, 10vw, 9.5rem);
   line-height: .9;
   letter-spacing: -.01em;
 }
 .headline-lg {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(2.2rem, 7vw, 6.5rem);
+  font-size: clamp(2.2rem, 6vw, 5.5rem);
   line-height: .95;
 }
 .headline-md {
