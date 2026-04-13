@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Rootbound — Discover the stories locked inside your family's history. Meet our expert genealogists and explore real ancestry discoveries."/>
+  <title>Discover — Rootbound Genealogy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css"/>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: {
+        display: ['"Cormorant Garamond"','Georgia','serif'],
+        body:    ['"EB Garamond"','Georgia','serif'],
+        ui:      ['Jost','sans-serif'],
+      }}}
+    }
+  </script>
+</head>
+<body class="texture-parchment">
+
+  <!-- ═══════════ NAVIGATION ═══════════ -->
+  <header class="nav-header" role="banner">
+    <div class="w-full max-w-7xl mx-auto px-6 flex items-center justify-between gap-4 flex-nowrap">
+      <a href="index.html" data-vt class="flex items-center gap-3 shrink-0" aria-label="Rootbound Home">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="16" cy="16" r="15.5" stroke="var(--color-accent)" stroke-width="1"/>
+          <line x1="16" y1="28" x2="16" y2="8"  stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="16" y1="14" x2="9"  y2="9"  stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="16" y1="14" x2="23" y2="9"  stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="16" y1="19" x2="11" y2="15" stroke="var(--color-accent)" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="16" y1="19" x2="21" y2="15" stroke="var(--color-accent)" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="9" cy="8" r="2" fill="var(--color-accent)"/>
+          <circle cx="23" cy="8" r="2" fill="var(--color-accent)"/>
+          <circle cx="11" cy="14" r="1.5" fill="var(--color-accent)"/>
+          <circle cx="21" cy="14" r="1.5" fill="var(--color-accent)"/>
+        </svg>
+        <span class="font-display text-2xl font-semibold tracking-tight" style="color:var(--color-text)">Rootbound</span>
+      </a>
+
+      <nav class="hidden xl:flex items-center gap-1" aria-label="Main navigation">
+        <a href="index.html"     data-vt class="nav-link font-ui text-sm">Home</a>
+        <a href="home2.html"     data-vt class="nav-link active font-ui text-sm">Home 2</a>
+        <a href="services.html"  data-vt class="nav-link font-ui text-sm">Services</a>
+        <a href="about.html"     data-vt class="nav-link font-ui text-sm">About</a>
+        <a href="ancestors.html" data-vt class="nav-link font-ui text-sm">Ancestors</a>
+        <a href="blog.html"      data-vt class="nav-link font-ui text-sm">Blog</a>
+        <a href="contact.html"   data-vt class="nav-link font-ui text-sm">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button data-theme-toggle aria-label="Toggle theme"
+          class="w-9 h-9 rounded-lg flex items-center justify-center border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-all">
+          <svg class="icon-moon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun w-4 h-4 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
+        </button>
+        <button data-dir-toggle class="hidden xl:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-ui border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all" style="color:var(--color-text-muted)">
+          <span data-dir-label>RTL</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M3 12h18M15 6l6 6-6 6"/></svg>
+        </button>
+        <a href="login.html" data-vt class="hidden sm:inline-flex btn-ghost py-2 px-4 text-sm">Sign In</a>
+        <a href="dashboard.html" data-vt class="btn-primary py-2 px-4 text-sm">Dashboard</a>
+        <button id="mobile-nav-toggle" aria-label="Toggle mobile menu" aria-expanded="false"
+          class="xl:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-lg border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-all">
+          <span class="w-5 h-0.5 rounded-full bg-current transition-all"></span>
+          <span class="w-4 h-0.5 rounded-full bg-current transition-all"></span>
+          <span class="w-5 h-0.5 rounded-full bg-current transition-all"></span>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-nav-menu" class="hidden absolute top-full inset-x-0 flex-col gap-1 p-4 border-t border-[var(--color-border)]" style="background:var(--color-bg-card)">
+      <a href="index.html"     data-vt class="nav-link">Home</a>
+      <a href="home2.html"     data-vt class="nav-link active">Home 2</a>
+      <a href="services.html"  data-vt class="nav-link">Services</a>
+      <a href="about.html"     data-vt class="nav-link">About</a>
+      <a href="ancestors.html" data-vt class="nav-link">Ancestors</a>
+      <a href="blog.html"      data-vt class="nav-link">Blog</a>
+      <a href="contact.html"   data-vt class="nav-link">Contact</a>
+      <a href="dashboard.html" data-vt class="nav-link">Dashboard</a>
+      <a href="login.html"     data-vt class="nav-link">Sign In / Register</a>
+    </div>
+  </header>
+
+  <main id="main-content" class="page-content">
+
+    <!-- ═══════════ STORY HERO ═══════════ -->
+    <section class="hero-section" aria-labelledby="h2-hero-headline">
+      <div class="hero-bg texture-parchment" data-parallax="0.3" aria-hidden="true"></div>
+
+      <!-- Decorative ornament -->
+      <div class="absolute top-1/3 end-[6%] opacity-[0.06] animate-drift pointer-events-none" aria-hidden="true">
+        <svg width="320" height="320" viewBox="0 0 320 320" fill="none">
+          <circle cx="160" cy="160" r="159" stroke="var(--color-accent)" stroke-width="0.5"/>
+          <circle cx="160" cy="160" r="110" stroke="var(--color-accent)" stroke-width="0.5"/>
+          <circle cx="160" cy="160" r="60"  stroke="var(--color-accent)" stroke-width="0.5"/>
+          <line x1="160" y1="0" x2="160" y2="320" stroke="var(--color-accent)" stroke-width="0.5"/>
+          <line x1="0" y1="160" x2="320" y2="160" stroke="var(--color-accent)" stroke-width="0.5"/>
+        </svg>
+      </div>
+
+      <div class="relative z-10 w-full max-w-7xl mx-auto px-6 py-24">
+        <!-- Eyebrow quote -->
+        <p class="section-eyebrow mb-8 animate-fade-in-up">A Real Story from Our Archive</p>
+
+        <!-- Dramatic story opening -->
+        <div class="max-w-4xl">
+          <h1 id="h2-hero-headline" class="font-display display-xl font-semibold mb-6 animate-fade-in-up-d1" style="line-height:1.06">
+            She was born in<br/>
+            <em class="text-gradient not-italic">Inverness, 1847.</em><br/>
+            Her family forgot her name.
+          </h1>
+          <p class="font-body text-xl lg:text-2xl mb-4 animate-fade-in-up-d2 max-w-2xl" style="color:var(--color-text-muted)">
+            Elspeth Morag MacAllister emigrated alone at 24 — no husband, no escort — arriving at Ellis Island with a single trunk and a loom. Her five great-grandchildren didn't know she existed until a Rootbound genealogist found her naturalization papers buried in a New York county archive.
+          </p>
+          <div class="pull-quote animate-fade-in-up-d3">
+            <p>"She built something from nothing. Knowing that changed how I see myself." — Claire M., client, 2024</p>
+          </div>
+          <div class="flex flex-wrap gap-4 mt-8 animate-fade-in-up-d4">
+            <a href="services.html" data-vt class="btn-primary animate-pulse-sepia dark:animate-pulse-gold">
+              Uncover Your Story
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="ancestors.html" data-vt class="btn-ghost">Read More Stories</a>
+          </div>
+        </div>
+
+        <!-- Ancestor card preview floating right -->
+        <div class="hidden lg:block absolute bottom-12 end-12 animate-fade-in-up-d4" aria-hidden="true">
+          <div class="glass-card p-6 w-56" style="box-shadow:0 24px 64px rgba(28,16,5,0.2)">
+            <span class="badge mb-3">Verified Record</span>
+            <p class="font-ui text-xs tracking-widest uppercase mt-3 mb-1" style="color:var(--color-text-faint)">Ellis Island — 1872</p>
+            <p class="font-display text-lg font-semibold">Elspeth M. MacAllister</p>
+            <p class="font-body text-sm mt-1" style="color:var(--color-text-muted)">Country of Origin: Scotland<br/>Occupation: Weaver</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute bottom-8 start-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-fade-in" style="animation-delay:1.2s" aria-hidden="true">
+        <span class="font-ui text-xs tracking-widest uppercase" style="color:var(--color-text-faint)">Scroll</span>
+        <div class="w-0.5 h-8 rounded-full" style="background:linear-gradient(to bottom, var(--color-accent), transparent)"></div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════ ANIMATED STAT COUNTERS ═══════════ -->
+    <section class="py-16 px-6" style="background:var(--color-bg-alt)" aria-label="Company statistics">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div class="reveal">
+            <p class="stat-counter text-gradient" data-count-to="4800" data-count-suffix="+">4800+</p>
+            <p class="font-ui text-xs tracking-widest uppercase mt-2" style="color:var(--color-text-faint)">Families Served</p>
+          </div>
+          <div class="reveal">
+            <p class="stat-counter text-gradient" data-count-to="14" data-count-suffix="">14</p>
+            <p class="font-ui text-xs tracking-widest uppercase mt-2" style="color:var(--color-text-faint)">Countries Researched</p>
+          </div>
+          <div class="reveal">
+            <p class="stat-counter text-gradient" data-count-to="98" data-count-suffix="%">98%</p>
+            <p class="font-ui text-xs tracking-widest uppercase mt-2" style="color:var(--color-text-faint)">Client Satisfaction</p>
+          </div>
+          <div class="reveal">
+            <p class="stat-counter text-gradient" data-count-to="17" data-count-suffix="">17</p>
+            <p class="font-ui text-xs tracking-widest uppercase mt-2" style="color:var(--color-text-faint)">Years of Service</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════ MEET OUR GENEALOGISTS ═══════════ -->
+    <section class="py-28 px-6" aria-labelledby="team-heading">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 reveal">
+          <p class="section-eyebrow mb-4">The People Behind Your Research</p>
+          <h2 id="team-heading" class="font-display display-lg font-semibold">
+            Expert Historians.<br/><em class="text-gradient">Passionate Storytellers.</em>
+          </h2>
+          <p class="font-body text-lg mt-4 max-w-xl mx-auto" style="color:var(--color-text-muted)">
+            Every client is matched with a genealogist who specialises in their family's geographic and cultural origin.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <!-- Genealogist 1 -->
+          <div class="team-card reveal" data-tilt>
+            <div class="h-52 flex items-center justify-center" style="background:linear-gradient(135deg,var(--color-bg-alt),var(--color-bg))">
+              <div class="w-24 h-24 rounded-full flex items-center justify-center text-5xl border-2" style="background:var(--color-bg-card);border-color:var(--color-accent)">👩‍🔬</div>
+            </div>
+            <div class="p-6">
+              <span class="badge mb-3">Lead Genealogist</span>
+              <h3 class="font-display text-2xl font-semibold mt-2">Dr. Siobhan O'Brien</h3>
+              <p class="font-body mt-2" style="color:var(--color-text-muted)">PhD in Historical Demography, Trinity College Dublin. Specialist in Irish, Scottish, and Welsh lineages with 18 years of archival experience.</p>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="badge">Ireland</span>
+                <span class="badge">Scotland</span>
+                <span class="badge">Wales</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Genealogist 2 -->
+          <div class="team-card reveal" data-tilt style="animation-delay:0.12s">
+            <div class="h-52 flex items-center justify-center" style="background:linear-gradient(135deg,var(--color-bg-alt),var(--color-bg))">
+              <div class="w-24 h-24 rounded-full flex items-center justify-center text-5xl border-2" style="background:var(--color-bg-card);border-color:var(--color-accent)">👨‍💼</div>
+            </div>
+            <div class="p-6">
+              <span class="badge mb-3">Senior Researcher</span>
+              <h3 class="font-display text-2xl font-semibold mt-2">Prof. Klaus Bergmann</h3>
+              <p class="font-body mt-2" style="color:var(--color-text-muted)">Former archivist at the Bundesarchiv Berlin. Specialises in Central and Eastern European lineages, Jewish genealogy, and Austro-Hungarian records.</p>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="badge">Germany</span>
+                <span class="badge">Austria</span>
+                <span class="badge">Poland</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Genealogist 3 -->
+          <div class="team-card reveal" data-tilt style="animation-delay:0.24s">
+            <div class="h-52 flex items-center justify-center" style="background:linear-gradient(135deg,var(--color-bg-alt),var(--color-bg))">
+              <div class="w-24 h-24 rounded-full flex items-center justify-center text-5xl border-2" style="background:var(--color-bg-card);border-color:var(--color-accent)">👩‍🏫</div>
+            </div>
+            <div class="p-6">
+              <span class="badge mb-3">DNA Specialist</span>
+              <h3 class="font-display text-2xl font-semibold mt-2">Dr. Amara Diallo</h3>
+              <p class="font-body mt-2" style="color:var(--color-text-muted)">Geneticist and genealogist specialising in West African diaspora lineages, African-American family history, and genetic genealogy interpretation.</p>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="badge">West Africa</span>
+                <span class="badge">Caribbean</span>
+                <span class="badge">DNA</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="text-center mt-12 reveal">
+          <a href="about.html" data-vt class="btn-ghost">Meet the Full Team</a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════ DISCOVERY FILES (Case Studies) ═══════════ -->
+    <section class="py-28 px-6" style="background:var(--color-bg-alt)" aria-labelledby="discovery-heading">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 reveal">
+          <p class="section-eyebrow mb-4">The Discovery Files</p>
+          <h2 id="discovery-heading" class="font-display display-lg font-semibold">
+            Real Families.<br/><em class="text-gradient">Real Discoveries.</em>
+          </h2>
+        </div>
+
+        <!-- Featured large card -->
+        <div class="glass-card p-0 overflow-hidden mb-8 reveal">
+          <div class="grid lg:grid-cols-2">
+            <div class="lg:h-full min-h-[240px] flex items-center justify-center" style="background:linear-gradient(135deg,#D4C5A0,#B8A07A)">
+              <!-- Parchment-like decorative illustration -->
+              <div class="text-center p-8">
+                <div class="text-6xl mb-4">📜</div>
+                <p class="font-display text-xl font-semibold" style="color:#4A3728">Naturalization Record</p>
+                <p class="font-ui text-sm mt-1" style="color:#6B5040">New York County, 1873</p>
+              </div>
+            </div>
+            <div class="p-8 lg:p-12 flex flex-col justify-center">
+              <span class="badge mb-4">Featured Discovery</span>
+              <h3 class="font-display text-3xl lg:text-4xl font-semibold mb-4">The Missing Weaver of Inverness</h3>
+              <p class="font-body text-lg" style="color:var(--color-text-muted)">
+                Claire Mackenzie believed her great-great-grandmother had "disappeared" in the 1870s — a family rumour suggested she had been "sent away." Our archival team discovered the truth: Elspeth MacAllister had emigrated voluntarily, educated herself in New York, and operated a small textile business employing six women by 1890.
+              </p>
+              <div class="mt-6 flex flex-wrap gap-4 items-center">
+                <a href="ancestors.html" data-vt class="btn-primary">Read Full Story</a>
+                <p class="font-ui text-xs" style="color:var(--color-text-faint)">3-generation research · 8 weeks · Deep Ancestry package</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Two secondary cards -->
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="story-card reveal">
+            <div class="story-card-img">
+              <div class="text-center p-6">
+                <div class="text-4xl mb-2">⚓</div>
+                <p class="font-ui text-sm" style="color:var(--color-text-muted)">Ship Manifest · Hamburg, 1902</p>
+              </div>
+            </div>
+            <div class="p-6">
+              <span class="badge mb-3">DNA + Document</span>
+              <h3 class="font-display text-2xl font-semibold mt-2">The Kowalczyk Brothers</h3>
+              <p class="font-body mt-2" style="color:var(--color-text-muted)">Two Polish brothers separated during WWI. A DNA match 104 years later revealed living descendants on both sides of the Atlantic.</p>
+              <a href="ancestors.html" data-vt class="inline-flex items-center gap-1 font-ui text-sm mt-4" style="color:var(--color-accent)">Read story →</a>
+            </div>
+          </div>
+          <div class="story-card reveal" style="animation-delay:0.15s">
+            <div class="story-card-img">
+              <div class="text-center p-6">
+                <div class="text-4xl mb-2">🕌</div>
+                <p class="font-ui text-sm" style="color:var(--color-text-muted)">Ottoman Registry · Baghdad, 1891</p>
+              </div>
+            </div>
+            <div class="p-6">
+              <span class="badge mb-3">International Archive</span>
+              <h3 class="font-display text-2xl font-semibold mt-2">The Al-Rashidi Lineage</h3>
+              <p class="font-body mt-2" style="color:var(--color-text-muted)">Tracing a London family's roots through Ottoman records, uncovering a lineage of merchants stretching back to 17th-century Baghdad.</p>
+              <a href="ancestors.html" data-vt class="inline-flex items-center gap-1 font-ui text-sm mt-4" style="color:var(--color-accent)">Read story →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════ WORLD MAP — WHERE WE RESEARCH ═══════════ -->
+    <section class="py-28 px-6" aria-labelledby="map-heading">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="reveal">
+            <p class="section-eyebrow mb-6 justify-start">Our Research Reach</p>
+            <h2 id="map-heading" class="font-display display-lg font-semibold mb-6">
+              Ancestry Across<br/><em class="text-gradient">14 Countries</em>
+            </h2>
+            <p class="font-body text-lg mb-8" style="color:var(--color-text-muted)">
+              From the parish registers of Galway to the civil records of Osaka, our genealogists have physical access to archives on five continents. No family history is too distant or too fragmented.
+            </p>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="flex items-center gap-2 font-ui text-sm" style="color:var(--color-text-muted)">
+                <span style="color:var(--color-accent)">◆</span> Ireland &amp; Scotland
+              </div>
+              <div class="flex items-center gap-2 font-ui text-sm" style="color:var(--color-text-muted)">
+                <span style="color:var(--color-accent)">◆</span> England &amp; Wales
+              </div>
+              <div class="flex items-center gap-2 font-ui text-sm" style="color:var(--color-text-muted)">
+                <span style="color:var(--color-accent)">◆</span> Germany &amp; Austria
+              </div>
+              <div class="flex items-center gap-2 font-ui text-sm" style="color:var(--color-text-muted)">
+                <span style="color:var(--color-accent)">◆</span> Poland &amp; Ukraine
+              </div>
+              <div class="flex items-center gap-2 font-ui text-sm" style="color:var(--color-text-muted)">
+                <span style="color:var(--color-accent)">◆</span> Italy &amp; Greece
+              </div>
+              <div class="flex items-center gap-2 font-ui text-sm" style="color:var(--color-text-muted)">
+                <span style="color:var(--color-accent)">◆</span> West Africa
+              </div>
+              <div class="flex items-center gap-2 font-ui text-sm" style="color:var(--color-text-muted)">
+                <span style="color:var(--color-accent)">◆</span> Middle East
+              </div>
+              <div class="flex items-center gap-2 font-ui text-sm" style="color:var(--color-text-muted)">
+                <span style="color:var(--color-accent)">◆</span> United States
+              </div>
+            </div>
+          </div>
+
+          <!-- SVG world map (stylised) -->
+          <div class="reveal relative" style="animation-delay:0.2s">
+            <svg viewBox="0 0 600 320" class="w-full" aria-label="World map showing countries where Rootbound researches">
+              <!-- Background -->
+              <rect width="600" height="320" rx="12" fill="var(--color-bg-alt)"/>
+              <!-- Simplified continent shapes -->
+              <!-- North America -->
+              <path d="M60 80 L140 60 L160 100 L150 160 L110 180 L70 160 Z" fill="var(--color-border)" opacity="0.6"/>
+              <!-- South America -->
+              <path d="M110 190 L150 185 L155 250 L120 280 L95 250 Z" fill="var(--color-border)" opacity="0.6"/>
+              <!-- Europe -->
+              <path d="M255 60 L310 55 L320 90 L300 110 L260 105 Z" fill="var(--color-border)" opacity="0.6"/>
+              <!-- Africa -->
+              <path d="M265 120 L310 115 L320 200 L290 230 L255 210 L248 155 Z" fill="var(--color-border)" opacity="0.6"/>
+              <!-- Asia -->
+              <path d="M325 55 L460 50 L470 130 L430 160 L360 155 L325 120 Z" fill="var(--color-border)" opacity="0.6"/>
+              <!-- Australia -->
+              <path d="M440 200 L500 195 L510 240 L460 250 Z" fill="var(--color-border)" opacity="0.6"/>
+
+              <!-- Research markers (pulsing) -->
+              <!-- Ireland/UK -->
+              <circle cx="272" cy="72" r="5" fill="var(--color-accent)" class="map-dot" style="animation-delay:0s"/>
+              <!-- Germany -->
+              <circle cx="295" cy="76" r="4" fill="var(--color-accent)" class="map-dot" style="animation-delay:0.4s"/>
+              <!-- Poland -->
+              <circle cx="308" cy="73" r="4" fill="var(--color-accent)" class="map-dot" style="animation-delay:0.8s"/>
+              <!-- Italy -->
+              <circle cx="290" cy="98" r="4" fill="var(--color-accent)" class="map-dot" style="animation-delay:0.2s"/>
+              <!-- West Africa -->
+              <circle cx="265" cy="155" r="4" fill="var(--color-accent)" class="map-dot" style="animation-delay:0.6s"/>
+              <!-- Middle East -->
+              <circle cx="335" cy="108" r="4" fill="var(--color-accent)" class="map-dot" style="animation-delay:1s"/>
+              <!-- USA East Coast -->
+              <circle cx="110" cy="120" r="5" fill="var(--color-accent)" class="map-dot" style="animation-delay:0.3s"/>
+              <!-- Scandinavia -->
+              <circle cx="290" cy="60" r="3" fill="var(--color-accent)" class="map-dot" style="animation-delay:0.9s"/>
+
+              <!-- Legend -->
+              <circle cx="30" cy="300" r="5" fill="var(--color-accent)"/>
+              <text x="40" y="304" font-family="Jost,sans-serif" font-size="11" fill="var(--color-text-faint)">Active research region</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════ RECENT HERITAGE FINDINGS ═══════════ -->
+    <section class="py-28 px-6" style="background:var(--color-bg-alt)" aria-labelledby="findings-heading">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 reveal">
+          <p class="section-eyebrow mb-4">From Our Journal</p>
+          <h2 id="findings-heading" class="font-display display-lg font-semibold">
+            Latest Genealogy<br/><em class="text-gradient">Insights &amp; Guides</em>
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+
+          <article class="blog-card reveal" data-tilt>
+            <div class="h-40 flex items-center justify-center px-6" style="background:linear-gradient(135deg,var(--color-bg-alt),var(--color-bg))">
+              <p class="font-display text-xl font-semibold text-center" style="color:var(--color-text-muted)">Reading 18th-Century Parish Records</p>
+            </div>
+            <div class="p-6">
+              <span class="badge mb-3">Research Guide</span>
+              <h3 class="font-display text-xl font-semibold mt-2">How to Decode Handwritten Archives</h3>
+              <p class="font-body mt-2 text-sm" style="color:var(--color-text-muted)">The abbreviations, Latin phrases, and ink degradation of old records can defeat even experienced researchers. Our guide explains every shorthand.</p>
+              <a href="blog.html" data-vt class="inline-flex items-center gap-1 font-ui text-sm mt-4" style="color:var(--color-accent)">Read article →</a>
+            </div>
+          </article>
+
+          <article class="blog-card reveal" data-tilt style="animation-delay:0.12s">
+            <div class="h-40 flex items-center justify-center px-6" style="background:linear-gradient(135deg,var(--color-bg-alt),var(--color-bg))">
+              <p class="font-display text-xl font-semibold text-center" style="color:var(--color-text-muted)">DNA Meets Documentary Research</p>
+            </div>
+            <div class="p-6">
+              <span class="badge mb-3">DNA Genealogy</span>
+              <h3 class="font-display text-xl font-semibold mt-2">When Your DNA Results Contradict the Records</h3>
+              <p class="font-body mt-2 text-sm" style="color:var(--color-text-muted)">A non-paternity event, adoption, or name change — understanding genetic surprises without erasing family identity.</p>
+              <a href="blog.html" data-vt class="inline-flex items-center gap-1 font-ui text-sm mt-4" style="color:var(--color-accent)">Read article →</a>
+            </div>
+          </article>
+
+          <article class="blog-card reveal" data-tilt style="animation-delay:0.24s">
+            <div class="h-40 flex items-center justify-center px-6" style="background:linear-gradient(135deg,var(--color-bg-alt),var(--color-bg))">
+              <p class="font-display text-xl font-semibold text-center" style="color:var(--color-text-muted)">Preserving Family Photographs</p>
+            </div>
+            <div class="p-6">
+              <span class="badge mb-3">Preservation</span>
+              <h3 class="font-display text-xl font-semibold mt-2">Digitising &amp; Archiving Old Photographs Correctly</h3>
+              <p class="font-body mt-2 text-sm" style="color:var(--color-text-muted)">Scanner settings, file formats, metadata tagging — the professional approach to preserving images that will outlast you.</p>
+              <a href="blog.html" data-vt class="inline-flex items-center gap-1 font-ui text-sm mt-4" style="color:var(--color-accent)">Read article →</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════ NEWSLETTER STRIP ═══════════ -->
+    <section class="newsletter-strip py-20 px-6" aria-labelledby="newsletter-heading">
+      <div class="max-w-3xl mx-auto text-center reveal">
+        <p class="section-eyebrow mb-6">Heritage Dispatch — Monthly</p>
+        <h2 id="newsletter-heading" class="font-display display-md font-semibold mb-4">
+          Stories of Discovery,<br/><em class="text-gradient">Delivered to Your Inbox</em>
+        </h2>
+        <p class="font-body text-lg mb-8" style="color:var(--color-text-muted)">
+          Each month: one real ancestor story, one archival research tip, and one guide from our genealogists. No spam. Unsubscribe any time.
+        </p>
+        <form class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" onsubmit="return false" aria-label="Newsletter sign-up">
+          <input type="email" placeholder="your@email.com" class="form-input flex-1" aria-label="Your email address"/>
+          <button type="submit" class="btn-primary whitespace-nowrap animate-pulse-sepia dark:animate-pulse-gold">
+            Subscribe Free
+          </button>
+        </form>
+        <p class="font-ui text-xs mt-4" style="color:var(--color-text-faint)">4,200+ genealogy enthusiasts already subscribed.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer style="background:var(--color-bg-alt);border-top:1px solid var(--color-border)" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+      <div class="grid md:grid-cols-4 gap-12">
+        <div class="md:col-span-1">
+          <a href="index.html" data-vt class="flex items-center gap-2 mb-4">
+            <span class="font-display text-2xl font-semibold">Rootbound</span>
+          </a>
+          <p class="font-body text-sm" style="color:var(--color-text-muted)">Professional genealogy research and family history services since 2009.</p>
+          <div class="flex gap-3 mt-5">
+            <a href="#" class="w-8 h-8 rounded-full flex items-center justify-center border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all font-ui text-xs" style="color:var(--color-text-faint)" aria-label="Facebook">f</a>
+            <a href="#" class="w-8 h-8 rounded-full flex items-center justify-center border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all font-ui text-xs" style="color:var(--color-text-faint)" aria-label="Twitter">𝕏</a>
+            <a href="#" class="w-8 h-8 rounded-full flex items-center justify-center border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all font-ui text-xs" style="color:var(--color-text-faint)" aria-label="Instagram">ig</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-ui text-xs font-semibold tracking-widest uppercase mb-4" style="color:var(--color-text-faint)">Navigate</h3>
+          <ul class="flex flex-col gap-2.5">
+            <li><a href="index.html"     data-vt class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Home</a></li>
+            <li><a href="home2.html"     data-vt class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Home 2</a></li>
+            <li><a href="services.html"  data-vt class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Services</a></li>
+            <li><a href="about.html"     data-vt class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">About</a></li>
+            <li><a href="ancestors.html" data-vt class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Ancestors</a></li>
+            <li><a href="blog.html"      data-vt class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Blog</a></li>
+            <li><a href="contact.html"   data-vt class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Contact</a></li>
+            <li><a href="dashboard.html" data-vt class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Dashboard</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-ui text-xs font-semibold tracking-widest uppercase mb-4" style="color:var(--color-text-faint)">Resources</h3>
+          <ul class="flex flex-col gap-2.5">
+            <li><a href="#" class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Getting Started Guide</a></li>
+            <li><a href="#" class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Archive Database</a></li>
+            <li><a href="#" class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">DNA Explained</a></li>
+            <li><a href="#" class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-ui text-xs font-semibold tracking-widest uppercase mb-4" style="color:var(--color-text-faint)">Heritage Dispatch</h3>
+          <p class="font-body text-sm mb-4" style="color:var(--color-text-muted)">Monthly genealogy tips and archival discoveries.</p>
+          <div class="flex gap-2">
+            <input type="email" placeholder="your@email.com" class="form-input flex-1 text-sm py-2" aria-label="Email for newsletter"/>
+            <button class="btn-primary py-2 px-4 text-sm shrink-0" aria-label="Subscribe">→</button>
+          </div>
+        </div>
+      </div>
+      <hr class="mt-12 mb-6" style="border-color:var(--color-border)"/>
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <p class="font-ui text-xs" style="color:var(--color-text-faint)">© 2026 Rootbound Genealogy Research. All rights reserved.</p>
+        <p class="font-ui text-xs" style="color:var(--color-text-faint)">Crafted with care for every family's story.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

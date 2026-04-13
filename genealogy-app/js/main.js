@@ -614,6 +614,115 @@ const ProgressBars = (() => {
 })();
 
 
+/* ── 15. FAMILY TREE — DYNAMIC SVG CONNECTORS ────────────
+   Reads card positions at runtime and draws smooth bezier
+   paths between ancestor cards using data-tree-child attrs.
+   Redraws on every resize for full responsiveness.
+   ──────────────────────────────────────────────────────── */
+const FamilyTree = (() => {
+
+  function draw() {
+    const inner = document.getElementById('tree-canvas-inner');
+    const svg   = document.getElementById('tree-canvas-svg');
+    if (!inner || !svg) return;
+
+    svg.innerHTML = '';
+
+    const containerRect = inner.getBoundingClientRect();
+    const cards         = inner.querySelectorAll('[data-tree-id]');
+    const positions     = {};
+
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      positions[card.dataset.treeId] = {
+        right: rect.right  - containerRect.left,
+        left:  rect.left   - containerRect.left,
+        cy:    rect.top    + rect.height / 2 - containerRect.top,
+      };
+    });
+
+    // Draw connector from each card to its "child" card
+    cards.forEach(card => {
+      const srcId = card.dataset.treeId;
+      const dstId = card.dataset.treeChild;
+      if (!dstId || !positions[srcId] || !positions[dstId]) return;
+
+      const src = positions[srcId];
+      const dst = positions[dstId];
+      const x1  = src.right;
+      const y1  = src.cy;
+      const x2  = dst.left;
+      const y2  = dst.cy;
+      const mx  = (x1 + x2) / 2;
+
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', `M ${x1} ${y1} C ${mx} ${y1} ${mx} ${y2} ${x2} ${y2}`);
+      path.setAttribute('fill', 'none');
+      path.setAttribute('stroke', 'var(--color-border-strong)');
+      path.setAttribute('stroke-width', '1.5');
+      path.setAttribute('stroke-linecap', 'round');
+      path.setAttribute('opacity', '0.8');
+      svg.appendChild(path);
+    });
+  }
+
+  function init() {
+    if (!document.getElementById('tree-canvas-inner')) return;
+    // Draw once content is painted
+    requestAnimationFrame(() => { draw(); });
+    window.addEventListener('load',   draw);
+    window.addEventListener('resize', draw);
+  }
+
+  return { init, draw };
+})();
+
+
+/* ── 16. ANIMATED STAT COUNTERS ───────────────────────────
+   Counts up numbers when they scroll into view.
+   Triggered once per element.
+   ──────────────────────────────────────────────────────── */
+const StatCounters = (() => {
+
+  function animateCount(el) {
+    const target   = parseFloat(el.dataset.countTo) || 0;
+    const suffix   = el.dataset.countSuffix || '';
+    const prefix   = el.dataset.countPrefix || '';
+    const duration = 1800;
+    const start    = performance.now();
+
+    function step(now) {
+      const elapsed  = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased    = 1 - Math.pow(1 - progress, 3);
+      const value    = eased * target;
+      el.textContent = prefix + (Number.isInteger(target) ? Math.round(value) : value.toFixed(1)) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  function init() {
+    const counters = document.querySelectorAll('[data-count-to]');
+    if (!counters.length) return;
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCount(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(el => observer.observe(el));
+  }
+
+  return { init };
+})();
+
+
 /* ── INIT — Boot all modules ─────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   ThemeManager.init();
@@ -624,6 +733,8 @@ document.addEventListener('DOMContentLoaded', () => {
   Sidebar.init();
   DropZone.init();
   TreeViewer.init();
+  FamilyTree.init();
+  StatCounters.init();
   ChatInterface.init();
   Accordion.init();
   BlogFilter.init();

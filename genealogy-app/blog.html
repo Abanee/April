@@ -25,7 +25,7 @@
 
   <!-- ─── NAV ───────────────────────────────────────────────── -->
   <header class="nav-header" role="banner">
-    <div class="w-full max-w-7xl mx-auto px-6 flex items-center justify-between gap-6">
+    <div class="w-full max-w-7xl mx-auto px-6 flex items-center justify-between gap-4 flex-nowrap">
       <a href="index.html" data-vt class="flex items-center gap-3 shrink-0">
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
           <circle cx="16" cy="16" r="15.5" stroke="var(--color-accent)" stroke-width="1"/>
@@ -39,23 +39,26 @@
         </svg>
         <span class="font-display text-2xl font-semibold">Rootbound</span>
       </a>
-      <nav class="hidden lg:flex items-center gap-1">
+      <nav class="hidden xl:flex items-center gap-1">
         <a href="index.html"     data-vt class="nav-link font-ui text-sm">Home</a>
+        <a href="home2.html"     data-vt class="nav-link font-ui text-sm">Home 2</a>
         <a href="services.html"  data-vt class="nav-link font-ui text-sm">Services</a>
+        <a href="about.html"     data-vt class="nav-link font-ui text-sm">About</a>
+        <a href="ancestors.html" data-vt class="nav-link font-ui text-sm">Ancestors</a>
         <a href="blog.html"      data-vt class="nav-link active font-ui text-sm">Blog</a>
-        <a href="dashboard.html" data-vt class="nav-link font-ui text-sm">Dashboard</a>
+        <a href="contact.html"   data-vt class="nav-link font-ui text-sm">Contact</a>
       </nav>
       <div class="flex items-center gap-3">
         <button data-theme-toggle aria-label="Toggle theme" class="w-9 h-9 rounded-lg flex items-center justify-center border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-all">
           <svg class="icon-moon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           <svg class="icon-sun w-4 h-4 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg>
         </button>
-        <button data-dir-toggle class="hidden lg:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-ui border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all" style="color:var(--color-text-muted)">
+        <button data-dir-toggle class="hidden xl:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-ui border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all" style="color:var(--color-text-muted)">
           <span data-dir-label>RTL</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M3 12h18M15 6l6 6-6 6"/></svg>
         </button>
-        <a href="login.html" data-vt class="btn-primary py-2 px-4 text-sm">Get Started</a>
-        <button id="mobile-nav-toggle" aria-label="Toggle menu" class="lg:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-lg border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-all">
+        <a href="dashboard.html" data-vt class="btn-primary py-2 px-4 text-sm">Dashboard</a>
+        <button id="mobile-nav-toggle" aria-label="Toggle menu" class="xl:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-lg border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-all">
           <span class="w-5 h-0.5 rounded-full bg-current"></span>
           <span class="w-4 h-0.5 rounded-full bg-current"></span>
           <span class="w-5 h-0.5 rounded-full bg-current"></span>
@@ -64,8 +67,12 @@
     </div>
     <div id="mobile-nav-menu" class="hidden absolute top-full inset-x-0 flex-col gap-1 p-4 border-t border-[var(--color-border)]" style="background:var(--color-bg-card)">
       <a href="index.html"     data-vt class="nav-link">Home</a>
+      <a href="home2.html"     data-vt class="nav-link">Home 2</a>
       <a href="services.html"  data-vt class="nav-link">Services</a>
+      <a href="about.html"     data-vt class="nav-link">About</a>
+      <a href="ancestors.html" data-vt class="nav-link">Ancestors</a>
       <a href="blog.html"      data-vt class="nav-link active">Blog</a>
+      <a href="contact.html"   data-vt class="nav-link">Contact</a>
       <a href="dashboard.html" data-vt class="nav-link">Dashboard</a>
       <a href="login.html"     data-vt class="nav-link">Sign In</a>
     </div>
@@ -331,14 +338,17 @@
 
   </main>
 
-  <!-- Footer -->
   <footer style="background:var(--color-bg-alt);border-top:1px solid var(--color-border)">
     <div class="max-w-7xl mx-auto px-6 py-10 flex flex-wrap items-center justify-between gap-4">
       <a href="index.html" data-vt class="font-display text-xl font-semibold">Rootbound</a>
       <nav class="flex flex-wrap gap-6" aria-label="Footer navigation">
         <a href="index.html"    data-vt class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Home</a>
+        <a href="home2.html"    data-vt class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Home 2</a>
         <a href="services.html" data-vt class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Services</a>
+        <a href="about.html"    data-vt class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">About</a>
+        <a href="ancestors.html" data-vt class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Ancestors</a>
         <a href="blog.html"     data-vt class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Blog</a>
+        <a href="contact.html"  data-vt class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Contact</a>
         <a href="login.html"    data-vt class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Sign In</a>
       </nav>
       <p class="font-ui text-xs" style="color:var(--color-text-faint)">© 2026 Rootbound</p>
