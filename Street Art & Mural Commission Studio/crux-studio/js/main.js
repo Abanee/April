@@ -4,15 +4,6 @@
 ═══════════════════════════════════════════════════════════ */
 'use strict';
 
-/* ── Custom Cursor ─────────────────────────────────────────── */
-const cursorDot = document.getElementById('cursor-dot');
-if (cursorDot && window.matchMedia('(hover: hover)').matches) {
-  document.addEventListener('pointermove', e => {
-    cursorDot.style.left = `${e.clientX}px`;
-    cursorDot.style.top  = `${e.clientY}px`;
-  });
-}
-
 /* ── Theme ─────────────────────────────────────────────────── */
 const htmlEl = document.documentElement;
 
