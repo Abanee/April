@@ -117,17 +117,9 @@
     <section class="py-16 px-6" aria-label="Featured article">
       <div class="max-w-7xl mx-auto">
         <div class="glass-card overflow-hidden grid lg:grid-cols-2 gap-0 reveal">
-          <!-- Image placeholder -->
-          <div class="min-h-64 lg:min-h-full flex items-center justify-center"
-            style="background:linear-gradient(135deg,var(--color-bg-alt) 0%,var(--color-bg) 100%);min-height:320px">
-            <div class="text-center opacity-30">
-              <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-                <rect x="8" y="8" width="64" height="64" rx="4" stroke="var(--color-accent)" stroke-width="2"/>
-                <path d="M8 52l18-14 14 10 18-20 14 24" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"/>
-                <circle cx="28" cy="28" r="6" stroke="var(--color-accent)" stroke-width="2"/>
-              </svg>
-              <p class="font-ui text-xs mt-2">Featured Article Image</p>
-            </div>
+          <!-- Image container -->
+          <div class="h-full min-h-64 lg:min-h-full">
+            <img src="assets/blog-featured-irish.png" alt="19th Century Irish Parish Registers" class="w-full h-full object-cover">
           </div>
           <!-- Content -->
           <div class="p-10 flex flex-col justify-center">
@@ -142,7 +134,7 @@
               Pre-famine Irish parish registers are among the most valuable — and most challenging — genealogical sources available. Here's our complete field guide to navigating them.
             </p>
             <div class="flex items-center gap-4 mb-6">
-              <div class="w-8 h-8 rounded-full flex items-center justify-center font-ui font-semibold text-xs" style="background:var(--color-accent);color:#FEFCF8">SB</div>
+              <img src="assets/team-siobhan.png" alt="Dr. Siobhán Brennan" class="w-8 h-8 rounded-full object-cover">
               <div>
                 <p class="font-ui text-sm font-medium">Dr. Siobhán Brennan</p>
                 <p class="font-ui text-xs" style="color:var(--color-text-faint)">Lead Genealogist · March 8, 2026 · 12 min read</p>
@@ -163,10 +155,8 @@
 
           <!-- Article 1 -->
           <article class="blog-card flex flex-col reveal" data-blog-card="dna" aria-labelledby="art-1-title">
-            <div class="h-48 flex items-center justify-center" style="background:linear-gradient(135deg,var(--color-bg-alt),var(--color-bg))">
-              <div class="opacity-20 text-center">
-                <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M12 4c0 11 24 6 24 20S12 30 12 44M36 4c0 11-24 6-24 20s24 6 24 20" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"/></svg>
-              </div>
+            <div class="h-48 overflow-hidden">
+              <img src="assets/blog-dna.png" alt="DNA Matching Visualization" class="w-full h-full object-cover">
             </div>
             <div class="p-6 flex flex-col gap-3 flex-1">
               <div class="flex gap-2 flex-wrap">
@@ -180,7 +170,7 @@
               </p>
               <div class="flex items-center justify-between mt-auto pt-4 border-t" style="border-color:var(--color-border)">
                 <div class="flex items-center gap-2">
-                  <div class="w-7 h-7 rounded-full flex items-center justify-center font-ui text-xs font-semibold" style="background:var(--color-accent);color:#FEFCF8">RM</div>
+                  <img src="assets/team-robert.png" alt="Robert Muñoz" class="w-7 h-7 rounded-full object-cover">
                   <p class="font-ui text-xs" style="color:var(--color-text-faint)">Robert Muñoz · Mar 15</p>
                 </div>
                 <span class="font-ui text-xs" style="color:var(--color-text-faint)">9 min</span>
@@ -190,8 +180,8 @@
 
           <!-- Article 2 -->
           <article class="blog-card flex flex-col reveal" data-blog-card="tips" style="animation-delay:0.1s" aria-labelledby="art-2-title">
-            <div class="h-48 flex items-center justify-center" style="background:linear-gradient(135deg,var(--color-bg),var(--color-bg-alt))">
-              <div class="opacity-20"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M6 8h36M6 18h24M6 28h30M6 38h20" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div class="h-48 overflow-hidden">
+              <img src="assets/blog-overlooked.png" alt="American Genealogy Records" class="w-full h-full object-cover">
             </div>
             <div class="p-6 flex flex-col gap-3 flex-1">
               <div class="flex gap-2"><span class="badge">Research Tips</span></div>
@@ -203,7 +193,7 @@
               </p>
               <div class="flex items-center justify-between mt-auto pt-4 border-t" style="border-color:var(--color-border)">
                 <div class="flex items-center gap-2">
-                  <div class="w-7 h-7 rounded-full flex items-center justify-center font-ui text-xs font-semibold" style="background:var(--color-accent);color:#FEFCF8">AW</div>
+                  <img src="assets/team-abena.png" alt="Abena Williams" class="w-7 h-7 rounded-full object-cover">
                   <p class="font-ui text-xs" style="color:var(--color-text-faint)">Abena Williams · Mar 10</p>
                 </div>
                 <span class="font-ui text-xs" style="color:var(--color-text-faint)">7 min</span>
@@ -213,8 +203,8 @@
 
           <!-- Article 3 -->
           <article class="blog-card flex flex-col reveal" data-blog-card="stories" style="animation-delay:0.2s" aria-labelledby="art-3-title">
-            <div class="h-48 flex items-center justify-center" style="background:linear-gradient(135deg,var(--color-bg-alt),var(--color-bg))">
-              <div class="opacity-20"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="var(--color-accent)" stroke-width="2"/><circle cx="24" cy="18" r="6" stroke="var(--color-accent)" stroke-width="2"/><path d="M4 44c0-11 9-18 20-18s20 7 20 18" stroke="var(--color-accent)" stroke-width="2"/></svg></div>
+            <div class="h-48 overflow-hidden">
+              <img src="assets/blog-ottoman.png" alt="Ottoman Era Family Portrait" class="w-full h-full object-cover">
             </div>
             <div class="p-6 flex flex-col gap-3 flex-1">
               <div class="flex gap-2"><span class="badge">Family Stories</span></div>
@@ -226,7 +216,7 @@
               </p>
               <div class="flex items-center justify-between mt-auto pt-4 border-t" style="border-color:var(--color-border)">
                 <div class="flex items-center gap-2">
-                  <div class="w-7 h-7 rounded-full flex items-center justify-center font-ui text-xs font-semibold" style="background:var(--color-accent);color:#FEFCF8">NK</div>
+                  <img src="assets/team-others.png" alt="Nilufar Khalil" class="w-7 h-7 rounded-full object-cover" style="object-position: left center">
                   <p class="font-ui text-xs" style="color:var(--color-text-faint)">Nilufar Khalil · Mar 5</p>
                 </div>
                 <span class="font-ui text-xs" style="color:var(--color-text-faint)">15 min</span>
@@ -236,8 +226,8 @@
 
           <!-- Article 4 -->
           <article class="blog-card flex flex-col reveal" data-blog-card="archives" aria-labelledby="art-4-title">
-            <div class="h-48 flex items-center justify-center" style="background:linear-gradient(135deg,var(--color-bg),var(--color-bg-alt))">
-              <div class="opacity-20"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="6" y="14" width="36" height="28" rx="2" stroke="var(--color-accent)" stroke-width="2"/><path d="M14 14V8a2 2 0 012-2h16a2 2 0 012 2v6" stroke="var(--color-accent)" stroke-width="2"/><line x1="24" y1="22" x2="24" y2="36" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"/><line x1="17" y1="29" x2="31" y2="29" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div class="h-48 overflow-hidden">
+              <img src="assets/blog-search-dna-split.png" alt="FamilySearch Catalog Research" class="w-full h-full object-cover" style="object-position: left center">
             </div>
             <div class="p-6 flex flex-col gap-3 flex-1">
               <div class="flex gap-2"><span class="badge">Archives & Records</span></div>
@@ -249,7 +239,7 @@
               </p>
               <div class="flex items-center justify-between mt-auto pt-4 border-t" style="border-color:var(--color-border)">
                 <div class="flex items-center gap-2">
-                  <div class="w-7 h-7 rounded-full flex items-center justify-center font-ui text-xs font-semibold" style="background:var(--color-accent);color:#FEFCF8">SB</div>
+                  <img src="assets/team-siobhan.png" alt="Dr. Siobhán Brennan" class="w-7 h-7 rounded-full object-cover">
                   <p class="font-ui text-xs" style="color:var(--color-text-faint)">Dr. Siobhán Brennan · Feb 28</p>
                 </div>
                 <span class="font-ui text-xs" style="color:var(--color-text-faint)">11 min</span>
@@ -259,8 +249,8 @@
 
           <!-- Article 5 -->
           <article class="blog-card flex flex-col reveal" data-blog-card="history" style="animation-delay:0.1s" aria-labelledby="art-5-title">
-            <div class="h-48 flex items-center justify-center" style="background:linear-gradient(135deg,var(--color-bg-alt),var(--color-bg))">
-              <div class="opacity-20"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="var(--color-accent)" stroke-width="2"/><path d="M24 4v20l12 8" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div class="h-48 overflow-hidden">
+              <img src="assets/blog-famine.png" alt="Irish Workhouse Registers" class="w-full h-full object-cover">
             </div>
             <div class="p-6 flex flex-col gap-3 flex-1">
               <div class="flex gap-2"><span class="badge">History & Context</span></div>
@@ -272,7 +262,7 @@
               </p>
               <div class="flex items-center justify-between mt-auto pt-4 border-t" style="border-color:var(--color-border)">
                 <div class="flex items-center gap-2">
-                  <div class="w-7 h-7 rounded-full flex items-center justify-center font-ui text-xs font-semibold" style="background:var(--color-accent);color:#FEFCF8">CO</div>
+                  <img src="assets/team-others.png" alt="Cathal O'Brien" class="w-7 h-7 rounded-full object-cover" style="object-position: center">
                   <p class="font-ui text-xs" style="color:var(--color-text-faint)">Cathal O'Brien · Feb 20</p>
                 </div>
                 <span class="font-ui text-xs" style="color:var(--color-text-faint)">14 min</span>
@@ -282,8 +272,8 @@
 
           <!-- Article 6 -->
           <article class="blog-card flex flex-col reveal" data-blog-card="dna" style="animation-delay:0.2s" aria-labelledby="art-6-title">
-            <div class="h-48 flex items-center justify-center" style="background:linear-gradient(135deg,var(--color-bg),var(--color-bg-alt))">
-              <div class="opacity-20"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M8 8h32M8 20h24M8 32h28M8 44h20" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"/><circle cx="38" cy="14" r="4" stroke="var(--color-accent)" stroke-width="2"/></svg></div>
+            <div class="h-48 overflow-hidden">
+              <img src="assets/blog-search-dna-split.png" alt="Jewish DNA Research" class="w-full h-full object-cover" style="object-position: right center">
             </div>
             <div class="p-6 flex flex-col gap-3 flex-1">
               <div class="flex gap-2"><span class="badge">DNA & Genetics</span></div>
@@ -295,7 +285,7 @@
               </p>
               <div class="flex items-center justify-between mt-auto pt-4 border-t" style="border-color:var(--color-border)">
                 <div class="flex items-center gap-2">
-                  <div class="w-7 h-7 rounded-full flex items-center justify-center font-ui text-xs font-semibold" style="background:var(--color-accent);color:#FEFCF8">ML</div>
+                  <img src="assets/team-others.png" alt="Miriam Levin" class="w-7 h-7 rounded-full object-cover" style="object-position: right center">
                   <p class="font-ui text-xs" style="color:var(--color-text-faint)">Miriam Levin · Feb 14</p>
                 </div>
                 <span class="font-ui text-xs" style="color:var(--color-text-faint)">10 min</span>
