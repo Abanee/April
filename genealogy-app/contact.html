@@ -263,8 +263,15 @@
         </div>
         <!-- Decorative illustrated map placeholder -->
         <div class="glass-card overflow-hidden reveal" style="animation-delay:0.1s">
-          <div class="h-96 md:h-[500px] flex items-center justify-center relative">
-            <img src="assets/map-edinburgh.png" alt="Map of Edinburgh Royal Mile" class="w-full h-full object-cover">
+          <div class="h-96 md:h-[500px] flex items-center justify-center relative grayscale contrast-125 dark:invert dark:hue-rotate-180 dark:contrast-100">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2233.8745585526027!2d-3.187391924040974!3d55.95116747315538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4887b800a5982623%3A0x5a3f2d9c021c170b!2sThe%20Royal%20Mile!5e0!3m2!1sen!2suk!4v1713134956123!5m2!1sen!2suk" 
+              class="w-full h-full border-0" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Interactive map of Edinburgh office location">
+            </iframe>
             
             <!-- Floating Address Overlay -->
             <div class="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/60 to-transparent flex items-end justify-between gap-6 pointer-events-none">
@@ -272,8 +279,8 @@
                 <p class="font-display text-xl font-semibold text-white">14 Royal Mile</p>
                 <p class="font-body text-sm text-white/80">Edinburgh, EH1 2JN · Scotland</p>
               </div>
-              <a href="https://maps.google.com" target="_blank" class="btn-primary py-2.5 px-6 text-sm pointer-events-auto shadow-lg">
-                View on Google Maps
+              <a href="https://maps.app.goo.gl/T4nS89eXqX6pYF7D9" target="_blank" class="btn-primary py-2.5 px-6 text-sm pointer-events-auto shadow-lg hover:scale-105 transition-transform">
+                Open in Full Maps
               </a>
             </div>
           </div>
