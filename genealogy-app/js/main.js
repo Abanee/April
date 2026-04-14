@@ -15,7 +15,7 @@
 const ThemeManager = (() => {
 
   const STORAGE_KEY = 'genealogy-theme';  // 'dark' | 'light'
-  const html         = document.documentElement;
+  const html = document.documentElement;
 
   /** Apply a theme and persist it */
   function applyTheme(mode) {
@@ -38,7 +38,7 @@ const ThemeManager = (() => {
 
   /** Read saved or system preference */
   function init() {
-    const saved  = localStorage.getItem(STORAGE_KEY);
+    const saved = localStorage.getItem(STORAGE_KEY);
     const system = window.matchMedia('(prefers-color-scheme: dark)').matches;
     applyTheme(saved ?? (system ? 'dark' : 'light'));
 
@@ -70,7 +70,7 @@ const ThemeManager = (() => {
 const DirManager = (() => {
 
   const STORAGE_KEY = 'genealogy-dir';  // 'ltr' | 'rtl'
-  const html         = document.documentElement;
+  const html = document.documentElement;
 
   function applyDir(dir) {
     html.setAttribute('dir', dir);
@@ -220,8 +220,8 @@ const Sidebar = (() => {
   function toggle() { isOpen ? close() : open(); }
 
   function init() {
-    sidebar  = document.getElementById('sidebar');
-    overlay  = document.getElementById('sidebar-overlay');
+    sidebar = document.getElementById('sidebar');
+    overlay = document.getElementById('sidebar-overlay');
     if (!sidebar) return;
 
     document.querySelectorAll('[data-sidebar-toggle]')
@@ -261,9 +261,9 @@ const DropZone = (() => {
 
   function init() {
     document.querySelectorAll('.drop-zone').forEach(zone => {
-      const input    = zone.querySelector('input[type="file"]');
-      const label    = zone.querySelector('[data-drop-label]');
-      const counter  = zone.querySelector('[data-drop-count]');
+      const input = zone.querySelector('input[type="file"]');
+      const label = zone.querySelector('[data-drop-label]');
+      const counter = zone.querySelector('[data-drop-count]');
 
       // Drag events
       ['dragenter', 'dragover'].forEach(evt => {
@@ -334,7 +334,7 @@ const TreeViewer = (() => {
 
   function init() {
     viewport = document.getElementById('tree-viewport');
-    canvas   = document.getElementById('tree-canvas');
+    canvas = document.getElementById('tree-canvas');
     if (!viewport || !canvas) return;
 
     // ── Wheel zoom ──
@@ -348,8 +348,8 @@ const TreeViewer = (() => {
     // ── Drag to pan (mouse) ──
     viewport.addEventListener('mousedown', e => {
       dragging = true;
-      startX   = e.clientX - tx;
-      startY   = e.clientY - ty;
+      startX = e.clientX - tx;
+      startY = e.clientY - ty;
       viewport.style.cursor = 'grabbing';
     });
     window.addEventListener('mousemove', e => {
@@ -414,9 +414,9 @@ const ChatInterface = (() => {
   }
 
   function init() {
-    const form      = document.getElementById('chat-form');
-    const input     = document.getElementById('chat-input');
-    const messages  = document.getElementById('chat-messages');
+    const form = document.getElementById('chat-form');
+    const input = document.getElementById('chat-input');
+    const messages = document.getElementById('chat-messages');
     if (!form || !messages) return;
 
     form.addEventListener('submit', e => {
@@ -464,7 +464,7 @@ const Accordion = (() => {
       items.forEach(item => {
         const trigger = item.querySelector('[data-accordion-trigger]');
         const content = item.querySelector('[data-accordion-content]');
-        const icon    = trigger?.querySelector('[data-accordion-icon]');
+        const icon = trigger?.querySelector('[data-accordion-icon]');
 
         trigger?.addEventListener('click', () => {
           const isOpen = item.dataset.open === 'true';
@@ -485,7 +485,7 @@ const Accordion = (() => {
 
         // Init closed
         content.style.maxHeight = '0';
-        content.style.overflow  = 'hidden';
+        content.style.overflow = 'hidden';
         content.style.transition = 'max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1)';
       });
     });
@@ -538,14 +538,14 @@ const BlogFilter = (() => {
 const MobileNav = (() => {
 
   function init() {
-    const toggle  = document.getElementById('mobile-nav-toggle');
-    const menu    = document.getElementById('mobile-nav-menu');
+    const toggle = document.getElementById('mobile-nav-toggle');
+    const menu = document.getElementById('mobile-nav-menu');
     if (!toggle || !menu) return;
 
     toggle.addEventListener('click', () => {
       const open = menu.classList.contains('hidden');
       menu.classList.toggle('hidden', !open);
-      menu.classList.toggle('flex',    open);
+      menu.classList.toggle('flex', open);
       toggle.setAttribute('aria-expanded', String(open));
     });
   }
@@ -562,11 +562,11 @@ const CardTilt = (() => {
   function init() {
     document.querySelectorAll('[data-tilt]').forEach(card => {
       card.addEventListener('mousemove', e => {
-        const rect   = card.getBoundingClientRect();
-        const cx     = rect.left + rect.width  / 2;
-        const cy     = rect.top  + rect.height / 2;
-        const dx     = (e.clientX - cx) / (rect.width  / 2);
-        const dy     = (e.clientY - cy) / (rect.height / 2);
+        const rect = card.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = (e.clientX - cx) / (rect.width / 2);
+        const dy = (e.clientY - cy) / (rect.height / 2);
         const maxRot = 5; // degrees
         card.style.transform =
           `perspective(800px) rotateY(${dx * maxRot}deg) rotateX(${-dy * maxRot}deg) scale(1.02)`;
@@ -623,21 +623,21 @@ const FamilyTree = (() => {
 
   function draw() {
     const inner = document.getElementById('tree-canvas-inner');
-    const svg   = document.getElementById('tree-canvas-svg');
+    const svg = document.getElementById('tree-canvas-svg');
     if (!inner || !svg) return;
 
     svg.innerHTML = '';
 
     const containerRect = inner.getBoundingClientRect();
-    const cards         = inner.querySelectorAll('[data-tree-id]');
-    const positions     = {};
+    const cards = inner.querySelectorAll('[data-tree-id]');
+    const positions = {};
 
     cards.forEach(card => {
       const rect = card.getBoundingClientRect();
       positions[card.dataset.treeId] = {
-        right: rect.right  - containerRect.left,
-        left:  rect.left   - containerRect.left,
-        cy:    rect.top    + rect.height / 2 - containerRect.top,
+        right: rect.right - containerRect.left,
+        left: rect.left - containerRect.left,
+        cy: rect.top + rect.height / 2 - containerRect.top,
       };
     });
 
@@ -649,11 +649,11 @@ const FamilyTree = (() => {
 
       const src = positions[srcId];
       const dst = positions[dstId];
-      const x1  = src.right;
-      const y1  = src.cy;
-      const x2  = dst.left;
-      const y2  = dst.cy;
-      const mx  = (x1 + x2) / 2;
+      const x1 = src.right;
+      const y1 = src.cy;
+      const x2 = dst.left;
+      const y2 = dst.cy;
+      const mx = (x1 + x2) / 2;
 
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
       path.setAttribute('d', `M ${x1} ${y1} C ${mx} ${y1} ${mx} ${y2} ${x2} ${y2}`);
@@ -670,7 +670,7 @@ const FamilyTree = (() => {
     if (!document.getElementById('tree-canvas-inner')) return;
     // Draw once content is painted
     requestAnimationFrame(() => { draw(); });
-    window.addEventListener('load',   draw);
+    window.addEventListener('load', draw);
     window.addEventListener('resize', draw);
   }
 
@@ -685,17 +685,17 @@ const FamilyTree = (() => {
 const StatCounters = (() => {
 
   function animateCount(el) {
-    const target   = parseFloat(el.dataset.countTo) || 0;
-    const suffix   = el.dataset.countSuffix || '';
-    const prefix   = el.dataset.countPrefix || '';
+    const target = parseFloat(el.dataset.countTo) || 0;
+    const suffix = el.dataset.countSuffix || '';
+    const prefix = el.dataset.countPrefix || '';
     const duration = 1800;
-    const start    = performance.now();
+    const start = performance.now();
 
     function step(now) {
-      const elapsed  = now - start;
+      const elapsed = now - start;
       const progress = Math.min(elapsed / duration, 1);
-      const eased    = 1 - Math.pow(1 - progress, 3);
-      const value    = eased * target;
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = eased * target;
       el.textContent = prefix + (Number.isInteger(target) ? Math.round(value) : value.toFixed(1)) + suffix;
       if (progress < 1) requestAnimationFrame(step);
     }

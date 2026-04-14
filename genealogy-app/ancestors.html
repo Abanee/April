@@ -114,16 +114,14 @@
         <article class="glass-card p-0 overflow-hidden reveal">
           <div class="grid lg:grid-cols-2">
             <!-- Illustration -->
-            <div class="min-h-[300px] lg:min-h-[480px] flex flex-col items-center justify-center p-10 relative overflow-hidden"
-              style="background:linear-gradient(145deg,#D4C5A0 0%, #9B7D56 100%)">
-              <!-- Parchment aesthetic -->
-              <div class="absolute inset-0 opacity-10 texture-parchment"></div>
-              <div class="relative z-10 text-center">
-                <div class="text-6xl mb-4">🏴󠁧󠁢󠁳󠁣󠁴󠁿</div>
-                <p class="font-display text-2xl font-semibold mb-1" style="color:#2C1A06">Elspeth Morag MacAllister</p>
-                <p class="font-ui text-sm tracking-widest uppercase" style="color:#6B4A2E">b. 1847, Inverness · d. 1921, New York</p>
-                <div class="mt-6 p-4 rounded-lg" style="background:rgba(255,255,255,0.25)">
-                  <p class="font-display text-base italic" style="color:#3A2010">"She arrived with a loom, a Bible, and no husband. She left a legacy."</p>
+            <div class="min-h-[300px] lg:min-h-[480px] p-0 relative overflow-hidden">
+              <img src="assets/ancestor-elspeth.png" alt="Elspeth Morag MacAllister" class="absolute inset-0 w-full h-full object-cover">
+              <!-- Overlay text for a portrait look -->
+              <div class="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/80 to-transparent text-white">
+                <p class="font-display text-2xl font-semibold mb-1">Elspeth Morag MacAllister</p>
+                <p class="font-ui text-sm tracking-widest uppercase opacity-80">b. 1847, Inverness · d. 1921, New York</p>
+                <div class="mt-4 p-4 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20">
+                  <p class="font-display text-base italic">"She arrived with a loom, a Bible, and no husband. She left a legacy."</p>
                 </div>
               </div>
             </div>
@@ -168,10 +166,11 @@
 
           <!-- Story 1 -->
           <article class="story-card reveal" data-tilt>
-            <div class="story-card-img">
-              <div class="text-center px-6">
-                <div class="text-4xl mb-2">⚓</div>
-                <p class="font-ui text-xs tracking-widest uppercase" style="color:var(--color-text-muted)">Ship Manifest · Hamburg, 1902</p>
+            <div class="story-card-img relative h-48 overflow-hidden">
+              <img src="assets/doc-manifest.png" alt="Ship Manifest" class="absolute inset-0 w-full h-full object-cover">
+              <div class="absolute inset-0 bg-black/20"></div>
+              <div class="absolute bottom-4 left-6">
+                <p class="font-ui text-xs tracking-widest uppercase text-white drop-shadow-md">Ship Manifest · Hamburg, 1902</p>
               </div>
             </div>
             <div class="p-6">
@@ -189,10 +188,11 @@
 
           <!-- Story 2 -->
           <article class="story-card reveal" data-tilt style="animation-delay:0.1s">
-            <div class="story-card-img">
-              <div class="text-center px-6">
-                <div class="text-4xl mb-2">🕌</div>
-                <p class="font-ui text-xs tracking-widest uppercase" style="color:var(--color-text-muted)">Ottoman Registry · Baghdad, 1891</p>
+            <div class="story-card-img relative h-48 overflow-hidden">
+              <img src="assets/doc-ottoman.png" alt="Ottoman Registry" class="absolute inset-0 w-full h-full object-cover">
+              <div class="absolute inset-0 bg-black/20"></div>
+              <div class="absolute bottom-4 left-6">
+                <p class="font-ui text-xs tracking-widest uppercase text-white drop-shadow-md">Ottoman Registry · Baghdad, 1891</p>
               </div>
             </div>
             <div class="p-6">
@@ -210,10 +210,11 @@
 
           <!-- Story 3 -->
           <article class="story-card reveal" data-tilt style="animation-delay:0.2s">
-            <div class="story-card-img">
-              <div class="text-center px-6">
-                <div class="text-4xl mb-2">🌾</div>
-                <p class="font-ui text-xs tracking-widest uppercase" style="color:var(--color-text-muted)">Freedmen's Bureau Record · Georgia, 1866</p>
+            <div class="story-card-img relative h-48 overflow-hidden">
+              <img src="assets/doc-freedmen.png" alt="Freedmen's Bureau Record" class="absolute inset-0 w-full h-full object-cover">
+              <div class="absolute inset-0 bg-black/20"></div>
+              <div class="absolute bottom-4 left-6">
+                <p class="font-ui text-xs tracking-widest uppercase text-white drop-shadow-md">Freedmen's Bureau Record · Georgia, 1866</p>
               </div>
             </div>
             <div class="p-6">
@@ -231,10 +232,11 @@
 
           <!-- Story 4 -->
           <article class="story-card reveal" data-tilt style="animation-delay:0.05s">
-            <div class="story-card-img">
-              <div class="text-center px-6">
-                <div class="text-4xl mb-2">🍷</div>
-                <p class="font-ui text-xs tracking-widest uppercase" style="color:var(--color-text-muted)">Registro Civil · Tuscany, 1878</p>
+            <div class="story-card-img relative h-48 overflow-hidden">
+              <img src="assets/doc-europe-trio.png" alt="Registro Civil" class="absolute inset-0 w-full h-full object-cover" style="object-position: center top;">
+              <div class="absolute inset-0 bg-black/20"></div>
+              <div class="absolute bottom-4 left-6">
+                <p class="font-ui text-xs tracking-widest uppercase text-white drop-shadow-md">Registro Civil · Tuscany, 1878</p>
               </div>
             </div>
             <div class="p-6">
@@ -252,10 +254,11 @@
 
           <!-- Story 5 -->
           <article class="story-card reveal" data-tilt style="animation-delay:0.15s">
-            <div class="story-card-img">
-              <div class="text-center px-6">
-                <div class="text-4xl mb-2">❄️</div>
-                <p class="font-ui text-xs tracking-widest uppercase" style="color:var(--color-text-muted)">Church Registry · Oslo, 1854</p>
+            <div class="story-card-img relative h-48 overflow-hidden">
+              <img src="assets/doc-europe-trio.png" alt="Church Registry" class="absolute inset-0 w-full h-full object-cover" style="object-position: center;">
+              <div class="absolute inset-0 bg-black/20"></div>
+              <div class="absolute bottom-4 left-6">
+                <p class="font-ui text-xs tracking-widest uppercase text-white drop-shadow-md">Church Registry · Oslo, 1854</p>
               </div>
             </div>
             <div class="p-6">
@@ -273,10 +276,11 @@
 
           <!-- Story 6 -->
           <article class="story-card reveal" data-tilt style="animation-delay:0.25s">
-            <div class="story-card-img">
-              <div class="text-center px-6">
-                <div class="text-4xl mb-2">🎻</div>
-                <p class="font-ui text-xs tracking-widest uppercase" style="color:var(--color-text-muted)">Community Record · Kraków, 1903</p>
+            <div class="story-card-img relative h-48 overflow-hidden">
+              <img src="assets/doc-europe-trio.png" alt="Community Record" class="absolute inset-0 w-full h-full object-cover" style="object-position: center bottom;">
+              <div class="absolute inset-0 bg-black/20"></div>
+              <div class="absolute bottom-4 left-6">
+                <p class="font-ui text-xs tracking-widest uppercase text-white drop-shadow-md">Community Record · Kraków, 1903</p>
               </div>
             </div>
             <div class="p-6">
@@ -314,7 +318,7 @@
               "The genealogist found my great-grandfather's naturalisation papers within three days of starting. I had searched for those records for fifteen years."
             </p>
             <footer class="flex items-center gap-3 mt-auto">
-              <div class="w-10 h-10 rounded-full flex items-center justify-center font-ui font-semibold text-sm" style="background:var(--color-accent);color:#FEFCF8">DK</div>
+              <img src="assets/client-david.png" alt="David Kowalczyk" class="w-10 h-10 rounded-full object-cover border border-[var(--color-border)]">
               <div>
                 <p class="font-ui text-sm font-medium">David Kowalczyk</p>
                 <p class="font-ui text-xs" style="color:var(--color-text-faint)">Chicago, IL</p>
@@ -328,7 +332,7 @@
               "The bound Heritage Report arrived and I sat with it for four hours straight. My grandmother's face — in a photograph from 1902 — looking back at me. Worth every penny."
             </p>
             <footer class="flex items-center gap-3 mt-auto">
-              <div class="w-10 h-10 rounded-full flex items-center justify-center font-ui font-semibold text-sm" style="background:var(--color-accent);color:#FEFCF8">YA</div>
+              <img src="assets/client-yara.png" alt="Yara Al-Rashidi" class="w-10 h-10 rounded-full object-cover border border-[var(--color-border)]">
               <div>
                 <p class="font-ui text-sm font-medium">Yara Al-Rashidi</p>
                 <p class="font-ui text-xs" style="color:var(--color-text-faint)">London, UK</p>
@@ -342,7 +346,7 @@
               "I requested a difficult research project — West African heritage pre-1900 — and Rootbound didn't flinch. Dr. Diallo's DNA interpretation connected me to family in Senegal."
             </p>
             <footer class="flex items-center gap-3 mt-auto">
-              <div class="w-10 h-10 rounded-full flex items-center justify-center font-ui font-semibold text-sm" style="background:var(--color-accent);color:#FEFCF8">MW</div>
+              <img src="assets/client-marcus.png" alt="Marcus Williams" class="w-10 h-10 rounded-full object-cover border border-[var(--color-border)]">
               <div>
                 <p class="font-ui text-sm font-medium">Marcus Williams</p>
                 <p class="font-ui text-xs" style="color:var(--color-text-faint)">Atlanta, GA</p>
@@ -356,7 +360,7 @@
               "I cried reading the section about my great-great-grandmother. She had kept a diary. Rootbound found it in a Glaswegian archive. I didn't even know diaries like that survived."
             </p>
             <footer class="flex items-center gap-3 mt-auto">
-              <div class="w-10 h-10 rounded-full flex items-center justify-center font-ui font-semibold text-sm" style="background:var(--color-accent);color:#FEFCF8">MO</div>
+              <img src="assets/client-margaret.png" alt="Margaret O'Sullivan" class="w-10 h-10 rounded-full object-cover border border-[var(--color-border)]">
               <div>
                 <p class="font-ui text-sm font-medium">Margaret O'Sullivan</p>
                 <p class="font-ui text-xs" style="color:var(--color-text-faint)">Boston, MA</p>

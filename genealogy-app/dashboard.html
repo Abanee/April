@@ -1,35 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" class="scroll-smooth">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Rootbound Client Dashboard — track your genealogy research, view your family tree, upload documents, and communicate with your genealogist."/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Rootbound Client Dashboard — track your genealogy research, view your family tree, upload documents, and communicate with your genealogist." />
   <title>Dashboard — Rootbound Genealogy</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/style.css" />
   <script>
     tailwind.config = {
       darkMode: 'class',
-      theme: { extend: {
-        fontFamily: {
-          display: ['"Cormorant Garamond"','Georgia','serif'],
-          body:    ['"EB Garamond"','Georgia','serif'],
-          ui:      ['Jost','sans-serif'],
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            body: ['"EB Garamond"', 'Georgia', 'serif'],
+            ui: ['Jost', 'sans-serif'],
+          }
         }
-      }}
+      }
     }
   </script>
   <style>
     /* ── Dashboard Layout ──────────────────────────────────── */
-    .dashboard-body {
-      display: grid;
-      grid-template-columns: var(--sidebar-width) 1fr;
-      grid-template-rows: auto 1fr;
-      min-height: 100vh;
-    }
-    @media (max-width: 1023px) {
-      .dashboard-body { grid-template-columns: 1fr; }
-    }
 
     /* Tree viewport */
     #tree-viewport {
@@ -37,12 +32,13 @@
       border-radius: 10px;
       border: 1px solid var(--color-border);
       background:
-        radial-gradient(circle at 30% 40%, rgba(196,162,116,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 30% 40%, rgba(196, 162, 116, 0.06) 0%, transparent 50%),
         var(--color-bg);
       cursor: grab;
       position: relative;
       user-select: none;
     }
+
     #tree-canvas {
       display: flex;
       align-items: center;
@@ -61,60 +57,88 @@
       padding: 1.25rem 1.5rem;
       transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
     }
+
     .stat-card:hover {
       border-color: var(--color-accent);
-      box-shadow: 0 0 0 1px var(--glow-accent), 0 4px 20px rgba(0,0,0,0.08);
+      box-shadow: 0 0 0 1px var(--glow-accent), 0 4px 20px rgba(0, 0, 0, 0.08);
       transform: translateY(-2px);
     }
 
     /* Notification dot */
     .notif-dot {
-      position: absolute; top: 6px; right: 6px;
-      width: 7px; height: 7px; border-radius: 50%;
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
       background: #E74C3C;
       border: 1.5px solid var(--color-bg-card);
     }
 
     /* Progress connector line */
     .step-connector {
-      flex: 1; height: 2px;
+      flex: 1;
+      height: 2px;
       background: var(--color-border);
       transition: background 0.4s;
       position: relative;
     }
+
     .step-connector.done {
       background: var(--color-accent);
     }
+
     .step-connector::after {
       content: '';
-      position: absolute; inset: 0;
+      position: absolute;
+      inset: 0;
       background: var(--color-accent);
       transform-origin: left;
       transform: scaleX(0);
-      transition: transform 1.2s cubic-bezier(0.4,0,0.2,1);
+      transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .step-connector.animate-fill::after { transform: scaleX(1); }
+
+    .step-connector.animate-fill::after {
+      transform: scaleX(1);
+    }
 
     /* Ring progress circle */
     .ring-progress {
       transform: rotate(-90deg);
       transform-origin: 50% 50%;
     }
-    .ring-track { fill: none; stroke: var(--color-border); }
-    .ring-fill   { fill: none; stroke: var(--color-accent); stroke-linecap: round;
-                   stroke-dasharray: 251; stroke-dashoffset: 251;
-                   transition: stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1); }
+
+    .ring-track {
+      fill: none;
+      stroke: var(--color-border);
+    }
+
+    .ring-fill {
+      fill: none;
+      stroke: var(--color-accent);
+      stroke-linecap: round;
+      stroke-dasharray: 251;
+      stroke-dashoffset: 251;
+      transition: stroke-dashoffset 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
     /* Upload progress */
-    .upload-item { animation: fade-in 0.3s ease-out both; }
+    .upload-item {
+      animation: fade-in 0.3s ease-out both;
+    }
 
     /* Chat scroll */
-    #chat-messages { scroll-behavior: smooth; }
+    #chat-messages {
+      scroll-behavior: smooth;
+    }
 
     /* Mobile overlay */
     #sidebar-overlay {
-      position: fixed; inset: 0; z-index: 40;
-      background: rgba(0,0,0,0.45);
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      background: rgba(0, 0, 0, 0.45);
       backdrop-filter: blur(4px);
       transition: opacity 0.3s;
     }
@@ -123,931 +147,1127 @@
 
 <body class="texture-parchment">
 
-<!-- Sidebar Overlay (mobile) -->
-<div id="sidebar-overlay" class="opacity-0 pointer-events-none lg:hidden" aria-hidden="true"></div>
+  <!-- Sidebar Overlay (mobile) -->
+  <div id="sidebar-overlay" class="opacity-0 pointer-events-none lg:hidden" aria-hidden="true"></div>
 
-<!-- ═══════════════════════════════════════════════════════════
+  <!-- ═══════════════════════════════════════════════════════════
      SIDEBAR
 ════════════════════════════════════════════════════════════════ -->
-<aside id="sidebar" class="sidebar" role="navigation" aria-label="Dashboard navigation">
+  <aside id="sidebar" class="sidebar" role="navigation" aria-label="Dashboard navigation">
 
-  <!-- Logo & collapse -->
-  <div class="flex items-center justify-between px-5 py-5 border-b" style="border-color:var(--color-border); min-height:var(--header-height)">
-    <a href="index.html" data-vt class="flex items-center gap-2.5">
-      <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <circle cx="16" cy="16" r="15.5" stroke="var(--color-accent)" stroke-width="1"/>
-        <line x1="16" y1="28" x2="16" y2="8"  stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="16" y1="14" x2="9"  y2="9"  stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="16" y1="14" x2="23" y2="9"  stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round"/>
-        <circle cx="9" cy="8" r="2" fill="var(--color-accent)"/>
-        <circle cx="23" cy="8" r="2" fill="var(--color-accent)"/>
-      </svg>
-      <span class="font-display text-xl font-semibold">Rootbound</span>
-    </a>
-    <button data-sidebar-toggle class="lg:hidden w-7 h-7 flex items-center justify-center rounded-md hover:bg-[var(--color-bg-alt)] transition-all" aria-label="Close sidebar">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg>
-    </button>
-  </div>
+    <!-- Logo & collapse -->
+    <div class="flex items-center justify-between px-5 py-5 border-b"
+      style="border-color:var(--color-border); min-height:var(--header-height)">
+      <a href="index.html" data-vt class="flex items-center gap-2.5">
+        <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="16" cy="16" r="15.5" stroke="var(--color-accent)" stroke-width="1" />
+          <line x1="16" y1="28" x2="16" y2="8" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" />
+          <line x1="16" y1="14" x2="9" y2="9" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" />
+          <line x1="16" y1="14" x2="23" y2="9" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" />
+          <circle cx="9" cy="8" r="2" fill="var(--color-accent)" />
+          <circle cx="23" cy="8" r="2" fill="var(--color-accent)" />
+        </svg>
+        <span class="font-display text-xl font-semibold">Rootbound</span>
+      </a>
+      <button data-sidebar-toggle
+        class="lg:hidden w-7 h-7 flex items-center justify-center rounded-md hover:bg-[var(--color-bg-alt)] transition-all"
+        aria-label="Close sidebar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
 
-  <!-- Client profile snippet -->
-  <div class="px-5 py-4 border-b" style="border-color:var(--color-border)">
-    <div class="flex items-center gap-3">
-      <div class="w-10 h-10 rounded-full flex items-center justify-center font-ui font-semibold text-sm shrink-0" style="background:var(--color-accent);color:#FEFCF8">EH</div>
-      <div class="overflow-hidden">
-        <p class="font-ui text-sm font-medium truncate">Eleanor Harrington</p>
-        <p class="font-ui text-xs truncate" style="color:var(--color-text-faint)">Deep Ancestry Package</p>
+    <!-- Client profile snippet -->
+    <div class="px-5 py-4 border-b" style="border-color:var(--color-border)">
+      <div class="flex items-center gap-3">
+        <img src="assets/client-yara.png" alt="Eleanor Harrington" class="w-10 h-10 rounded-full object-cover shrink-0 border border-[var(--color-border)]">
+        <div class="overflow-hidden">
+          <p class="font-ui text-sm font-medium truncate">Eleanor Harrington</p>
+          <p class="font-ui text-xs truncate" style="color:var(--color-text-faint)">Deep Ancestry Package</p>
+        </div>
+      </div>
+      <!-- Mini progress ring -->
+      <div class="flex items-center gap-3 mt-3 p-2 rounded-lg" style="background:var(--color-bg-alt)">
+        <svg width="36" height="36" viewBox="0 0 36 36" class="ring-progress shrink-0" aria-hidden="true">
+          <circle class="ring-track" cx="18" cy="18" r="15" stroke-width="3" />
+          <circle class="ring-fill" id="sidebar-ring" cx="18" cy="18" r="15" stroke-width="3"
+            style="stroke-dashoffset:157" /><!-- 37.5% done: 251*(1-0.375)=156.9 -->
+        </svg>
+        <div>
+          <p class="font-ui text-xs font-medium">Research Progress</p>
+          <p class="font-ui text-xs" style="color:var(--color-accent)">37.5% Complete</p>
+        </div>
       </div>
     </div>
-    <!-- Mini progress ring -->
-    <div class="flex items-center gap-3 mt-3 p-2 rounded-lg" style="background:var(--color-bg-alt)">
-      <svg width="36" height="36" viewBox="0 0 36 36" class="ring-progress shrink-0" aria-hidden="true">
-        <circle class="ring-track" cx="18" cy="18" r="15" stroke-width="3"/>
-        <circle class="ring-fill" id="sidebar-ring" cx="18" cy="18" r="15" stroke-width="3" style="stroke-dashoffset:157"/><!-- 37.5% done: 251*(1-0.375)=156.9 -->
-      </svg>
-      <div>
-        <p class="font-ui text-xs font-medium">Research Progress</p>
-        <p class="font-ui text-xs" style="color:var(--color-accent)">37.5% Complete</p>
-      </div>
+
+    <!-- Navigation Links -->
+    <nav class="flex-1 px-3 py-4 flex flex-col gap-1" aria-label="Sidebar links">
+
+      <p class="font-ui text-xs tracking-widest uppercase px-3 mb-1" style="color:var(--color-text-faint)">Main</p>
+
+      <a href="#overview" class="nav-link active" onclick="showPanel('overview', this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          aria-hidden="true">
+          <rect x="3" y="3" width="7" height="7" rx="1" />
+          <rect x="14" y="3" width="7" height="7" rx="1" />
+          <rect x="3" y="14" width="7" height="7" rx="1" />
+          <rect x="14" y="14" width="7" height="7" rx="1" />
+        </svg>
+        Overview
+      </a>
+
+      <a href="#tree" class="nav-link" onclick="showPanel('tree', this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          aria-hidden="true">
+          <circle cx="12" cy="5" r="2" />
+          <circle cx="5" cy="19" r="2" />
+          <circle cx="19" cy="19" r="2" />
+          <line x1="12" y1="7" x2="5" y2="17" stroke-linecap="round" />
+          <line x1="12" y1="7" x2="19" y2="17" stroke-linecap="round" />
+        </svg>
+        My Tree
+      </a>
+
+      <a href="#documents" class="nav-link relative" onclick="showPanel('documents', this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          aria-hidden="true">
+          <path stroke-linecap="round"
+            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        Documents
+        <span class="ms-auto badge text-xs px-1.5 py-0.5"
+          style="background:var(--color-accent);color:#FEFCF8;border:none">3</span>
+      </a>
+
+      <a href="#messages" class="nav-link relative" onclick="showPanel('messages', this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          aria-hidden="true">
+          <path stroke-linecap="round"
+            d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        </svg>
+        Messages
+        <span class="notif-dot" aria-label="2 unread messages"></span>
+      </a>
+
+      <a href="#reports" class="nav-link" onclick="showPanel('reports', this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          aria-hidden="true">
+          <path stroke-linecap="round"
+            d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+        </svg>
+        Reports
+      </a>
+
+      <hr class="my-2" style="border-color:var(--color-border)" />
+      <p class="font-ui text-xs tracking-widest uppercase px-3 mb-1" style="color:var(--color-text-faint)">Site</p>
+      <a href="index.html" data-vt class="nav-link">Home</a>
+      <a href="home2.html" data-vt class="nav-link">Home 2</a>
+      <a href="ancestors.html" data-vt class="nav-link">Ancestors</a>
+
+      <hr class="my-2" style="border-color:var(--color-border)" />
+      <p class="font-ui text-xs tracking-widest uppercase px-3 mb-1" style="color:var(--color-text-faint)">Settings</p>
+
+      <a href="#" class="nav-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          aria-hidden="true">
+          <path stroke-linecap="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+        </svg>
+        My Profile
+      </a>
+
+      <a href="#" class="nav-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          aria-hidden="true">
+          <path stroke-linecap="round"
+            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          <circle cx="12" cy="12" r="3" />
+        </svg>
+        Preferences
+      </a>
+    </nav>
+
+    <!-- Theme + Dir toggles at bottom of sidebar -->
+    <div class="px-4 py-4 border-t flex items-center gap-2" style="border-color:var(--color-border)">
+      <button data-theme-toggle aria-label="Toggle theme"
+        class="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-all font-ui text-xs"
+        style="color:var(--color-text-muted)">
+        <svg class="icon-moon w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+        <svg class="icon-sun w-3.5 h-3.5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+        </svg>
+        <span class="icon-moon-label">Dark</span>
+        <span class="icon-sun-label hidden">Light</span>
+      </button>
+      <button data-dir-toggle
+        class="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-all font-ui text-xs"
+        style="color:var(--color-text-muted)">
+        <span data-dir-label>RTL</span>
+      </button>
+      <a href="index.html" data-vt
+        class="flex items-center justify-center w-8 h-8 rounded-lg border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-all"
+        title="Back to site" aria-label="Back to main site">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" d="M3 12h18M3 12l6-6M3 12l6 6" />
+        </svg>
+      </a>
     </div>
-  </div>
-
-  <!-- Navigation Links -->
-  <nav class="flex-1 px-3 py-4 flex flex-col gap-1" aria-label="Sidebar links">
-
-    <p class="font-ui text-xs tracking-widest uppercase px-3 mb-1" style="color:var(--color-text-faint)">Main</p>
-
-    <a href="#overview" class="nav-link active" onclick="showPanel('overview', this)">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-        <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
-        <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
-      </svg>
-      Overview
-    </a>
-
-    <a href="#tree" class="nav-link" onclick="showPanel('tree', this)">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-        <circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/>
-        <line x1="12" y1="7" x2="5"  y2="17" stroke-linecap="round"/>
-        <line x1="12" y1="7" x2="19" y2="17" stroke-linecap="round"/>
-      </svg>
-      My Tree
-    </a>
-
-    <a href="#documents" class="nav-link relative" onclick="showPanel('documents', this)">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-        <path stroke-linecap="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-      </svg>
-      Documents
-      <span class="ms-auto badge text-xs px-1.5 py-0.5" style="background:var(--color-accent);color:#FEFCF8;border:none">3</span>
-    </a>
-
-    <a href="#messages" class="nav-link relative" onclick="showPanel('messages', this)">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-        <path stroke-linecap="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-      </svg>
-      Messages
-      <span class="notif-dot" aria-label="2 unread messages"></span>
-    </a>
-
-    <a href="#reports" class="nav-link" onclick="showPanel('reports', this)">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-        <path stroke-linecap="round" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-      </svg>
-      Reports
-    </a>
-
-    <hr class="my-2" style="border-color:var(--color-border)"/>
-    <p class="font-ui text-xs tracking-widest uppercase px-3 mb-1" style="color:var(--color-text-faint)">Site</p>
-    <a href="index.html"     data-vt class="nav-link">Home</a>
-    <a href="home2.html"     data-vt class="nav-link">Home 2</a>
-    <a href="ancestors.html" data-vt class="nav-link">Ancestors</a>
-
-    <hr class="my-2" style="border-color:var(--color-border)"/>
-    <p class="font-ui text-xs tracking-widest uppercase px-3 mb-1" style="color:var(--color-text-faint)">Settings</p>
-
-    <a href="#" class="nav-link">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-        <path stroke-linecap="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-      </svg>
-      My Profile
-    </a>
-
-    <a href="#" class="nav-link">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-        <path stroke-linecap="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-        <circle cx="12" cy="12" r="3"/>
-      </svg>
-      Preferences
-    </a>
-  </nav>
-
-  <!-- Theme + Dir toggles at bottom of sidebar -->
-  <div class="px-4 py-4 border-t flex items-center gap-2" style="border-color:var(--color-border)">
-    <button data-theme-toggle aria-label="Toggle theme"
-      class="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-all font-ui text-xs" style="color:var(--color-text-muted)">
-      <svg class="icon-moon w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      <svg class="icon-sun w-3.5 h-3.5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg>
-      <span class="icon-moon-label">Dark</span>
-      <span class="icon-sun-label hidden">Light</span>
-    </button>
-    <button data-dir-toggle
-      class="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-all font-ui text-xs" style="color:var(--color-text-muted)">
-      <span data-dir-label>RTL</span>
-    </button>
-    <a href="index.html" data-vt class="flex items-center justify-center w-8 h-8 rounded-lg border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-all" title="Back to site" aria-label="Back to main site">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M3 12h18M3 12l6-6M3 12l6 6"/></svg>
-    </a>
-  </div>
-</aside>
+  </aside>
 
 
-<!-- ═══════════════════════════════════════════════════════════
+  <!-- ═══════════════════════════════════════════════════════════
      MAIN CONTENT AREA
 ════════════════════════════════════════════════════════════════ -->
-<div class="main-content flex flex-col min-h-screen" style="background:var(--color-bg)">
+  <div class="main-content flex flex-col min-h-screen" style="background:var(--color-bg)">
 
-  <!-- ── DASHBOARD TOP BAR ─────────────────────────────────── -->
-  <header class="sticky top-0 z-30 flex items-center justify-between px-6 border-b"
-    style="height:var(--header-height); background:rgba(250,246,240,0.92); backdrop-filter:blur(20px); border-color:var(--color-border); transition:background 0.3s">
+    <!-- ── DASHBOARD TOP BAR ─────────────────────────────────── -->
+    <header class="sticky top-0 z-30 flex items-center justify-between px-6 border-b"
+      style="height:var(--header-height); background:var(--color-bg); opacity:0.96; backdrop-filter:blur(24px); border-color:var(--color-border); transition:background 0.3s">
 
-    <div class="flex items-center gap-4">
-      <!-- Hamburger (mobile + desktop collapse) -->
-      <button data-sidebar-toggle aria-label="Toggle sidebar"
-        class="w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-lg border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-all">
-        <span class="w-4 h-0.5 rounded-full bg-current transition-all"></span>
-        <span class="w-5 h-0.5 rounded-full bg-current transition-all"></span>
-        <span class="w-4 h-0.5 rounded-full bg-current transition-all"></span>
-      </button>
+      <div class="flex items-center gap-4">
+        <!-- Hamburger (mobile + desktop collapse) -->
+        <button data-sidebar-toggle aria-label="Toggle sidebar"
+          class="w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-lg border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-all">
+          <span class="w-4 h-0.5 rounded-full bg-current transition-all"></span>
+          <span class="w-5 h-0.5 rounded-full bg-current transition-all"></span>
+          <span class="w-4 h-0.5 rounded-full bg-current transition-all"></span>
+        </button>
 
-      <!-- Breadcrumb -->
-      <nav aria-label="Breadcrumb">
-        <ol class="flex items-center gap-2 font-ui text-sm" style="color:var(--color-text-faint)">
-          <li><a href="index.html" data-vt class="hover:opacity-80" style="color:var(--color-text-faint)">Rootbound</a></li>
-          <li aria-hidden="true">/</li>
-          <li id="breadcrumb-page" style="color:var(--color-accent)" aria-current="page">Overview</li>
-        </ol>
-      </nav>
-    </div>
-
-    <!-- Right controls -->
-    <div class="flex items-center gap-3">
-      <!-- Notification bell -->
-      <button class="relative w-9 h-9 flex items-center justify-center rounded-lg border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-all" aria-label="Notifications (2 unread)">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-          <path stroke-linecap="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
-        </svg>
-        <span class="notif-dot" aria-hidden="true"></span>
-      </button>
-
-      <!-- Genealogist quick-contact -->
-      <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[var(--color-border)]" style="background:var(--color-bg-card)">
-        <div class="w-6 h-6 rounded-full flex items-center justify-center font-ui text-xs font-semibold shrink-0" style="background:var(--color-accent);color:#FEFCF8">SB</div>
-        <div>
-          <p class="font-ui text-xs font-medium leading-none">Dr. Siobhán Brennan</p>
-          <p class="font-ui text-xs leading-none" style="color:var(--color-text-faint)">Your Genealogist</p>
-        </div>
-        <span class="w-2 h-2 rounded-full ms-1 shrink-0" style="background:#27AE60" aria-label="Online" title="Online"></span>
+        <!-- Breadcrumb -->
+        <nav aria-label="Breadcrumb">
+          <ol class="flex items-center gap-2 font-ui text-sm" style="color:var(--color-text-faint)">
+            <li><a href="index.html" data-vt class="hover:opacity-80"
+                style="color:var(--color-text-faint)">Rootbound</a></li>
+            <li aria-hidden="true">/</li>
+            <li id="breadcrumb-page" style="color:var(--color-accent)" aria-current="page">Overview</li>
+          </ol>
+        </nav>
       </div>
 
-      <!-- Avatar -->
-      <button class="w-9 h-9 rounded-full flex items-center justify-center font-ui font-semibold text-sm shrink-0" style="background:var(--color-accent);color:#FEFCF8" aria-label="Account menu">
-        EH
-      </button>
-    </div>
-  </header>
+      <!-- Right controls -->
+      <div class="flex items-center gap-3">
+        <!-- Notification bell -->
+        <button
+          class="relative w-9 h-9 flex items-center justify-center rounded-lg border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-all"
+          aria-label="Notifications (2 unread)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            aria-hidden="true">
+            <path stroke-linecap="round"
+              d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+          </svg>
+          <span class="notif-dot" aria-hidden="true"></span>
+        </button>
+
+        <!-- Genealogist quick-contact -->
+        <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[var(--color-border)]"
+          style="background:var(--color-bg-card)">
+          <img src="assets/team-siobhan.png" alt="Dr. Siobhán Brennan" class="w-7 h-7 rounded-full object-cover shrink-0">
+          <div>
+            <p class="font-ui text-xs font-medium leading-none">Dr. Siobhán Brennan</p>
+            <p class="font-ui text-xs leading-none" style="color:var(--color-text-faint)">Your Genealogist</p>
+          </div>
+          <span class="w-2 h-2 rounded-full ms-1 shrink-0" style="background:#27AE60" aria-label="Online"
+            title="Online"></span>
+        </div>
+
+        <!-- Avatar -->
+        <button class="w-9 h-9 rounded-full overflow-hidden border border-[var(--color-border)] shrink-0" aria-label="Account menu">
+          <img src="assets/client-yara.png" alt="Eleanor Harrington" class="w-full h-full object-cover">
+        </button>
+      </div>
+    </header>
 
 
-  <!-- ══════════════════════════════════════════════════════════
+    <!-- ══════════════════════════════════════════════════════════
        PANEL: OVERVIEW
   ═══════════════════════════════════════════════════════════════ -->
-  <div id="panel-overview" class="panel flex-1 p-6 page-content" role="region" aria-labelledby="overview-heading">
+    <div id="panel-overview" class="panel flex-1 p-6 flex flex-col gap-10 page-content" role="region" aria-labelledby="overview-heading">
 
-    <!-- Welcome banner -->
-    <div class="mb-8">
-      <h1 id="overview-heading" class="font-display text-4xl font-semibold animate-fade-in-up">
-        Good morning, Eleanor. 🌿
-      </h1>
-      <p class="font-body mt-1 animate-fade-in-up-d1" style="color:var(--color-text-muted)">
-        Here's where your family's story stands today.
-      </p>
-    </div>
-
-    <!-- Stats Row -->
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-
-      <div class="stat-card animate-fade-in-up-d1">
-        <p class="font-ui text-xs tracking-widest uppercase mb-2" style="color:var(--color-text-faint)">Ancestors Found</p>
-        <p class="font-display text-4xl font-semibold text-gradient">38</p>
-        <p class="font-ui text-xs mt-1.5" style="color:var(--color-accent)">↑ 6 this week</p>
-      </div>
-
-      <div class="stat-card animate-fade-in-up-d2">
-        <p class="font-ui text-xs tracking-widest uppercase mb-2" style="color:var(--color-text-faint)">Records Found</p>
-        <p class="font-display text-4xl font-semibold text-gradient">142</p>
-        <p class="font-ui text-xs mt-1.5" style="color:var(--color-accent)">↑ 23 this week</p>
-      </div>
-
-      <div class="stat-card animate-fade-in-up-d3">
-        <p class="font-ui text-xs tracking-widest uppercase mb-2" style="color:var(--color-text-faint)">Generations Deep</p>
-        <p class="font-display text-4xl font-semibold text-gradient">5</p>
-        <p class="font-ui text-xs mt-1.5" style="color:var(--color-text-faint)">of 7 target</p>
-      </div>
-
-      <div class="stat-card animate-fade-in-up-d4">
-        <p class="font-ui text-xs tracking-widest uppercase mb-2" style="color:var(--color-text-faint)">Est. Completion</p>
-        <p class="font-display text-4xl font-semibold">
-          <span class="text-gradient">Jun</span>
-          <span class="text-3xl" style="color:var(--color-text-muted)"> '26</span>
+      <!-- Welcome banner -->
+      <div class="mb-8">
+        <h1 id="overview-heading" class="font-display text-4xl font-semibold animate-fade-in-up">
+          Good morning, Eleanor. 🌿
+        </h1>
+        <p class="font-body mt-1 animate-fade-in-up-d1" style="color:var(--color-text-muted)">
+          Here's where your family's story stands today.
         </p>
-        <p class="font-ui text-xs mt-1.5" style="color:var(--color-text-faint)">~8 weeks away</p>
       </div>
 
-    </div>
+      <!-- Stats Row -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
 
-    <!-- ── PROGRESS TRACKER ──────────────────────────────────── -->
-    <section class="glass-card p-7 mb-8 animate-fade-in-up-d2" aria-labelledby="progress-heading">
-      <h2 id="progress-heading" class="font-display text-2xl font-semibold mb-6">Research Progress</h2>
-
-      <!-- Desktop: horizontal stepper -->
-      <div class="hidden md:flex items-center gap-0 overflow-x-auto pb-2" role="list">
-
-        <!-- Step 1: Done -->
-        <div class="flex flex-col items-center gap-2 min-w-[120px]" role="listitem">
-          <div class="step-node done" aria-label="Completed: Initial Consultation">✓</div>
-          <p class="font-ui text-xs font-medium text-center">Initial Consultation</p>
-          <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">Completed</p>
+        <div class="stat-card animate-fade-in-up-d1">
+          <p class="font-ui text-xs tracking-widest uppercase mb-2" style="color:var(--color-text-faint)">Ancestors
+            Found</p>
+          <p class="font-display text-4xl font-semibold text-gradient">38</p>
+          <p class="font-ui text-xs mt-1.5" style="color:var(--color-accent)">↑ 6 this week</p>
         </div>
-        <div class="step-connector done animate-fill" aria-hidden="true"></div>
 
-        <!-- Step 2: Done -->
-        <div class="flex flex-col items-center gap-2 min-w-[120px]" role="listitem">
-          <div class="step-node done" aria-label="Completed: Document Search">✓</div>
-          <p class="font-ui text-xs font-medium text-center">Document Search</p>
-          <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">Completed</p>
+        <div class="stat-card animate-fade-in-up-d2">
+          <p class="font-ui text-xs tracking-widest uppercase mb-2" style="color:var(--color-text-faint)">Records Found
+          </p>
+          <p class="font-display text-4xl font-semibold text-gradient">142</p>
+          <p class="font-ui text-xs mt-1.5" style="color:var(--color-accent)">↑ 23 this week</p>
         </div>
-        <div class="step-connector done animate-fill" aria-hidden="true"></div>
 
-        <!-- Step 3: Active -->
-        <div class="flex flex-col items-center gap-2 min-w-[120px]" role="listitem">
-          <div class="step-node active" aria-label="In Progress: Archival Research" aria-current="step">3</div>
-          <p class="font-ui text-xs font-medium text-center" style="color:var(--color-accent)">Archival Research</p>
-          <p class="font-ui text-xs text-center" style="color:var(--color-accent)">In progress</p>
+        <div class="stat-card animate-fade-in-up-d3">
+          <p class="font-ui text-xs tracking-widest uppercase mb-2" style="color:var(--color-text-faint)">Generations
+            Deep</p>
+          <p class="font-display text-4xl font-semibold text-gradient">5</p>
+          <p class="font-ui text-xs mt-1.5" style="color:var(--color-text-faint)">of 7 target</p>
         </div>
-        <div class="step-connector" aria-hidden="true"></div>
 
-        <!-- Step 4 -->
-        <div class="flex flex-col items-center gap-2 min-w-[120px]" role="listitem">
-          <div class="step-node" aria-label="Pending: DNA Analysis">4</div>
-          <p class="font-ui text-xs font-medium text-center" style="color:var(--color-text-faint)">DNA Analysis</p>
-          <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">Pending</p>
-        </div>
-        <div class="step-connector" aria-hidden="true"></div>
-
-        <!-- Step 5 -->
-        <div class="flex flex-col items-center gap-2 min-w-[120px]" role="listitem">
-          <div class="step-node" aria-label="Pending: Report Assembly">5</div>
-          <p class="font-ui text-xs font-medium text-center" style="color:var(--color-text-faint)">Report Assembly</p>
-          <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">Pending</p>
-        </div>
-        <div class="step-connector" aria-hidden="true"></div>
-
-        <!-- Step 6 -->
-        <div class="flex flex-col items-center gap-2 min-w-[120px]" role="listitem">
-          <div class="step-node" aria-label="Pending: Final Delivery">6</div>
-          <p class="font-ui text-xs font-medium text-center" style="color:var(--color-text-faint)">Final Delivery</p>
-          <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">Pending</p>
+        <div class="stat-card animate-fade-in-up-d4">
+          <p class="font-ui text-xs tracking-widest uppercase mb-2" style="color:var(--color-text-faint)">Est.
+            Completion</p>
+          <p class="font-display text-4xl font-semibold">
+            <span class="text-gradient">Jun</span>
+            <span class="text-3xl" style="color:var(--color-text-muted)"> '26</span>
+          </p>
+          <p class="font-ui text-xs mt-1.5" style="color:var(--color-text-faint)">~8 weeks away</p>
         </div>
 
       </div>
 
-      <!-- Mobile: vertical steps -->
-      <ol class="md:hidden flex flex-col gap-4">
-        <li class="flex items-start gap-4">
-          <div class="step-node done shrink-0">✓</div>
-          <div><p class="font-ui text-sm font-medium">Initial Consultation</p><p class="font-ui text-xs" style="color:var(--color-text-faint)">Completed · Jan 14</p></div>
-        </li>
-        <li class="flex items-start gap-4">
-          <div class="step-node done shrink-0">✓</div>
-          <div><p class="font-ui text-sm font-medium">Document Search</p><p class="font-ui text-xs" style="color:var(--color-text-faint)">Completed · Feb 2</p></div>
-        </li>
-        <li class="flex items-start gap-4">
-          <div class="step-node active shrink-0" aria-current="step">3</div>
-          <div><p class="font-ui text-sm font-medium" style="color:var(--color-accent)">Archival Research</p><p class="font-ui text-xs" style="color:var(--color-accent)">In progress</p></div>
-        </li>
-        <li class="flex items-start gap-4">
-          <div class="step-node shrink-0">4</div>
-          <div><p class="font-ui text-sm font-medium" style="color:var(--color-text-faint)">DNA Analysis</p><p class="font-ui text-xs" style="color:var(--color-text-faint)">Pending</p></div>
-        </li>
-        <li class="flex items-start gap-4">
-          <div class="step-node shrink-0">5</div>
-          <div><p class="font-ui text-sm font-medium" style="color:var(--color-text-faint)">Report Assembly</p><p class="font-ui text-xs" style="color:var(--color-text-faint)">Pending</p></div>
-        </li>
-        <li class="flex items-start gap-4">
-          <div class="step-node shrink-0">6</div>
-          <div><p class="font-ui text-sm font-medium" style="color:var(--color-text-faint)">Final Delivery</p><p class="font-ui text-xs" style="color:var(--color-text-faint)">Pending</p></div>
-        </li>
-      </ol>
+      <!-- ── PROGRESS TRACKER ──────────────────────────────────── -->
+      <section class="glass-card p-7 mb-8 animate-fade-in-up-d2" aria-labelledby="progress-heading">
+        <h2 id="progress-heading" class="font-display text-2xl font-semibold mb-6">Research Progress</h2>
 
-      <!-- Overall bar -->
-      <div class="mt-6">
-        <div class="flex justify-between font-ui text-xs mb-2" style="color:var(--color-text-faint)">
-          <span>Overall progress</span><span style="color:var(--color-accent)">37.5%</span>
+        <!-- Desktop: horizontal stepper -->
+        <div class="hidden md:flex items-center gap-0 overflow-x-auto pb-2" role="list">
+
+          <!-- Step 1: Done -->
+          <div class="flex flex-col items-center gap-2 min-w-[120px]" role="listitem">
+            <div class="step-node done" aria-label="Completed: Initial Consultation">✓</div>
+            <p class="font-ui text-xs font-medium text-center">Initial Consultation</p>
+            <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">Completed</p>
+          </div>
+          <div class="step-connector done animate-fill" aria-hidden="true"></div>
+
+          <!-- Step 2: Done -->
+          <div class="flex flex-col items-center gap-2 min-w-[120px]" role="listitem">
+            <div class="step-node done" aria-label="Completed: Document Search">✓</div>
+            <p class="font-ui text-xs font-medium text-center">Document Search</p>
+            <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">Completed</p>
+          </div>
+          <div class="step-connector done animate-fill" aria-hidden="true"></div>
+
+          <!-- Step 3: Active -->
+          <div class="flex flex-col items-center gap-2 min-w-[120px]" role="listitem">
+            <div class="step-node active" aria-label="In Progress: Archival Research" aria-current="step">3</div>
+            <p class="font-ui text-xs font-medium text-center" style="color:var(--color-accent)">Archival Research</p>
+            <p class="font-ui text-xs text-center" style="color:var(--color-accent)">In progress</p>
+          </div>
+          <div class="step-connector" aria-hidden="true"></div>
+
+          <!-- Step 4 -->
+          <div class="flex flex-col items-center gap-2 min-w-[120px]" role="listitem">
+            <div class="step-node" aria-label="Pending: DNA Analysis">4</div>
+            <p class="font-ui text-xs font-medium text-center" style="color:var(--color-text-faint)">DNA Analysis</p>
+            <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">Pending</p>
+          </div>
+          <div class="step-connector" aria-hidden="true"></div>
+
+          <!-- Step 5 -->
+          <div class="flex flex-col items-center gap-2 min-w-[120px]" role="listitem">
+            <div class="step-node" aria-label="Pending: Report Assembly">5</div>
+            <p class="font-ui text-xs font-medium text-center" style="color:var(--color-text-faint)">Report Assembly</p>
+            <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">Pending</p>
+          </div>
+          <div class="step-connector" aria-hidden="true"></div>
+
+          <!-- Step 6 -->
+          <div class="flex flex-col items-center gap-2 min-w-[120px]" role="listitem">
+            <div class="step-node" aria-label="Pending: Final Delivery">6</div>
+            <p class="font-ui text-xs font-medium text-center" style="color:var(--color-text-faint)">Final Delivery</p>
+            <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">Pending</p>
+          </div>
+
         </div>
-        <div class="h-2 rounded-full overflow-hidden" style="background:var(--color-border)">
-          <div class="h-full rounded-full" style="width:0;background:var(--color-accent);transition:width 1.4s cubic-bezier(0.4,0,0.2,1)" data-progress="37.5"></div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ── TWO-COL: Recent Finds + Weekly Activity ─────────── -->
-    <div class="grid lg:grid-cols-2 gap-6 mb-8">
-
-      <!-- Recent Discoveries -->
-      <section class="glass-card p-6" aria-labelledby="discoveries-heading">
-        <h2 id="discoveries-heading" class="font-display text-xl font-semibold mb-5">Latest Discoveries</h2>
-        <ul class="flex flex-col gap-4">
-
-          <li class="flex items-start gap-3">
-            <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5" style="background:var(--color-bg-alt);border:1px solid var(--color-border)">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414A1 1 0 0119 6.414V19a2 2 0 01-2 2z"/></svg>
-            </div>
-            <div class="flex-1">
-              <p class="font-ui text-sm font-medium">1881 Scottish Census Record</p>
-              <p class="font-body text-sm" style="color:var(--color-text-muted)">Confirms Alistair MacAllister household in Inverness parish, 6 children listed.</p>
-              <p class="font-ui text-xs mt-1" style="color:var(--color-text-faint)">2 hours ago</p>
+        <!-- Mobile: vertical steps -->
+        <ol class="md:hidden flex flex-col gap-4">
+          <li class="flex items-start gap-4">
+            <div class="step-node done shrink-0">✓</div>
+            <div>
+              <p class="font-ui text-sm font-medium">Initial Consultation</p>
+              <p class="font-ui text-xs" style="color:var(--color-text-faint)">Completed · Jan 14</p>
             </div>
           </li>
-
-          <li class="flex items-start gap-3">
-            <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5" style="background:var(--color-bg-alt);border:1px solid var(--color-border)">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-            </div>
-            <div class="flex-1">
-              <p class="font-ui text-sm font-medium">Digitized Photograph Identified</p>
-              <p class="font-body text-sm" style="color:var(--color-text-muted)">Studio portrait c.1898 likely depicts Robert MacAllister. Facial analysis pending confirmation.</p>
-              <p class="font-ui text-xs mt-1" style="color:var(--color-text-faint)">Yesterday</p>
+          <li class="flex items-start gap-4">
+            <div class="step-node done shrink-0">✓</div>
+            <div>
+              <p class="font-ui text-sm font-medium">Document Search</p>
+              <p class="font-ui text-xs" style="color:var(--color-text-faint)">Completed · Feb 2</p>
             </div>
           </li>
-
-          <li class="flex items-start gap-3">
-            <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5" style="background:var(--color-bg-alt);border:1px solid var(--color-border)">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            </div>
-            <div class="flex-1">
-              <p class="font-ui text-sm font-medium">Ellis Island Manifest Located</p>
-              <p class="font-body text-sm" style="color:var(--color-text-muted)">SS Caledonia passenger list, 1872 — confirms Elspeth Morag's emigration voyage.</p>
-              <p class="font-ui text-xs mt-1" style="color:var(--color-text-faint)">3 days ago</p>
+          <li class="flex items-start gap-4">
+            <div class="step-node active shrink-0" aria-current="step">3</div>
+            <div>
+              <p class="font-ui text-sm font-medium" style="color:var(--color-accent)">Archival Research</p>
+              <p class="font-ui text-xs" style="color:var(--color-accent)">In progress</p>
             </div>
           </li>
+          <li class="flex items-start gap-4">
+            <div class="step-node shrink-0">4</div>
+            <div>
+              <p class="font-ui text-sm font-medium" style="color:var(--color-text-faint)">DNA Analysis</p>
+              <p class="font-ui text-xs" style="color:var(--color-text-faint)">Pending</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="step-node shrink-0">5</div>
+            <div>
+              <p class="font-ui text-sm font-medium" style="color:var(--color-text-faint)">Report Assembly</p>
+              <p class="font-ui text-xs" style="color:var(--color-text-faint)">Pending</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="step-node shrink-0">6</div>
+            <div>
+              <p class="font-ui text-sm font-medium" style="color:var(--color-text-faint)">Final Delivery</p>
+              <p class="font-ui text-xs" style="color:var(--color-text-faint)">Pending</p>
+            </div>
+          </li>
+        </ol>
 
-        </ul>
-        <button class="font-ui text-sm mt-5 hover:opacity-70 transition-opacity" style="color:var(--color-accent)">View all discoveries →</button>
-      </section>
-
-      <!-- Genealogist Update -->
-      <section class="glass-card p-6 flex flex-col" aria-labelledby="update-heading">
-        <h2 id="update-heading" class="font-display text-xl font-semibold mb-5">From Your Genealogist</h2>
-        <div class="flex items-start gap-3 mb-4">
-          <div class="w-10 h-10 rounded-full flex items-center justify-center font-ui font-semibold text-sm shrink-0" style="background:var(--color-accent);color:#FEFCF8">SB</div>
-          <div class="glass-card p-4 flex-1" style="border-radius:0 10px 10px 10px">
-            <p class="font-body text-sm leading-relaxed" style="color:var(--color-text-muted)">
-              "Eleanor — wonderful news. I've located the 1847 baptismal register from Inverness Cathedral that almost certainly records Elspeth Morag's birth. I'm requesting the physical microfilm reel from the National Records of Scotland, which should arrive within the week. This could push our confirmed lineage back another full generation."
-            </p>
-            <p class="font-ui text-xs mt-3" style="color:var(--color-text-faint)">Dr. Siobhán Brennan · Today, 9:14 AM</p>
+        <!-- Overall bar -->
+        <div class="mt-6">
+          <div class="flex justify-between font-ui text-xs mb-2" style="color:var(--color-text-faint)">
+            <span>Overall progress</span><span style="color:var(--color-accent)">37.5%</span>
+          </div>
+          <div class="h-2 rounded-full overflow-hidden" style="background:var(--color-border)">
+            <div class="h-full rounded-full"
+              style="width:0;background:var(--color-accent);transition:width 1.4s cubic-bezier(0.4,0,0.2,1)"
+              data-progress="37.5"></div>
           </div>
         </div>
-        <a href="#messages" class="btn-ghost self-start text-sm py-2 mt-auto" onclick="showPanel('messages', null)">Reply in Messages</a>
       </section>
 
-    </div>
+      <!-- ── TWO-COL: Recent Finds + Weekly Activity ─────────── -->
+      <div class="grid lg:grid-cols-2 gap-6 mb-8">
 
-    <!-- Quick actions -->
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-      <button onclick="showPanel('tree', null)" class="glass-card p-4 flex flex-col items-center gap-3 text-center hover:border-[var(--color-accent)] transition-all cursor-pointer">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.8"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><line x1="12" y1="7" x2="5"  y2="17" stroke-linecap="round"/><line x1="12" y1="7" x2="19" y2="17" stroke-linecap="round"/></svg>
-        <span class="font-ui text-sm">View My Tree</span>
-      </button>
-      <button onclick="showPanel('documents', null)" class="glass-card p-4 flex flex-col items-center gap-3 text-center hover:border-[var(--color-accent)] transition-all cursor-pointer">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.8"><path stroke-linecap="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
-        <span class="font-ui text-sm">Upload Files</span>
-      </button>
-      <button onclick="showPanel('messages', null)" class="glass-card p-4 flex flex-col items-center gap-3 text-center hover:border-[var(--color-accent)] transition-all cursor-pointer relative">
-        <span class="notif-dot" aria-hidden="true"></span>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.8"><path stroke-linecap="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-        <span class="font-ui text-sm">Message Genealogist</span>
-      </button>
-      <button onclick="showPanel('reports', null)" class="glass-card p-4 flex flex-col items-center gap-3 text-center hover:border-[var(--color-accent)] transition-all cursor-pointer">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.8"><path stroke-linecap="round" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-        <span class="font-ui text-sm">Download Report</span>
-      </button>
-    </div>
+        <!-- Recent Discoveries -->
+        <section class="glass-card p-6" aria-labelledby="discoveries-heading">
+          <h2 id="discoveries-heading" class="font-display text-xl font-semibold mb-5">Latest Discoveries</h2>
+          <ul class="flex flex-col gap-4">
 
-  </div><!-- /panel-overview -->
+            <li class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
+                style="background:var(--color-bg-alt);border:1px solid var(--color-border)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)"
+                  stroke-width="2">
+                  <path
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414A1 1 0 0119 6.414V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+              <div class="flex-1">
+                <p class="font-ui text-sm font-medium">1881 Scottish Census Record</p>
+                <p class="font-body text-sm" style="color:var(--color-text-muted)">Confirms Alistair MacAllister
+                  household in Inverness parish, 6 children listed.</p>
+                <p class="font-ui text-xs mt-1" style="color:var(--color-text-faint)">2 hours ago</p>
+              </div>
+            </li>
+
+            <li class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
+                style="background:var(--color-bg-alt);border:1px solid var(--color-border)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)"
+                  stroke-width="2">
+                  <path
+                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div class="flex-1">
+                <p class="font-ui text-sm font-medium">Digitized Photograph Identified</p>
+                <p class="font-body text-sm" style="color:var(--color-text-muted)">Studio portrait c.1898 likely depicts
+                  Robert MacAllister. Facial analysis pending confirmation.</p>
+                <p class="font-ui text-xs mt-1" style="color:var(--color-text-faint)">Yesterday</p>
+              </div>
+            </li>
+
+            <li class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
+                style="background:var(--color-bg-alt);border:1px solid var(--color-border)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)"
+                  stroke-width="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 8v4l3 3" />
+                </svg>
+              </div>
+              <div class="flex-1">
+                <p class="font-ui text-sm font-medium">Ellis Island Manifest Located</p>
+                <p class="font-body text-sm" style="color:var(--color-text-muted)">SS Caledonia passenger list, 1872 —
+                  confirms Elspeth Morag's emigration voyage.</p>
+                <p class="font-ui text-xs mt-1" style="color:var(--color-text-faint)">3 days ago</p>
+              </div>
+            </li>
+
+          </ul>
+          <button class="font-ui text-sm mt-5 hover:opacity-70 transition-opacity"
+            style="color:var(--color-accent)">View all discoveries →</button>
+        </section>
+
+        <!-- Genealogist Update -->
+        <section class="glass-card p-6 flex flex-col" aria-labelledby="update-heading">
+          <h2 id="update-heading" class="font-display text-xl font-semibold mb-5">From Your Genealogist</h2>
+          <div class="flex items-start gap-3 mb-4">
+            <img src="assets/team-siobhan.png" alt="Dr. Siobhán Brennan" class="w-10 h-10 rounded-full object-cover shrink-0">
+            <div class="glass-card p-4 flex-1" style="border-radius:0 10px 10px 10px">
+              <p class="font-body text-sm leading-relaxed" style="color:var(--color-text-muted)">
+                "Eleanor — wonderful news. I've located the 1847 baptismal register from Inverness Cathedral that almost
+                certainly records Elspeth Morag's birth. I'm requesting the physical microfilm reel from the National
+                Records of Scotland, which should arrive within the week. This could push our confirmed lineage back
+                another full generation."
+              </p>
+              <p class="font-ui text-xs mt-3" style="color:var(--color-text-faint)">Dr. Siobhán Brennan · Today, 9:14 AM
+              </p>
+            </div>
+          </div>
+          <a href="#messages" class="btn-ghost self-start text-sm py-2 mt-auto"
+            onclick="showPanel('messages', null)">Reply in Messages</a>
+        </section>
+
+      </div>
+
+      <!-- Quick actions -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <button onclick="showPanel('tree', null)"
+          class="glass-card p-4 flex flex-col items-center gap-3 text-center hover:border-[var(--color-accent)] transition-all cursor-pointer">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.8">
+            <circle cx="12" cy="5" r="2" />
+            <circle cx="5" cy="19" r="2" />
+            <circle cx="19" cy="19" r="2" />
+            <line x1="12" y1="7" x2="5" y2="17" stroke-linecap="round" />
+            <line x1="12" y1="7" x2="19" y2="17" stroke-linecap="round" />
+          </svg>
+          <span class="font-ui text-sm">View My Tree</span>
+        </button>
+        <button onclick="showPanel('documents', null)"
+          class="glass-card p-4 flex flex-col items-center gap-3 text-center hover:border-[var(--color-accent)] transition-all cursor-pointer">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.8">
+            <path stroke-linecap="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+          </svg>
+          <span class="font-ui text-sm">Upload Files</span>
+        </button>
+        <button onclick="showPanel('messages', null)"
+          class="glass-card p-4 flex flex-col items-center gap-3 text-center hover:border-[var(--color-accent)] transition-all cursor-pointer relative">
+          <span class="notif-dot" aria-hidden="true"></span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.8">
+            <path stroke-linecap="round"
+              d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+          </svg>
+          <span class="font-ui text-sm">Message Genealogist</span>
+        </button>
+        <button onclick="showPanel('reports', null)"
+          class="glass-card p-4 flex flex-col items-center gap-3 text-center hover:border-[var(--color-accent)] transition-all cursor-pointer">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.8">
+            <path stroke-linecap="round"
+              d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+          </svg>
+          <span class="font-ui text-sm">Download Report</span>
+        </button>
+      </div>
+
+    </div><!-- /panel-overview -->
 
 
-  <!-- ══════════════════════════════════════════════════════════
+    <!-- ══════════════════════════════════════════════════════════
        PANEL: MY TREE
   ═══════════════════════════════════════════════════════════════ -->
-  <div id="panel-tree" class="panel hidden flex-1 p-6 flex-col gap-6 page-content" role="region" aria-labelledby="tree-heading">
-    <div class="flex items-center justify-between flex-wrap gap-4">
-      <div>
-        <h1 id="tree-heading" class="font-display text-4xl font-semibold">My Family Tree</h1>
-        <p class="font-body mt-1" style="color:var(--color-text-muted)">38 ancestors across 5 generations · Scroll to pan, pinch or wheel to zoom</p>
+    <div id="panel-tree" class="panel hidden flex-1 p-6 flex-col gap-6 page-content" role="region"
+      aria-labelledby="tree-heading">
+      <div class="flex items-center justify-between flex-wrap gap-4">
+        <div>
+          <h1 id="tree-heading" class="font-display text-4xl font-semibold">My Family Tree</h1>
+          <p class="font-body mt-1" style="color:var(--color-text-muted)">38 ancestors across 5 generations · Scroll to
+            pan, pinch or wheel to zoom</p>
+        </div>
+        <!-- Zoom controls -->
+        <div class="flex items-center gap-2">
+          <button id="tree-zoom-out"
+            class="w-9 h-9 glass-card flex items-center justify-center text-xl leading-none hover:border-[var(--color-accent)] transition-all"
+            aria-label="Zoom out">−</button>
+          <button id="tree-reset" class="btn-ghost py-2 px-3 text-sm" aria-label="Reset tree view">Reset</button>
+          <button id="tree-zoom-in"
+            class="w-9 h-9 glass-card flex items-center justify-center text-xl leading-none hover:border-[var(--color-accent)] transition-all"
+            aria-label="Zoom in">+</button>
+        </div>
       </div>
-      <!-- Zoom controls -->
-      <div class="flex items-center gap-2">
-        <button id="tree-zoom-out" class="w-9 h-9 glass-card flex items-center justify-center text-xl leading-none hover:border-[var(--color-accent)] transition-all" aria-label="Zoom out">−</button>
-        <button id="tree-reset"    class="btn-ghost py-2 px-3 text-sm" aria-label="Reset tree view">Reset</button>
-        <button id="tree-zoom-in"  class="w-9 h-9 glass-card flex items-center justify-center text-xl leading-none hover:border-[var(--color-accent)] transition-all" aria-label="Zoom in">+</button>
+
+      <!-- Tree viewport -->
+      <div id="tree-viewport" class="flex-1 min-h-[420px]" role="img" aria-label="Interactive family tree viewer">
+        <div id="tree-canvas">
+
+          <!-- Gen 4 GGGrandparents (far left) -->
+          <div class="flex flex-col gap-6">
+            <div class="ancestor-card">
+              <div class="w-10 h-10 rounded-full mx-auto mb-2 flex items-center justify-center text-base"
+                style="background:var(--color-bg-alt)">👴</div>
+              <p class="font-display text-sm font-semibold text-center">Dòmhnall MacAllister</p>
+              <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">1792 – 1862</p>
+              <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">Sutherland, SCT</p>
+            </div>
+            <div class="ancestor-card">
+              <div class="w-10 h-10 rounded-full mx-auto mb-2 flex items-center justify-center text-base"
+                style="background:var(--color-bg-alt)">👵</div>
+              <p class="font-display text-sm font-semibold text-center">Morag Sutherland</p>
+              <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">1798 – 1858</p>
+              <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">Sutherland, SCT</p>
+            </div>
+            <div class="ancestor-card">
+              <div class="w-10 h-10 rounded-full mx-auto mb-2 flex items-center justify-center text-base"
+                style="background:var(--color-bg-alt)">👴</div>
+              <p class="font-display text-sm font-semibold text-center">James Campbell</p>
+              <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">1800 – 1872</p>
+              <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">Perth, SCT</p>
+            </div>
+            <div class="ancestor-card">
+              <div class="w-10 h-10 rounded-full mx-auto mb-2 flex items-center justify-center text-base"
+                style="background:var(--color-bg-alt)">👵</div>
+              <p class="font-display text-sm font-semibold text-center">Agnes Robertson</p>
+              <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">1804 – 1879</p>
+              <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">Perth, SCT</p>
+            </div>
+          </div>
+
+          <!-- Gen 3 Great-grandparents -->
+          <div class="flex flex-col gap-8">
+            <div class="ancestor-card">
+              <div class="w-11 h-11 rounded-full mx-auto mb-2 flex items-center justify-center text-lg"
+                style="background:var(--color-bg-alt)">👴</div>
+              <p class="font-display text-base font-semibold text-center">Alistair MacAllister</p>
+              <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">1821 – 1899</p>
+              <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">Inverness, SCT</p>
+            </div>
+            <div class="ancestor-card">
+              <div class="w-11 h-11 rounded-full mx-auto mb-2 flex items-center justify-center text-lg"
+                style="background:var(--color-bg-alt)">👵</div>
+              <p class="font-display text-base font-semibold text-center">Fiona Campbell</p>
+              <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">1825 – 1901</p>
+              <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">Perth, SCT</p>
+            </div>
+          </div>
+
+          <!-- Gen 2 Grandparents -->
+          <div class="flex flex-col gap-10">
+            <div class="ancestor-card border-[var(--color-accent-light)]">
+              <div class="w-12 h-12 rounded-full mx-auto mb-2 flex items-center justify-center text-xl"
+                style="background:var(--color-bg-alt)">👴</div>
+              <p class="font-display text-base font-semibold text-center">Robert MacAllister</p>
+              <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">1851 – 1923</p>
+              <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">New York, USA</p>
+              <div class="mt-2 text-center"><span class="badge" style="font-size:0.6rem">2 records</span></div>
+            </div>
+            <div class="ancestor-card border-[var(--color-accent-light)]">
+              <div class="w-12 h-12 rounded-full mx-auto mb-2 flex items-center justify-center text-xl"
+                style="background:var(--color-bg-alt)">👵</div>
+              <p class="font-display text-base font-semibold text-center">Elspeth Morag</p>
+              <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">1847 – 1921</p>
+              <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">New York, USA</p>
+              <div class="mt-2 text-center"><span class="badge" style="font-size:0.6rem">4 records</span></div>
+            </div>
+          </div>
+
+          <!-- Gen 1 Parent -->
+          <div class="flex flex-col justify-center">
+            <div class="ancestor-card" style="min-width:170px">
+              <div class="w-14 h-14 rounded-full mx-auto mb-2 flex items-center justify-center text-2xl"
+                style="background:var(--color-bg-alt)">👩</div>
+              <p class="font-display text-base font-semibold text-center">Margaret MacAllister</p>
+              <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">1879 – 1954</p>
+              <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">Boston, USA</p>
+              <div class="mt-2 text-center"><span class="badge" style="font-size:0.6rem">7 records</span></div>
+            </div>
+          </div>
+
+          <!-- Subject: You -->
+          <div class="flex flex-col justify-center">
+            <div class="ancestor-card glow-border" style="min-width:170px">
+              <div class="w-14 h-14 rounded-full mx-auto mb-3 flex items-center justify-center text-2xl border-2"
+                style="background:var(--color-bg-alt);border-color:var(--color-accent)">🧑</div>
+              <p class="font-display text-lg font-semibold text-center">Eleanor Harrington</p>
+              <p class="font-ui text-xs text-center mt-0.5" style="color:var(--color-text-faint)">You</p>
+              <div class="mt-3 text-center"><span class="badge">Subject</span></div>
+            </div>
+          </div>
+
+        </div>
       </div>
-    </div>
 
-    <!-- Tree viewport -->
-    <div id="tree-viewport" class="flex-1 min-h-[420px]" role="img" aria-label="Interactive family tree viewer">
-      <div id="tree-canvas">
-
-        <!-- Gen 4 GGGrandparents (far left) -->
-        <div class="flex flex-col gap-6">
-          <div class="ancestor-card">
-            <div class="w-10 h-10 rounded-full mx-auto mb-2 flex items-center justify-center text-base" style="background:var(--color-bg-alt)">👴</div>
-            <p class="font-display text-sm font-semibold text-center">Dòmhnall MacAllister</p>
-            <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">1792 – 1862</p>
-            <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">Sutherland, SCT</p>
-          </div>
-          <div class="ancestor-card">
-            <div class="w-10 h-10 rounded-full mx-auto mb-2 flex items-center justify-center text-base" style="background:var(--color-bg-alt)">👵</div>
-            <p class="font-display text-sm font-semibold text-center">Morag Sutherland</p>
-            <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">1798 – 1858</p>
-            <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">Sutherland, SCT</p>
-          </div>
-          <div class="ancestor-card">
-            <div class="w-10 h-10 rounded-full mx-auto mb-2 flex items-center justify-center text-base" style="background:var(--color-bg-alt)">👴</div>
-            <p class="font-display text-sm font-semibold text-center">James Campbell</p>
-            <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">1800 – 1872</p>
-            <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">Perth, SCT</p>
-          </div>
-          <div class="ancestor-card">
-            <div class="w-10 h-10 rounded-full mx-auto mb-2 flex items-center justify-center text-base" style="background:var(--color-bg-alt)">👵</div>
-            <p class="font-display text-sm font-semibold text-center">Agnes Robertson</p>
-            <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">1804 – 1879</p>
-            <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">Perth, SCT</p>
-          </div>
-        </div>
-
-        <!-- Gen 3 Great-grandparents -->
-        <div class="flex flex-col gap-8">
-          <div class="ancestor-card">
-            <div class="w-11 h-11 rounded-full mx-auto mb-2 flex items-center justify-center text-lg" style="background:var(--color-bg-alt)">👴</div>
-            <p class="font-display text-base font-semibold text-center">Alistair MacAllister</p>
-            <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">1821 – 1899</p>
-            <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">Inverness, SCT</p>
-          </div>
-          <div class="ancestor-card">
-            <div class="w-11 h-11 rounded-full mx-auto mb-2 flex items-center justify-center text-lg" style="background:var(--color-bg-alt)">👵</div>
-            <p class="font-display text-base font-semibold text-center">Fiona Campbell</p>
-            <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">1825 – 1901</p>
-            <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">Perth, SCT</p>
-          </div>
-        </div>
-
-        <!-- Gen 2 Grandparents -->
-        <div class="flex flex-col gap-10">
-          <div class="ancestor-card border-[var(--color-accent-light)]">
-            <div class="w-12 h-12 rounded-full mx-auto mb-2 flex items-center justify-center text-xl" style="background:var(--color-bg-alt)">👴</div>
-            <p class="font-display text-base font-semibold text-center">Robert MacAllister</p>
-            <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">1851 – 1923</p>
-            <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">New York, USA</p>
-            <div class="mt-2 text-center"><span class="badge" style="font-size:0.6rem">2 records</span></div>
-          </div>
-          <div class="ancestor-card border-[var(--color-accent-light)]">
-            <div class="w-12 h-12 rounded-full mx-auto mb-2 flex items-center justify-center text-xl" style="background:var(--color-bg-alt)">👵</div>
-            <p class="font-display text-base font-semibold text-center">Elspeth Morag</p>
-            <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">1847 – 1921</p>
-            <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">New York, USA</p>
-            <div class="mt-2 text-center"><span class="badge" style="font-size:0.6rem">4 records</span></div>
-          </div>
-        </div>
-
-        <!-- Gen 1 Parent -->
-        <div class="flex flex-col justify-center">
-          <div class="ancestor-card" style="min-width:170px">
-            <div class="w-14 h-14 rounded-full mx-auto mb-2 flex items-center justify-center text-2xl" style="background:var(--color-bg-alt)">👩</div>
-            <p class="font-display text-base font-semibold text-center">Margaret MacAllister</p>
-            <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">1879 – 1954</p>
-            <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">Boston, USA</p>
-            <div class="mt-2 text-center"><span class="badge" style="font-size:0.6rem">7 records</span></div>
-          </div>
-        </div>
-
-        <!-- Subject: You -->
-        <div class="flex flex-col justify-center">
-          <div class="ancestor-card glow-border" style="min-width:170px">
-            <div class="w-14 h-14 rounded-full mx-auto mb-3 flex items-center justify-center text-2xl border-2" style="background:var(--color-bg-alt);border-color:var(--color-accent)">🧑</div>
-            <p class="font-display text-lg font-semibold text-center">Eleanor Harrington</p>
-            <p class="font-ui text-xs text-center mt-0.5" style="color:var(--color-text-faint)">You</p>
-            <div class="mt-3 text-center"><span class="badge">Subject</span></div>
-          </div>
-        </div>
-
+      <!-- Tree legend -->
+      <div class="flex flex-wrap gap-4 font-ui text-xs" style="color:var(--color-text-faint)">
+        <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm"
+            style="background:var(--color-border);border:1px solid var(--color-border-strong)"></span> Standard
+          ancestor</span>
+        <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm"
+            style="border:1px solid var(--color-accent-light)"></span> Recent discovery</span>
+        <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm"
+            style="border:1px solid var(--color-accent);box-shadow:0 0 6px var(--glow-accent)"></span> You
+          (subject)</span>
       </div>
-    </div>
-
-    <!-- Tree legend -->
-    <div class="flex flex-wrap gap-4 font-ui text-xs" style="color:var(--color-text-faint)">
-      <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm" style="background:var(--color-border);border:1px solid var(--color-border-strong)"></span> Standard ancestor</span>
-      <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm" style="border:1px solid var(--color-accent-light)"></span> Recent discovery</span>
-      <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm" style="border:1px solid var(--color-accent);box-shadow:0 0 6px var(--glow-accent)"></span> You (subject)</span>
-    </div>
-  </div><!-- /panel-tree -->
+    </div><!-- /panel-tree -->
 
 
-  <!-- ══════════════════════════════════════════════════════════
+    <!-- ══════════════════════════════════════════════════════════
        PANEL: DOCUMENTS
   ═══════════════════════════════════════════════════════════════ -->
-  <div id="panel-documents" class="panel hidden flex-1 p-6 flex-col gap-6 page-content" role="region" aria-labelledby="docs-heading">
+    <div id="panel-documents" class="panel hidden flex-1 p-6 flex-col gap-6 page-content" role="region"
+      aria-labelledby="docs-heading">
 
-    <div>
-      <h1 id="docs-heading" class="font-display text-4xl font-semibold">Documents</h1>
-      <p class="font-body mt-1" style="color:var(--color-text-muted)">Upload photos, birth certificates, or family documents. Your genealogist will review and integrate them.</p>
-    </div>
-
-    <!-- Drag & Drop Zone -->
-    <div class="drop-zone p-12 flex flex-col items-center justify-center gap-4 text-center min-h-56" role="button" tabindex="0" aria-label="Upload files by clicking or dragging">
-      <input type="file" class="sr-only" accept="image/*,.pdf,.doc,.docx" multiple id="file-upload" aria-label="Choose files to upload"/>
-      <div class="w-14 h-14 rounded-full flex items-center justify-center" style="background:var(--color-bg-alt);border:1px solid var(--color-border)">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.8" aria-hidden="true">
-          <path stroke-linecap="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
-        </svg>
-      </div>
       <div>
-        <p class="font-display text-xl font-semibold mb-1">Drop files here</p>
-        <p class="font-body text-sm" style="color:var(--color-text-muted)">or click to browse — JPG, PNG, PDF, DOC accepted · Max 25MB per file</p>
+        <h1 id="docs-heading" class="font-display text-4xl font-semibold">Documents</h1>
+        <p class="font-body mt-1" style="color:var(--color-text-muted)">Upload photos, birth certificates, or family
+          documents. Your genealogist will review and integrate them.</p>
       </div>
-      <p data-drop-label class="font-ui text-sm" style="color:var(--color-accent)"></p>
-      <span data-drop-count class="badge hidden"></span>
-    </div>
 
-    <!-- Already uploaded files -->
-    <section aria-labelledby="uploaded-heading">
-      <h2 id="uploaded-heading" class="font-display text-2xl font-semibold mb-4">Uploaded Files</h2>
-      <div class="flex flex-col gap-3">
-
-        <div class="glass-card p-4 flex items-center gap-4">
-          <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style="background:rgba(231,76,60,0.1)">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E74C3C" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          </div>
-          <div class="flex-1 min-w-0">
-            <p class="font-ui text-sm font-medium truncate">grandmothers-birth-cert-1847.pdf</p>
-            <p class="font-ui text-xs" style="color:var(--color-text-faint)">PDF · 2.4 MB · Uploaded Jan 15</p>
-          </div>
-          <span class="badge shrink-0">Reviewed ✓</span>
+      <!-- Drag & Drop Zone -->
+      <div class="drop-zone p-12 flex flex-col items-center justify-center gap-4 text-center min-h-56" role="button"
+        tabindex="0" aria-label="Upload files by clicking or dragging">
+        <input type="file" class="sr-only" accept="image/*,.pdf,.doc,.docx" multiple id="file-upload"
+          aria-label="Choose files to upload" />
+        <div class="w-14 h-14 rounded-full flex items-center justify-center"
+          style="background:var(--color-bg-alt);border:1px solid var(--color-border)">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.8"
+            aria-hidden="true">
+            <path stroke-linecap="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+          </svg>
         </div>
-
-        <div class="glass-card p-4 flex items-center gap-4">
-          <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style="background:rgba(39,174,96,0.1)">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#27AE60" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          </div>
-          <div class="flex-1 min-w-0">
-            <p class="font-ui text-sm font-medium truncate">family-photo-scotland-1898.jpg</p>
-            <p class="font-ui text-xs" style="color:var(--color-text-faint)">JPEG · 8.1 MB · Uploaded Jan 28</p>
-          </div>
-          <span class="badge shrink-0" style="background:rgba(230,126,34,0.1);color:#E67E22;border-color:#E67E22">Analyzing</span>
+        <div>
+          <p class="font-display text-xl font-semibold mb-1">Drop files here</p>
+          <p class="font-body text-sm" style="color:var(--color-text-muted)">or click to browse — JPG, PNG, PDF, DOC
+            accepted · Max 25MB per file</p>
         </div>
-
-        <div class="glass-card p-4 flex items-center gap-4">
-          <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style="background:rgba(231,76,60,0.1)">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E74C3C" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          </div>
-          <div class="flex-1 min-w-0">
-            <p class="font-ui text-sm font-medium truncate">macallister-family-notes.pdf</p>
-            <p class="font-ui text-xs" style="color:var(--color-text-faint)">PDF · 0.8 MB · Uploaded Feb 3</p>
-          </div>
-          <span class="badge shrink-0">Reviewed ✓</span>
-        </div>
-
-        <div class="glass-card p-4 flex items-center gap-4">
-          <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style="background:rgba(39,174,96,0.1)">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#27AE60" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          </div>
-          <div class="flex-1 min-w-0">
-            <p class="font-ui text-sm font-medium truncate">old-passport-grandfather.jpg</p>
-            <p class="font-ui text-xs" style="color:var(--color-text-faint)">JPEG · 3.7 MB · Uploaded Mar 1</p>
-          </div>
-          <span class="badge shrink-0">Reviewed ✓</span>
-        </div>
-
+        <p data-drop-label class="font-ui text-sm" style="color:var(--color-accent)"></p>
+        <span data-drop-count class="badge hidden"></span>
       </div>
-    </section>
-  </div><!-- /panel-documents -->
+
+      <!-- Already uploaded files -->
+      <section aria-labelledby="uploaded-heading">
+        <h2 id="uploaded-heading" class="font-display text-2xl font-semibold mb-4">Uploaded Files</h2>
+        <div class="flex flex-col gap-3">
+
+          <div class="glass-card p-4 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
+              style="background:rgba(231,76,60,0.1)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E74C3C" stroke-width="1.8">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-ui text-sm font-medium truncate">grandmothers-birth-cert-1847.pdf</p>
+              <p class="font-ui text-xs" style="color:var(--color-text-faint)">PDF · 2.4 MB · Uploaded Jan 15</p>
+            </div>
+            <span class="badge shrink-0">Reviewed ✓</span>
+          </div>
+
+          <div class="glass-card p-4 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
+              style="background:rgba(39,174,96,0.1)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#27AE60" stroke-width="1.8">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-ui text-sm font-medium truncate">family-photo-scotland-1898.jpg</p>
+              <p class="font-ui text-xs" style="color:var(--color-text-faint)">JPEG · 8.1 MB · Uploaded Jan 28</p>
+            </div>
+            <span class="badge shrink-0"
+              style="background:rgba(230,126,34,0.1);color:#E67E22;border-color:#E67E22">Analyzing</span>
+          </div>
+
+          <div class="glass-card p-4 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
+              style="background:rgba(231,76,60,0.1)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E74C3C" stroke-width="1.8">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-ui text-sm font-medium truncate">macallister-family-notes.pdf</p>
+              <p class="font-ui text-xs" style="color:var(--color-text-faint)">PDF · 0.8 MB · Uploaded Feb 3</p>
+            </div>
+            <span class="badge shrink-0">Reviewed ✓</span>
+          </div>
+
+          <div class="glass-card p-4 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
+              style="background:rgba(39,174,96,0.1)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#27AE60" stroke-width="1.8">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-ui text-sm font-medium truncate">old-passport-grandfather.jpg</p>
+              <p class="font-ui text-xs" style="color:var(--color-text-faint)">JPEG · 3.7 MB · Uploaded Mar 1</p>
+            </div>
+            <span class="badge shrink-0">Reviewed ✓</span>
+          </div>
+
+        </div>
+      </section>
+    </div><!-- /panel-documents -->
 
 
-  <!-- ══════════════════════════════════════════════════════════
+    <!-- ══════════════════════════════════════════════════════════
        PANEL: MESSAGES
   ═══════════════════════════════════════════════════════════════ -->
-  <div id="panel-messages" class="panel hidden flex-1 flex flex-col page-content" role="region" aria-labelledby="messages-heading">
+    <div id="panel-messages" class="panel hidden flex-1 flex flex-col page-content" role="region"
+      aria-labelledby="messages-heading">
 
-    <!-- Header bar -->
-    <div class="flex items-center gap-4 px-6 py-4 border-b" style="border-color:var(--color-border)">
-      <div class="w-10 h-10 rounded-full flex items-center justify-center font-ui font-semibold text-sm shrink-0" style="background:var(--color-accent);color:#FEFCF8">SB</div>
-      <div>
-        <h1 id="messages-heading" class="font-display text-xl font-semibold">Dr. Siobhán Brennan</h1>
-        <div class="flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full" style="background:#27AE60" aria-hidden="true"></span>
-          <span class="font-ui text-xs" style="color:var(--color-text-faint)">Online · Lead Genealogist</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Messages area -->
-    <div id="chat-messages" class="flex-1 overflow-y-auto px-6 py-6 flex flex-col gap-3" style="max-height:calc(100vh - var(--header-height) - 140px)" aria-live="polite" aria-label="Chat messages">
-
-      <!-- Date divider -->
-      <div class="flex items-center gap-3 my-2" aria-label="January 14">
-        <hr class="flex-1" style="border-color:var(--color-border)"/>
-        <span class="font-ui text-xs" style="color:var(--color-text-faint)">January 14, 2026</span>
-        <hr class="flex-1" style="border-color:var(--color-border)"/>
-      </div>
-
-      <!-- Incoming -->
-      <div class="flex justify-start">
+      <!-- Header bar -->
+      <div class="flex items-center gap-4 px-6 py-4 border-b" style="border-color:var(--color-border)">
+        <img src="assets/team-siobhan.png" alt="Dr. Siobhán Brennan" class="w-10 h-10 rounded-full object-cover shrink-0">
         <div>
-          <div class="chat-bubble-in">
-            Hello Eleanor! I've received your intake form and I'm very excited to start. Your MacAllister-Campbell lineage has tremendous archival potential — Scotland's records from that era are quite well preserved.
+          <h1 id="messages-heading" class="font-display text-xl font-semibold">Dr. Siobhán Brennan</h1>
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full" style="background:#27AE60" aria-hidden="true"></span>
+            <span class="font-ui text-xs" style="color:var(--color-text-faint)">Online · Lead Genealogist</span>
           </div>
-          <p class="font-ui text-xs mt-1 ms-1" style="color:var(--color-text-faint)">Dr. Brennan · 10:02 AM</p>
         </div>
       </div>
 
-      <!-- Outgoing -->
-      <div class="flex justify-end">
-        <div class="text-end">
-          <div class="chat-bubble-out">
-            That's wonderful to hear! My grandmother always talked about coming from the Highlands — I can't wait to find out more.
-          </div>
-          <p class="font-ui text-xs mt-1 me-1" style="color:var(--color-text-faint)">You · 10:28 AM</p>
+      <!-- Messages area -->
+      <div id="chat-messages" class="flex-1 overflow-y-auto px-6 py-6 flex flex-col gap-3"
+        style="max-height:calc(100vh - var(--header-height) - 140px)" aria-live="polite" aria-label="Chat messages">
+
+        <!-- Date divider -->
+        <div class="flex items-center gap-3 my-2" aria-label="January 14">
+          <hr class="flex-1" style="border-color:var(--color-border)" />
+          <span class="font-ui text-xs" style="color:var(--color-text-faint)">January 14, 2026</span>
+          <hr class="flex-1" style="border-color:var(--color-border)" />
         </div>
-      </div>
 
-      <!-- Date divider -->
-      <div class="flex items-center gap-3 my-2">
-        <hr class="flex-1" style="border-color:var(--color-border)"/>
-        <span class="font-ui text-xs" style="color:var(--color-text-faint)">Today</span>
-        <hr class="flex-1" style="border-color:var(--color-border)"/>
-      </div>
-
-      <!-- Incoming (latest) -->
-      <div class="flex justify-start">
-        <div>
-          <div class="chat-bubble-in">
-            Eleanor — wonderful news. I've located the 1847 baptismal register from Inverness Cathedral that almost certainly records Elspeth Morag's birth. I'm requesting the physical microfilm reel from the National Records of Scotland, which should arrive within the week.
+        <!-- Incoming -->
+        <div class="flex justify-start">
+          <div>
+            <div class="chat-bubble-in">
+              Hello Eleanor! I've received your intake form and I'm very excited to start. Your MacAllister-Campbell
+              lineage has tremendous archival potential — Scotland's records from that era are quite well preserved.
+            </div>
+            <p class="font-ui text-xs mt-1 ms-1" style="color:var(--color-text-faint)">Dr. Brennan · 10:02 AM</p>
           </div>
-          <p class="font-ui text-xs mt-1 ms-1" style="color:var(--color-text-faint)">Dr. Brennan · 9:14 AM</p>
         </div>
-      </div>
 
-      <div class="flex justify-start">
-        <div>
-          <div class="chat-bubble-in">
-            This could push our confirmed lineage back another full generation — potentially to the late 1700s. I'll update your dashboard the moment I have the confirmation.
+        <!-- Outgoing -->
+        <div class="flex justify-end">
+          <div class="text-end">
+            <div class="chat-bubble-out">
+              That's wonderful to hear! My grandmother always talked about coming from the Highlands — I can't wait to
+              find out more.
+            </div>
+            <p class="font-ui text-xs mt-1 me-1" style="color:var(--color-text-faint)">You · 10:28 AM</p>
           </div>
-          <p class="font-ui text-xs mt-1 ms-1" style="color:var(--color-text-faint)">Dr. Brennan · 9:15 AM</p>
         </div>
+
+        <!-- Date divider -->
+        <div class="flex items-center gap-3 my-2">
+          <hr class="flex-1" style="border-color:var(--color-border)" />
+          <span class="font-ui text-xs" style="color:var(--color-text-faint)">Today</span>
+          <hr class="flex-1" style="border-color:var(--color-border)" />
+        </div>
+
+        <!-- Incoming (latest) -->
+        <div class="flex justify-start">
+          <div>
+            <div class="chat-bubble-in">
+              Eleanor — wonderful news. I've located the 1847 baptismal register from Inverness Cathedral that almost
+              certainly records Elspeth Morag's birth. I'm requesting the physical microfilm reel from the National
+              Records of Scotland, which should arrive within the week.
+            </div>
+            <p class="font-ui text-xs mt-1 ms-1" style="color:var(--color-text-faint)">Dr. Brennan · 9:14 AM</p>
+          </div>
+        </div>
+
+        <div class="flex justify-start">
+          <div>
+            <div class="chat-bubble-in">
+              This could push our confirmed lineage back another full generation — potentially to the late 1700s. I'll
+              update your dashboard the moment I have the confirmation.
+            </div>
+            <p class="font-ui text-xs mt-1 ms-1" style="color:var(--color-text-faint)">Dr. Brennan · 9:15 AM</p>
+          </div>
+        </div>
+
+      </div><!-- /chat-messages -->
+
+      <!-- Message input -->
+      <div class="px-6 py-4 border-t" style="border-color:var(--color-border)">
+        <form id="chat-form" class="flex gap-3" novalidate>
+          <input type="text" id="chat-input" placeholder="Message Dr. Brennan…" autocomplete="off"
+            class="form-input flex-1 py-2.5" aria-label="Type a message" />
+          <button type="submit" class="btn-primary py-2.5 px-5 shrink-0" aria-label="Send message">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              aria-hidden="true">
+              <line x1="22" y1="2" x2="11" y2="13" />
+              <polygon points="22 2 15 22 11 13 2 9 22 2" />
+            </svg>
+          </button>
+        </form>
       </div>
 
-    </div><!-- /chat-messages -->
-
-    <!-- Message input -->
-    <div class="px-6 py-4 border-t" style="border-color:var(--color-border)">
-      <form id="chat-form" class="flex gap-3" novalidate>
-        <input type="text" id="chat-input" placeholder="Message Dr. Brennan…" autocomplete="off"
-          class="form-input flex-1 py-2.5" aria-label="Type a message"/>
-        <button type="submit" class="btn-primary py-2.5 px-5 shrink-0" aria-label="Send message">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-            <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
-          </svg>
-        </button>
-      </form>
-    </div>
-
-  </div><!-- /panel-messages -->
+    </div><!-- /panel-messages -->
 
 
-  <!-- ══════════════════════════════════════════════════════════
+    <!-- ══════════════════════════════════════════════════════════
        PANEL: REPORTS
   ═══════════════════════════════════════════════════════════════ -->
-  <div id="panel-reports" class="panel hidden flex-1 p-6 flex-col gap-8 page-content" role="region" aria-labelledby="reports-heading">
+    <div id="panel-reports" class="panel hidden flex-1 p-6 flex-col gap-8 page-content" role="region"
+      aria-labelledby="reports-heading">
 
-    <div>
-      <h1 id="reports-heading" class="font-display text-4xl font-semibold">Reports & Downloads</h1>
-      <p class="font-body mt-1" style="color:var(--color-text-muted)">Your research deliverables and interim reports will appear here as they become available.</p>
-    </div>
+      <div>
+        <h1 id="reports-heading" class="font-display text-4xl font-semibold">Reports & Downloads</h1>
+        <p class="font-body mt-1" style="color:var(--color-text-muted)">Your research deliverables and interim reports
+          will appear here as they become available.</p>
+      </div>
 
-    <!-- Research summary stats -->
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-      <div class="stat-card text-center">
-        <p class="font-display text-3xl font-semibold text-gradient">38</p>
-        <p class="font-ui text-xs tracking-widest uppercase mt-1" style="color:var(--color-text-faint)">Ancestors</p>
-      </div>
-      <div class="stat-card text-center">
-        <p class="font-display text-3xl font-semibold text-gradient">142</p>
-        <p class="font-ui text-xs tracking-widest uppercase mt-1" style="color:var(--color-text-faint)">Records</p>
-      </div>
-      <div class="stat-card text-center">
-        <p class="font-display text-3xl font-semibold text-gradient">5</p>
-        <p class="font-ui text-xs tracking-widest uppercase mt-1" style="color:var(--color-text-faint)">Countries</p>
-      </div>
-      <div class="stat-card text-center">
-        <p class="font-display text-3xl font-semibold text-gradient">179</p>
-        <p class="font-ui text-xs tracking-widest uppercase mt-1" style="color:var(--color-text-faint)">Years Traced</p>
-      </div>
-    </div>
-
-    <!-- Final Report Download Card -->
-    <section aria-labelledby="final-report-heading">
-      <h2 id="final-report-heading" class="font-display text-2xl font-semibold mb-4">Final Heritage Report</h2>
-
-      <div class="glass-card p-8 flex flex-col sm:flex-row items-center gap-8">
-        <!-- Glowing PDF icon -->
-        <div class="shrink-0 flex flex-col items-center gap-3">
-          <div class="relative">
-            <!-- Outer glow ring -->
-            <div class="absolute inset-0 rounded-2xl animate-pulse-gold opacity-60" style="box-shadow:0 0 40px var(--glow-accent)"></div>
-            <div class="relative w-28 h-36 rounded-2xl flex flex-col items-center justify-center gap-2 border-2 pdf-icon-glow"
-              style="background:linear-gradient(135deg,#C0392B,#E74C3C);border-color:rgba(255,255,255,0.2)">
-              <!-- Page corner fold -->
-              <div class="absolute top-0 end-0 w-8 h-8 overflow-hidden">
-                <div class="absolute top-0 end-0 border-t-[2rem] border-e-[2rem] border-t-white/20 border-e-transparent"></div>
-              </div>
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="white" aria-hidden="true">
-                <path d="M8 2h12l6 6v22H8V2zm12 0v6h6"/>
-                <path d="M11 16h10M11 20h7M11 12h6" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-              </svg>
-              <span style="color:white;font-family:'Jost',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.1em">PDF</span>
-            </div>
-          </div>
-          <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">Final Report<br/>~80 pages</p>
+      <!-- Research summary stats -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div class="stat-card text-center">
+          <p class="font-display text-3xl font-semibold text-gradient">38</p>
+          <p class="font-ui text-xs tracking-widest uppercase mt-1" style="color:var(--color-text-faint)">Ancestors</p>
         </div>
-
-        <!-- Report details -->
-        <div class="flex-1">
-          <div class="flex items-center gap-3 mb-3">
-            <h3 class="font-display text-2xl font-semibold">The Harrington–MacAllister Heritage Report</h3>
-            <span class="badge" style="background:rgba(230,126,34,0.1);color:#E67E22;border-color:#E67E22">In Progress</span>
-          </div>
-          <p class="font-body mb-4" style="color:var(--color-text-muted)">
-            Your complete family heritage document — featuring narrative biographies for all 38 discovered ancestors, an illustrated family tree chart, digitized historical photographs, ethnic origin maps, and a full research methodology appendix.
+        <div class="stat-card text-center">
+          <p class="font-display text-3xl font-semibold text-gradient">142</p>
+          <p class="font-ui text-xs tracking-widest uppercase mt-1" style="color:var(--color-text-faint)">Records</p>
+        </div>
+        <div class="stat-card text-center">
+          <p class="font-display text-3xl font-semibold text-gradient">5</p>
+          <p class="font-ui text-xs tracking-widest uppercase mt-1" style="color:var(--color-text-faint)">Countries</p>
+        </div>
+        <div class="stat-card text-center">
+          <p class="font-display text-3xl font-semibold text-gradient">179</p>
+          <p class="font-ui text-xs tracking-widest uppercase mt-1" style="color:var(--color-text-faint)">Years Traced
           </p>
+        </div>
+      </div>
 
-          <!-- Progress bar for report completion -->
-          <div class="mb-5">
-            <div class="flex justify-between font-ui text-xs mb-1.5" style="color:var(--color-text-faint)">
-              <span>Report completion</span><span style="color:var(--color-accent)">37.5%</span>
+      <!-- Final Report Download Card -->
+      <section aria-labelledby="final-report-heading">
+        <h2 id="final-report-heading" class="font-display text-2xl font-semibold mb-4">Final Heritage Report</h2>
+
+        <div class="glass-card p-8 flex flex-col sm:flex-row items-center gap-8">
+          <!-- Glowing PDF icon -->
+          <div class="shrink-0 flex flex-col items-center gap-3">
+            <div class="relative">
+              <!-- Outer glow ring -->
+              <div class="absolute inset-0 rounded-2xl animate-pulse-gold opacity-60"
+                style="box-shadow:0 0 40px var(--glow-accent)"></div>
+              <div
+                class="relative w-28 h-36 rounded-2xl flex flex-col items-center justify-center gap-2 border-2 pdf-icon-glow"
+                style="background:linear-gradient(135deg,#C0392B,#E74C3C);border-color:rgba(255,255,255,0.2)">
+                <!-- Page corner fold -->
+                <div class="absolute top-0 end-0 w-8 h-8 overflow-hidden">
+                  <div
+                    class="absolute top-0 end-0 border-t-[2rem] border-e-[2rem] border-t-white/20 border-e-transparent">
+                  </div>
+                </div>
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="white" aria-hidden="true">
+                  <path d="M8 2h12l6 6v22H8V2zm12 0v6h6" />
+                  <path d="M11 16h10M11 20h7M11 12h6" stroke="white" stroke-width="1.5" fill="none"
+                    stroke-linecap="round" />
+                </svg>
+                <span
+                  style="color:white;font-family:'Jost',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.1em">PDF</span>
+              </div>
             </div>
-            <div class="h-2 rounded-full overflow-hidden" style="background:var(--color-border)">
-              <div class="h-full rounded-full" style="width:0;background:var(--color-accent);transition:width 1.4s cubic-bezier(0.4,0,0.2,1)" data-progress="37.5"></div>
-            </div>
-            <p class="font-ui text-xs mt-2" style="color:var(--color-text-faint)">Estimated completion: June 2026</p>
+            <p class="font-ui text-xs text-center" style="color:var(--color-text-faint)">Final Report<br />~80 pages</p>
           </div>
 
-          <div class="flex flex-wrap gap-3">
-            <button class="btn-primary opacity-50 cursor-not-allowed" disabled aria-disabled="true">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path stroke-linecap="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+          <!-- Report details -->
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-3">
+              <h3 class="font-display text-2xl font-semibold">The Harrington–MacAllister Heritage Report</h3>
+              <span class="badge" style="background:rgba(230,126,34,0.1);color:#E67E22;border-color:#E67E22">In
+                Progress</span>
+            </div>
+            <p class="font-body mb-4" style="color:var(--color-text-muted)">
+              Your complete family heritage document — featuring narrative biographies for all 38 discovered ancestors,
+              an illustrated family tree chart, digitized historical photographs, ethnic origin maps, and a full
+              research methodology appendix.
+            </p>
+
+            <!-- Progress bar for report completion -->
+            <div class="mb-5">
+              <div class="flex justify-between font-ui text-xs mb-1.5" style="color:var(--color-text-faint)">
+                <span>Report completion</span><span style="color:var(--color-accent)">37.5%</span>
+              </div>
+              <div class="h-2 rounded-full overflow-hidden" style="background:var(--color-border)">
+                <div class="h-full rounded-full"
+                  style="width:0;background:var(--color-accent);transition:width 1.4s cubic-bezier(0.4,0,0.2,1)"
+                  data-progress="37.5"></div>
+              </div>
+              <p class="font-ui text-xs mt-2" style="color:var(--color-text-faint)">Estimated completion: June 2026</p>
+            </div>
+
+            <div class="flex flex-wrap gap-3">
+              <button class="btn-primary opacity-50 cursor-not-allowed" disabled aria-disabled="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  aria-hidden="true">
+                  <path stroke-linecap="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Download PDF (Available at Completion)
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interim Reports -->
+      <section aria-labelledby="interim-heading">
+        <h2 id="interim-heading" class="font-display text-2xl font-semibold mb-4">Interim Research Reports</h2>
+        <div class="flex flex-col gap-4">
+
+          <div class="glass-card p-5 flex items-center gap-5">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
+              style="background:rgba(231,76,60,0.1)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E74C3C" stroke-width="1.8">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
               </svg>
-              Download PDF (Available at Completion)
-            </button>
+            </div>
+            <div class="flex-1">
+              <p class="font-ui text-sm font-semibold">Initial Research Summary</p>
+              <p class="font-body text-sm" style="color:var(--color-text-muted)">Overview of starting information and
+                research strategy · 8 pages</p>
+              <p class="font-ui text-xs mt-0.5" style="color:var(--color-text-faint)">Generated January 20, 2026</p>
+            </div>
+            <button class="btn-ghost py-2 px-4 text-sm shrink-0"
+              aria-label="Download initial research summary">Download</button>
           </div>
+
+          <div class="glass-card p-5 flex items-center gap-5">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
+              style="background:rgba(231,76,60,0.1)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E74C3C" stroke-width="1.8">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+              </svg>
+            </div>
+            <div class="flex-1">
+              <p class="font-ui text-sm font-semibold">Scottish Census Findings Report</p>
+              <p class="font-body text-sm" style="color:var(--color-text-muted)">Detailed findings from 1841, 1851, 1871
+                and 1881 census records · 14 pages</p>
+              <p class="font-ui text-xs mt-0.5" style="color:var(--color-text-faint)">Generated February 15, 2026</p>
+            </div>
+            <button class="btn-ghost py-2 px-4 text-sm shrink-0"
+              aria-label="Download Scottish census findings">Download</button>
+          </div>
+
+          <div class="glass-card p-5 flex items-center gap-5 opacity-50">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
+              style="background:var(--color-bg-alt)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-faint)"
+                stroke-width="1.8">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </div>
+            <div class="flex-1">
+              <p class="font-ui text-sm font-semibold" style="color:var(--color-text-faint)">DNA Analysis Report</p>
+              <p class="font-body text-sm" style="color:var(--color-text-faint)">Pending · Available when DNA analysis
+                phase begins</p>
+            </div>
+            <span class="badge shrink-0">Pending</span>
+          </div>
+
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Interim Reports -->
-    <section aria-labelledby="interim-heading">
-      <h2 id="interim-heading" class="font-display text-2xl font-semibold mb-4">Interim Research Reports</h2>
-      <div class="flex flex-col gap-4">
+    </div><!-- /panel-reports -->
 
-        <div class="glass-card p-5 flex items-center gap-5">
-          <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style="background:rgba(231,76,60,0.1)">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E74C3C" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          </div>
-          <div class="flex-1">
-            <p class="font-ui text-sm font-semibold">Initial Research Summary</p>
-            <p class="font-body text-sm" style="color:var(--color-text-muted)">Overview of starting information and research strategy · 8 pages</p>
-            <p class="font-ui text-xs mt-0.5" style="color:var(--color-text-faint)">Generated January 20, 2026</p>
-          </div>
-          <button class="btn-ghost py-2 px-4 text-sm shrink-0" aria-label="Download initial research summary">Download</button>
-        </div>
-
-        <div class="glass-card p-5 flex items-center gap-5">
-          <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style="background:rgba(231,76,60,0.1)">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E74C3C" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          </div>
-          <div class="flex-1">
-            <p class="font-ui text-sm font-semibold">Scottish Census Findings Report</p>
-            <p class="font-body text-sm" style="color:var(--color-text-muted)">Detailed findings from 1841, 1851, 1871 and 1881 census records · 14 pages</p>
-            <p class="font-ui text-xs mt-0.5" style="color:var(--color-text-faint)">Generated February 15, 2026</p>
-          </div>
-          <button class="btn-ghost py-2 px-4 text-sm shrink-0" aria-label="Download Scottish census findings">Download</button>
-        </div>
-
-        <div class="glass-card p-5 flex items-center gap-5 opacity-50">
-          <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style="background:var(--color-bg-alt)">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-faint)" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <div class="flex-1">
-            <p class="font-ui text-sm font-semibold" style="color:var(--color-text-faint)">DNA Analysis Report</p>
-            <p class="font-body text-sm" style="color:var(--color-text-faint)">Pending · Available when DNA analysis phase begins</p>
-          </div>
-          <span class="badge shrink-0">Pending</span>
-        </div>
-
-      </div>
-    </section>
-
-  </div><!-- /panel-reports -->
-
-</div><!-- /main-content -->
+  </div><!-- /main-content -->
 
 
-<script src="js/main.js"></script>
-<script>
-  /* ── Dashboard panel switcher ─────────────────────────────── */
-  /**
-   * Show a specific dashboard panel and update sidebar active state.
-   * @param {string} panelId - The panel to show ('overview','tree','documents','messages','reports')
-   * @param {Element|null} clickedLink - The nav-link element that was clicked (or null)
-   */
-  function showPanel(panelId, clickedLink) {
-    // Hide all panels
-    document.querySelectorAll('.panel').forEach(panel => {
-      panel.classList.remove('flex');
-      panel.classList.add('hidden');
+  <script src="js/main.js"></script>
+  <script>
+    /* ── Dashboard panel switcher ─────────────────────────────── */
+    /**
+     * Show a specific dashboard panel and update sidebar active state.
+     * @param {string} panelId - The panel to show ('overview','tree','documents','messages','reports')
+     * @param {Element|null} clickedLink - The nav-link element that was clicked (or null)
+     */
+    function showPanel(panelId, clickedLink) {
+      // Hide all panels
+      document.querySelectorAll('.panel').forEach(panel => {
+        panel.classList.remove('flex');
+        panel.classList.add('hidden');
+      });
+
+      // Show target panel
+      const target = document.getElementById('panel-' + panelId);
+      if (target) {
+        target.classList.remove('hidden');
+        target.classList.add('flex');
+      }
+
+      // Update sidebar active link
+      document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+      if (clickedLink) {
+        clickedLink.classList.add('active');
+      } else {
+        // Find and activate matching link
+        document.querySelectorAll('.nav-link').forEach(link => {
+          if (link.getAttribute('href') === '#' + panelId) {
+            link.classList.add('active');
+          }
+        });
+      }
+
+      // Update breadcrumb
+      const labels = {
+        overview: 'Overview', tree: 'My Tree', documents: 'Documents',
+        messages: 'Messages', reports: 'Reports'
+      };
+      const breadcrumb = document.getElementById('breadcrumb-page');
+      if (breadcrumb) breadcrumb.textContent = labels[panelId] || '';
+
+      // Animate progress bars in newly visible panel
+      setTimeout(() => {
+        target?.querySelectorAll('[data-progress]').forEach(bar => {
+          bar.style.width = bar.dataset.progress + '%';
+        });
+        // Animate step connectors
+        target?.querySelectorAll('.step-connector.done').forEach(c => c.classList.add('animate-fill'));
+      }, 100);
+
+      // Scroll main content area to top
+      document.querySelector('.main-content')?.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Init: show overview on load, trigger progress bars
+    document.addEventListener('DOMContentLoaded', () => {
+      showPanel('overview', null);
+
+      // Animate sidebar ring
+      setTimeout(() => {
+        const ring = document.getElementById('sidebar-ring');
+        if (ring) ring.style.strokeDashoffset = '157'; // 37.5%
+      }, 600);
+
+      // Update dark mode toggle labels
+      const updateThemeLabels = () => {
+        const isDark = document.documentElement.classList.contains('dark');
+        document.querySelectorAll('.icon-moon-label').forEach(el => el.textContent = isDark ? 'Light' : 'Dark');
+        document.querySelectorAll('.icon-sun-label').forEach(el => el.classList.toggle('hidden', !isDark));
+        document.querySelectorAll('.icon-moon-label').forEach(el => el.classList.toggle('hidden', isDark));
+      };
+
+      // Watch for class changes
+      const observer = new MutationObserver(updateThemeLabels);
+      observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+      updateThemeLabels();
     });
-
-    // Show target panel
-    const target = document.getElementById('panel-' + panelId);
-    if (target) {
-      target.classList.remove('hidden');
-      target.classList.add('flex');
-    }
-
-    // Update sidebar active link
-    document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-    if (clickedLink) {
-      clickedLink.classList.add('active');
-    } else {
-      // Find and activate matching link
-      document.querySelectorAll('.nav-link').forEach(link => {
-        if (link.getAttribute('href') === '#' + panelId) {
-          link.classList.add('active');
-        }
-      });
-    }
-
-    // Update breadcrumb
-    const labels = {
-      overview: 'Overview', tree: 'My Tree', documents: 'Documents',
-      messages: 'Messages', reports: 'Reports'
-    };
-    const breadcrumb = document.getElementById('breadcrumb-page');
-    if (breadcrumb) breadcrumb.textContent = labels[panelId] || '';
-
-    // Animate progress bars in newly visible panel
-    setTimeout(() => {
-      target?.querySelectorAll('[data-progress]').forEach(bar => {
-        bar.style.width = bar.dataset.progress + '%';
-      });
-      // Animate step connectors
-      target?.querySelectorAll('.step-connector.done').forEach(c => c.classList.add('animate-fill'));
-    }, 100);
-
-    // Scroll main content area to top
-    document.querySelector('.main-content')?.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  // Init: show overview on load, trigger progress bars
-  document.addEventListener('DOMContentLoaded', () => {
-    showPanel('overview', null);
-
-    // Animate sidebar ring
-    setTimeout(() => {
-      const ring = document.getElementById('sidebar-ring');
-      if (ring) ring.style.strokeDashoffset = '157'; // 37.5%
-    }, 600);
-
-    // Update dark mode toggle labels
-    const updateThemeLabels = () => {
-      const isDark = document.documentElement.classList.contains('dark');
-      document.querySelectorAll('.icon-moon-label').forEach(el => el.textContent = isDark ? 'Light' : 'Dark');
-      document.querySelectorAll('.icon-sun-label').forEach(el => el.classList.toggle('hidden', !isDark));
-      document.querySelectorAll('.icon-moon-label').forEach(el => el.classList.toggle('hidden', isDark));
-    };
-
-    // Watch for class changes
-    const observer = new MutationObserver(updateThemeLabels);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-    updateThemeLabels();
-  });
-</script>
+  </script>
 </body>
+
 </html>
