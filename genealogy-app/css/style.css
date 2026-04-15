@@ -325,6 +325,17 @@ a:hover { opacity: 0.82; }
     radial-gradient(ellipse 60% 50% at 80% 70%, rgba(139,105,20,0.1) 0%, transparent 55%),
     var(--color-bg);
 }
+.hero-bg-img {
+  background-image: 
+    linear-gradient(to bottom, rgba(250,246,240,0.4), rgba(250,246,240,0.7)),
+    url('../assets/banner-texture.png');
+  background-size: cover;
+}
+.dark .hero-bg-img {
+  background-image: 
+    linear-gradient(to bottom, rgba(18,18,18,0.5), rgba(18,18,18,0.8)),
+    url('../assets/banner-texture.png');
+}
 .dark .hero-bg {
   background:
     radial-gradient(ellipse 80% 60% at 20% 40%, rgba(201,168,76,0.1) 0%, transparent 60%),
@@ -441,8 +452,20 @@ a:hover { opacity: 0.82; }
 .page-hero {
   padding: calc(var(--header-height) + 5rem) 1.5rem 5rem;
   text-align: center;
-  background: linear-gradient(165deg, var(--color-bg-alt) 0%, var(--color-bg) 100%);
   position: relative; overflow: hidden;
+}
+.banner-bg-img {
+  background-image: 
+    linear-gradient(to bottom, rgba(250,246,240,0.85), rgba(250,246,240,0.92)),
+    url('../assets/banner-texture.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.dark .banner-bg-img {
+  background-image: 
+    linear-gradient(to bottom, rgba(18,18,18,0.88), rgba(18,18,18,0.94)),
+    url('../assets/banner-texture.png');
 }
 .page-hero-deco {
   position: absolute; inset: 0; pointer-events: none; overflow: hidden;
@@ -571,6 +594,7 @@ a:hover { opacity: 0.82; }
   min-width: 760px;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 3rem 5rem;
   gap: 3rem;
 }
@@ -620,3 +644,10 @@ a:hover { opacity: 0.82; }
   .grid.md\:grid-cols-3  { grid-template-columns: repeat(2, 1fr); }
   .grid.md\:grid-cols-4  { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ── ACCORDION REFINEMENT ────────────────────────────────── */
+[data-accordion-content] {
+  padding-bottom: 2rem !important;
+  margin-bottom: 0.5rem;
+}
+

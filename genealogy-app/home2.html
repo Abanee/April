@@ -100,24 +100,22 @@
         </svg>
       </div>
 
-      <div class="relative z-10 w-full max-w-7xl mx-auto px-6 py-24">
-        <!-- Eyebrow quote -->
-        <p class="section-eyebrow mb-8 animate-fade-in-up">A Real Story from Our Archive</p>
-
-        <!-- Dramatic story opening -->
+      <div class="relative z-10 w-full max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-2 gap-16 items-center">
+        <!-- Left: Text -->
         <div class="max-w-4xl">
+          <p class="section-eyebrow mb-8 animate-fade-in-up justify-start">A Real Story from Our Archive</p>
           <h1 id="h2-hero-headline" class="font-display display-xl font-semibold mb-6 animate-fade-in-up-d1" style="line-height:1.06">
             She was born in<br/>
             <em class="text-gradient not-italic">Inverness, 1847.</em><br/>
             Her family forgot her name.
           </h1>
-          <p class="font-body text-xl lg:text-2xl mb-4 animate-fade-in-up-d2 max-w-2xl" style="color:var(--color-text-muted)">
+          <p class="font-body text-xl lg:text-2xl mb-8 animate-fade-in-up-d2 max-w-2xl" style="color:var(--color-text-muted)">
             Elspeth Morag MacAllister emigrated alone at 24 — no husband, no escort — arriving at Ellis Island with a single trunk and a loom. Her five great-grandchildren didn't know she existed until a Rootbound genealogist found her naturalization papers buried in a New York county archive.
           </p>
-          <div class="pull-quote animate-fade-in-up-d3">
+          <div class="pull-quote animate-fade-in-up-d3 mb-10">
             <p>"She built something from nothing. Knowing that changed how I see myself." — Claire M., client, 2024</p>
           </div>
-          <div class="flex flex-wrap gap-4 mt-8 animate-fade-in-up-d4">
+          <div class="flex flex-wrap gap-4 animate-fade-in-up-d4">
             <a href="services.html" data-vt class="btn-primary animate-pulse-sepia dark:animate-pulse-gold">
               Uncover Your Story
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -126,13 +124,19 @@
           </div>
         </div>
 
-        <!-- Ancestor card preview floating right -->
-        <div class="hidden lg:block absolute bottom-12 end-12 animate-fade-in-up-d4" aria-hidden="true">
-          <div class="glass-card p-6 w-56" style="box-shadow:0 24px 64px rgba(28,16,5,0.2)">
-            <span class="badge mb-3">Verified Record</span>
-            <p class="font-ui text-xs tracking-widest uppercase mt-3 mb-1" style="color:var(--color-text-faint)">Ellis Island — 1872</p>
-            <p class="font-display text-lg font-semibold">Elspeth M. MacAllister</p>
-            <p class="font-body text-sm mt-1" style="color:var(--color-text-muted)">Country of Origin: Scotland<br/>Occupation: Weaver</p>
+        <!-- Right: Animated Portrait -->
+        <div class="hidden lg:block animate-fade-in-up-d3 relative">
+          <div class="relative group">
+            <div class="absolute -inset-4 bg-gradient-to-tr from-[var(--color-accent)]/20 to-transparent blur-2xl rounded-full opacity-40 group-hover:opacity-70 transition-opacity"></div>
+            <img src="assets/elspeth_portrait.png" alt="Elspeth Morag MacAllister" class="relative w-full max-w-md mx-auto h-[600px] object-cover rounded-2xl border-4 border-[var(--color-bg-card)] shadow-2xl rotate-2 group-hover:rotate-0 transition-transform duration-[800ms]">
+            
+            <!-- Float-in Details -->
+            <div class="absolute -bottom-6 -right-6 glass-card p-5 w-52 shadow-2xl animate-drift">
+              <span class="badge mb-3">Verified Record</span>
+              <p class="font-ui text-[10px] tracking-widest uppercase mb-1" style="color:var(--color-text-faint)">Ellis Island · 1872</p>
+              <p class="font-display text-xl font-semibold">Elspeth M. MacAllister</p>
+              <p class="font-body text-xs mt-1" style="color:var(--color-text-muted)">Country of Origin: Scotland<br/>Occupation: Weaver</p>
+            </div>
           </div>
         </div>
       </div>
@@ -290,15 +294,15 @@
           <div class="story-card reveal" style="animation-delay:0.15s">
             <div class="story-card-img h-48 overflow-hidden">
               <img src="assets/ottoman_registry.png" alt="Ottoman Registry" class="w-full h-full object-cover">
-              <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/60 to-transparent">
-                <p class="font-ui text-[10px] tracking-widest uppercase text-white opacity-90">Baghdad · 1891</p>
-              </div>
             </div>
             <div class="p-6">
               <span class="badge mb-3">International Archive</span>
               <h3 class="font-display text-2xl font-semibold mt-2">The Al-Rashidi Lineage</h3>
               <p class="font-body mt-2" style="color:var(--color-text-muted)">Tracing a London family's roots through Ottoman records, uncovering a lineage of merchants stretching back to 17th-century Baghdad.</p>
-              <a href="ancestors.html" data-vt class="inline-flex items-center gap-1 font-ui text-sm mt-4" style="color:var(--color-accent)">Read story →</a>
+              <div class="mt-6 flex items-center justify-between border-t border-[var(--color-border)] pt-4">
+                <a href="ancestors.html" data-vt class="inline-flex items-center gap-1 font-ui text-sm" style="color:var(--color-accent)">Read story →</a>
+                <p class="font-ui text-[10px] tracking-widest uppercase" style="color:var(--color-text-faint)">Baghdad · 1891</p>
+              </div>
             </div>
           </div>
         </div>
@@ -351,37 +355,32 @@
             <svg viewBox="0 0 600 320" class="w-full" aria-label="World map showing countries where Rootbound researches">
               <!-- Background -->
               <rect width="600" height="320" rx="12" fill="var(--color-bg-alt)"/>
-              <!-- Simplified continent shapes -->
-              <!-- North America -->
-              <path d="M60 80 L140 60 L160 100 L150 160 L110 180 L70 160 Z" fill="var(--color-border)" opacity="0.6"/>
-              <!-- South America -->
-              <path d="M110 190 L150 185 L155 250 L120 280 L95 250 Z" fill="var(--color-border)" opacity="0.6"/>
-              <!-- Europe -->
-              <path d="M255 60 L310 55 L320 90 L300 110 L260 105 Z" fill="var(--color-border)" opacity="0.6"/>
-              <!-- Africa -->
-              <path d="M265 120 L310 115 L320 200 L290 230 L255 210 L248 155 Z" fill="var(--color-border)" opacity="0.6"/>
-              <!-- Asia -->
-              <path d="M325 55 L460 50 L470 130 L430 160 L360 155 L325 120 Z" fill="var(--color-border)" opacity="0.6"/>
-              <!-- Australia -->
-              <path d="M440 200 L500 195 L510 240 L460 250 Z" fill="var(--color-border)" opacity="0.6"/>
+              <!-- Refined minimal world map -->
+              <g fill="var(--color-border)" opacity="0.4">
+                <!-- North America -->
+                <path d="M40 70 L90 60 L140 50 L160 80 L145 150 L120 170 L80 160 Z"/>
+                <!-- South America -->
+                <path d="M125 180 L160 175 L165 240 L130 270 L110 240 Z"/>
+                <!-- Europe -->
+                <path d="M260 55 L320 50 L330 90 L290 100 L260 90 Z"/>
+                <!-- Africa -->
+                <path d="M260 110 L320 105 L340 160 L320 220 L280 230 L250 160 Z"/>
+                <!-- Asia -->
+                <path d="M340 50 L480 45 L500 130 L450 180 L380 170 L340 120 Z"/>
+                <!-- Australia -->
+                <path d="M460 210 L520 205 L530 250 L480 260 Z"/>
+                <!-- Greenland -->
+                <path d="M150 20 L200 15 L210 40 L160 45 Z"/>
+              </g>
 
               <!-- Research markers (pulsing) -->
-              <!-- Ireland/UK -->
-              <circle cx="272" cy="72" r="5" fill="var(--color-accent)" class="map-dot" style="animation-delay:0s"/>
-              <!-- Germany -->
-              <circle cx="295" cy="76" r="4" fill="var(--color-accent)" class="map-dot" style="animation-delay:0.4s"/>
-              <!-- Poland -->
-              <circle cx="308" cy="73" r="4" fill="var(--color-accent)" class="map-dot" style="animation-delay:0.8s"/>
-              <!-- Italy -->
-              <circle cx="290" cy="98" r="4" fill="var(--color-accent)" class="map-dot" style="animation-delay:0.2s"/>
-              <!-- West Africa -->
-              <circle cx="265" cy="155" r="4" fill="var(--color-accent)" class="map-dot" style="animation-delay:0.6s"/>
-              <!-- Middle East -->
-              <circle cx="335" cy="108" r="4" fill="var(--color-accent)" class="map-dot" style="animation-delay:1s"/>
-              <!-- USA East Coast -->
-              <circle cx="110" cy="120" r="5" fill="var(--color-accent)" class="map-dot" style="animation-delay:0.3s"/>
-              <!-- Scandinavia -->
-              <circle cx="290" cy="60" r="3" fill="var(--color-accent)" class="map-dot" style="animation-delay:0.9s"/>
+              <circle cx="285" cy="72" r="5" fill="var(--color-accent)" class="map-dot" style="animation-delay:0s"/> <!-- UK/Ireland -->
+              <circle cx="305" cy="78" r="4" fill="var(--color-accent)" class="map-dot" style="animation-delay:0.4s"/> <!-- Germany -->
+              <circle cx="298" cy="102" r="4" fill="var(--color-accent)" class="map-dot" style="animation-delay:0.2s"/> <!-- Italy -->
+              <circle cx="120" cy="100" r="5" fill="var(--color-accent)" class="map-dot" style="animation-delay:0.3s"/> <!-- USA -->
+              <circle cx="270" cy="155" r="4" fill="var(--color-accent)" class="map-dot" style="animation-delay:0.6s"/> <!-- West Africa -->
+              <circle cx="350" cy="110" r="4" fill="var(--color-accent)" class="map-dot" style="animation-delay:0.8s"/> <!-- Middle East -->
+              <circle cx="480" cy="225" r="4" fill="var(--color-accent)" class="map-dot" style="animation-delay:1.1s"/> <!-- Oceania -->
 
               <!-- Legend -->
               <circle cx="30" cy="300" r="5" fill="var(--color-accent)"/>
@@ -483,8 +482,10 @@
               <line x1="16" y1="28" x2="16" y2="8" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" />
               <line x1="16" y1="14" x2="9" y2="9" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" />
               <line x1="16" y1="14" x2="23" y2="9" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" />
-              <line x1="16" y1="19" x2="11" y2="15" stroke="var(--color-accent)" stroke-width="1.2" stroke-linecap="round" />
-              <line x1="16" y1="19" x2="21" y2="15" stroke="var(--color-accent)" stroke-width="1.2" stroke-linecap="round" />
+              <line x1="16" y1="19" x2="11" y2="15" stroke="var(--color-accent)" stroke-width="1.2"
+                stroke-linecap="round" />
+              <line x1="16" y1="19" x2="21" y2="15" stroke="var(--color-accent)" stroke-width="1.2"
+                stroke-linecap="round" />
               <circle cx="9" cy="8" r="2" fill="var(--color-accent)" />
               <circle cx="23" cy="8" r="2" fill="var(--color-accent)" />
               <circle cx="11" cy="14" r="1.5" fill="var(--color-accent)" />
@@ -492,51 +493,73 @@
             </svg>
             <span class="font-display text-2xl font-semibold tracking-tight">Rootbound</span>
           </a>
-          <p class="font-body text-sm" style="color:var(--color-text-muted)">Professional genealogy research and family history services since 2009.</p>
+          <p class="font-body text-sm leading-relaxed" style="color:var(--color-text-muted)">Professional genealogy research and family history services since 2009. Our team of dedicated historians and expert researchers helps you bridge the gap between generations, bringing your ancestors' stories to life with archival precision and care.</p>
           <div class="flex gap-3 mt-5">
-            <a href="#" class="w-8 h-8 rounded-full flex items-center justify-center border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all font-ui text-xs" style="color:var(--color-text-faint)" aria-label="Facebook">f</a>
-            <a href="#" class="w-8 h-8 rounded-full flex items-center justify-center border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all font-ui text-xs" style="color:var(--color-text-faint)" aria-label="Twitter">𝕏</a>
-            <a href="#" class="w-8 h-8 rounded-full flex items-center justify-center border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all font-ui text-xs" style="color:var(--color-text-faint)" aria-label="Instagram">ig</a>
+            <a href="#"
+              class="w-8 h-8 rounded-full flex items-center justify-center border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all font-ui text-xs"
+              style="color:var(--color-text-faint)" aria-label="Facebook">f</a>
+            <a href="#"
+              class="w-8 h-8 rounded-full flex items-center justify-center border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all font-ui text-xs"
+              style="color:var(--color-text-faint)" aria-label="Twitter">𝕏</a>
+            <a href="#"
+              class="w-8 h-8 rounded-full flex items-center justify-center border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all font-ui text-xs"
+              style="color:var(--color-text-faint)" aria-label="Instagram">ig</a>
           </div>
         </div>
         <!-- Navigation -->
         <div>
-          <h3 class="font-ui text-xs font-semibold tracking-widest uppercase mb-4" style="color:var(--color-text-faint)">Navigate</h3>
+          <h3 class="font-ui text-xs font-semibold tracking-widest uppercase mb-4"
+            style="color:var(--color-text-faint)">Navigate</h3>
           <ul class="flex flex-col gap-2.5">
-            <li><a href="index.html"     data-vt class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Home</a></li>
-            <li><a href="home2.html"     data-vt class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Home 2</a></li>
-            <li><a href="services.html"  data-vt class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Services</a></li>
-            <li><a href="about.html"     data-vt class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">About</a></li>
-            <li><a href="ancestors.html" data-vt class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Ancestors</a></li>
-            <li><a href="blog.html"      data-vt class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Blog</a></li>
-            <li><a href="contact.html"   data-vt class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Contact</a></li>
-            <li><a href="dashboard.html" data-vt class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Dashboard</a></li>
+            <li><a href="index.html" data-vt class="font-ui text-sm hover:opacity-80"
+                style="color:var(--color-text-muted)">Home</a></li>
+            <li><a href="home2.html" data-vt class="font-ui text-sm hover:opacity-80"
+                style="color:var(--color-text-muted)">Home 2</a></li>
+            <li><a href="services.html" data-vt class="font-ui text-sm hover:opacity-80"
+                style="color:var(--color-text-muted)">Services</a></li>
+            <li><a href="about.html" data-vt class="font-ui text-sm hover:opacity-80"
+                style="color:var(--color-text-muted)">About</a></li>
+            <li><a href="ancestors.html" data-vt class="font-ui text-sm hover:opacity-80"
+                style="color:var(--color-text-muted)">Ancestors</a></li>
+            <li><a href="blog.html" data-vt class="font-ui text-sm hover:opacity-80"
+                style="color:var(--color-text-muted)">Blog</a></li>
+            <li><a href="contact.html" data-vt class="font-ui text-sm hover:opacity-80"
+                style="color:var(--color-text-muted)">Contact</a></li>
+            <li><a href="dashboard.html" data-vt class="font-ui text-sm hover:opacity-80"
+                style="color:var(--color-text-muted)">Dashboard</a></li>
           </ul>
         </div>
         <!-- Resources -->
         <div>
-          <h3 class="font-ui text-xs font-semibold tracking-widest uppercase mb-4" style="color:var(--color-text-faint)">Resources</h3>
+          <h3 class="font-ui text-xs font-semibold tracking-widest uppercase mb-4"
+            style="color:var(--color-text-faint)">Resources</h3>
           <ul class="flex flex-col gap-2.5">
             <li><a href="#" class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Getting Started Guide</a></li>
             <li><a href="#" class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Archive Database</a></li>
             <li><a href="#" class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">DNA Explained</a></li>
+            <li><a href="#" class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Research Tips</a></li>
+            <li><a href="#" class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Expert Methodology</a></li>
             <li><a href="#" class="font-ui text-sm hover:opacity-80" style="color:var(--color-text-muted)">Privacy Policy</a></li>
           </ul>
         </div>
         <!-- Newsletter -->
         <div>
-          <h3 class="font-ui text-xs font-semibold tracking-widest uppercase mb-4" style="color:var(--color-text-faint)">Heritage Dispatch</h3>
-          <p class="font-body text-sm mb-4" style="color:var(--color-text-muted)">Monthly genealogy tips and archival discoveries.</p>
+          <h3 class="font-ui text-xs font-semibold tracking-widest uppercase mb-4"
+            style="color:var(--color-text-faint)">Heritage Dispatch</h3>
+          <p class="font-body text-sm mb-4" style="color:var(--color-text-muted)">Monthly genealogy tips and archival
+            discoveries.</p>
           <div class="flex gap-2">
-            <input type="email" placeholder="your@email.com" class="form-input flex-1 text-sm py-2" aria-label="Email for newsletter"/>
+            <input type="email" placeholder="your@email.com" class="form-input flex-1 text-sm py-2"
+              aria-label="Email for newsletter" />
             <button class="btn-primary py-2 px-4 text-sm shrink-0" aria-label="Subscribe to newsletter">→</button>
           </div>
         </div>
       </div>
 
-      <hr class="mt-12 mb-6" style="border-color:var(--color-border)"/>
+      <hr class="mt-12 mb-6" style="border-color:var(--color-border)" />
       <div class="flex flex-wrap items-center justify-between gap-4">
-        <p class="font-ui text-xs" style="color:var(--color-text-faint)">© 2026 Rootbound Genealogy Research. All rights reserved.</p>
+        <p class="font-ui text-xs" style="color:var(--color-text-faint)">© 2026 Rootbound Genealogy Research. All rights
+          reserved.</p>
         <p class="font-ui text-xs" style="color:var(--color-text-faint)">Crafted with care for every family's story.</p>
       </div>
     </div>
