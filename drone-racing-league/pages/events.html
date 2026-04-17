@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Events — DRL Drone Racing League</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Exo+2:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/css/main.css"/>
+<script src="../assets/js/theme.js"></script>
+<style>
+.event-hero {
+  padding: 120px 0 60px;
+  background: var(--bg0);
+  position: relative;
+  text-align: center;
+}
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 32px;
+  margin-top: 60px;
+}
+.event-item {
+  background: var(--bg1);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.event-item:hover {
+  transform: translateY(-8px);
+  border-color: var(--orange);
+  box-shadow: 0 20px 40px var(--orange-glow);
+}
+.event-img {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.event-status-tag {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #fff;
+}
+.event-details {
+  padding: 24px;
+}
+.event-date {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--orange);
+  margin-bottom: 8px;
+  display: block;
+}
+.event-title {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.event-loc {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-dim);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <div class="logo-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="white">
+          <circle cx="10" cy="10" r="3"/>
+          <line x1="10" y1="0" x2="10" y2="6" stroke="white" stroke-width="2"/>
+          <line x1="10" y1="14" x2="10" y2="20" stroke="white" stroke-width="2"/>
+          <line x1="0" y1="10" x2="6" y2="10" stroke="white" stroke-width="2"/>
+          <line x1="14" y1="10" x2="20" y2="10" stroke="white" stroke-width="2"/>
+        </svg>
+      </div>
+      DRL<span>.</span>APEX
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../home2.html">Home 2</a>
+      <a href="about.html">About</a>
+      <a href="events.html" class="active">Events</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="services.html">Training</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <button class="toggle-btn" id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">☀️</button>
+      <a href="dashboard.html" class="btn-outline" style="padding:10px 16px;font-size:13px">Dashboard</a>
+    </div>
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ── MOBILE MENU ── -->
+<div class="mobile-menu">
+  <div class="mobile-links">
+    <a href="../index.html">Home</a>
+    <a href="../home2.html">Home 2</a>
+    <a href="about.html">About</a>
+    <a href="events.html" class="active">Events</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="services.html">Training</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="mobile-cta">
+    <a href="dashboard.html" class="btn-outline">Pilot Dashboard</a>
+    <a href="services.html" class="btn-primary">Enroll Now</a>
+  </div>
+</div>
+
+<section class="event-hero">
+  <div class="container">
+    <div class="section-tag">Race Calendar</div>
+    <h1 class="display" style="font-size: clamp(64px, 8vw, 120px);">SEASON 8 <span class="glow-orange">CIRCUIT</span></h1>
+    <p class="section-desc">Join thousands of fans at our global race locations. Witness the fastest pilots on earth compete for the championship.</p>
+  </div>
+</section>
+
+<section class="padded grid-bg">
+  <div class="container">
+    <div class="event-grid">
+      <!-- Event 1 -->
+      <div class="event-item">
+        <div class="event-img" style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2070&auto=format&fit=crop');">
+          <span class="event-status-tag" style="background: #ff5500;">Live Now</span>
+        </div>
+        <div class="event-details">
+          <span class="event-date">APRIL 19-21, 2025</span>
+          <h3 class="event-title">DUBAI GRAND PRIX</h3>
+          <div class="event-loc">📍 Dubai Design District, UAE</div>
+          <p style="color:var(--text-dim);font-size:14px;margin-bottom:24px">The ultimate desert showdown. High-speed straights and grueling heat tests Every pilot's resolve.</p>
+          <a href="#" class="btn-primary" style="width:100%;justify-content:center">Buy Tickets</a>
+        </div>
+      </div>
+      <!-- Event 2 -->
+      <div class="event-item">
+        <div class="event-img" style="background-image: url('https://images.unsplash.com/photo-1546708973-b339540b5162?q=80&w=2070&auto=format&fit=crop');">
+          <span class="event-status-tag" style="background: #0066ff;">Upcoming</span>
+        </div>
+        <div class="event-details">
+          <span class="event-date">MAY 3-5, 2025</span>
+          <h3 class="event-title">SEOUL NIGHT RACE</h3>
+          <div class="event-loc">📍 Lotte World Tower, South Korea</div>
+          <p style="color:var(--text-dim);font-size:14px;margin-bottom:24px">A neon-lit masterclass through the heart of Seoul. Precision is everything in this tight urban circuit.</p>
+          <a href="#" class="btn-outline" style="width:100%;justify-content:center">Set Reminder</a>
+        </div>
+      </div>
+      <!-- Event 3 -->
+      <div class="event-item">
+        <div class="event-img" style="background-image: url('https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?q=80&w=2070&auto=format&fit=crop');">
+          <span class="event-status-tag" style="background: #ffcc00;color:#000">Open Reg</span>
+        </div>
+        <div class="event-details">
+          <span class="event-date">JUNE 14-16, 2025</span>
+          <h3 class="event-title">WORLD FINALS</h3>
+          <div class="event-loc">📍 Las Vegas Strip, USA</div>
+          <p style="color:var(--text-dim);font-size:14px;margin-bottom:24px">The biggest prize pool in drone racing history. Where legends are made and champions are crowned.</p>
+          <a href="#" class="btn-primary" style="width:100%;justify-content:center">Register to Compete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand display">DRL<span>.</span>APEX</div>
+        <p class="footer-desc">The world's premier drone racing league and FPV pilot training academy.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Racing</h4>
+        <a href="events.html">Calendar</a>
+        <a href="dashboard.html">Leaderboard</a>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="gallery.html">Gallery</a>
+        <a href="blog.html">News</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 DRL.APEX</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Gallery — DRL Drone Racing League</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Exo+2:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/css/main.css"/>
+<script src="../assets/js/theme.js"></script>
+<style>
+.gallery-hero {
+  padding: 120px 0 60px;
+  background: var(--bg0);
+  text-align: center;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 250px;
+  gap: 16px;
+  padding: 0 24px;
+  max-width: 1400px;
+  margin: 0 auto 100px;
+}
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+.item-tall { grid-row: span 2; }
+.item-wide { grid-column: span 2; }
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+}
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+.gallery-overlay span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--orange);
+  text-transform: uppercase;
+}
+
+@media (max-width: 992px) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 500px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+  .item-wide { grid-column: span 1; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <div class="logo-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="white">
+          <circle cx="10" cy="10" r="3"/>
+          <line x1="10" y1="0" x2="10" y2="6" stroke="white" stroke-width="2"/>
+          <line x1="10" y1="14" x2="10" y2="20" stroke="white" stroke-width="2"/>
+          <line x1="0" y1="10" x2="6" y2="10" stroke="white" stroke-width="2"/>
+          <line x1="14" y1="10" x2="20" y2="10" stroke="white" stroke-width="2"/>
+        </svg>
+      </div>
+      DRL<span>.</span>APEX
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../home2.html">Home 2</a>
+      <a href="about.html">About</a>
+      <a href="events.html">Events</a>
+      <a href="gallery.html" class="active">Gallery</a>
+      <a href="services.html">Training</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <button class="toggle-btn" id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">☀️</button>
+      <a href="dashboard.html" class="btn-outline" style="padding:10px 16px;font-size:13px">Dashboard</a>
+    </div>
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ── MOBILE MENU ── -->
+<div class="mobile-menu">
+  <div class="mobile-links">
+    <a href="../index.html">Home</a>
+    <a href="../home2.html">Home 2</a>
+    <a href="about.html">About</a>
+    <a href="events.html">Events</a>
+    <a href="gallery.html" class="active">Gallery</a>
+    <a href="services.html">Training</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="mobile-cta">
+    <a href="dashboard.html" class="btn-outline">Pilot Dashboard</a>
+    <a href="services.html" class="btn-primary">Enroll Now</a>
+  </div>
+</div>
+
+<section class="gallery-hero">
+  <div class="container">
+    <div class="section-tag">Cinematic Feed</div>
+    <h1 class="display" style="font-size: clamp(64px, 8vw, 120px);">THE <span class="glow-orange">VISUALS</span></h1>
+    <p class="section-desc">A deep dive into the high-octane world of FPV racing. Capturing the moments of pure speed.</p>
+  </div>
+</section>
+
+<div class="gallery-grid">
+  <!-- Masonry Grid -->
+  <div class="gallery-item item-wide">
+    <img src="https://images.unsplash.com/photo-1524143986875-3b098d78b363?q=80&w=2070&auto=format&fit=crop" alt="Race Start">
+    <div class="gallery-overlay"><span>Round 1: Launch Pad</span></div>
+  </div>
+  <div class="gallery-item item-tall">
+    <img src="https://images.unsplash.com/photo-1501597343336-3914a1a01b0b?q=80&w=2070&auto=format&fit=crop" alt="Drone Close Up">
+    <div class="gallery-overlay"><span>Chassis Detail</span></div>
+  </div>
+  <div class="gallery-item">
+    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=2070&auto=format&fit=crop" alt="Pilot Focus">
+    <div class="gallery-overlay"><span>Elite Focus</span></div>
+  </div>
+  <div class="gallery-item">
+    <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?q=80&w=2070&auto=format&fit=crop" alt="Night Track">
+    <div class="gallery-overlay"><span>Neon Circuit</span></div>
+  </div>
+  <div class="gallery-item item-wide">
+    <img src="https://images.unsplash.com/photo-1512411516059-e9bd337c867a?q=80&w=2070&auto=format&fit=crop" alt="Aerial Shot">
+    <div class="gallery-overlay"><span>Vertical Drop</span></div>
+  </div>
+  <div class="gallery-item">
+    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop" alt="Finish Line">
+    <div class="gallery-overlay"><span>Checkered Flag</span></div>
+  </div>
+  <div class="gallery-item item-tall">
+    <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2070&auto=format&fit=crop" alt="Crowd">
+    <div class="gallery-overlay"><span>Fan Zone</span></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand display">DRL<span>.</span>APEX</div>
+      </div>
+      <div class="footer-col">
+        <h4>Racing</h4>
+        <a href="events.html">Calendar</a>
+        <a href="dashboard.html">Leaderboard</a>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="gallery.html">Gallery</a>
+        <a href="blog.html">News</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

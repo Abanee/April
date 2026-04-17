@@ -220,13 +220,14 @@ nav {
 }
 
 .nav-inner {
-  max-width: 1280px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 24px;
-  height: 68px;
+  padding: 0 40px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 20px;
 }
 
 .nav-logo {
@@ -256,7 +257,9 @@ nav {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 8px;
+  flex: 1;
+  justify-content: center;
 }
 
 .nav-links a {
@@ -306,17 +309,119 @@ nav {
 .hamburger {
   display: none;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
   cursor: pointer;
-  padding: 8px;
+  padding: 10px;
+  z-index: 101;
+  border-radius: 6px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
 }
 
 .hamburger span {
-  width: 22px;
+  width: 24px;
   height: 2px;
   background: var(--text);
-  transition: all 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: block;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ── MOBILE MENU ── */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: var(--bg0);
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  gap: 32px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(-20px);
+}
+
+.mobile-menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.mobile-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.mobile-links a {
+  font-family: var(--font-display);
+  font-size: 48px;
+  color: var(--text);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: color 0.3s;
+}
+
+.mobile-links a:hover,
+.mobile-links a.active {
+  color: var(--orange);
+}
+
+.mobile-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 300px;
+  margin-top: 20px;
+}
+
+@media (max-width: 1100px) {
+  .nav-inner {
+    padding: 0 24px;
+  }
+  .nav-links {
+    gap: 0;
+  }
+  .nav-links a {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 992px) {
+  .nav-links {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+  .nav-inner {
+    height: 72px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-cta {
+    display: none;
+  }
 }
 
 [dir="rtl"] .sidebar {

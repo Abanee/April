@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>DRL — Home 2: The Future of Flight</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Exo+2:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/css/main.css"/>
+<script src="assets/js/theme.js"></script>
+<style>
+/* ── CINEMATIC HERO ── */
+.hero-v2 {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+}
+.hero-v2-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(5,5,10,0.4), var(--bg0)), url('https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=2070&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  filter: saturate(1.2) contrast(1.1);
+}
+.hero-v2-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(5,5,10,0.8) 100%);
+}
+.hero-v2-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 900px;
+  padding: 0 24px;
+}
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(255,0,0,0.2);
+  border: 1px solid rgba(255,0,0,0.4);
+  color: #ff4d4d;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  margin-bottom: 32px;
+}
+.live-badge::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: #ff4d4d;
+  border-radius: 50%;
+  animation: pulse-red 1.5s infinite;
+}
+@keyframes pulse-red {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 77, 77, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 77, 77, 0); }
+}
+.hero-v2-title {
+  font-family: var(--font-display);
+  font-size: clamp(80px, 12vw, 160px);
+  line-height: 0.85;
+  margin-bottom: 24px;
+  color: #fff;
+  text-shadow: 0 0 30px rgba(255,85,0,0.3);
+}
+.hero-v2-sub {
+  font-size: 20px;
+  color: rgba(255,255,255,0.7);
+  max-width: 600px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+/* ── TECH CAROUSEL ── */
+.tech-section {
+  padding: 120px 0;
+  background: var(--bg0);
+  position: relative;
+}
+.tech-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.tech-image {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+  border: 1px solid var(--border);
+}
+.tech-info h3 {
+  font-family: var(--font-display);
+  font-size: 48px;
+  margin-bottom: 24px;
+}
+.specs-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.spec-item {
+  background: var(--bg1);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.spec-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+.spec-value {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--orange);
+}
+
+@media (max-width: 992px) {
+  .tech-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="white">
+          <circle cx="10" cy="10" r="3"/>
+          <line x1="10" y1="0" x2="10" y2="6" stroke="white" stroke-width="2"/>
+          <line x1="10" y1="14" x2="10" y2="20" stroke="white" stroke-width="2"/>
+          <line x1="0" y1="10" x2="6" y2="10" stroke="white" stroke-width="2"/>
+          <line x1="14" y1="10" x2="20" y2="10" stroke="white" stroke-width="2"/>
+        </svg>
+      </div>
+      DRL<span>.</span>APEX
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="home2.html" class="active">Home 2</a>
+      <a href="pages/about.html">About</a>
+      <a href="pages/events.html">Events</a>
+      <a href="pages/gallery.html">Gallery</a>
+      <a href="pages/services.html">Training</a>
+      <a href="pages/contact.html">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <button class="toggle-btn" id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">☀️</button>
+      <a href="pages/dashboard.html" class="btn-outline" style="padding:10px 16px;font-size:13px">Dashboard</a>
+      <a href="pages/services.html" class="btn-primary" style="padding:10px 22px;font-size:13px">Enroll</a>
+    </div>
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ── MOBILE MENU ── -->
+<div class="mobile-menu">
+  <div class="mobile-links">
+    <a href="index.html">Home</a>
+    <a href="home2.html" class="active">Home 2</a>
+    <a href="pages/about.html">About</a>
+    <a href="pages/events.html">Events</a>
+    <a href="pages/gallery.html">Gallery</a>
+    <a href="pages/services.html">Training</a>
+    <a href="pages/contact.html">Contact</a>
+  </div>
+  <div class="mobile-cta">
+    <a href="pages/dashboard.html" class="btn-outline">Pilot Dashboard</a>
+    <a href="pages/services.html" class="btn-primary">Enroll Now</a>
+  </div>
+</div>
+
+<!-- ── HERO V2 ── -->
+<section class="hero-v2">
+  <div class="hero-v2-bg"></div>
+  <div class="hero-v2-overlay"></div>
+  <div class="hero-v2-content">
+    <div class="live-badge">Live Broadcast: Season 8 Finals</div>
+    <h1 class="hero-v2-title">RACE THE<br/><span class="glow-orange">FUTURE</span></h1>
+    <p class="hero-v2-sub">Experience the adrenaline of high-speed FPV racing. The world's fastest sport is here.</p>
+    <div style="display:flex;gap:16px;justify-content:center">
+      <a href="pages/events.html" class="btn-primary">Watch Live</a>
+      <a href="pages/services.html" class="btn-outline">Start Flying</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── TECH SECTION ── -->
+<section class="tech-section grid-bg">
+  <div class="container">
+    <div class="tech-grid">
+      <div class="tech-image">
+        <img src="https://images.unsplash.com/photo-1473968512647-3e4402324915?q=80&w=2070&auto=format&fit=crop" alt="DRL Race Drone" style="width:100%;height:auto;display:block">
+        <div style="position:absolute;bottom:20px;left:20px;background:rgba(0,0,0,0.8);padding:10px 15px;border-radius:6px;border:1px solid var(--orange);color:var(--orange);font-family:var(--font-mono);font-size:12px">
+          APEX-V1 CHASSIS
+        </div>
+      </div>
+      <div class="tech-info">
+        <div class="section-tag" style="justify-content:flex-start">The Machine</div>
+        <h3 class="display">BUILT FOR <span class="glow-orange">SPEED</span></h3>
+        <p style="color:var(--text-dim);line-height:1.7;margin-bottom:32px">The DRL APEX-V1 is the pinnacle of drone engineering. Every component is optimized for maximum power-to-weight ratio and millisecond-perfect response.</p>
+        <div class="specs-list">
+          <div class="spec-item">
+            <span class="spec-label">Top Speed</span>
+            <span class="spec-value">164 KM/H</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">0-100 KM/H</span>
+            <span class="spec-value">0.8 SEC</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Video Latency</span>
+            <span class="spec-value">12 MS</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Weight</span>
+            <span class="spec-value">620 G</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand display">DRL<span>.</span>APEX</div>
+        <p class="footer-desc">The world's premier drone racing league and FPV pilot training academy. Compete at the highest level.</p>
+        <div class="footer-social">
+          <a class="social-btn" href="#">𝕏</a>
+          <a class="social-btn" href="#">▶</a>
+          <a class="social-btn" href="#">📷</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Racing</h4>
+        <a href="pages/events.html">Race Calendar</a>
+        <a href="#">Live Streams</a>
+        <a href="pages/dashboard.html">Leaderboard</a>
+      </div>
+      <div class="footer-col">
+        <h4>Training</h4>
+        <a href="pages/services.html">All Programs</a>
+        <a href="#">Simulators</a>
+        <a href="#">Workshops</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="pages/about.html">About Us</a>
+        <a href="pages/gallery.html">Gallery</a>
+        <a href="pages/contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 DRL.APEX — Drone Racing League</span>
+      <span>Privacy · Terms</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
