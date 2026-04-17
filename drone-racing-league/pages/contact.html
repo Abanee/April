@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Contact — DRL Drone Racing League & FPV Training</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Exo+2:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/css/main.css"/>
+<script src="../assets/js/theme.js"></script>
+<style>
+/* FORM STYLES */
+.form-group{margin-bottom:20px}
+.form-label{display:block;font-family:var(--font-heading);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px}
+.form-input{width:100%;background:var(--bg0);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:14px 16px;color:var(--text);font-family:var(--font-body);font-size:15px;transition:border-color 0.2s,box-shadow 0.2s;outline:none}
+.form-input:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(255,85,0,0.1)}
+.form-input::placeholder{color:var(--text-muted)}
+textarea.form-input{resize:vertical;min-height:130px}
+select.form-input{cursor:pointer}
+@media(max-width:1024px){
+  div[style*="grid-template-columns:1fr 1.4fr"]{grid-template-columns:1fr !important;gap:40px !important}
+  div[style*="grid-template-columns:repeat(5"]{grid-template-columns:repeat(3,1fr) !important}
+}
+@media(max-width:768px){
+  div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important}
+  div[style*="grid-template-columns:repeat(5"]{grid-template-columns:repeat(2,1fr) !important}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <div class="logo-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="white"><circle cx="10" cy="10" r="3"/><line x1="10" y1="0" x2="10" y2="6" stroke="white" stroke-width="2"/><line x1="10" y1="14" x2="10" y2="20" stroke="white" stroke-width="2"/><line x1="0" y1="10" x2="6" y2="10" stroke="white" stroke-width="2"/><line x1="14" y1="10" x2="20" y2="10" stroke="white" stroke-width="2"/></svg></div>
+      DRL<span>.</span>APEX
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Training</a>
+      <a href="blog.html">News</a>
+      <a href="dashboard.html">Pilots</a>
+      <a href="contact.html" class="active">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <button class="toggle-btn" id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">☀️</button>
+      <button class="toggle-btn" onclick="toggleDir()" title="Toggle Direction (LTR/RTL)">🌐</button>
+      <a href="dashboard.html" class="btn-outline" style="padding:10px 16px;font-size:13px">Dashboard</a>
+      <a href="services.html" class="btn-outline" style="padding:10px 22px;font-size:13px">Enroll Now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── PAGE HERO ── -->
+<section style="padding-top:68px;position:relative;overflow:hidden;background:var(--bg0)">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 0%,rgba(0,102,255,0.07) 0%,transparent 70%)"></div>
+  <div style="position:absolute;inset:0" class="grid-bg"></div>
+  <div class="container" style="position:relative;padding-top:80px;padding-bottom:80px;text-align:center">
+    <div class="section-tag" style="justify-content:center">Get in Touch</div>
+    <h1 class="display" style="font-size:clamp(60px,8vw,100px);margin-bottom:24px">CONTACT <span class="glow-orange">US</span></h1>
+    <p style="font-size:18px;color:var(--text-dim);max-width:520px;margin:0 auto;line-height:1.7">Have questions about our racing league or training programs? Our team is ready to help.</p>
+  </div>
+  <div style="height:1px;background:linear-gradient(90deg,transparent,var(--orange),transparent)"></div>
+</section>
+
+<!-- ── CONTACT GRID ── -->
+<section style="padding:80px 0" class="grid-bg">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:start">
+
+      <!-- LEFT — Info -->
+      <div>
+        <h2 class="display" style="font-size:48px;margin-bottom:8px">LET'S <span style="color:var(--orange)">TALK</span></h2>
+        <p style="color:var(--text-dim);font-size:15px;line-height:1.7;margin-bottom:40px">Whether you're a beginner looking to start your FPV journey, an experienced pilot ready to race, or a sponsor interested in partnering — we want to hear from you.</p>
+
+        <!-- Contact cards -->
+        <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:40px">
+          <div style="display:flex;align-items:flex-start;gap:16px;background:var(--bg1);border:1px solid var(--border);border-radius:10px;padding:20px;transition:border-color 0.2s" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+            <div style="width:44px;height:44px;background:rgba(255,85,0,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">📍</div>
+            <div>
+              <div style="font-family:var(--font-heading);font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--orange);margin-bottom:4px">HQ Location</div>
+              <div style="color:var(--text);font-size:15px">1240 Speedway Blvd, Austin, TX 78702</div>
+              <div style="color:var(--text-dim);font-size:13px;margin-top:2px">Open Mon–Fri, 9AM–6PM CT</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:16px;background:var(--bg1);border:1px solid var(--border-blue);border-radius:10px;padding:20px;transition:border-color 0.2s" onmouseover="this.style.borderColor='var(--blue)'" onmouseout="this.style.borderColor='var(--border-blue)'">
+            <div style="width:44px;height:44px;background:rgba(0,102,255,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">✉️</div>
+            <div>
+              <div style="font-family:var(--font-heading);font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--blue);margin-bottom:4px">Email Us</div>
+              <div style="color:var(--text);font-size:15px">hello@drlapex.com</div>
+              <div style="color:var(--text-dim);font-size:13px;margin-top:2px">Pilots: pilots@drlapex.com</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:16px;background:var(--bg1);border:1px solid rgba(255,204,0,0.18);border-radius:10px;padding:20px;transition:border-color 0.2s" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(255,204,0,0.18)'">
+            <div style="width:44px;height:44px;background:rgba(255,204,0,0.10);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">📞</div>
+            <div>
+              <div style="font-family:var(--font-heading);font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Call Us</div>
+              <div style="color:var(--text);font-size:15px">+1 (512) 844-RACE</div>
+              <div style="color:var(--text-dim);font-size:13px;margin-top:2px">Weekdays, 9AM–5PM CT</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social -->
+        <div>
+          <div style="font-family:var(--font-heading);font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px">Follow the Action</div>
+          <div style="display:flex;gap:10px">
+            <a href="#" style="width:44px;height:44px;background:var(--bg1);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-size:16px;text-decoration:none;transition:all 0.2s" onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-dim)'">𝕏</a>
+            <a href="#" style="width:44px;height:44px;background:var(--bg1);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-size:16px;text-decoration:none;transition:all 0.2s" onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-dim)'">in</a>
+            <a href="#" style="width:44px;height:44px;background:var(--bg1);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-size:16px;text-decoration:none;transition:all 0.2s" onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-dim)'">▶</a>
+            <a href="#" style="width:44px;height:44px;background:var(--bg1);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-size:16px;text-decoration:none;transition:all 0.2s" onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-dim)'">📷</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT — Form -->
+      <div style="background:var(--bg1);border:1px solid var(--border);border-radius:16px;padding:40px;position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold))"></div>
+        <h3 class="display" style="font-size:36px;margin-bottom:8px">SEND A <span style="color:var(--orange)">MESSAGE</span></h3>
+        <p style="color:var(--text-dim);font-size:14px;margin-bottom:28px">We typically respond within 24 hours on business days.</p>
+
+        <form onsubmit="handleSubmit(event)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div class="form-group">
+              <label class="form-label">First Name *</label>
+              <input type="text" class="form-input" placeholder="Alex" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name *</label>
+              <input type="text" class="form-input" placeholder="Chen" required/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address *</label>
+            <input type="email" class="form-input" placeholder="pilot@example.com" required/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Enquiry Type</label>
+            <select class="form-input">
+              <option value="">Select a topic…</option>
+              <option>Training Program Enquiry</option>
+              <option>Race Registration</option>
+              <option>Sponsorship & Partnership</option>
+              <option>Media & Press</option>
+              <option>Technical Support</option>
+              <option>General Question</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Experience Level</label>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+              <label style="display:flex;align-items:center;gap:8px;background:var(--bg0);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:12px;cursor:pointer;transition:all 0.2s;font-size:13px;color:var(--text-dim)" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'">
+                <input type="radio" name="level" value="beginner" style="accent-color:var(--orange)"/> Beginner
+              </label>
+              <label style="display:flex;align-items:center;gap:8px;background:var(--bg0);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:12px;cursor:pointer;transition:all 0.2s;font-size:13px;color:var(--text-dim)" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'">
+                <input type="radio" name="level" value="intermediate" style="accent-color:var(--orange)"/> Intermediate
+              </label>
+              <label style="display:flex;align-items:center;gap:8px;background:var(--bg0);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:12px;cursor:pointer;transition:all 0.2s;font-size:13px;color:var(--text-dim)" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'">
+                <input type="radio" name="level" value="pro" style="accent-color:var(--orange)"/> Pro
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message *</label>
+            <textarea class="form-input" placeholder="Tell us about yourself and what you're looking for…" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="font-size:15px;padding:16px">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 8L14 1L11 8L14 15L1 8Z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            Send Message
+          </button>
+        </form>
+        <div id="success-msg" style="display:none;text-align:center;padding:32px">
+          <div style="font-size:40px;margin-bottom:12px">✅</div>
+          <div class="display" style="font-size:36px;color:var(--orange);margin-bottom:8px">SENT!</div>
+          <p style="color:var(--text-dim)">We'll get back to you within 24 hours.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section style="padding:80px 0;background:var(--bg1)">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:52px">
+      <div class="section-tag" style="justify-content:center">FAQ</div>
+      <h2 class="display" style="font-size:clamp(40px,5vw,60px)">COMMON <span style="color:var(--orange)">QUESTIONS</span></h2>
+    </div>
+    <div style="max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:12px">
+      <!-- FAQ Items -->
+      <details style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer">
+        <summary style="padding:20px 24px;font-family:var(--font-heading);font-size:16px;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center">
+          Do I need experience to join the training program?
+          <span style="color:var(--orange);font-size:22px;transition:transform 0.2s">+</span>
+        </summary>
+        <div style="padding:0 24px 20px;color:var(--text-dim);font-size:14px;line-height:1.7">Not at all! Our FPV Foundations program starts from absolute zero. We provide simulators, equipment, and patient instructors who will have you flying confidently within your first session.</div>
+      </details>
+      <details style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer">
+        <summary style="padding:20px 24px;font-family:var(--font-heading);font-size:16px;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center">
+          What equipment do I need to bring?
+          <span style="color:var(--orange);font-size:22px">+</span>
+        </summary>
+        <div style="padding:0 24px 20px;color:var(--text-dim);font-size:14px;line-height:1.7">Nothing for your first sessions — we provide all drones, goggles, and controllers. Once you're committed to racing, we'll recommend a beginner build kit starting at ~$300.</div>
+      </details>
+      <details style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer">
+        <summary style="padding:20px 24px;font-family:var(--font-heading);font-size:16px;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center">
+          How do I qualify for professional races?
+          <span style="color:var(--orange);font-size:22px">+</span>
+        </summary>
+        <div style="padding:0 24px 20px;color:var(--text-dim);font-size:14px;line-height:1.7">After completing the Race Ready program, you'll be eligible to enter DRL Open qualifiers. Top performers earn spots in regional and international events. We have pilots who went from beginner to pro in under 12 months.</div>
+      </details>
+      <details style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer">
+        <summary style="padding:20px 24px;font-family:var(--font-heading);font-size:16px;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center">
+          Are there locations outside the USA?
+          <span style="color:var(--orange);font-size:22px">+</span>
+        </summary>
+        <div style="padding:0 24px 20px;color:var(--text-dim);font-size:14px;line-height:1.7">Yes! We have training academies in London, Seoul, Dubai, and Sydney. We're also expanding to 5 new cities in 2025. Remote online coaching is available worldwide through our DRL Virtual Academy.</div>
+      </details>
+      <details style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer">
+        <summary style="padding:20px 24px;font-family:var(--font-heading);font-size:16px;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center">
+          How can my brand sponsor a DRL event?
+          <span style="color:var(--orange);font-size:22px">+</span>
+        </summary>
+        <div style="padding:0 24px 20px;color:var(--text-dim);font-size:14px;line-height:1.7">We offer flexible sponsorship packages from title sponsors to pilot kit patches. Send us a message using the form above or email sponsors@drlapex.com. Our partnerships team will get back to you within 48 hours.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ── LOCATIONS MAP PLACEHOLDER ── -->
+<section style="padding:0;background:var(--bg0);border-top:1px solid var(--border)">
+  <div class="container" style="padding-top:60px;padding-bottom:60px">
+    <div style="text-align:center;margin-bottom:40px">
+      <div class="section-tag" style="justify-content:center">Global Presence</div>
+      <h2 class="display" style="font-size:clamp(36px,4vw,52px)">OUR <span style="color:var(--orange)">LOCATIONS</span></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px">
+      <div style="background:var(--bg1);border:1px solid var(--border);border-radius:10px;padding:20px;text-align:center;transition:all 0.2s" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="font-size:24px;margin-bottom:8px">🇺🇸</div>
+        <div style="font-family:var(--font-heading);font-size:14px;font-weight:700">Austin, TX</div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--orange);margin-top:4px">HQ</div>
+      </div>
+      <div style="background:var(--bg1);border:1px solid var(--border);border-radius:10px;padding:20px;text-align:center;transition:all 0.2s" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="font-size:24px;margin-bottom:8px">🇬🇧</div>
+        <div style="font-family:var(--font-heading);font-size:14px;font-weight:700">London, UK</div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--blue);margin-top:4px">Academy</div>
+      </div>
+      <div style="background:var(--bg1);border:1px solid var(--border);border-radius:10px;padding:20px;text-align:center;transition:all 0.2s" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="font-size:24px;margin-bottom:8px">🇰🇷</div>
+        <div style="font-family:var(--font-heading);font-size:14px;font-weight:700">Seoul, KR</div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--blue);margin-top:4px">Academy</div>
+      </div>
+      <div style="background:var(--bg1);border:1px solid var(--border);border-radius:10px;padding:20px;text-align:center;transition:all 0.2s" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="font-size:24px;margin-bottom:8px">🇦🇪</div>
+        <div style="font-family:var(--font-heading);font-size:14px;font-weight:700">Dubai, UAE</div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--blue);margin-top:4px">Academy</div>
+      </div>
+      <div style="background:var(--bg1);border:1px solid var(--border);border-radius:10px;padding:20px;text-align:center;transition:all 0.2s" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="font-size:24px;margin-bottom:8px">🇦🇺</div>
+        <div style="font-family:var(--font-heading);font-size:14px;font-weight:700">Sydney, AU</div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--blue);margin-top:4px">Academy</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand display">DRL<span>.</span>APEX</div>
+        <p style="color:var(--text-dim);font-size:14px;line-height:1.7;max-width:300px">The world's premier drone racing league and FPV pilot training academy.</p>
+      </div>
+      <div class="footer-col"><h4>Racing</h4><a href="#">Race Calendar</a><a href="dashboard.html">Leaderboard</a><a href="#">Results</a></div>
+      <div class="footer-col"><h4>Training</h4><a href="services.html">All Programs</a><a href="#">Workshops</a><a href="#">Membership</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="about.html">About</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 DRL.APEX — Drone Racing League</span>
+      <span>Privacy · Terms · Cookies</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+function handleSubmit(e){
+  e.preventDefault();
+  document.querySelector('form').style.display='none';
+  document.getElementById('success-msg').style.display='block';
+}
+</script>
+
+</body>
+</html>

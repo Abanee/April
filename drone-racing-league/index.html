@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>DRL — Drone Racing League & FPV Pilot Training</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Exo+2:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/css/main.css"/>
+<script src="assets/js/theme.js"></script>
+<style>
+/* ── TICKER ── */
+.ticker{background:var(--orange);overflow:hidden;padding:10px 0}
+.ticker-inner{display:flex;white-space:nowrap;animation:ticker 35s linear infinite}
+.ticker-item{font-family:var(--font-heading);font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0 40px;color:#fff}
+.ticker-sep{color:rgba(255,255,255,0.4)}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── HERO ── */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding-top:68px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 60% 40%,rgba(0,102,255,0.08) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 80% 80%,rgba(255,85,0,0.06) 0%,transparent 60%),var(--bg0)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,102,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,102,255,0.05) 1px,transparent 1px);background-size:64px 64px}
+.hero-content{position:relative;max-width:1280px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:rgba(255,85,0,0.12);border:1px solid rgba(255,85,0,0.3);border-radius:4px;font-family:var(--font-mono);font-size:11px;color:var(--orange);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:24px}
+.hero-eyebrow::before{content:'';width:6px;height:6px;background:var(--orange);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 var(--orange-glow)}50%{opacity:0.7;box-shadow:0 0 0 6px transparent}}
+.hero-title{font-family:var(--font-display);font-size:clamp(64px,7vw,96px);line-height:0.92;margin-bottom:24px;color:var(--text)}
+.hero-title .line2{display:block;background:linear-gradient(90deg,var(--orange),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:17px;color:var(--text-dim);line-height:1.7;margin-bottom:36px;max-width:480px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.stat-item{background:var(--bg1);padding:20px 16px;text-align:center}
+.stat-num{font-family:var(--font-display);font-size:36px;color:var(--orange);display:block;line-height:1}
+.stat-label{font-family:var(--font-heading);font-size:11px;color:var(--text-dim);letter-spacing:0.08em;text-transform:uppercase;margin-top:4px}
+
+/* ── DRONE VISUAL ── */
+.drone-visual{position:relative;display:flex;align-items:center;justify-content:center}
+.drone-ring{position:absolute;border-radius:50%;border:1px solid;animation:spin-slow linear infinite}
+@keyframes spin-slow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes counter-spin{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
+.hud-box{background:rgba(0,102,255,0.06);border:1px solid var(--border-blue);border-radius:8px;padding:12px 16px;font-family:var(--font-mono);font-size:11px;color:var(--blue);position:absolute;backdrop-filter:blur(8px)}
+.hud-label{color:var(--text-muted);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:2px}
+.hud-val{font-size:20px;font-weight:500}
+.hud-unit{font-size:10px;color:var(--text-muted)}
+
+/* ── PILOT CARDS ── */
+.pilots-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1280px;margin:0 auto;padding:0 24px}
+.pilot-card{background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.3s;cursor:pointer}
+.pilot-card:hover{border-color:var(--orange);transform:translateY(-6px);box-shadow:0 12px 50px var(--orange-glow)}
+.pilot-avatar{height:220px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.pilot-number{font-family:var(--font-display);font-size:120px;position:absolute;right:-10px;bottom:-20px;opacity:0.06;color:var(--orange);line-height:1;pointer-events:none}
+.pilot-badge{position:absolute;top:12px;right:12px;padding:4px 10px;border-radius:4px;font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:0.08em}
+.pilot-info{padding:20px}
+.pilot-rank{font-family:var(--font-mono);font-size:10px;color:var(--orange);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px}
+.pilot-name{font-family:var(--font-heading);font-size:20px;font-weight:800;margin-bottom:8px}
+.pilot-handle{font-family:var(--font-mono);font-size:12px;color:var(--text-dim);margin-bottom:12px}
+.skill-bar{margin-top:10px}
+.skill-label{display:flex;justify-content:space-between;font-size:11px;color:var(--text-dim);font-family:var(--font-mono);margin-bottom:4px}
+.skill-track{height:3px;background:var(--bg3);border-radius:2px}
+.skill-fill{height:100%;border-radius:2px;transition:width 1s ease}
+
+/* ── EVENTS ── */
+.events-section{background:var(--bg1);padding:80px 0}
+.events-inner{max-width:1280px;margin:0 auto;padding:0 24px}
+.events-table{width:100%;border-collapse:collapse}
+.events-table th{text-align:left;padding:12px 16px;font-family:var(--font-heading);font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--bg3)}
+.events-table td{padding:18px 16px;border-bottom:1px solid var(--bg3);font-size:14px;color:var(--text-dim);vertical-align:middle}
+.events-table tr:hover td{background:rgba(255,85,0,0.03);color:var(--text)}
+.event-name{font-family:var(--font-heading);font-weight:700;font-size:16px;color:var(--text)}
+.event-name small{display:block;font-weight:400;font-size:12px;color:var(--text-dim);margin-top:2px}
+.event-status{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:4px;font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:0.06em}
+.status-live{background:rgba(255,85,0,0.15);color:var(--orange);border:1px solid rgba(255,85,0,0.3)}
+.status-upcoming{background:rgba(0,102,255,0.12);color:var(--blue);border:1px solid rgba(0,102,255,0.25)}
+.status-reg{background:rgba(255,204,0,0.12);color:var(--gold);border:1px solid rgba(255,204,0,0.25)}
+.status-past{background:var(--bg3);color:var(--text-muted);border:1px solid rgba(255,255,255,0.08)}
+
+/* ── TRAINING ── */
+.training-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1280px;margin:0 auto;padding:0 24px}
+.training-card{background:var(--bg1);border:1px solid var(--border);border-radius:12px;padding:32px 28px;position:relative;overflow:hidden;transition:all 0.3s}
+.training-card:hover{border-color:var(--orange);box-shadow:0 8px 40px var(--orange-glow);transform:translateY(-4px)}
+.training-card.featured{border-color:var(--orange);background:linear-gradient(135deg,rgba(255,85,0,0.06),var(--bg1))}
+.training-accent{position:absolute;top:0;left:0;right:0;height:3px}
+.training-level{font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:16px;display:inline-block;padding:4px 10px;border-radius:4px}
+.training-icon{width:52px;height:52px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:24px}
+.training-name{font-family:var(--font-heading);font-size:22px;font-weight:800;margin-bottom:10px}
+.training-desc{color:var(--text-dim);font-size:14px;line-height:1.7;margin-bottom:20px}
+.training-modules{list-style:none;margin-bottom:24px}
+.training-modules li{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:13px;color:var(--text-dim);border-bottom:1px solid var(--bg3)}
+.training-modules li::before{content:'';width:5px;height:5px;background:var(--orange);border-radius:50%;flex-shrink:0}
+.training-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+.price{font-family:var(--font-heading);font-size:26px;font-weight:800;color:var(--text)}
+.price sup{font-size:14px;margin-right:2px;color:var(--text-dim)}
+.price span{font-size:12px;font-weight:400;color:var(--text-dim)}
+.popular-badge{position:absolute;top:16px;right:16px;background:var(--orange);color:#fff;font-family:var(--font-mono);font-size:10px;padding:4px 8px;border-radius:4px;letter-spacing:0.08em}
+
+/* ── CTA SECTION ── */
+.cta-section{padding:100px 0;position:relative;overflow:hidden}
+.cta-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,85,0,0.08) 0%,var(--bg0) 40%,rgba(0,102,255,0.08) 100%)}
+.cta-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,85,0,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,85,0,0.05) 1px,transparent 1px);background-size:32px 32px}
+.cta-inner{position:relative;max-width:800px;margin:0 auto;padding:0 24px;text-align:center}
+.cta-title{font-family:var(--font-display);font-size:clamp(48px,6vw,80px);line-height:0.92;margin-bottom:20px}
+.cta-sub{font-size:17px;color:var(--text-dim);line-height:1.7;margin-bottom:40px}
+
+/* ── DIVIDER LINE ── */
+.divider{width:60px;height:3px;background:var(--orange);margin:20px auto}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .hero-content{grid-template-columns:1fr;gap:40px}
+  .pilots-grid{grid-template-columns:repeat(2,1fr)}
+  .training-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .drone-visual{display:none}
+}
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .pilots-grid{grid-template-columns:1fr 1fr}
+  .training-grid{grid-template-columns:1fr}
+  .hero-stats{grid-template-columns:repeat(3,1fr)}
+  .footer-grid{grid-template-columns:1fr}
+  .events-table th:nth-child(n+3),.events-table td:nth-child(n+3){display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="white">
+          <circle cx="10" cy="10" r="3"/>
+          <line x1="10" y1="0" x2="10" y2="6" stroke="white" stroke-width="2"/>
+          <line x1="10" y1="14" x2="10" y2="20" stroke="white" stroke-width="2"/>
+          <line x1="0" y1="10" x2="6" y2="10" stroke="white" stroke-width="2"/>
+          <line x1="14" y1="10" x2="20" y2="10" stroke="white" stroke-width="2"/>
+        </svg>
+      </div>
+      DRL<span>.</span>APEX
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="pages/about.html">About</a>
+      <a href="pages/services.html">Training</a>
+      <a href="pages/blog.html">News</a>
+      <a href="pages/dashboard.html">Pilots</a>
+      <a href="pages/contact.html">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <button class="toggle-btn" id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">☀️</button>
+      <button class="toggle-btn" onclick="toggleDir()" title="Toggle Direction (LTR/RTL)">🌐</button>
+      <a href="pages/dashboard.html" class="btn-outline" style="padding:10px 16px;font-size:13px">Dashboard</a>
+      <a href="pages/services.html" class="btn-primary" style="padding:10px 22px;font-size:13px">Enroll Now</a>
+    </div>
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ── TICKER ── -->
+<div class="ticker" style="margin-top:68px">
+  <div class="ticker-inner">
+    <span class="ticker-item">⬡ SEASON 8 CHAMPIONSHIPS — MAY 2025</span>
+    <span class="ticker-item ticker-sep">◆</span>
+    <span class="ticker-item">⬡ NEW PILOT ENROLLMENTS OPEN</span>
+    <span class="ticker-item ticker-sep">◆</span>
+    <span class="ticker-item">⬡ WORLD RECORD — 0-100KPH IN 0.6s</span>
+    <span class="ticker-item ticker-sep">◆</span>
+    <span class="ticker-item">⬡ DUBAI GRAND PRIX — QUALIFYING THIS WEEKEND</span>
+    <span class="ticker-item ticker-sep">◆</span>
+    <span class="ticker-item">⬡ SEASON 8 CHAMPIONSHIPS — MAY 2025</span>
+    <span class="ticker-item ticker-sep">◆</span>
+    <span class="ticker-item">⬡ NEW PILOT ENROLLMENTS OPEN</span>
+    <span class="ticker-item ticker-sep">◆</span>
+    <span class="ticker-item">⬡ WORLD RECORD — 0-100KPH IN 0.6s</span>
+    <span class="ticker-item ticker-sep">◆</span>
+    <span class="ticker-item">⬡ DUBAI GRAND PRIX — QUALIFYING THIS WEEKEND</span>
+  </div>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero" style="margin-top:-10px">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span>Season 8 Now Live</span>
+      </div>
+      <h1 class="hero-title display">
+        DRONE<br/>
+        <span class="line2">RACING</span><br/>
+        LEAGUE
+      </h1>
+      <p class="hero-sub">The world's premier FPV drone racing competition and pilot training academy. Fly faster. Race smarter. Dominate the skies.</p>
+      <div class="hero-actions">
+        <a href="pages/services.html" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1L15 8L8 15M1 8H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Start Training
+        </a>
+        <a href="pages/dashboard.html" class="btn-outline">View Leaderboard</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num">240+</span>
+          <div class="stat-label">Active Pilots</div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">48</span>
+          <div class="stat-label">Race Events</div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">$2M+</span>
+          <div class="stat-label">Prize Pool</div>
+        </div>
+      </div>
+    </div>
+    <div class="drone-visual" style="height:500px;width:100%">
+      <!-- Animated drone visualization -->
+      <svg width="440" height="440" viewBox="0 0 440 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer ring -->
+        <circle cx="220" cy="220" r="200" stroke="rgba(255,85,0,0.12)" stroke-width="1" stroke-dasharray="6 4"/>
+        <circle cx="220" cy="220" r="170" stroke="rgba(0,102,255,0.10)" stroke-width="1"/>
+        <circle cx="220" cy="220" r="140" stroke="rgba(255,85,0,0.08)" stroke-width="1" stroke-dasharray="2 6"/>
+        <!-- Speed marks -->
+        <g opacity="0.4">
+          <line x1="220" y1="22" x2="220" y2="42" stroke="#FF5500" stroke-width="2"/>
+          <line x1="418" y1="220" x2="398" y2="220" stroke="#FF5500" stroke-width="2"/>
+          <line x1="220" y1="418" x2="220" y2="398" stroke="#FF5500" stroke-width="2"/>
+          <line x1="22" y1="220" x2="42" y2="220" stroke="#FF5500" stroke-width="2"/>
+        </g>
+        <!-- Drone body frame -->
+        <g transform="translate(160,160)">
+          <!-- Center body -->
+          <rect x="42" y="42" width="36" height="36" rx="6" fill="#0A0A14" stroke="#FF5500" stroke-width="1.5"/>
+          <rect x="47" y="47" width="26" height="26" rx="4" fill="rgba(255,85,0,0.1)" stroke="rgba(255,85,0,0.3)" stroke-width="1"/>
+          <!-- FPV camera -->
+          <rect x="51" y="51" width="18" height="13" rx="2" fill="#0066FF" opacity="0.8"/>
+          <circle cx="60" cy="57" r="4" fill="rgba(0,200,255,0.5)" stroke="#00C8FF" stroke-width="1"/>
+          <!-- Arms (diagonal) -->
+          <line x1="60" y1="60" x2="15" y2="15" stroke="rgba(255,255,255,0.25)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="60" y1="60" x2="105" y2="15" stroke="rgba(255,255,255,0.25)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="60" y1="60" x2="15" y2="105" stroke="rgba(255,255,255,0.25)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="60" y1="60" x2="105" y2="105" stroke="rgba(255,255,255,0.25)" stroke-width="3" stroke-linecap="round"/>
+          <!-- Motors -->
+          <circle cx="15" cy="15" r="10" fill="#0A0A14" stroke="rgba(255,85,0,0.5)" stroke-width="1.5"/>
+          <circle cx="105" cy="15" r="10" fill="#0A0A14" stroke="rgba(0,102,255,0.5)" stroke-width="1.5"/>
+          <circle cx="15" cy="105" r="10" fill="#0A0A14" stroke="rgba(0,102,255,0.5)" stroke-width="1.5"/>
+          <circle cx="105" cy="105" r="10" fill="#0A0A14" stroke="rgba(255,85,0,0.5)" stroke-width="1.5"/>
+          <!-- Motor dots -->
+          <circle cx="15" cy="15" r="4" fill="#FF5500" opacity="0.9"/>
+          <circle cx="105" cy="15" r="4" fill="#0066FF" opacity="0.9"/>
+          <circle cx="15" cy="105" r="4" fill="#0066FF" opacity="0.9"/>
+          <circle cx="105" cy="105" r="4" fill="#FF5500" opacity="0.9"/>
+          <!-- Props (dashed circles) -->
+          <circle cx="15" cy="15" r="17" stroke="rgba(255,85,0,0.3)" stroke-width="1" stroke-dasharray="3 2"/>
+          <circle cx="105" cy="15" r="17" stroke="rgba(0,102,255,0.3)" stroke-width="1" stroke-dasharray="3 2"/>
+          <circle cx="15" cy="105" r="17" stroke="rgba(0,102,255,0.3)" stroke-width="1" stroke-dasharray="3 2"/>
+          <circle cx="105" cy="105" r="17" stroke="rgba(255,85,0,0.3)" stroke-width="1" stroke-dasharray="3 2"/>
+        </g>
+        <!-- HUD Data points -->
+        <g font-family="'JetBrains Mono', monospace" font-size="11" fill="rgba(136,144,168,0.8)">
+          <!-- Top left -->
+          <text x="30" y="80">THROTTLE</text>
+          <text x="30" y="96" fill="#FF5500" font-size="20">87%</text>
+          <!-- Top right -->
+          <text x="320" y="80">SPEED</text>
+          <text x="320" y="96" fill="#FFCC00" font-size="20">142<tspan font-size="12" fill="rgba(136,144,168,0.6)">km/h</tspan></text>
+          <!-- Bottom left -->
+          <text x="30" y="350">ALT</text>
+          <text x="30" y="366" fill="#0066FF" font-size="20">48<tspan font-size="12" fill="rgba(136,144,168,0.6)">m</tspan></text>
+          <!-- Bottom right -->
+          <text x="320" y="350">RSSI</text>
+          <text x="320" y="366" fill="#FF5500" font-size="20">-68<tspan font-size="12" fill="rgba(136,144,168,0.6)">dBm</tspan></text>
+        </g>
+        <!-- Corner brackets -->
+        <path d="M30 30 L30 50 M30 30 L50 30" stroke="#FF5500" stroke-width="2" opacity="0.5"/>
+        <path d="M410 30 L410 50 M410 30 L390 30" stroke="#FF5500" stroke-width="2" opacity="0.5"/>
+        <path d="M30 410 L30 390 M30 410 L50 410" stroke="#FF5500" stroke-width="2" opacity="0.5"/>
+        <path d="M410 410 L410 390 M410 410 L390 410" stroke="#FF5500" stroke-width="2" opacity="0.5"/>
+        <!-- Center crosshair -->
+        <line x1="200" y1="220" x2="210" y2="220" stroke="rgba(255,85,0,0.4)" stroke-width="1"/>
+        <line x1="230" y1="220" x2="240" y2="220" stroke="rgba(255,85,0,0.4)" stroke-width="1"/>
+        <line x1="220" y1="200" x2="220" y2="210" stroke="rgba(255,85,0,0.4)" stroke-width="1"/>
+        <line x1="220" y1="230" x2="220" y2="240" stroke="rgba(255,85,0,0.4)" stroke-width="1"/>
+        <circle cx="220" cy="220" r="3" stroke="#FF5500" stroke-width="1.5" fill="none"/>
+      </svg>
+    </div>
+  </div>
+  <!-- Scroll indicator -->
+  <div style="position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--text-muted);font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase">
+    <span>Scroll</span>
+    <div style="width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,85,0,0.5),transparent)"></div>
+  </div>
+</section>
+
+<!-- ── PILOTS ── -->
+<section class="padded grid-bg">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Featured Pilots</div>
+      <h2 class="section-title display">ELITE <span>ROSTER</span></h2>
+      <p class="section-desc">Meet the fastest FPV pilots competing in Season 8 of the Drone Racing League.</p>
+    </div>
+  </div>
+  <div class="pilots-grid">
+
+    <div class="pilot-card">
+      <div class="pilot-avatar" style="background:linear-gradient(135deg,rgba(255,85,0,0.12),var(--bg2))">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="28" r="16" fill="rgba(255,85,0,0.2)" stroke="rgba(255,85,0,0.4)" stroke-width="1.5"/>
+          <path d="M16 70 C16 52 64 52 64 70" fill="rgba(255,85,0,0.15)" stroke="rgba(255,85,0,0.3)" stroke-width="1.5"/>
+          <circle cx="40" cy="28" r="8" fill="rgba(255,85,0,0.3)"/>
+        </svg>
+        <div class="pilot-number">01</div>
+        <div class="pilot-badge status-live">Champion</div>
+      </div>
+      <div class="pilot-info">
+        <div class="pilot-rank"># 1 World Rank</div>
+        <div class="pilot-name heading">ALEX "APEX" CHEN</div>
+        <div class="pilot-handle">@apex_fpv</div>
+        <div class="skill-bar">
+          <div class="skill-label"><span>Speed Index</span><span>98</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:98%;background:var(--orange)"></div></div>
+        </div>
+        <div class="skill-bar" style="margin-top:8px">
+          <div class="skill-label"><span>Precision</span><span>95</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:95%;background:var(--blue)"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pilot-card">
+      <div class="pilot-avatar" style="background:linear-gradient(135deg,rgba(0,102,255,0.12),var(--bg2))">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="28" r="16" fill="rgba(0,102,255,0.2)" stroke="rgba(0,102,255,0.4)" stroke-width="1.5"/>
+          <path d="M16 70 C16 52 64 52 64 70" fill="rgba(0,102,255,0.15)" stroke="rgba(0,102,255,0.3)" stroke-width="1.5"/>
+          <circle cx="40" cy="28" r="8" fill="rgba(0,102,255,0.3)"/>
+        </svg>
+        <div class="pilot-number">02</div>
+        <div class="pilot-badge status-upcoming" style="background:rgba(0,102,255,0.15);color:var(--blue);border:1px solid rgba(0,102,255,0.3)">Pro</div>
+      </div>
+      <div class="pilot-info">
+        <div class="pilot-rank"># 2 World Rank</div>
+        <div class="pilot-name heading">SARA "BOLT" KIM</div>
+        <div class="pilot-handle">@bolt_racing</div>
+        <div class="skill-bar">
+          <div class="skill-label"><span>Speed Index</span><span>94</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:94%;background:var(--orange)"></div></div>
+        </div>
+        <div class="skill-bar" style="margin-top:8px">
+          <div class="skill-label"><span>Precision</span><span>97</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:97%;background:var(--blue)"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pilot-card">
+      <div class="pilot-avatar" style="background:linear-gradient(135deg,rgba(255,204,0,0.10),var(--bg2))">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="28" r="16" fill="rgba(255,204,0,0.2)" stroke="rgba(255,204,0,0.4)" stroke-width="1.5"/>
+          <path d="M16 70 C16 52 64 52 64 70" fill="rgba(255,204,0,0.12)" stroke="rgba(255,204,0,0.3)" stroke-width="1.5"/>
+          <circle cx="40" cy="28" r="8" fill="rgba(255,204,0,0.3)"/>
+        </svg>
+        <div class="pilot-number">03</div>
+        <div class="pilot-badge" style="background:rgba(255,204,0,0.12);color:var(--gold);border:1px solid rgba(255,204,0,0.3);font-family:var(--font-mono);font-size:10px;padding:4px 10px;border-radius:4px">Veteran</div>
+      </div>
+      <div class="pilot-info">
+        <div class="pilot-rank"># 3 World Rank</div>
+        <div class="pilot-name heading">MAX "VIPER" ROSS</div>
+        <div class="pilot-handle">@viper_drl</div>
+        <div class="skill-bar">
+          <div class="skill-label"><span>Speed Index</span><span>91</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:91%;background:var(--orange)"></div></div>
+        </div>
+        <div class="skill-bar" style="margin-top:8px">
+          <div class="skill-label"><span>Precision</span><span>89</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:89%;background:var(--blue)"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pilot-card">
+      <div class="pilot-avatar" style="background:linear-gradient(135deg,rgba(255,85,0,0.08),var(--bg2))">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="28" r="16" fill="rgba(255,85,0,0.15)" stroke="rgba(255,85,0,0.3)" stroke-width="1.5"/>
+          <path d="M16 70 C16 52 64 52 64 70" fill="rgba(255,85,0,0.1)" stroke="rgba(255,85,0,0.2)" stroke-width="1.5"/>
+          <circle cx="40" cy="28" r="8" fill="rgba(255,85,0,0.25)"/>
+        </svg>
+        <div class="pilot-number">04</div>
+        <div class="pilot-badge status-reg" style="background:rgba(255,204,0,0.1);color:var(--gold);border:1px solid rgba(255,204,0,0.25);font-family:var(--font-mono);font-size:10px;padding:4px 10px;border-radius:4px">Rising</div>
+      </div>
+      <div class="pilot-info">
+        <div class="pilot-rank"># 7 World Rank</div>
+        <div class="pilot-name heading">LIA "PHANTOM" OKE</div>
+        <div class="pilot-handle">@phantom_fpv</div>
+        <div class="skill-bar">
+          <div class="skill-label"><span>Speed Index</span><span>86</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:86%;background:var(--orange)"></div></div>
+        </div>
+        <div class="skill-bar" style="margin-top:8px">
+          <div class="skill-label"><span>Precision</span><span>92</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:92%;background:var(--blue)"></div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div style="text-align:center;margin-top:48px">
+    <a href="pages/dashboard.html" class="btn-outline">View Full Roster →</a>
+  </div>
+</section>
+
+<!-- ── EVENTS ── -->
+<section class="events-section">
+  <div class="events-inner">
+    <div class="section-header">
+      <div class="section-tag">Race Calendar</div>
+      <h2 class="section-title display">UPCOMING <span>EVENTS</span></h2>
+    </div>
+    <table class="events-table">
+      <thead>
+        <tr>
+          <th>Event</th>
+          <th>Date</th>
+          <th>Location</th>
+          <th>Prize</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="event-name heading">Dubai Grand Prix<small>Season 8 — Round 3</small></div></td>
+          <td><span style="font-family:var(--font-mono);font-size:13px">Apr 19, 2025</span></td>
+          <td>Dubai, UAE</td>
+          <td><span style="color:var(--gold);font-family:var(--font-heading);font-weight:700">$120,000</span></td>
+          <td><span class="event-status status-live">● Qualifying</span></td>
+          <td><a href="#" class="btn-primary" style="padding:8px 16px;font-size:11px">Register</a></td>
+        </tr>
+        <tr>
+          <td><div class="event-name heading">Seoul Night Race<small>Season 8 — Round 4</small></div></td>
+          <td><span style="font-family:var(--font-mono);font-size:13px">May 3, 2025</span></td>
+          <td>Seoul, South Korea</td>
+          <td><span style="color:var(--gold);font-family:var(--font-heading);font-weight:700">$95,000</span></td>
+          <td><span class="event-status status-upcoming">● Upcoming</span></td>
+          <td><a href="#" class="btn-outline" style="padding:8px 16px;font-size:11px">Details</a></td>
+        </tr>
+        <tr>
+          <td><div class="event-name heading">Apex World Championships<small>Season 8 — Finals</small></div></td>
+          <td><span style="font-family:var(--font-mono);font-size:13px">Jun 14, 2025</span></td>
+          <td>Las Vegas, USA</td>
+          <td><span style="color:var(--gold);font-family:var(--font-heading);font-weight:700">$500,000</span></td>
+          <td><span class="event-status status-reg">● Open Reg</span></td>
+          <td><a href="#" class="btn-primary" style="padding:8px 16px;font-size:11px">Register</a></td>
+        </tr>
+        <tr>
+          <td><div class="event-name heading">Barcelona Speed Circuit<small>Season 8 — Round 2</small></div></td>
+          <td><span style="font-family:var(--font-mono);font-size:13px">Mar 28, 2025</span></td>
+          <td>Barcelona, Spain</td>
+          <td><span style="color:var(--text-muted);font-family:var(--font-heading);font-weight:700">$80,000</span></td>
+          <td><span class="event-status status-past">Completed</span></td>
+          <td><a href="#" class="btn-outline" style="padding:8px 16px;font-size:11px;opacity:0.5">Results</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:32px;text-align:right">
+      <a href="#" class="btn-blue">Full Race Calendar →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRAINING PROGRAMS ── -->
+<section class="padded grid-bg-orange">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">FPV Academy</div>
+      <h2 class="section-title display">TRAINING <span>PROGRAMS</span></h2>
+      <p class="section-desc">From first-time flyers to competitive racers — our certified instructors will take you to the next level.</p>
+    </div>
+  </div>
+  <div class="training-grid">
+
+    <div class="training-card">
+      <div class="training-accent" style="background:linear-gradient(90deg,var(--blue),transparent)"></div>
+      <div class="training-level" style="background:rgba(0,102,255,0.12);color:var(--blue);border:1px solid rgba(0,102,255,0.2)">Beginner</div>
+      <div class="training-icon" style="background:rgba(0,102,255,0.12);color:var(--blue)">🎮</div>
+      <div class="training-name heading">FPV Foundations</div>
+      <p class="training-desc">Learn the basics of FPV flight, simulator training, and your first outdoor sessions with professional equipment.</p>
+      <ul class="training-modules">
+        <li>Simulator & Throttle Control</li>
+        <li>Basic Maneuvers & Safety</li>
+        <li>First Real Drone Flight</li>
+        <li>Rules & Regulations</li>
+      </ul>
+      <div class="training-footer">
+        <div class="price heading"><sup>$</sup>299<span>/month</span></div>
+        <a href="pages/services.html" class="btn-blue" style="padding:10px 20px;font-size:13px">Enroll</a>
+      </div>
+    </div>
+
+    <div class="training-card featured">
+      <div class="training-accent" style="background:linear-gradient(90deg,var(--orange),var(--gold))"></div>
+      <div class="popular-badge">MOST POPULAR</div>
+      <div class="training-level" style="background:rgba(255,85,0,0.12);color:var(--orange);border:1px solid rgba(255,85,0,0.2)">Intermediate</div>
+      <div class="training-icon" style="background:rgba(255,85,0,0.12);color:var(--orange)">🏁</div>
+      <div class="training-name heading">Race Ready</div>
+      <p class="training-desc">Tune your drone, master race lines, and compete in qualifier rounds. Go from hobbyist to competitive pilot.</p>
+      <ul class="training-modules">
+        <li>Advanced Acrobatics & Freestyle</li>
+        <li>Drone Tuning & PID Setup</li>
+        <li>Race Line Theory</li>
+        <li>Live Race Participation</li>
+        <li>Video Review Sessions</li>
+      </ul>
+      <div class="training-footer">
+        <div class="price heading"><sup>$</sup>549<span>/month</span></div>
+        <a href="pages/services.html" class="btn-primary" style="padding:10px 20px;font-size:13px">Enroll</a>
+      </div>
+    </div>
+
+    <div class="training-card">
+      <div class="training-accent" style="background:linear-gradient(90deg,var(--gold),transparent)"></div>
+      <div class="training-level" style="background:rgba(255,204,0,0.10);color:var(--gold);border:1px solid rgba(255,204,0,0.2)">Elite</div>
+      <div class="training-icon" style="background:rgba(255,204,0,0.10);color:var(--gold)">🏆</div>
+      <div class="training-name heading">Championship Elite</div>
+      <p class="training-desc">One-on-one coaching with former champions. Access to exclusive tracks, team strategy, and sponsorship network.</p>
+      <ul class="training-modules">
+        <li>Private 1:1 Coaching</li>
+        <li>Mental Performance Training</li>
+        <li>Sponsorship Consulting</li>
+        <li>Custom Build Workshop</li>
+        <li>Season Race Strategy</li>
+      </ul>
+      <div class="training-footer">
+        <div class="price heading"><sup>$</sup>1,299<span>/month</span></div>
+        <a href="pages/services.html" class="btn-outline" style="padding:10px 20px;font-size:13px">Apply</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <div class="cta-grid-bg"></div>
+  <div class="cta-inner">
+    <div class="section-tag" style="justify-content:center">Join the League</div>
+    <h2 class="cta-title display">READY TO <span class="glow-orange">FLY</span><br/>FASTER?</h2>
+    <p class="cta-sub">Join 240+ pilots competing at the highest level of FPV drone racing. No experience needed — just the drive to win.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <a href="pages/services.html" class="btn-primary">Start Your Training</a>
+      <a href="pages/contact.html" class="btn-outline">Talk to a Coach</a>
+    </div>
+    <!-- Stats row -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;margin-top:60px;overflow:hidden">
+      <div style="background:var(--bg1);padding:20px;text-align:center">
+        <div style="font-family:var(--font-display);font-size:32px;color:var(--orange)">8+</div>
+        <div style="font-family:var(--font-heading);font-size:11px;color:var(--text-dim);letter-spacing:0.08em;text-transform:uppercase;margin-top:4px">Years Running</div>
+      </div>
+      <div style="background:var(--bg1);padding:20px;text-align:center">
+        <div style="font-family:var(--font-display);font-size:32px;color:var(--blue)">22</div>
+        <div style="font-family:var(--font-heading);font-size:11px;color:var(--text-dim);letter-spacing:0.08em;text-transform:uppercase;margin-top:4px">Countries</div>
+      </div>
+      <div style="background:var(--bg1);padding:20px;text-align:center">
+        <div style="font-family:var(--font-display);font-size:32px;color:var(--gold)">$2M+</div>
+        <div style="font-family:var(--font-heading);font-size:11px;color:var(--text-dim);letter-spacing:0.08em;text-transform:uppercase;margin-top:4px">Prize Money</div>
+      </div>
+      <div style="background:var(--bg1);padding:20px;text-align:center">
+        <div style="font-family:var(--font-display);font-size:32px;color:var(--orange)">98%</div>
+        <div style="font-family:var(--font-heading);font-size:11px;color:var(--text-dim);letter-spacing:0.08em;text-transform:uppercase;margin-top:4px">Pilot Satisfaction</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand display">DRL<span>.</span>APEX</div>
+        <p class="footer-desc">The world's premier drone racing league and FPV pilot training academy. Compete at the highest level.</p>
+        <div class="footer-social">
+          <a class="social-btn" href="#">𝕏</a>
+          <a class="social-btn" href="#">in</a>
+          <a class="social-btn" href="#">▶</a>
+          <a class="social-btn" href="#">📷</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Racing</h4>
+        <a href="#">Race Calendar</a>
+        <a href="#">Live Streams</a>
+        <a href="pages/dashboard.html">Leaderboard</a>
+        <a href="#">Results</a>
+        <a href="#">Rules & Regs</a>
+      </div>
+      <div class="footer-col">
+        <h4>Training</h4>
+        <a href="pages/services.html">All Programs</a>
+        <a href="#">FPV Foundations</a>
+        <a href="#">Race Ready</a>
+        <a href="#">Elite Coaching</a>
+        <a href="#">Workshops</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="pages/about.html">About DRL</a>
+        <a href="pages/blog.html">News & Blog</a>
+        <a href="pages/contact.html">Contact Us</a>
+        <a href="#">Partners</a>
+        <a href="#">Careers</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 DRL.APEX — Drone Racing League</span>
+      <span>Privacy · Terms · Cookies</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

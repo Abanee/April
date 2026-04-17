@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>About — DRL Drone Racing League & FPV Training</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Exo+2:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/css/main.css"/>
+<script src="../assets/js/theme.js"></script>
+<style>
+@keyframes pulse{0%,100%{box-shadow:0 0 20px var(--orange-glow)}50%{box-shadow:0 0 40px var(--orange-glow)}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <div class="logo-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="white"><circle cx="10" cy="10" r="3"/><line x1="10" y1="0" x2="10" y2="6" stroke="white" stroke-width="2"/><line x1="10" y1="14" x2="10" y2="20" stroke="white" stroke-width="2"/><line x1="0" y1="10" x2="6" y2="10" stroke="white" stroke-width="2"/><line x1="14" y1="10" x2="20" y2="10" stroke="white" stroke-width="2"/></svg>
+      </div>
+      DRL<span>.</span>APEX
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="services.html">Training</a>
+      <a href="blog.html">News</a>
+      <a href="dashboard.html">Pilots</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <button class="toggle-btn" id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">☀️</button>
+      <button class="toggle-btn" onclick="toggleDir()" title="Toggle Direction (LTR/RTL)">🌐</button>
+      <a href="dashboard.html" class="btn-outline" style="padding:10px 16px;font-size:13px">Dashboard</a>
+      <a href="services.html" class="btn-primary" style="padding:10px 22px;font-size:13px">Enroll Now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── PAGE HERO ── -->
+<section style="padding-top:68px;padding-bottom:0;position:relative;overflow:hidden;background:var(--bg0)">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 0%,rgba(255,85,0,0.07) 0%,transparent 70%)"></div>
+  <div style="position:absolute;inset:0" class="grid-bg"></div>
+  <div class="container" style="position:relative;padding-top:80px;padding-bottom:80px;text-align:center">
+    <div class="section-tag">Our Story</div>
+    <h1 class="display" style="font-size:clamp(60px,8vw,112px);margin-bottom:24px">ABOUT <span class="glow-orange">DRL</span></h1>
+    <p style="font-size:18px;color:var(--text-dim);max-width:600px;margin:0 auto;line-height:1.7">Born from a passion for speed and technology — we built the world's most competitive FPV drone racing organization.</p>
+  </div>
+  <!-- Decorative separator -->
+  <div style="height:1px;background:linear-gradient(90deg,transparent,var(--orange),transparent)"></div>
+</section>
+
+<!-- ── MISSION ── -->
+<section style="padding:100px 0;background:var(--bg1)">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
+      <div>
+        <div class="section-tag" style="justify-content:flex-start;margin-bottom:12px">Our Mission</div>
+        <h2 class="display" style="font-size:clamp(44px,5vw,68px);margin-bottom:24px;line-height:0.92">PUSHING THE LIMITS OF <span style="color:var(--orange)">HUMAN FLIGHT</span></h2>
+        <p style="color:var(--text-dim);line-height:1.8;margin-bottom:20px;font-size:16px">DRL.APEX was founded in 2017 with a single obsession: make drone racing the world's most exciting sport. We combine cutting-edge technology, elite pilot training, and global competitions into one electrifying ecosystem.</p>
+        <p style="color:var(--text-dim);line-height:1.8;font-size:16px">From our first 12-pilot local event to a global league spanning 22 countries and $2M+ in annual prize money, we've never stopped pushing the boundary of what's possible in the air.</p>
+        <div style="display:flex;gap:14px;margin-top:36px">
+          <a href="services.html" class="btn-primary">Join the League</a>
+          <a href="contact.html" class="btn-outline">Get in Touch</a>
+        </div>
+      </div>
+      <div style="position:relative">
+        <!-- Visual block -->
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:40px;position:relative;overflow:hidden">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold))"></div>
+          <div style="font-family:var(--font-display);font-size:72px;color:var(--orange);line-height:1;margin-bottom:8px">2017</div>
+          <div style="font-family:var(--font-heading);font-size:13px;color:var(--text-dim);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:32px">Founded</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+            <div style="background:var(--bg0);border:1px solid var(--border);border-radius:8px;padding:16px;text-align:center">
+              <div style="font-family:var(--font-display);font-size:36px;color:var(--blue)">240+</div>
+              <div style="font-family:var(--font-heading);font-size:11px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-top:4px">Pilots</div>
+            </div>
+            <div style="background:var(--bg0);border:1px solid var(--border);border-radius:8px;padding:16px;text-align:center">
+              <div style="font-family:var(--font-display);font-size:36px;color:var(--gold)">22</div>
+              <div style="font-family:var(--font-heading);font-size:11px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-top:4px">Countries</div>
+            </div>
+            <div style="background:var(--bg0);border:1px solid var(--border);border-radius:8px;padding:16px;text-align:center">
+              <div style="font-family:var(--font-display);font-size:36px;color:var(--orange)">48</div>
+              <div style="font-family:var(--font-heading);font-size:11px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-top:4px">Annual Races</div>
+            </div>
+            <div style="background:var(--bg0);border:1px solid var(--border);border-radius:8px;padding:16px;text-align:center">
+              <div style="font-family:var(--font-display);font-size:36px;color:var(--orange)">$2M+</div>
+              <div style="font-family:var(--font-heading);font-size:11px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-top:4px">Prizes</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TIMELINE ── -->
+<section style="padding:100px 0" class="grid-bg">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Our Journey</div>
+      <h2 class="section-title display">LEAGUE <span>TIMELINE</span></h2>
+    </div>
+    <div style="position:relative;max-width:800px;margin:0 auto">
+      <!-- Center line -->
+      <div style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--orange),transparent);transform:translateX(-50%)"></div>
+      <!-- Items -->
+      <div style="display:flex;flex-direction:column;gap:0">
+        <!-- 2017 -->
+        <div style="display:grid;grid-template-columns:1fr 40px 1fr;gap:0;align-items:center;margin-bottom:40px">
+          <div style="text-align:right;padding-right:32px">
+            <div style="font-family:var(--font-display);font-size:52px;color:var(--orange);line-height:1">2017</div>
+            <div style="font-family:var(--font-heading);font-size:16px;font-weight:700;margin-bottom:6px">League Founded</div>
+            <p style="color:var(--text-dim);font-size:14px;line-height:1.6">Started with 12 pilots at a local warehouse in Austin, TX. First race attracted 300 live spectators.</p>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:center;z-index:1">
+            <div style="width:16px;height:16px;background:var(--orange);border-radius:50%;box-shadow:0 0 20px var(--orange-glow)"></div>
+          </div>
+          <div></div>
+        </div>
+        <!-- 2018 -->
+        <div style="display:grid;grid-template-columns:1fr 40px 1fr;gap:0;align-items:center;margin-bottom:40px">
+          <div></div>
+          <div style="display:flex;align-items:center;justify-content:center;z-index:1">
+            <div style="width:16px;height:16px;background:var(--blue);border-radius:50%;box-shadow:0 0 20px var(--blue-glow)"></div>
+          </div>
+          <div style="padding-left:32px">
+            <div style="font-family:var(--font-display);font-size:52px;color:var(--blue);line-height:1">2018</div>
+            <div style="font-family:var(--font-heading);font-size:16px;font-weight:700;margin-bottom:6px">First International</div>
+            <p style="color:var(--text-dim);font-size:14px;line-height:1.6">Expanded to Europe with events in London and Amsterdam. Prize pool hit $100K for the first time.</p>
+          </div>
+        </div>
+        <!-- 2020 -->
+        <div style="display:grid;grid-template-columns:1fr 40px 1fr;gap:0;align-items:center;margin-bottom:40px">
+          <div style="text-align:right;padding-right:32px">
+            <div style="font-family:var(--font-display);font-size:52px;color:var(--gold);line-height:1">2020</div>
+            <div style="font-family:var(--font-heading);font-size:16px;font-weight:700;margin-bottom:6px">FPV Academy Launch</div>
+            <p style="color:var(--text-dim);font-size:14px;line-height:1.6">Opened the first official DRL training academy. 500+ students in year one across 3 global locations.</p>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:center;z-index:1">
+            <div style="width:16px;height:16px;background:var(--gold);border-radius:50%;box-shadow:0 0 20px var(--gold-glow)"></div>
+          </div>
+          <div></div>
+        </div>
+        <!-- 2022 -->
+        <div style="display:grid;grid-template-columns:1fr 40px 1fr;gap:0;align-items:center;margin-bottom:40px">
+          <div></div>
+          <div style="display:flex;align-items:center;justify-content:center;z-index:1">
+            <div style="width:16px;height:16px;background:var(--orange);border-radius:50%;box-shadow:0 0 20px var(--orange-glow)"></div>
+          </div>
+          <div style="padding-left:32px">
+            <div style="font-family:var(--font-display);font-size:52px;color:var(--orange);line-height:1">2022</div>
+            <div style="font-family:var(--font-heading);font-size:16px;font-weight:700;margin-bottom:6px">$1M Prize Pool</div>
+            <p style="color:var(--text-dim);font-size:14px;line-height:1.6">Broke the 1 million dollar barrier. Season 6 championships watched by 2.4 million online viewers.</p>
+          </div>
+        </div>
+        <!-- 2025 -->
+        <div style="display:grid;grid-template-columns:1fr 40px 1fr;gap:0;align-items:center">
+          <div style="text-align:right;padding-right:32px">
+            <div style="font-family:var(--font-display);font-size:52px;color:var(--orange);line-height:1">2025</div>
+            <div style="font-family:var(--font-heading);font-size:16px;font-weight:700;margin-bottom:6px">Season 8 — Present</div>
+            <p style="color:var(--text-dim);font-size:14px;line-height:1.6">240+ active pilots, 22 countries, $2M+ prize pool. The biggest season in DRL.APEX history.</p>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:center;z-index:1">
+            <div style="width:20px;height:20px;background:var(--orange);border-radius:50%;box-shadow:0 0 30px var(--orange-glow);animation:pulse 2s ease-in-out infinite"></div>
+          </div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── VALUES ── -->
+<section style="padding:80px 0;background:var(--bg1)">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">What We Stand For</div>
+      <h2 class="section-title display">LEAGUE <span>VALUES</span></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:32px;transition:all 0.3s" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="width:52px;height:52px;background:rgba(255,85,0,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px">⚡</div>
+        <div style="font-family:var(--font-heading);font-size:20px;font-weight:800;margin-bottom:10px">Speed First</div>
+        <p style="color:var(--text-dim);font-size:14px;line-height:1.7">We believe in pushing every limit. Our pilots train at the edge of human reaction time, flying machines that accelerate to 160km/h in under a second.</p>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--border-blue);border-radius:12px;padding:32px;transition:all 0.3s" onmouseover="this.style.borderColor='var(--blue)'" onmouseout="this.style.borderColor='var(--border-blue)'">
+        <div style="width:52px;height:52px;background:rgba(0,102,255,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px">🎯</div>
+        <div style="font-family:var(--font-heading);font-size:20px;font-weight:800;margin-bottom:10px">Precision Wins</div>
+        <p style="color:var(--text-dim);font-size:14px;line-height:1.7">Raw speed is nothing without control. We train pilots to fly with millimeter accuracy through complex gate sequences at full throttle.</p>
+      </div>
+      <div style="background:var(--bg2);border:1px solid rgba(255,204,0,0.18);border-radius:12px;padding:32px;transition:all 0.3s" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(255,204,0,0.18)'">
+        <div style="width:52px;height:52px;background:rgba(255,204,0,0.10);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px">🌍</div>
+        <div style="font-family:var(--font-heading);font-size:20px;font-weight:800;margin-bottom:10px">Global Community</div>
+        <p style="color:var(--text-dim);font-size:14px;line-height:1.7">From Austin to Seoul, our pilots form a tight-knit global family united by a shared obsession with FPV flight and competitive racing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TEAM ── -->
+<section style="padding:80px 0" class="grid-bg">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Leadership</div>
+      <h2 class="section-title display">MEET THE <span>TEAM</span></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px">
+      <div style="background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow:hidden;text-align:center;transition:all 0.3s" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
+        <div style="height:160px;background:linear-gradient(135deg,rgba(255,85,0,0.12),var(--bg2));display:flex;align-items:center;justify-content:center">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="22" r="14" fill="rgba(255,85,0,0.25)" stroke="rgba(255,85,0,0.5)" stroke-width="1.5"/><path d="M10 58 C10 42 54 42 54 58" fill="rgba(255,85,0,0.15)" stroke="rgba(255,85,0,0.3)" stroke-width="1.5"/></svg>
+        </div>
+        <div style="padding:20px">
+          <div style="font-family:var(--font-heading);font-size:16px;font-weight:800;margin-bottom:4px">Jake Morrison</div>
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--orange);letter-spacing:0.08em;text-transform:uppercase">CEO & Co-Founder</div>
+          <p style="font-size:12px;color:var(--text-dim);margin-top:10px;line-height:1.6">Former aerospace engineer turned drone racing pioneer. 3x national champion.</p>
+        </div>
+      </div>
+      <div style="background:var(--bg1);border:1px solid var(--border-blue);border-radius:12px;overflow:hidden;text-align:center;transition:all 0.3s" onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border-blue)';this.style.transform='none'">
+        <div style="height:160px;background:linear-gradient(135deg,rgba(0,102,255,0.12),var(--bg2));display:flex;align-items:center;justify-content:center">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="22" r="14" fill="rgba(0,102,255,0.25)" stroke="rgba(0,102,255,0.5)" stroke-width="1.5"/><path d="M10 58 C10 42 54 42 54 58" fill="rgba(0,102,255,0.15)" stroke="rgba(0,102,255,0.3)" stroke-width="1.5"/></svg>
+        </div>
+        <div style="padding:20px">
+          <div style="font-family:var(--font-heading);font-size:16px;font-weight:800;margin-bottom:4px">Priya Nair</div>
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--blue);letter-spacing:0.08em;text-transform:uppercase">Head of Training</div>
+          <p style="font-size:12px;color:var(--text-dim);margin-top:10px;line-height:1.6">Certified flight instructor with 8 years of FPV coaching. Trained 400+ competitive pilots.</p>
+        </div>
+      </div>
+      <div style="background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow:hidden;text-align:center;transition:all 0.3s" onmouseover="this.style.borderColor='var(--gold)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
+        <div style="height:160px;background:linear-gradient(135deg,rgba(255,204,0,0.10),var(--bg2));display:flex;align-items:center;justify-content:center">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="22" r="14" fill="rgba(255,204,0,0.2)" stroke="rgba(255,204,0,0.4)" stroke-width="1.5"/><path d="M10 58 C10 42 54 42 54 58" fill="rgba(255,204,0,0.12)" stroke="rgba(255,204,0,0.3)" stroke-width="1.5"/></svg>
+        </div>
+        <div style="padding:20px">
+          <div style="font-family:var(--font-heading);font-size:16px;font-weight:800;margin-bottom:4px">Marcus Webb</div>
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase">Race Director</div>
+          <p style="font-size:12px;color:var(--text-dim);margin-top:10px;line-height:1.6">Designs world-class race circuits. Previously managed 60+ international motorsport events.</p>
+        </div>
+      </div>
+      <div style="background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow:hidden;text-align:center;transition:all 0.3s" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
+        <div style="height:160px;background:linear-gradient(135deg,rgba(255,85,0,0.08),var(--bg2));display:flex;align-items:center;justify-content:center">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="22" r="14" fill="rgba(255,85,0,0.15)" stroke="rgba(255,85,0,0.35)" stroke-width="1.5"/><path d="M10 58 C10 42 54 42 54 58" fill="rgba(255,85,0,0.1)" stroke="rgba(255,85,0,0.25)" stroke-width="1.5"/></svg>
+        </div>
+        <div style="padding:20px">
+          <div style="font-family:var(--font-heading);font-size:16px;font-weight:800;margin-bottom:4px">Luna Park</div>
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--orange);letter-spacing:0.08em;text-transform:uppercase">Tech Director</div>
+          <p style="font-size:12px;color:var(--text-dim);margin-top:10px;line-height:1.6">Builds the hardware powering DRL drones. Holds 3 patents in FPV drone design.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SPONSORS ── -->
+<section style="padding:60px 0;background:var(--bg1);border-top:1px solid var(--border)">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:40px">
+      <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);letter-spacing:0.12em;text-transform:uppercase">Trusted Partners & Sponsors</div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap">
+      <div style="font-family:var(--font-display);font-size:24px;color:var(--text-muted);letter-spacing:0.1em;opacity:0.5;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">BETAFPV</div>
+      <div style="font-family:var(--font-display);font-size:24px;color:var(--text-muted);letter-spacing:0.1em;opacity:0.5;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">FOXEER</div>
+      <div style="font-family:var(--font-display);font-size:24px;color:var(--text-muted);letter-spacing:0.1em;opacity:0.5;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">HOLYBRO</div>
+      <div style="font-family:var(--font-display);font-size:24px;color:var(--text-muted);letter-spacing:0.1em;opacity:0.5;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">SPEEDYBEE</div>
+      <div style="font-family:var(--font-display);font-size:24px;color:var(--text-muted);letter-spacing:0.1em;opacity:0.5;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">FLYWOO</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand display">DRL<span>.</span>APEX</div>
+        <p style="color:var(--text-dim);font-size:14px;line-height:1.7;max-width:300px">The world's premier drone racing league and FPV pilot training academy.</p>
+      </div>
+      <div class="footer-col"><h4>Racing</h4><a href="#">Race Calendar</a><a href="dashboard.html">Leaderboard</a><a href="#">Results</a></div>
+      <div class="footer-col"><h4>Training</h4><a href="services.html">All Programs</a><a href="#">Workshops</a><a href="#">Membership</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="about.html">About</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 DRL.APEX — Drone Racing League</span>
+      <span>Privacy · Terms · Cookies</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

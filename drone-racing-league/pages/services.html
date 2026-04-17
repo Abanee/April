@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Training Programs — DRL Drone Racing League & FPV Training</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Exo+2:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/><link rel="stylesheet" href="../assets/css/main.css"/>
+<script src="../assets/js/theme.js"></script>
+<style>
+.check-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;font-size:14px;color:var(--text-dim);border-bottom:1px solid var(--bg3)}
+.check-item::before{content:'✓';color:var(--orange);font-weight:700;flex-shrink:0;font-family:var(--font-heading);margin-top:1px}
+.plan-card{background:var(--bg1);border:1px solid var(--border);border-radius:14px;padding:36px;position:relative;overflow:hidden;transition:all 0.3s}
+.plan-card:hover{border-color:var(--orange);box-shadow:0 10px 50px var(--orange-glow);transform:translateY(-4px)}
+.plan-card.featured{border-color:var(--orange);background:linear-gradient(160deg,rgba(255,85,0,0.07),var(--bg1))}
+.plan-top-bar{position:absolute;top:0;left:0;right:0;height:3px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <div class="logo-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="white"><circle cx="10" cy="10" r="3"/><line x1="10" y1="0" x2="10" y2="6" stroke="white" stroke-width="2"/><line x1="10" y1="14" x2="10" y2="20" stroke="white" stroke-width="2"/><line x1="0" y1="10" x2="6" y2="10" stroke="white" stroke-width="2"/><line x1="14" y1="10" x2="20" y2="10" stroke="white" stroke-width="2"/></svg></div>
+      DRL<span>.</span>APEX
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html" class="active">Training</a>
+      <a href="blog.html">News</a>
+      <a href="dashboard.html">Pilots</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <button class="toggle-btn" id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">☀️</button>
+      <button class="toggle-btn" onclick="toggleDir()" title="Toggle Direction (LTR/RTL)">🌐</button>
+      <a href="dashboard.html" class="btn-outline" style="padding:10px 16px;font-size:13px">Dashboard</a>
+      <a href="contact.html" class="btn-primary" style="padding:10px 22px;font-size:13px">Enroll Now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="padding-top:68px;position:relative;overflow:hidden;background:var(--bg0)">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 0%,rgba(255,85,0,0.07) 0%,transparent 70%)"></div>
+  <div style="position:absolute;inset:0" class="grid-bg-orange"></div>
+  <div class="container" style="position:relative;padding-top:80px;padding-bottom:80px">
+    <div style="max-width:700px">
+      <div class="section-tag">FPV Academy</div>
+      <h1 class="display" style="font-size:clamp(60px,7vw,96px);margin-bottom:20px">ELITE <span style="color:var(--orange)">TRAINING</span><br/>PROGRAMS</h1>
+      <p style="font-size:17px;color:var(--text-dim);line-height:1.7;margin-bottom:32px;max-width:560px">Transform from hobbyist to champion racer with our certified FPV training programs, designed by professional drone racing athletes.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap">
+        <a href="#programs" class="btn-primary">Browse Programs</a>
+        <a href="contact.html" class="btn-outline">Speak to a Coach</a>
+      </div>
+    </div>
+    <!-- Quick stat bar -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;margin-top:60px;overflow:hidden">
+      <div style="background:var(--bg1);padding:20px 24px"><div style="font-family:var(--font-display);font-size:32px;color:var(--orange)">500+</div><div style="font-family:var(--font-heading);font-size:11px;color:var(--text-dim);letter-spacing:0.08em;text-transform:uppercase;margin-top:2px">Pilots Trained</div></div>
+      <div style="background:var(--bg1);padding:20px 24px"><div style="font-family:var(--font-display);font-size:32px;color:var(--blue)">12</div><div style="font-family:var(--font-heading);font-size:11px;color:var(--text-dim);letter-spacing:0.08em;text-transform:uppercase;margin-top:2px">Expert Coaches</div></div>
+      <div style="background:var(--bg1);padding:20px 24px"><div style="font-family:var(--font-display);font-size:32px;color:var(--gold)">5</div><div style="font-family:var(--font-heading);font-size:11px;color:var(--text-dim);letter-spacing:0.08em;text-transform:uppercase;margin-top:2px">Global Locations</div></div>
+      <div style="background:var(--bg1);padding:20px 24px"><div style="font-family:var(--font-display);font-size:32px;color:var(--orange)">98%</div><div style="font-family:var(--font-heading);font-size:11px;color:var(--text-dim);letter-spacing:0.08em;text-transform:uppercase;margin-top:2px">Satisfaction</div></div>
+    </div>
+  </div>
+  <div style="height:1px;background:linear-gradient(90deg,transparent,var(--orange),transparent)"></div>
+</section>
+
+<!-- MAIN PROGRAMS -->
+<section id="programs" style="padding:80px 0" class="grid-bg">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:60px">
+      <div class="section-tag" style="justify-content:center">Certification Tracks</div>
+      <h2 class="display" style="font-size:clamp(42px,5vw,64px)">CHOOSE YOUR <span style="color:var(--orange)">PATH</span></h2>
+      <p style="color:var(--text-dim);font-size:16px;max-width:560px;margin:16px auto 0;line-height:1.7">Three structured levels to take you from your first simulator flight to the podium.</p>
+    </div>
+    <div class="plans-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+
+      <!-- Beginner -->
+      <div class="plan-card">
+        <div class="plan-top-bar" style="background:linear-gradient(90deg,var(--blue),transparent)"></div>
+        <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);background:rgba(0,102,255,0.12);border:1px solid rgba(0,102,255,0.2);border-radius:4px;padding:4px 10px;display:inline-block;margin-bottom:20px">Level 01 — Beginner</div>
+        <div style="font-size:30px;margin-bottom:16px">🎮</div>
+        <h3 class="heading" style="font-size:24px;margin-bottom:8px">FPV Foundations</h3>
+        <p style="color:var(--text-dim);font-size:14px;line-height:1.7;margin-bottom:24px">Master the basics of FPV flight with simulator training, safety briefings, and real drone sessions on our dedicated beginner track.</p>
+        <div style="margin-bottom:24px">
+          <div class="check-item">Sim Training — Betaflight Configurator</div>
+          <div class="check-item">Throttle & Roll Control Fundamentals</div>
+          <div class="check-item">Outdoor Flight Sessions (supervised)</div>
+          <div class="check-item">Safety & Regulatory Framework</div>
+          <div class="check-item">Basic Maintenance & Repair</div>
+          <div class="check-item">Community Access & Discord</div>
+        </div>
+        <div style="border-top:1px solid var(--bg3);padding-top:20px;margin-bottom:20px">
+          <div style="font-family:var(--font-heading);font-size:11px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px">Starting from</div>
+          <div style="font-family:var(--font-display);font-size:42px;color:var(--text)">$299<span style="font-family:var(--font-heading);font-size:16px;font-weight:400;color:var(--text-dim)">/mo</span></div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:4px">Equipment provided — no gear needed</div>
+        </div>
+        <a href="contact.html" class="btn-outline full" style="padding:13px;font-size:13px">Enroll in Foundations</a>
+      </div>
+
+      <!-- Intermediate FEATURED -->
+      <div class="plan-card featured" style="transform:scale(1.02)">
+        <div class="plan-top-bar" style="background:linear-gradient(90deg,var(--orange),var(--gold))"></div>
+        <div style="position:absolute;top:16px;right:16px;background:var(--orange);color:#fff;font-family:var(--font-mono);font-size:10px;padding:5px 10px;border-radius:4px;letter-spacing:0.08em">MOST POPULAR</div>
+        <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);background:rgba(255,85,0,0.12);border:1px solid rgba(255,85,0,0.2);border-radius:4px;padding:4px 10px;display:inline-block;margin-bottom:20px">Level 02 — Intermediate</div>
+        <div style="font-size:30px;margin-bottom:16px">🏁</div>
+        <h3 class="heading" style="font-size:24px;margin-bottom:8px">Race Ready</h3>
+        <p style="color:var(--text-dim);font-size:14px;line-height:1.7;margin-bottom:24px">Step up to competitive racing. Tune your build, nail race lines, and compete in your first official DRL qualifier events.</p>
+        <div style="margin-bottom:24px">
+          <div class="check-item">Advanced Acrobatics & Proximity Flying</div>
+          <div class="check-item">Drone PID Tuning & Build Optimization</div>
+          <div class="check-item">Race Line Theory & Gate Strategy</div>
+          <div class="check-item">Live Race Event Participation</div>
+          <div class="check-item">Video Lap Review Sessions</div>
+          <div class="check-item">Everything in Foundations</div>
+          <div class="check-item">Monthly 1:1 Coach Review</div>
+        </div>
+        <div style="border-top:1px solid var(--bg3);padding-top:20px;margin-bottom:20px">
+          <div style="font-family:var(--font-heading);font-size:11px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px">Starting from</div>
+          <div style="font-family:var(--font-display);font-size:42px;color:var(--orange)">$549<span style="font-family:var(--font-heading);font-size:16px;font-weight:400;color:var(--text-dim)">/mo</span></div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:4px">Equipment loan available</div>
+        </div>
+        <a href="contact.html" class="btn-primary full" style="padding:14px;font-size:13px">Enroll in Race Ready</a>
+      </div>
+
+      <!-- Elite -->
+      <div class="plan-card">
+        <div class="plan-top-bar" style="background:linear-gradient(90deg,var(--gold),transparent)"></div>
+        <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);background:rgba(255,204,0,0.10);border:1px solid rgba(255,204,0,0.2);border-radius:4px;padding:4px 10px;display:inline-block;margin-bottom:20px">Level 03 — Elite</div>
+        <div style="font-size:30px;margin-bottom:16px">🏆</div>
+        <h3 class="heading" style="font-size:24px;margin-bottom:8px">Championship Elite</h3>
+        <p style="color:var(--text-dim);font-size:14px;line-height:1.7;margin-bottom:24px">Elite-tier coaching designed for pilots ready to go professional. Private sessions with champions, sponsorship, and custom build support.</p>
+        <div style="margin-bottom:24px">
+          <div class="check-item">Private 1:1 Coaching (4 sessions/mo)</div>
+          <div class="check-item">Mental Performance & Race Psychology</div>
+          <div class="check-item">Full Custom Build Workshop</div>
+          <div class="check-item">Sponsorship Network Access</div>
+          <div class="check-item">Season Race Strategy Planning</div>
+          <div class="check-item">Media & Social Brand Building</div>
+          <div class="check-item">Everything in Race Ready</div>
+        </div>
+        <div style="border-top:1px solid var(--bg3);padding-top:20px;margin-bottom:20px">
+          <div style="font-family:var(--font-heading);font-size:11px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px">Starting from</div>
+          <div style="font-family:var(--font-display);font-size:42px;color:var(--gold)">$1,299<span style="font-family:var(--font-heading);font-size:16px;font-weight:400;color:var(--text-dim)">/mo</span></div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:4px">Application required</div>
+        </div>
+        <a href="contact.html" class="btn-outline full" style="padding:13px;font-size:13px;border-color:rgba(255,204,0,0.3);color:var(--gold)" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(255,204,0,0.3)'">Apply Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKSHOPS -->
+<section style="padding:80px 0;background:var(--bg1)">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:52px">
+      <div class="section-tag" style="justify-content:center">Standalone</div>
+      <h2 class="display" style="font-size:clamp(40px,5vw,60px)">WORKSHOPS & <span style="color:var(--orange)">BOOTCAMPS</span></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:960px;margin:0 auto">
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:28px;display:flex;gap:20px;align-items:flex-start;transition:all 0.3s" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="width:48px;height:48px;background:rgba(255,85,0,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">🔧</div>
+        <div>
+          <div style="font-family:var(--font-heading);font-size:16px;font-weight:800;margin-bottom:6px">Build Your First 5" Racer</div>
+          <p style="color:var(--text-dim);font-size:13px;line-height:1.6;margin-bottom:12px">One-day hands-on workshop where you build and fly your own drone from scratch. All parts included.</p>
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--orange)">1 Day · $199 · Beginner</div>
+        </div>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:28px;display:flex;gap:20px;align-items:flex-start;transition:all 0.3s" onmouseover="this.style.borderColor='var(--blue)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="width:48px;height:48px;background:rgba(0,102,255,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">📡</div>
+        <div>
+          <div style="font-family:var(--font-heading);font-size:16px;font-weight:800;margin-bottom:6px">FPV Video Systems Deep Dive</div>
+          <p style="color:var(--text-dim);font-size:13px;line-height:1.6;margin-bottom:12px">Master analog vs digital FPV, camera tuning, VTX output, and frequency management.</p>
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--blue)">1 Day · $149 · All Levels</div>
+        </div>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:28px;display:flex;gap:20px;align-items:flex-start;transition:all 0.3s" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="width:48px;height:48px;background:rgba(255,204,0,0.10);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">⚙️</div>
+        <div>
+          <div style="font-family:var(--font-heading);font-size:16px;font-weight:800;margin-bottom:6px">Advanced PID Tuning Bootcamp</div>
+          <p style="color:var(--text-dim);font-size:13px;line-height:1.6;margin-bottom:12px">Weekend intensive on Betaflight PID tuning, filters, and blackbox analysis with real flight data.</p>
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--gold)">2 Days · $349 · Intermediate+</div>
+        </div>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:28px;display:flex;gap:20px;align-items:flex-start;transition:all 0.3s" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="width:48px;height:48px;background:rgba(255,85,0,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">🧠</div>
+        <div>
+          <div style="font-family:var(--font-heading);font-size:16px;font-weight:800;margin-bottom:6px">Race Psychology Masterclass</div>
+          <p style="color:var(--text-dim);font-size:13px;line-height:1.6;margin-bottom:12px">Mental performance training for competitive pilots. Visualization, pressure management, and race-day focus.</p>
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--orange)">1 Day · $249 · Intermediate+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding:80px 0;position:relative;overflow:hidden" class="grid-bg-orange">
+  <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,85,0,0.06),transparent,rgba(0,102,255,0.06))"></div>
+  <div class="container" style="position:relative;text-align:center">
+    <h2 class="display" style="font-size:clamp(48px,6vw,80px);margin-bottom:20px">READY TO <span style="color:var(--orange)">RACE?</span></h2>
+    <p style="color:var(--text-dim);font-size:17px;line-height:1.7;max-width:500px;margin:0 auto 36px">Pick your program or speak with a coach to find the right starting point for your FPV journey.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="contact.html" class="btn-primary">Talk to a Coach</a>
+      <a href="blog.html" class="btn-outline">Read Pilot Stories</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand display">DRL<span>.</span>APEX</div>
+        <p style="color:var(--text-dim);font-size:14px;line-height:1.7;max-width:300px">The world's premier drone racing league and FPV pilot training academy.</p>
+      </div>
+      <div class="footer-col"><h4>Racing</h4><a href="#">Race Calendar</a><a href="dashboard.html">Leaderboard</a><a href="#">Results</a></div>
+      <div class="footer-col"><h4>Training</h4><a href="services.html">All Programs</a><a href="#">Workshops</a><a href="#">Membership</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="about.html">About</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 DRL.APEX — Drone Racing League</span>
+      <span>Privacy · Terms · Cookies</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
