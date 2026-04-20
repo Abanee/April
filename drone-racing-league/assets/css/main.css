@@ -449,7 +449,7 @@ nav {
 
 .mobile-links a {
   font-family: var(--font-display);
-  font-size: clamp(28px, 8vw, 42px);
+  font-size: clamp(22px, 6vw, 32px);
   color: var(--text);
   text-decoration: none;
   text-transform: uppercase;
@@ -466,10 +466,16 @@ nav {
 .mobile-cta {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
   width: 100%;
-  max-width: 300px;
-  margin-top: 20px;
+  max-width: 280px;
+  margin-top: 10px;
+}
+
+.mobile-cta a {
+  padding: 12px 20px !important;
+  font-size: 13px !important;
+  justify-content: center;
 }
 
 @media (max-width: 1250px) {
