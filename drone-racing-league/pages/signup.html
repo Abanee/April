@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Sign Up — DRL Drone Racing League</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Exo+2:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/css/main.css"/>
+<script src="../assets/js/theme.js"></script>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <div class="logo-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="white">
+          <circle cx="10" cy="10" r="3"/>
+          <line x1="10" y1="0" x2="10" y2="6" stroke="white" stroke-width="2"/>
+          <line x1="10" y1="14" x2="10" y2="20" stroke="white" stroke-width="2"/>
+          <line x1="0" y1="10" x2="6" y2="10" stroke="white" stroke-width="2"/>
+          <line x1="14" y1="10" x2="20" y2="10" stroke="white" stroke-width="2"/>
+        </svg>
+      </div>
+      DRL<span>.</span>APEX
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../home2.html">Home 2</a>
+      <a href="about.html">About</a>
+      <a href="events.html">Events</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="services.html">Training</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <button class="toggle-btn" id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">☀️</button>
+      <button class="toggle-btn" onclick="toggleDir()" title="Toggle Direction (LTR/RTL)">🌐</button>
+    </div>
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ── AUTH SECTION ── -->
+<section class="auth-section">
+  <div class="auth-bg"></div>
+  <div class="auth-card" style="max-width:500px">
+    <div class="auth-header">
+      <h2 class="display">JOIN THE <span class="glow-orange">LEAGUE</span></h2>
+      <p>Start your journey from rookie to elite FPV racing legend.</p>
+    </div>
+
+    <form class="auth-form" action="login.html">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div class="form-group">
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" class="auth-input" placeholder="Alex" required>
+        </div>
+        <div class="form-group">
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" class="auth-input" placeholder="Chen" required>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" class="auth-input" placeholder="pilot@drlapex.com" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="pilot-name">Pilot Handle (Username)</label>
+        <input type="text" id="pilot-name" class="auth-input" placeholder="Apex_FPV" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Create Password</label>
+        <input type="password" id="password" class="auth-input" placeholder="••••••••" required>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:8px;margin-top:4px">
+        <input type="checkbox" id="terms" style="margin-top:3px;accent-color:var(--orange)" required>
+        <label for="terms" style="font-size:12px;color:var(--text-dim);cursor:pointer;text-transform:none;letter-spacing:normal;line-height:1.4">
+          I agree to the <a href="#" style="color:var(--orange);text-decoration:none">Terms of Service</a> and <a href="#" style="color:var(--orange);text-decoration:none">Privacy Policy</a>
+        </label>
+      </div>
+
+      <button type="submit" class="btn-primary auth-btn">Initialize Pilot Profile</button>
+    </form>
+
+    <div class="auth-divider">Or join with</div>
+
+    <div class="social-grid">
+      <a href="#" class="btn-social">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.9 3.24-2.16 4.41-1.32 1.32-3.24 2.16-5.68 2.16-4.2 0-7.68-3.32-7.68-7.68s3.48-7.68 7.68-7.68c2.4 0 4.14.9 5.34 2.04l2.58-2.58c-2.4-2.28-5.46-3.66-9.6-3.66-6.6 0-12 5.4-12 12s5.4 12 12 12c4.08 0 7.26-1.32 9.72-3.84 2.4-2.4 3.12-5.76 3.12-8.58 0-.84-.06-1.56-.18-2.28l-11.22 0z"/></svg>
+        Google
+      </a>
+      <a href="#" class="btn-social">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.045 4.126H5.078z"/></svg>
+        X / Twitter
+      </a>
+    </div>
+
+    <div class="auth-footer">
+      Already a member? <a href="login.html">Sign In</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-bottom" style="border:none;padding:0;justify-content:center">
+      <span>© 2025 DRL.APEX — Drone Racing League</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
