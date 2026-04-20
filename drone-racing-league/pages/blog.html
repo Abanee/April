@@ -64,20 +64,19 @@
 </div>
 
 <!-- HERO -->
-<section class="dark-hero" style="padding-top:68px;position:relative;overflow:hidden;background:linear-gradient(rgba(5,5,10,0.65),rgba(5,5,10,0.65)),url('https://images.unsplash.com/photo-1547499681-37d45ba8a87b?q=80&w=2070&auto=format&fit=crop');background-size:cover;background-position:center">
-  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 0%,rgba(0,102,255,0.06) 0%,transparent 70%);pointer-events:none"></div>
+<section class="dark-hero" style="padding-top:68px;position:relative;overflow:hidden;background:linear-gradient(rgba(5,5,10,0.7),rgba(5,5,10,0.7)),url('https://images.unsplash.com/photo-1549416878-b9ca95e26903?q=80&w=2070&auto=format&fit=crop');background-size:cover;background-position:center">
   <div style="position:absolute;inset:0" class="grid-bg"></div>
   <div class="container" style="position:relative;padding-top:80px;padding-bottom:80px;text-align:center">
     <div class="section-tag" style="justify-content:center">Latest</div>
     <h1 class="hero-title display" style="font-size:clamp(60px,8vw,100px);margin-bottom:20px">NEWS & <span style="color:var(--orange)">BLOG</span></h1>
-    <p style="font-size:17px;color:var(--text-dim);max-width:520px;margin:0 auto;line-height:1.7">Race results, pilot spotlights, tech tutorials, and behind-the-scenes from the DRL.APEX universe.</p>
+    <p style="font-size:17px;max-width:520px;margin:0 auto;line-height:1.7">Race results, pilot spotlights, tech tutorials, and behind-the-scenes from the DRL.APEX universe.</p>
     <!-- Filter tabs -->
     <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:36px">
       <button onclick="filterPosts(this,'all')" style="padding:8px 18px;background:var(--orange);color:#fff;border:1px solid var(--orange);border-radius:6px;font-family:var(--font-heading);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s">All Posts</button>
-      <button onclick="filterPosts(this,'race')" style="padding:8px 18px;background:transparent;color:var(--text-dim);border:1px solid var(--border);border-radius:6px;font-family:var(--font-heading);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s">Race News</button>
-      <button onclick="filterPosts(this,'tech')" style="padding:8px 18px;background:transparent;color:var(--text-dim);border:1px solid var(--border);border-radius:6px;font-family:var(--font-heading);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s">Tech & Builds</button>
-      <button onclick="filterPosts(this,'training')" style="padding:8px 18px;background:transparent;color:var(--text-dim);border:1px solid var(--border);border-radius:6px;font-family:var(--font-heading);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s">Training</button>
-      <button onclick="filterPosts(this,'pilots')" style="padding:8px 18px;background:transparent;color:var(--text-dim);border:1px solid var(--border);border-radius:6px;font-family:var(--font-heading);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s">Pilot Spotlights</button>
+      <button onclick="filterPosts(this,'race')" style="padding:8px 18px;background:transparent;border:1px solid var(--border);border-radius:6px;font-family:var(--font-heading);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s">Race News</button>
+      <button onclick="filterPosts(this,'tech')" style="padding:8px 18px;background:transparent;border:1px solid var(--border);border-radius:6px;font-family:var(--font-heading);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s">Tech & Builds</button>
+      <button onclick="filterPosts(this,'training')" style="padding:8px 18px;background:transparent;border:1px solid var(--border);border-radius:6px;font-family:var(--font-heading);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s">Training</button>
+      <button onclick="filterPosts(this,'pilots')" style="padding:8px 18px;background:transparent;border:1px solid var(--border);border-radius:6px;font-family:var(--font-heading);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s">Pilot Spotlights</button>
     </div>
   </div>
   <div style="height:1px;background:linear-gradient(90deg,transparent,var(--orange),transparent)"></div>
@@ -119,11 +118,11 @@
 <!-- BLOG GRID -->
 <section style="padding:60px 0">
   <div class="container">
-    <div class="blog-grid" id="blog-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+    <div class="blog-grid responsive-grid-3" id="blog-grid">
 
       <!-- Post 1 -->
       <article data-category="tech" style="background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-        <div style="height:180px;background:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
+        <div style="height:180px;background:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1000&auto=format&fit=crop');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
           <div style="position:absolute;inset:0;background:rgba(5,5,10,0.15)"></div>
           <div style="position:absolute;top:12px;left:12px"><span class="tag-pill" style="background:rgba(0,102,255,0.12);color:var(--blue);border:1px solid rgba(0,102,255,0.2)">Tech & Builds</span></div>
         </div>
@@ -137,7 +136,7 @@
 
       <!-- Post 2 -->
       <article data-category="race" style="background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-        <div style="height:180px;background:url('https://images.unsplash.com/photo-1549416878-b9ca95e26903?q=80&w=2070&auto=format&fit=crop');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
+        <div style="height:180px;background:url('https://images.unsplash.com/photo-1549416878-b9ca95e26903?q=80&w=1000&auto=format&fit=crop');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
           <div style="position:absolute;inset:0;background:rgba(5,5,10,0.15)"></div>
           <div style="position:absolute;top:12px;left:12px"><span class="tag-pill" style="background:rgba(255,85,0,0.12);color:var(--orange);border:1px solid rgba(255,85,0,0.2)">Race News</span></div>
           <div style="position:absolute;top:12px;right:12px"><span class="tag-pill" style="background:var(--orange);color:#fff">New</span></div>
@@ -152,7 +151,7 @@
 
       <!-- Post 3 -->
       <article data-category="pilots" style="background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-        <div style="height:180px;background:url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=2070&auto=format&fit=crop');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
+        <div style="height:180px;background:url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1000&auto=format&fit=crop');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
           <div style="position:absolute;inset:0;background:rgba(5,5,10,0.15)"></div>
           <div style="position:absolute;top:12px;left:12px"><span class="tag-pill" style="background:rgba(255,204,0,0.10);color:var(--gold);border:1px solid rgba(255,204,0,0.2)">Pilot Spotlight</span></div>
         </div>
@@ -166,7 +165,7 @@
 
       <!-- Post 4 -->
       <article data-category="training" style="background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-        <div style="height:180px;background:url('https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=2070&auto=format&fit=crop');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
+        <div style="height:180px;background:url('https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=1000&auto=format&fit=crop');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
           <div style="position:absolute;inset:0;background:rgba(5,5,10,0.15)"></div>
           <div style="position:absolute;top:12px;left:12px"><span class="tag-pill" style="background:rgba(0,102,255,0.12);color:var(--blue);border:1px solid rgba(0,102,255,0.2)">Training</span></div>
         </div>
@@ -180,7 +179,7 @@
 
       <!-- Post 5 -->
       <article data-category="tech" style="background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-        <div style="height:180px;background:url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
+        <div style="height:180px;background:url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&auto=format&fit=crop');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
           <div style="position:absolute;inset:0;background:rgba(5,5,10,0.15)"></div>
           <div style="position:absolute;top:12px;left:12px"><span class="tag-pill" style="background:rgba(0,102,255,0.12);color:var(--blue);border:1px solid rgba(0,102,255,0.2)">Tech & Builds</span></div>
         </div>
@@ -194,7 +193,7 @@
 
       <!-- Post 6 -->
       <article data-category="training" style="background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-        <div style="height:180px;background:url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=2070&auto=format&fit=crop');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
+        <div style="height:180px;background:url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=1000&auto=format&fit=crop');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
           <div style="position:absolute;inset:0;background:rgba(5,5,10,0.15)"></div>
           <div style="position:absolute;top:12px;left:12px"><span class="tag-pill" style="background:rgba(0,102,255,0.12);color:var(--blue);border:1px solid rgba(0,102,255,0.2)">Training</span></div>
         </div>
@@ -208,7 +207,7 @@
 
       <!-- Post 7 -->
       <article data-category="pilots" style="background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-        <div style="height:180px;background:url('https://images.unsplash.com/photo-1549488344-1f95842c4047?q=80&w=1000&auto=format&fit=crop');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
+        <div style="height:180px;background:url('https://images.unsplash.com/photo-1552058504-f2a084bd30c3?q=80&w=1000&auto=format&fit=crop');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
           <div style="position:absolute;inset:0;background:rgba(5,5,10,0.15)"></div>
           <div style="position:absolute;top:12px;left:12px"><span class="tag-pill" style="background:rgba(255,204,0,0.1);color:var(--gold);border:1px solid rgba(255,204,0,0.2)">Pilot Spotlight</span></div>
         </div>
@@ -222,7 +221,7 @@
 
       <!-- Post 8 -->
       <article data-category="tech" style="background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-        <div style="height:180px;background:url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
+        <div style="height:180px;background:url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
           <div style="position:absolute;inset:0;background:rgba(5,5,10,0.15)"></div>
           <div style="position:absolute;top:12px;left:12px"><span class="tag-pill" style="background:rgba(0,102,255,0.12);color:var(--blue);border:1px solid rgba(0,102,255,0.2)">Tech & Builds</span></div>
         </div>
@@ -236,7 +235,7 @@
 
       <!-- Post 9 -->
       <article data-category="race" style="background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-        <div style="height:180px;background:url('https://images.unsplash.com/photo-1579202673506-ca3ce28943ef?q=80&w=1000&auto=format&fit=crop');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
+        <div style="height:180px;background:url('https://images.unsplash.com/photo-1547025603-ef91f1752673?q=80&w=1000&auto=format&fit=crop');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
           <div style="position:absolute;inset:0;background:rgba(5,5,10,0.15)"></div>
           <div style="position:absolute;top:12px;left:12px"><span class="tag-pill" style="background:rgba(255,85,0,0.12);color:var(--orange);border:1px solid rgba(255,85,0,0.2)">Race News</span></div>
         </div>
@@ -257,7 +256,8 @@
 </section>
 
 <!-- NEWSLETTER -->
-<section style="padding:80px 0;background:var(--bg1);border-top:1px solid var(--border)">
+<section style="padding:100px 0;position:relative;overflow:hidden;background:linear-gradient(rgba(5,5,10,0.8),rgba(5,5,10,0.8)),url('https://images.unsplash.com/photo-1547499681-37d45ba8a87b?q=80&w=2070&auto=format&fit=crop');background-size:cover;background-position:center;border-top:1px solid var(--border)">
+  <div style="position:absolute;inset:0" class="grid-bg"></div>
   <div class="container">
     <div style="max-width:600px;margin:0 auto;text-align:center">
       <div style="font-family:var(--font-mono);font-size:11px;color:var(--orange);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px">Stay Updated</div>

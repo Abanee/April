@@ -91,7 +91,7 @@ select.form-input{cursor:pointer}
 <!-- ── CONTACT GRID ── -->
 <section style="padding:80px 0" class="grid-bg">
   <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:start">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:60px;align-items:start">
 
       <!-- LEFT — Info -->
       <div>
@@ -145,7 +145,7 @@ select.form-input{cursor:pointer}
         <p style="color:var(--text-dim);font-size:14px;margin-bottom:28px">We typically respond within 24 hours on business days.</p>
 
         <form onsubmit="handleSubmit(event)">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:16px">
             <div class="form-group">
               <label class="form-label">First Name *</label>
               <input type="text" class="form-input" placeholder="Alex" required/>

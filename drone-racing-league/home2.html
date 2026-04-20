@@ -110,8 +110,11 @@
 .specs-list {
   list-style: none;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+}
+@media (max-width: 480px) {
+  .specs-list { grid-template-columns: 1fr; }
 }
 .spec-item {
   background: var(--bg1);
@@ -243,13 +246,13 @@
 <!-- ── INNOVATION SECTION ── -->
 <section style="padding:100px 0;background:var(--bg1);border-top:1px solid var(--border)">
   <div class="container">
-    <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:center">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:60px;align-items:center">
       <div>
         <div class="section-tag" style="justify-content:flex-start">Engineering Marvel</div>
         <h2 class="display" style="font-size:clamp(50px,7vw,90px);margin-bottom:30px;line-height:0.9">APEX-VI: THE <span style="color:var(--orange)">INNOVATION</span></h2>
         <p style="color:var(--text-dim);font-size:18px;line-height:1.7;margin-bottom:32px">We didn't just build a drone; we engineered a revolution. The APEX-VI features a custom-molded unibody frame, active frequency management, and the world's first AI-assisted flight stabilization specifically for racing.</p>
         
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:30px">
+        <div class="responsive-grid-2">
           <div style="padding:20px;background:var(--bg2);border:1px solid var(--border);border-radius:12px">
             <div style="font-size:24px;margin-bottom:12px">🔋</div>
             <div style="font-family:var(--font-heading);font-weight:800;font-size:16px;margin-bottom:8px">Advanced Power</div>
@@ -308,7 +311,7 @@
       <p style="color:var(--text-dim);margin-top:16px;max-width:600px;margin-left:auto;margin-right:auto">Witness the fastest pilots on earth compete in iconic locations across the globe.</p>
     </div>
     
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+    <div class="responsive-grid-3">
       <div style="background:var(--bg1);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all 0.3s" class="hover-up">
         <div style="height:200px;background:url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2070&auto=format&fit=crop');background-size:cover;background-position:center"></div>
         <div style="padding:24px">
