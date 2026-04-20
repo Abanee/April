@@ -34,11 +34,43 @@
   --border-blue: rgba(0, 102, 255, 0.12);
 }
 
-[data-theme="light"] .hero-v2-title,
-[data-theme="light"] .hero-title,
-[data-theme="light"] .event-hero h1,
-[data-theme="light"] .gallery-hero h1 {
-  color: var(--text) !important;
+.hero-v2-title,
+.hero-title,
+.event-hero h1,
+.gallery-hero h1,
+.dark-hero h1 {
+  color: #F0F2FF !important;
+}
+
+.dark-hero {
+  --hero-text: #F0F2FF;
+  --hero-text-dim: rgba(240, 242, 255, 0.7);
+  --hero-text-muted: rgba(240, 242, 255, 0.5);
+}
+
+.dark-hero p,
+.dark-hero .section-desc,
+.dark-hero .hero-sub,
+.dark-hero .hero-v2-sub,
+.dark-hero .stat-label,
+.dark-hero .btn-outline {
+  color: var(--hero-text-dim) !important;
+}
+
+.dark-hero .hero-eyebrow span {
+  color: var(--hero-text-muted) !important;
+}
+
+/* Ensure stats on light backgrounds remain visible */
+.stat-item .stat-label,
+.stat-label,
+.hud-box .hud-label {
+  color: var(--text-dim) !important;
+}
+
+[data-theme="light"] .stat-item .stat-label,
+[data-theme="light"] .stat-label {
+  color: var(--text-dim) !important;
 }
 
 [dir="rtl"] {

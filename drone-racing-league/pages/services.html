@@ -67,7 +67,7 @@
 </div>
 
 <!-- HERO -->
-<section style="padding-top:68px;position:relative;overflow:hidden;background:linear-gradient(rgba(5,5,10,0.6),rgba(5,5,10,0.6)),url('https://images.unsplash.com/photo-1579353977828-2a4eab540b9a?q=80&w=1974&auto=format&fit=crop');background-size:cover;background-position:center">
+<section class="dark-hero" style="padding-top:68px;position:relative;overflow:hidden;background:linear-gradient(rgba(5,5,10,0.6),rgba(5,5,10,0.6)),url('https://images.unsplash.com/photo-1579353977828-2a4eab540b9a?q=80&w=1974&auto=format&fit=crop');background-size:cover;background-position:center">
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 0%,rgba(255,85,0,0.07) 0%,transparent 70%)"></div>
   <div style="position:absolute;inset:0" class="grid-bg-orange"></div>
   <div class="container" style="position:relative;padding-top:80px;padding-bottom:80px">
@@ -82,10 +82,10 @@
     </div>
     <!-- Quick stat bar -->
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;margin-top:60px;overflow:hidden">
-      <div style="background:var(--bg1);padding:20px 24px"><div style="font-family:var(--font-display);font-size:32px;color:var(--orange)">500+</div><div style="font-family:var(--font-heading);font-size:11px;color:var(--text-dim);letter-spacing:0.08em;text-transform:uppercase;margin-top:2px">Pilots Trained</div></div>
-      <div style="background:var(--bg1);padding:20px 24px"><div style="font-family:var(--font-display);font-size:32px;color:var(--blue)">12</div><div style="font-family:var(--font-heading);font-size:11px;color:var(--text-dim);letter-spacing:0.08em;text-transform:uppercase;margin-top:2px">Expert Coaches</div></div>
-      <div style="background:var(--bg1);padding:20px 24px"><div style="font-family:var(--font-display);font-size:32px;color:var(--gold)">5</div><div style="font-family:var(--font-heading);font-size:11px;color:var(--text-dim);letter-spacing:0.08em;text-transform:uppercase;margin-top:2px">Global Locations</div></div>
-      <div style="background:var(--bg1);padding:20px 24px"><div style="font-family:var(--font-display);font-size:32px;color:var(--orange)">98%</div><div style="font-family:var(--font-heading);font-size:11px;color:var(--text-dim);letter-spacing:0.08em;text-transform:uppercase;margin-top:2px">Satisfaction</div></div>
+      <div class="stat-item"><div style="font-family:var(--font-display);font-size:32px;color:var(--orange)">500+</div><div class="stat-label">Pilots Trained</div></div>
+      <div class="stat-item"><div style="font-family:var(--font-display);font-size:32px;color:var(--blue)">12</div><div class="stat-label">Expert Coaches</div></div>
+      <div class="stat-item"><div style="font-family:var(--font-display);font-size:32px;color:var(--gold)">5</div><div class="stat-label">Global Locations</div></div>
+      <div class="stat-item"><div style="font-family:var(--font-display);font-size:32px;color:var(--orange)">98%</div><div class="stat-label">Satisfaction</div></div>
     </div>
   </div>
   <div style="height:1px;background:linear-gradient(90deg,transparent,var(--orange),transparent)"></div>
@@ -237,10 +237,10 @@
   <div class="footer-inner">
     <div class="footer-grid">
       <div>
-        <div class="footer-brand display" style="display:flex;align-items:center;gap:12px">
+        <a href="../index.html" class="footer-brand display" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit">
           <img src="../logo.png" alt="DRL Logo" style="height:36px;width:auto">
           DRL<span>.</span>APEX
-        </div>
+        </a>
         <p class="footer-desc">The world's premier drone racing league and FPV pilot training academy. Compete at the highest level.</p>
         <div class="footer-social">
           <a class="social-btn" href="#">𝕏</a>
