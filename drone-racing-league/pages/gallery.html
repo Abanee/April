@@ -11,7 +11,9 @@
 <style>
 .gallery-hero {
   padding: 120px 0 60px;
-  background: var(--bg0);
+  background: linear-gradient(rgba(5,5,10,0.7),rgba(5,5,10,0.7)),url('https://images.unsplash.com/photo-1551103782-8ab07afd45c1?q=80&w=2070&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
   text-align: center;
 }
 .gallery-grid {
@@ -100,6 +102,7 @@
       <button class="toggle-btn" id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">☀️</button>
       <button class="toggle-btn" onclick="toggleDir()" title="Toggle Direction (LTR/RTL)">🌐</button>
       <a href="dashboard.html" class="btn-outline" style="padding:10px 16px;font-size:13px">Dashboard</a>
+      <a href="dashboard.html" class="btn-primary" style="padding:10px 22px;font-size:13px">Login</a>
     </div>
     <div class="hamburger">
       <span></span><span></span><span></span>
@@ -120,7 +123,7 @@
   </div>
   <div class="mobile-cta">
     <a href="dashboard.html" class="btn-outline">Pilot Dashboard</a>
-    <a href="services.html" class="btn-primary">Enroll Now</a>
+    <a href="dashboard.html" class="btn-primary">Login</a>
   </div>
 </div>
 

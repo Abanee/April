@@ -18,7 +18,7 @@
 
 /* ── HERO ── */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding-top:68px;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 60% 40%,rgba(0,102,255,0.08) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 80% 80%,rgba(255,85,0,0.06) 0%,transparent 60%),var(--bg0)}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(rgba(5,5,10,0.5),rgba(5,5,10,0.5)),url('https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=2070&auto=format&fit=crop');background-size:cover;background-position:center;var(--bg0)}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,102,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,102,255,0.05) 1px,transparent 1px);background-size:64px 64px}
 .hero-content{position:relative;max-width:1280px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:rgba(255,85,0,0.12);border:1px solid rgba(255,85,0,0.3);border-radius:4px;font-family:var(--font-mono);font-size:11px;color:var(--orange);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:24px}
@@ -95,7 +95,7 @@
 
 /* ── CTA SECTION ── */
 .cta-section{padding:100px 0;position:relative;overflow:hidden}
-.cta-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,85,0,0.08) 0%,var(--bg0) 40%,rgba(0,102,255,0.08) 100%)}
+.cta-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,85,0,0.1),rgba(5,5,10,0.8)),url('https://images.unsplash.com/photo-1473968512647-3e4402324915?q=80&w=2070&auto=format&fit=crop');background-size:cover;background-position:center}
 .cta-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,85,0,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,85,0,0.05) 1px,transparent 1px);background-size:32px 32px}
 .cta-inner{position:relative;max-width:800px;margin:0 auto;padding:0 24px;text-align:center}
 .cta-title{font-family:var(--font-display);font-size:clamp(48px,6vw,80px);line-height:0.92;margin-bottom:20px}
@@ -153,7 +153,7 @@
       <button class="toggle-btn" id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">☀️</button>
       <button class="toggle-btn" onclick="toggleDir()" title="Toggle Direction (LTR/RTL)">🌐</button>
       <a href="pages/dashboard.html" class="btn-outline" style="padding:10px 16px;font-size:13px">Dashboard</a>
-      <a href="pages/services.html" class="btn-primary" style="padding:10px 22px;font-size:13px">Enroll Now</a>
+      <a href="pages/dashboard.html" class="btn-primary" style="padding:10px 22px;font-size:13px">Login</a>
     </div>
     <div class="hamburger">
       <span></span><span></span><span></span>
@@ -174,7 +174,7 @@
   </div>
   <div class="mobile-cta">
     <a href="pages/dashboard.html" class="btn-outline">Pilot Dashboard</a>
-    <a href="pages/services.html" class="btn-primary">Enroll Now</a>
+    <a href="pages/dashboard.html" class="btn-primary">Login</a>
   </div>
 </div>
 
