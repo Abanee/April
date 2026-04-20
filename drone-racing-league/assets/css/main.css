@@ -34,6 +34,13 @@
   --border-blue: rgba(0, 102, 255, 0.12);
 }
 
+[data-theme="light"] .hero-v2-title,
+[data-theme="light"] .hero-title,
+[data-theme="light"] .event-hero h1,
+[data-theme="light"] .gallery-hero h1 {
+  color: var(--text) !important;
+}
+
 [dir="rtl"] {
   direction: rtl;
 }
@@ -597,4 +604,13 @@ section.padded {
   max-width: 560px;
   margin-inline: auto;
   line-height: 1.7;
+}
+
+/* ── UTILITIES ── */
+.hover-up {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-up:hover {
+  transform: translateY(-8px);
 }
