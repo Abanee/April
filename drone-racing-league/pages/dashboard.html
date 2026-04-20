@@ -86,49 +86,22 @@ tbody tr.highlight td{background:rgba(255,85,0,0.05)}
         <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);margin-top:6px">37% of season complete</div>
       </div>
 
-      <div class="sidebar-section">
-        <div class="sidebar-label">Dashboard</div>
-        <a class="sidebar-item active" href="#leaderboard">
-          <div class="icon">🏆</div> Leaderboard <span class="sidebar-count">240</span>
+      <div class="sidebar-section" style="display:flex;flex-direction:column;height:calc(100vh - 180px)">
+        <a class="sidebar-item active" href="#" onclick="switchView(this, 'view-overview'); return false;">
+          <div class="icon">🏆</div> Overview
         </a>
-        <a class="sidebar-item" href="#races">
-          <div class="icon">🏁</div> Race Events <span class="sidebar-count">8</span>
+        <a class="sidebar-item" href="#" onclick="switchView(this, 'view-hangar'); return false;">
+          <div class="icon">🛸</div> Pilot Hangar
         </a>
-        <a class="sidebar-item" href="#standings">
-          <div class="icon">📊</div> Standings
+        <a class="sidebar-item" href="#" onclick="switchView(this, 'view-academy'); return false;">
+          <div class="icon">🕹️</div> Flight Academy
         </a>
-        <a class="sidebar-item" href="#records">
-          <div class="icon">⚡</div> Track Records
+        <a class="sidebar-item" href="#" onclick="switchView(this, 'view-analytics'); return false;">
+          <div class="icon">📊</div> Race Analytics
         </a>
-      </div>
-
-      <div class="sidebar-section">
-        <div class="sidebar-label">Divisions</div>
-        <a class="sidebar-item" href="#">
-          <div class="icon" style="background:rgba(255,204,0,0.1)">🥇</div> Championship Pro
+        <a class="sidebar-item" href="../index.html" style="margin-top:auto;border-top:1px solid var(--bg3);border-radius:0;padding-top:16px;color:var(--text-muted)">
+          <div class="icon" style="background:var(--bg2)">🚪</div> Logout
         </a>
-        <a class="sidebar-item" href="#">
-          <div class="icon" style="background:rgba(0,102,255,0.1)">🥈</div> Regional A-Class
-        </a>
-        <a class="sidebar-item" href="#">
-          <div class="icon">🎮</div> Amateur Open
-        </a>
-      </div>
-
-      <div class="sidebar-section">
-        <div class="sidebar-label">Quick Links</div>
-        <a class="sidebar-item" href="services.html"><div class="icon">🎓</div> Join Training</a>
-        <a class="sidebar-item" href="contact.html"><div class="icon">💬</div> Contact Us</a>
-      </div>
-
-      <!-- Live ticker -->
-      <div style="background:var(--bg2);border:1px solid var(--bg3);border-radius:8px;padding:12px;margin-top:8px">
-        <div style="font-family:var(--font-mono);font-size:9px;color:var(--orange);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px">● Live Updates</div>
-        <div style="font-size:11px;color:var(--text-dim);line-height:1.6" id="live-feed">
-          <div style="padding:5px 0;border-bottom:1px solid var(--bg3)">APEX — Q1 lap: <span style="color:var(--orange);font-family:var(--font-mono)">14.84s</span></div>
-          <div style="padding:5px 0;border-bottom:1px solid var(--bg3)">BOLT — Q1 lap: <span style="color:var(--blue);font-family:var(--font-mono)">15.02s</span></div>
-          <div style="padding:5px 0">VIPER — Q1 lap: <span style="color:var(--gold);font-family:var(--font-mono)">15.19s</span></div>
-        </div>
       </div>
     </aside>
 
@@ -147,6 +120,8 @@ tbody tr.highlight td{background:rgba(255,85,0,0.05)}
         </div>
       </div>
 
+      <!-- ═══ OVERVIEW VIEW ═══ -->
+      <div id="view-overview" style="display:block">
       <!-- Stat cards -->
       <div class="stat-cards">
         <div class="stat-card">
@@ -175,16 +150,8 @@ tbody tr.highlight td{background:rgba(255,85,0,0.05)}
         </div>
       </div>
 
-      <!-- Tabs -->
-      <div class="tab-bar">
-        <button class="tab active" onclick="switchTab(this,'leaderboard')">Leaderboard</button>
-        <button class="tab" onclick="switchTab(this,'races')">Race Schedule</button>
-        <button class="tab" onclick="switchTab(this,'records')">Track Records</button>
-      </div>
-
-      <!-- ═══ LEADERBOARD TAB ═══ -->
-      <div id="tab-leaderboard">
-        <div class="table-wrap" id="leaderboard">
+      <!-- ═══ LEADERBOARD ═══ -->
+      <div class="table-wrap" id="leaderboard" style="margin-top:28px">
           <div class="table-header">
             <div class="table-title">Championship Standings — Season 8</div>
             <div style="display:flex;gap:8px">
@@ -445,68 +412,223 @@ tbody tr.highlight td{background:rgba(255,85,0,0.05)}
               </div>
             </div>
           </div>
-          </div>
         </div>
       </div>
 
-      <!-- ═══ RACES TAB ═══ -->
-      <div id="tab-races" style="display:none">
+      <!-- ═══ HANGAR VIEW ═══ -->
+      <div id="view-hangar" style="display:none">
+        <div style="margin-bottom:28px">
+          <h2 style="font-family:var(--font-heading);font-size:20px;font-weight:700;margin-bottom:16px"><span style="color:var(--orange)">///</span> ACTIVE FLEET</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px">
+            <div class="panel" style="padding:20px;border-top:2px solid var(--orange)">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);margin-bottom:8px">Primary Rig</div>
+              <h3 style="font-family:var(--font-heading);font-size:16px;font-weight:800;margin-bottom:12px">APEX PRO <span style="font-weight:400;color:var(--orange)">MK-IV</span></h3>
+              <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:8px;color:var(--text-dim)">
+                <span>Motor Health</span><span style="font-family:var(--font-mono);color:#22C55E">96%</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:8px;color:var(--text-dim)">
+                <span>Battery Cycles</span><span style="font-family:var(--font-mono);color:var(--text)">12/50</span>
+              </div>
+            </div>
+            <div class="panel" style="padding:20px;border-top:2px solid var(--blue)">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);margin-bottom:8px">Backup Rig</div>
+              <h3 style="font-family:var(--font-heading);font-size:16px;font-weight:800;margin-bottom:12px">VIPER X <span style="font-weight:400;color:var(--blue)">LITE</span></h3>
+              <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:8px;color:var(--text-dim)">
+                <span>Motor Health</span><span style="font-family:var(--font-mono);color:var(--orange)">82%</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:8px;color:var(--text-dim)">
+                <span>Battery Cycles</span><span style="font-family:var(--font-mono);color:var(--text)">34/50</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="table-wrap">
-          <div class="table-header"><div class="table-title">Season 8 Race Calendar</div></div>
+          <div class="table-header"><div class="table-title">Recent Flight Logs</div></div>
           <table>
-            <thead><tr><th>#</th><th>Event Name</th><th>Location</th><th>Date</th><th>Prize</th><th>Entries</th><th>Status</th></tr></thead>
+            <thead><tr><th>Date</th><th>Location</th><th>Rig</th><th>Best Lap</th><th>Avg G-Force</th><th>Status</th></tr></thead>
             <tbody>
-              <tr><td><span style="font-family:var(--font-mono);color:var(--text-muted)">R1</span></td><td><span style="font-family:var(--font-heading);font-weight:700">Austin Invitational</span></td><td>🇺🇸 Austin, USA</td><td style="font-family:var(--font-mono);font-size:12px">Mar 1, 2025</td><td style="color:var(--text-muted);font-family:var(--font-heading)">$80,000</td><td style="font-family:var(--font-mono);font-size:12px">48</td><td><span style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);background:var(--bg3);padding:3px 8px;border-radius:4px">Completed</span></td></tr>
-              <tr><td><span style="font-family:var(--font-mono);color:var(--text-muted)">R2</span></td><td><span style="font-family:var(--font-heading);font-weight:700">Barcelona Speed Circuit</span></td><td>🇪🇸 Barcelona</td><td style="font-family:var(--font-mono);font-size:12px">Mar 28, 2025</td><td style="color:var(--text-muted);font-family:var(--font-heading)">$80,000</td><td style="font-family:var(--font-mono);font-size:12px">52</td><td><span style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);background:var(--bg3);padding:3px 8px;border-radius:4px">Completed</span></td></tr>
-              <tr class="highlight"><td><span style="font-family:var(--font-mono);color:var(--orange)">R3</span></td><td><span style="font-family:var(--font-heading);font-weight:700;color:var(--orange)">Dubai Grand Prix</span></td><td>🇦🇪 Dubai, UAE</td><td style="font-family:var(--font-mono);font-size:12px">Apr 19, 2025</td><td style="color:var(--gold);font-family:var(--font-heading);font-weight:700">$120,000</td><td style="font-family:var(--font-mono);font-size:12px">56</td><td><span style="font-family:var(--font-mono);font-size:10px;color:var(--orange);background:rgba(255,85,0,0.1);padding:3px 8px;border-radius:4px;border:1px solid rgba(255,85,0,0.2)">● Qualifying</span></td></tr>
-              <tr><td><span style="font-family:var(--font-mono);color:var(--text-muted)">R4</span></td><td><span style="font-family:var(--font-heading);font-weight:700">Seoul Night Race</span></td><td>🇰🇷 Seoul</td><td style="font-family:var(--font-mono);font-size:12px">May 3, 2025</td><td style="color:var(--gold);font-family:var(--font-heading)">$95,000</td><td style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">-</td><td><span style="font-family:var(--font-mono);font-size:10px;color:var(--blue);background:rgba(0,102,255,0.08);padding:3px 8px;border-radius:4px;border:1px solid rgba(0,102,255,0.15)">Upcoming</span></td></tr>
-              <tr><td><span style="font-family:var(--font-mono);color:var(--text-muted)">R5</span></td><td><span style="font-family:var(--font-heading);font-weight:700">Tokyo Neon Cup</span></td><td>🇯🇵 Tokyo</td><td style="font-family:var(--font-mono);font-size:12px">May 24, 2025</td><td style="color:var(--gold);font-family:var(--font-heading)">$85,000</td><td style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">-</td><td><span style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);background:var(--bg3);padding:3px 8px;border-radius:4px">Scheduled</span></td></tr>
-              <tr><td><span style="font-family:var(--font-mono);color:var(--text-muted)">R6</span></td><td><span style="font-family:var(--font-heading);font-weight:700">Paris Rooftop Clash</span></td><td>🇫🇷 Paris</td><td style="font-family:var(--font-mono);font-size:12px">Jun 1, 2025</td><td style="color:var(--gold);font-family:var(--font-heading)">$90,000</td><td style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">-</td><td><span style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);background:var(--bg3);padding:3px 8px;border-radius:4px">Scheduled</span></td></tr>
-              <tr><td><span style="font-family:var(--font-mono);color:var(--text-muted)">F</span></td><td><span style="font-family:var(--font-heading);font-weight:700">Apex World Championships</span></td><td>🇺🇸 Las Vegas</td><td style="font-family:var(--font-mono);font-size:12px">Jun 14, 2025</td><td style="color:var(--gold);font-family:var(--font-heading);font-weight:700">$500,000</td><td style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">-</td><td><span style="font-family:var(--font-mono);font-size:10px;color:var(--gold);background:rgba(255,204,0,0.08);padding:3px 8px;border-radius:4px;border:1px solid rgba(255,204,0,0.2)">Open Reg</span></td></tr>
+              <tr class="highlight"><td><span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">Today</span></td><td><span style="font-family:var(--font-heading);font-weight:700">Dubai GP Quali</span></td><td>APEX PRO</td><td><span style="font-family:var(--font-mono);color:var(--orange)">14.88s</span></td><td><span style="font-family:var(--font-mono);color:var(--text-dim)">4.2G</span></td><td><span style="font-family:var(--font-mono);font-size:10px;color:#22C55E;background:rgba(34,197,94,0.1);padding:3px 8px;border-radius:4px">Logged</span></td></tr>
+              <tr><td><span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">Yesterday</span></td><td><span style="font-family:var(--font-heading);font-weight:700">Barcelona Practice</span></td><td>VIPER X</td><td><span style="font-family:var(--font-mono);color:var(--text)">15.12s</span></td><td><span style="font-family:var(--font-mono);color:var(--text-dim)">3.8G</span></td><td><span style="font-family:var(--font-mono);font-size:10px;color:#22C55E;background:rgba(34,197,94,0.1);padding:3px 8px;border-radius:4px">Logged</span></td></tr>
+              <tr><td><span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">Apr 12, 2025</span></td><td><span style="font-family:var(--font-heading);font-weight:700">Austin Setup Run</span></td><td>APEX PRO</td><td><span style="font-family:var(--font-mono);color:var(--text)">15.45s</span></td><td><span style="font-family:var(--font-mono);color:var(--text-dim)">4.0G</span></td><td><span style="font-family:var(--font-mono);font-size:10px;color:var(--orange);background:rgba(255,85,0,0.1);padding:3px 8px;border-radius:4px">Warning: Prop</span></td></tr>
             </tbody>
           </table>
         </div>
       </div>
 
-      <!-- ═══ RECORDS TAB ═══ -->
-      <div id="tab-records" style="display:none">
-        <div class="table-wrap" id="records">
-          <div class="table-header"><div class="table-title">Track Records — All Circuits</div></div>
+      <!-- ═══ ACADEMY VIEW ═══ -->
+      <div id="view-academy" style="display:none">
+        <div style="margin-bottom:28px">
+          <h2 style="font-family:var(--font-heading);font-size:20px;font-weight:700;margin-bottom:16px"><span style="color:var(--blue)">///</span> SIMULATOR PROGRESS</h2>
+          <div class="panel" style="padding:20px">
+            <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:12px">
+              <div>
+                <h3 style="font-family:var(--font-heading);font-size:16px;font-weight:800">Pro License Track Certification</h3>
+                <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);margin-top:4px">8 tracks completed out of 10</div>
+              </div>
+              <div style="font-family:var(--font-display);font-size:24px;color:var(--blue)">80%</div>
+            </div>
+            <div style="height:8px;background:var(--bg3);border-radius:4px;overflow:hidden">
+              <div style="height:100%;width:80%;background:var(--blue);border-radius:4px"></div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 style="font-family:var(--font-heading);font-size:20px;font-weight:700;margin-bottom:16px"><span style="color:var(--text-muted)">///</span> ENROLLED COURSES</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px">
+            <div class="panel" style="padding:20px;display:flex;flex-direction:column;gap:12px">
+              <div style="width:40px;height:40px;background:rgba(255,85,0,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px">🔄</div>
+              <h3 style="font-family:var(--font-heading);font-size:15px;font-weight:800">Advanced Cornering Dynamics</h3>
+              <p style="font-size:12px;color:var(--text-dim);line-height:1.5">Master the split-S and power-loop techniques to shave off milliseconds.</p>
+              <a href="#" class="btn-primary" style="margin-top:auto;text-align:center;padding:8px;font-size:11px">Continue Module</a>
+            </div>
+            <div class="panel" style="padding:20px;display:flex;flex-direction:column;gap:12px">
+              <div style="width:40px;height:40px;background:rgba(0,102,255,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px">🔋</div>
+              <h3 style="font-family:var(--font-heading);font-size:15px;font-weight:800">Battery Management</h3>
+              <p style="font-size:12px;color:var(--text-dim);line-height:1.5">Learn to optimize thrust curves to prevent voltage sag mid-race.</p>
+              <a href="#" class="btn-primary" style="margin-top:auto;text-align:center;padding:8px;font-size:11px;background:var(--bg2);color:var(--text);border:1px solid var(--border)">Start Module</a>
+            </div>
+            <div class="panel" style="padding:20px;display:flex;flex-direction:column;gap:12px">
+              <div style="width:40px;height:40px;background:rgba(255,204,0,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px">📡</div>
+              <h3 style="font-family:var(--font-heading);font-size:15px;font-weight:800">Signal Optimization</h3>
+              <p style="font-size:12px;color:var(--text-dim);line-height:1.5">Understanding multipathing and antenna placement for solid video feeds.</p>
+              <a href="#" class="btn-primary" style="margin-top:auto;text-align:center;padding:8px;font-size:11px;background:var(--bg2);color:var(--text);border:1px solid var(--border)">Start Module</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ RACE ANALYTICS VIEW ═══ -->
+      <div id="view-analytics" style="display:none">
+        <!-- KPI Row -->
+        <h2 style="font-family:var(--font-heading);font-size:20px;font-weight:700;margin-bottom:16px"><span style="color:var(--orange)">///</span> SEASON PERFORMANCE OVERVIEW</h2>
+        <div class="stat-cards" style="margin-bottom:28px">
+          <div class="stat-card">
+            <div style="font-family:var(--font-mono);font-size:10px;color:var(--orange);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px">Avg Lap Time</div>
+            <div class="stat-card-num" style="color:var(--orange)">15.2s</div>
+            <div class="stat-card-label">S8 personal avg</div>
+            <div class="stat-card-change" style="color:#22C55E">▲ –0.4s vs S7</div>
+          </div>
+          <div class="stat-card">
+            <div style="font-family:var(--font-mono);font-size:10px;color:var(--blue);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px">Top Speed</div>
+            <div class="stat-card-num" style="color:var(--blue);font-size:32px">178mph</div>
+            <div class="stat-card-label">Dubai GP · Straight</div>
+            <div class="stat-card-change" style="color:#22C55E">▲ Personal best</div>
+          </div>
+          <div class="stat-card">
+            <div style="font-family:var(--font-mono);font-size:10px;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px">Crash Rate</div>
+            <div class="stat-card-num" style="color:var(--gold)">3.1%</div>
+            <div class="stat-card-label">Per race average</div>
+            <div class="stat-card-change" style="color:#22C55E">▼ –1.8% vs S7</div>
+          </div>
+          <div class="stat-card">
+            <div style="font-family:var(--font-mono);font-size:10px;color:var(--orange);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px">Overtakes</div>
+            <div class="stat-card-num" style="color:var(--text)">47</div>
+            <div class="stat-card-label">Total this season</div>
+            <div class="stat-card-change" style="color:#22C55E">▲ +12 vs S7</div>
+          </div>
+        </div>
+
+        <!-- Sector Analysis -->
+        <div class="bottom-grid" style="margin-bottom:28px">
+          <div class="panel">
+            <div class="panel-header">
+              <span>Sector Breakdown — Dubai GP</span>
+              <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted)">Best lap split</span>
+            </div>
+            <div class="panel-body">
+              <div style="display:flex;flex-direction:column;gap:16px">
+                <div>
+                  <div style="display:flex;justify-content:space-between;margin-bottom:6px;font-size:12px">
+                    <span style="font-family:var(--font-heading);font-weight:700">Sector 1 — Technical</span>
+                    <span style="font-family:var(--font-mono);color:var(--orange)">5.12s</span>
+                  </div>
+                  <div style="height:6px;background:var(--bg3);border-radius:3px">
+                    <div style="height:100%;width:88%;background:var(--orange);border-radius:3px"></div>
+                  </div>
+                  <div style="font-family:var(--font-mono);font-size:10px;color:#22C55E;margin-top:4px">▲ 0.08s faster than S7 best</div>
+                </div>
+                <div>
+                  <div style="display:flex;justify-content:space-between;margin-bottom:6px;font-size:12px">
+                    <span style="font-family:var(--font-heading);font-weight:700">Sector 2 — Chicane</span>
+                    <span style="font-family:var(--font-mono);color:var(--blue)">4.88s</span>
+                  </div>
+                  <div style="height:6px;background:var(--bg3);border-radius:3px">
+                    <div style="height:100%;width:78%;background:var(--blue);border-radius:3px"></div>
+                  </div>
+                  <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);margin-top:4px">→ Consistent with prior avg</div>
+                </div>
+                <div>
+                  <div style="display:flex;justify-content:space-between;margin-bottom:6px;font-size:12px">
+                    <span style="font-family:var(--font-heading);font-weight:700">Sector 3 — Power</span>
+                    <span style="font-family:var(--font-mono);color:var(--gold)">4.82s</span>
+                  </div>
+                  <div style="height:6px;background:var(--bg3);border-radius:3px">
+                    <div style="height:100%;width:96%;background:var(--gold);border-radius:3px"></div>
+                  </div>
+                  <div style="font-family:var(--font-mono);font-size:10px;color:#22C55E;margin-top:4px">▲ Season fastest sector overall</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Head-to-head -->
+          <div class="panel">
+            <div class="panel-header">
+              <span>Head-to-Head vs BOLT</span>
+              <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted)">Last 3 races</span>
+            </div>
+            <div class="panel-body" style="padding:0">
+              <div style="padding:14px 16px;border-bottom:1px solid var(--bg3);display:flex;justify-content:space-between;align-items:center">
+                <div>
+                  <div style="font-family:var(--font-heading);font-size:13px;font-weight:700">Dubai GP</div>
+                  <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted)">Apr 19 · R3</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px">
+                  <span style="font-family:var(--font-display);font-size:16px;color:var(--orange)">14.82</span>
+                  <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted)">vs</span>
+                  <span style="font-family:var(--font-display);font-size:16px;color:var(--blue)">15.01</span>
+                </div>
+              </div>
+              <div style="padding:14px 16px;border-bottom:1px solid var(--bg3);display:flex;justify-content:space-between;align-items:center">
+                <div>
+                  <div style="font-family:var(--font-heading);font-size:13px;font-weight:700">Barcelona R2</div>
+                  <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted)">Mar 28 · R2</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px">
+                  <span style="font-family:var(--font-display);font-size:16px;color:var(--blue)">15.22</span>
+                  <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted)">vs</span>
+                  <span style="font-family:var(--font-display);font-size:16px;color:var(--orange)">15.09</span>
+                </div>
+              </div>
+              <div style="padding:14px 16px;display:flex;justify-content:space-between;align-items:center">
+                <div>
+                  <div style="font-family:var(--font-heading);font-size:13px;font-weight:700">Austin R1</div>
+                  <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted)">Mar 1 · R1</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px">
+                  <span style="font-family:var(--font-display);font-size:16px;color:var(--orange)">15.34</span>
+                  <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted)">vs</span>
+                  <span style="font-family:var(--font-display);font-size:16px;color:var(--blue)">15.41</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Race-by-race results table -->
+        <div class="table-wrap">
+          <div class="table-header">
+            <div class="table-title">Race-by-Race Results — S8</div>
+            <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted)">3 of 8 rounds complete</span>
+          </div>
           <table>
-            <thead><tr><th>Circuit</th><th>Location</th><th>Record Time</th><th>Pilot</th><th>Speed</th><th>Set On</th></tr></thead>
+            <thead><tr><th>Round</th><th>Event</th><th>Position</th><th>Best Lap</th><th>Points Earned</th><th>Δ Standings</th></tr></thead>
             <tbody>
-              <tr class="highlight">
-                <td><span style="font-family:var(--font-heading);font-weight:700;color:var(--orange)">Barcelona Speed Circuit</span></td>
-                <td>🇪🇸 Spain</td>
-                <td><span style="font-family:var(--font-display);font-size:20px;color:var(--gold)">14.82s</span></td>
-                <td><span style="font-family:var(--font-heading);font-size:13px;font-weight:700">APEX</span></td>
-                <td><span style="font-family:var(--font-mono);font-size:12px;color:var(--blue)">158 km/h</span></td>
-                <td style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted)">Mar 28, 2025</td>
-              </tr>
-              <tr>
-                <td><span style="font-family:var(--font-heading);font-weight:700">Dubai Desert Loop</span></td>
-                <td>🇦🇪 UAE</td>
-                <td><span style="font-family:var(--font-display);font-size:20px;color:var(--text)">17.24s</span></td>
-                <td><span style="font-family:var(--font-heading);font-size:13px;font-weight:700">BOLT</span></td>
-                <td><span style="font-family:var(--font-mono);font-size:12px;color:var(--blue)">142 km/h</span></td>
-                <td style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted)">S7 Finals</td>
-              </tr>
-              <tr>
-                <td><span style="font-family:var(--font-heading);font-weight:700">Austin Warehouse Run</span></td>
-                <td>🇺🇸 USA</td>
-                <td><span style="font-family:var(--font-display);font-size:20px;color:var(--text)">12.09s</span></td>
-                <td><span style="font-family:var(--font-heading);font-size:13px;font-weight:700">APEX</span></td>
-                <td><span style="font-family:var(--font-mono);font-size:12px;color:var(--blue)">163 km/h</span></td>
-                <td style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted)">S7 R1</td>
-              </tr>
-              <tr>
-                <td><span style="font-family:var(--font-heading);font-weight:700">Seoul Underground</span></td>
-                <td>🇰🇷 Korea</td>
-                <td><span style="font-family:var(--font-display);font-size:20px;color:var(--text)">19.56s</span></td>
-                <td><span style="font-family:var(--font-heading);font-size:13px;font-weight:700">VIPER</span></td>
-                <td><span style="font-family:var(--font-mono);font-size:12px;color:var(--blue)">137 km/h</span></td>
-                <td style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted)">S7 R4</td>
-              </tr>
+              <tr class="highlight"><td><span style="font-family:var(--font-mono);color:var(--text-muted)">R3</span></td><td><span style="font-family:var(--font-heading);font-weight:700">Dubai GP</span></td><td><div class="rank-badge rank-1">1</div></td><td><span style="font-family:var(--font-mono);color:var(--orange)">14.82s</span></td><td><span style="font-family:var(--font-mono);color:var(--gold)">+50</span></td><td><span style="font-family:var(--font-mono);font-size:11px;color:#22C55E">▲ #1</span></td></tr>
+              <tr><td><span style="font-family:var(--font-mono);color:var(--text-muted)">R2</span></td><td><span style="font-family:var(--font-heading);font-weight:700">Barcelona GP</span></td><td><div class="rank-badge rank-2">2</div></td><td><span style="font-family:var(--font-mono);color:var(--text)">15.22s</span></td><td><span style="font-family:var(--font-mono);color:var(--text)">+38</span></td><td><span style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted)">→ #1</span></td></tr>
+              <tr><td><span style="font-family:var(--font-mono);color:var(--text-muted)">R1</span></td><td><span style="font-family:var(--font-heading);font-weight:700">Austin Opener</span></td><td><div class="rank-badge rank-1">1</div></td><td><span style="font-family:var(--font-mono);color:var(--text)">15.34s</span></td><td><span style="font-family:var(--font-mono);color:var(--gold)">+50</span></td><td><span style="font-family:var(--font-mono);font-size:11px;color:#22C55E">▲ #1</span></td></tr>
             </tbody>
           </table>
         </div>
@@ -519,12 +641,12 @@ tbody tr.highlight td{background:rgba(255,85,0,0.05)}
 
 
 <script>
-function switchTab(btn, tab){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+function switchView(btn, viewId){
+  document.querySelectorAll('.sidebar-item').forEach(t=>t.classList.remove('active'));
   btn.classList.add('active');
-  ['leaderboard','races','records'].forEach(id=>{
-    const el=document.getElementById('tab-'+id);
-    if(el) el.style.display=id===tab?'block':'none';
+  ['view-overview','view-hangar','view-academy','view-analytics'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.style.display = id === viewId ? 'block' : 'none';
   });
 }
 </script>
