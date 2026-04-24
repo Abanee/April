@@ -10,7 +10,7 @@
 <link rel="icon" type="image/png" href="../logo.png"/>
 <script src="../assets/js/theme.js"></script>
 <style>
-.tag-pill{display:inline-block;padding:3px 10px;border-radius:4px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;font-weight:500}
+.tag-pill{display:inline-block;padding:3px 10px;border-radius:4px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;border:1px solid transparent}
 .featured-post{grid-template-columns:1fr 1.2fr}
 @media(max-width:900px){.featured-post{grid-template-columns:1fr !important}}
 </style>
@@ -73,10 +73,10 @@
     <!-- Filter tabs -->
     <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:36px">
       <button onclick="filterPosts(this,'all')" style="padding:8px 18px;background:var(--orange);color:#fff;border:1px solid var(--orange);border-radius:6px;font-family:var(--font-heading);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s">All Posts</button>
-      <button onclick="filterPosts(this,'race')" style="padding:8px 18px;background:transparent;border:1px solid var(--border);border-radius:6px;font-family:var(--font-heading);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s">Race News</button>
-      <button onclick="filterPosts(this,'tech')" style="padding:8px 18px;background:transparent;border:1px solid var(--border);border-radius:6px;font-family:var(--font-heading);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s">Tech & Builds</button>
-      <button onclick="filterPosts(this,'training')" style="padding:8px 18px;background:transparent;border:1px solid var(--border);border-radius:6px;font-family:var(--font-heading);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s">Training</button>
-      <button onclick="filterPosts(this,'pilots')" style="padding:8px 18px;background:transparent;border:1px solid var(--border);border-radius:6px;font-family:var(--font-heading);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s">Pilot Spotlights</button>
+      <button onclick="filterPosts(this,'race')" style="padding:8px 18px;background:transparent;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-family:var(--font-heading);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s">Race News</button>
+      <button onclick="filterPosts(this,'tech')" style="padding:8px 18px;background:transparent;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-family:var(--font-heading);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s">Tech & Builds</button>
+      <button onclick="filterPosts(this,'training')" style="padding:8px 18px;background:transparent;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-family:var(--font-heading);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s">Training</button>
+      <button onclick="filterPosts(this,'pilots')" style="padding:8px 18px;background:transparent;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-family:var(--font-heading);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s">Pilot Spotlights</button>
     </div>
   </div>
   <div style="height:1px;background:linear-gradient(90deg,transparent,var(--orange),transparent)"></div>
@@ -250,7 +250,7 @@
     </div>
     <!-- Load more -->
     <div style="text-align:center;margin-top:48px">
-      <button class="btn-outline" style="padding:14px 40px">Load More Articles</button>
+      <button class="btn-outline" style="padding:14px 40px;background:var(--bg1);border:1px solid var(--border)">Load More Articles</button>
     </div>
   </div>
 </section>
@@ -330,8 +330,8 @@
 
 <script>
 function filterPosts(btn, cat){
-  document.querySelectorAll('[onclick]').forEach(b=>{
-    b.style.background='transparent';b.style.color='var(--text-dim)';b.style.borderColor='var(--border)';
+  document.querySelectorAll('section button[onclick]').forEach(b=>{
+    b.style.background='transparent';b.style.color='var(--text-dim)';b.style.borderColor='rgba(255,255,255,0.2)';
   });
   btn.style.background='var(--orange)';btn.style.color='#fff';btn.style.borderColor='var(--orange)';
   document.querySelectorAll('#blog-grid article').forEach(a=>{

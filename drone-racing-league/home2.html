@@ -23,10 +23,10 @@
 .hero-v2-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(5,5,10,0.4), var(--bg0)), url('https://images.unsplash.com/photo-1551818255-e6e10975bc17?q=80&w=2070&auto=format&fit=crop');
+  background: linear-gradient(to bottom, rgba(5,5,10,0.3), rgba(5,5,10,0.9)), url('https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=2070&auto=format&fit=crop');
   background-size: cover;
   background-position: center;
-  filter: saturate(1.2) contrast(1.1);
+  filter: saturate(1.1) brightness(0.8);
 }
 .hero-v2-overlay {
   position: absolute;
@@ -73,7 +73,6 @@
   line-height: 0.85;
   margin-bottom: 24px;
   color: #fff;
-  text-shadow: 0 0 30px rgba(255,85,0,0.3);
 }
 .hero-v2-sub {
   font-size: 20px;
@@ -197,7 +196,7 @@
   <div class="hero-v2-overlay"></div>
   <div class="hero-v2-content">
     <div class="live-badge">Live Broadcast: Season 8 Finals</div>
-    <h1 class="hero-v2-title">RACE THE<br/><span class="glow-orange">FUTURE</span></h1>
+    <h1 class="hero-v2-title">RACE THE<br/><span style="color:var(--orange)">FUTURE</span></h1>
     <p class="hero-v2-sub">Experience the adrenaline of high-speed FPV racing. The world's fastest sport is here.</p>
     <div style="display:flex;gap:16px;justify-content:center">
       <a href="pages/events.html" class="btn-primary">Watch Live</a>
@@ -353,7 +352,7 @@
         <div class="section-tag" style="justify-content:flex-start">Live Stats</div>
         <h2 class="display" style="font-size:clamp(40px,5vw,64px)">PILOT <span style="color:var(--orange)">STANDINGS</span></h2>
       </div>
-      <a href="pages/dashboard.html" class="btn-outline">Full Leaderboard →</a>
+      <a href="pages/dashboard.html" class="btn-primary">Full Leaderboard →</a>
     </div>
     
     <div style="background:var(--bg2);border:1px solid var(--border);border-radius:20px;overflow:hidden">
