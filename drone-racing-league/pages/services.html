@@ -10,12 +10,14 @@
 <link rel="icon" type="image/png" href="../logo.png"/>
 <script src="../assets/js/theme.js"></script>
 <style>
-.check-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;font-size:14px;color:var(--text-dim);border-bottom:1px solid var(--bg3)}
+.check-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;font-size:14px;color:var(--text);border-bottom:1px solid var(--bg3)}
 .check-item::before{content:'✓';color:var(--orange);font-weight:700;flex-shrink:0;font-family:var(--font-heading);margin-top:1px}
 .plan-card{background:var(--bg1);border:1px solid var(--border);border-radius:14px;padding:36px;position:relative;overflow:hidden;transition:all 0.3s}
-.plan-card:hover{border-color:var(--orange);box-shadow:0 10px 50px var(--orange-glow);transform:translateY(-4px)}
+.plan-card:hover{border-color:var(--orange);box-shadow:0 10px 50px var(--orange-glow);transform:translateY(-8px)}
 .plan-card.featured{border-color:var(--orange);background:linear-gradient(160deg,rgba(255,85,0,0.07),var(--bg1))}
 .plan-top-bar{position:absolute;top:0;left:0;right:0;height:3px}
+.stat-item { background: var(--bg1); padding: 30px; text-align: center; border-right: 1px solid var(--border); }
+.stat-item:last-child { border-right: none; }
 </style>
 </head>
 <body>
@@ -67,19 +69,17 @@
 </div>
 
 <!-- HERO -->
-<section class="dark-hero" style="padding-top:68px;position:relative;overflow:hidden;background:linear-gradient(rgba(5,5,10,0.6),rgba(5,5,10,0.6)),url('https://images.unsplash.com/photo-1579353977828-2a4eab540b9a?q=80&w=1974&auto=format&fit=crop');background-size:cover;background-position:center">
-  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 0%,rgba(255,85,0,0.07) 0%,transparent 70%)"></div>
+<section class="dark-hero" style="padding:160px 0 100px;position:relative;overflow:hidden;background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.85)),url('../assets/img/drl_racing_drone_tech_1776650035412.png');background-size:cover;background-position:center;background-attachment:fixed">
   <div style="position:absolute;inset:0" class="grid-bg-orange"></div>
-  <div class="container" style="position:relative;padding-top:80px;padding-bottom:80px">
-    <div style="max-width:800px;margin:0 auto;text-align:center">
-      <div class="section-tag" style="justify-content:center">FPV Academy</div>
-      <h1 class="hero-title display" style="font-size:clamp(60px,7vw,96px);margin-bottom:20px">ELITE <span style="color:var(--orange)">TRAINING</span><br/>PROGRAMS</h1>
-      <p style="font-size:17px;color:var(--text-dim);line-height:1.7;margin:0 auto 32px;max-width:560px">Transform from hobbyist to champion racer with our certified FPV training programs, designed by professional drone racing athletes.</p>
-      <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center">
-        <a href="#programs" class="btn-primary">Browse Programs</a>
-        <a href="contact.html" class="btn-outline">Speak to a Coach</a>
-      </div>
+  <div class="container" style="position:relative;text-align:center">
+    <h1 class="hero-title display" style="font-size:clamp(60px,10vw,120px);margin-bottom:20px;line-height:0.85;color:#fff">ELITE <span style="color:var(--orange)">TRAINING</span></h1>
+    <p style="font-size:19px;color:rgba(255,255,255,0.8);line-height:1.7;margin:0 auto 40px;max-width:600px">Transform from hobbyist to champion racer with our certified FPV training programs, designed by professional drone racing athletes.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <a href="#programs" class="btn-primary" style="padding:16px 40px">Explore Academy</a>
+      <a href="contact.html" class="btn-outline" style="padding:16px 40px;color:#fff !important;border-color:rgba(255,255,255,0.3) !important;background:rgba(255,255,255,0.05)">Talk to a Coach</a>
     </div>
+  </div>
+</section>
     <!-- Quick stat bar -->
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;margin-top:60px;overflow:hidden">
       <div class="stat-item"><div style="font-family:var(--font-display);font-size:32px;color:var(--orange)">500+</div><div class="stat-label">Pilots Trained</div></div>

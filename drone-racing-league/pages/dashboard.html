@@ -13,8 +13,9 @@
 /* Dashboard layout */
 .dash-layout{display:grid;grid-template-columns:280px 1fr;gap:0;min-height:100vh}
 /* Sidebar */
-.sidebar{background:var(--bg1);border-right:1px solid var(--border);padding:28px 20px;position:sticky;top:0;height:100vh;overflow-y:auto}
-.sidebar-section{margin-bottom:28px}
+.sidebar{background:var(--bg1);border-right:1px solid var(--border);padding:28px 20px;position:sticky;top:0;height:100vh;overflow-y:auto;scrollbar-width:none}
+.sidebar::-webkit-scrollbar{display:none}
+.sidebar-section{margin-bottom:28px;display:flex;flex-direction:column;flex-grow:1}
 .sidebar-label{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px;padding:0 8px}
 .sidebar-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;cursor:pointer;transition:all 0.2s;font-family:var(--font-heading);font-size:14px;font-weight:600;color:var(--text-dim);text-decoration:none}
 .sidebar-item:hover,.sidebar-item.active{background:rgba(255,85,0,0.1);color:var(--orange);border-left:2px solid var(--orange);padding-left:10px}
@@ -126,7 +127,7 @@ tbody tr.highlight td{background:rgba(255,85,0,0.05)}
         <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);margin-top:6px">37% of season complete</div>
       </div>
 
-      <div class="sidebar-section" style="display:flex;flex-direction:column;height:calc(100vh - 180px)">
+      <div class="sidebar-section" style="height:calc(100vh - 350px)">
         <a class="sidebar-item active" href="#" onclick="switchView(this, 'view-overview'); return false;">
           <div class="icon">🏆</div> Overview
         </a>
@@ -142,8 +143,8 @@ tbody tr.highlight td{background:rgba(255,85,0,0.05)}
         <a class="sidebar-item" href="#" onclick="switchView(this, 'view-settings'); return false;">
           <div class="icon">⚙️</div> Settings
         </a>
-        <a class="sidebar-item logout-link" href="../index.html" style="margin-top:auto;border-top:1px solid var(--bg3);border-radius:0;padding-top:16px;color:var(--text-muted);transition:color 0.2s">
-          <div class="icon" style="background:var(--bg2)">🚪</div> Logout
+        <a class="sidebar-item logout-link" href="#" onclick="confirmLogout(); return false;" style="margin-top:auto;border-top:1px solid var(--border);border-radius:0;padding-top:16px;color:#ef4444 !important;transition:color 0.2s">
+          <div class="icon" style="background:rgba(239,68,68,0.1)">🚪</div> Logout
         </a>
       </div>
     </aside>
@@ -155,10 +156,12 @@ tbody tr.highlight td{background:rgba(255,85,0,0.05)}
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:12px">
         <div>
           <div style="font-family:var(--font-mono);font-size:10px;color:var(--orange);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px">Season 8 — Live</div>
-          <h1 class="hero-title display" style="font-size:36px">PILOT <span style="color:var(--orange)">DASHBOARD</span></h1>
+          <h1 class="hero-title display" style="font-size:36px;color:var(--text) !important">PILOT <span style="color:var(--orange)">DASHBOARD</span></h1>
         </div>
-        <div style="display:flex;gap:8px;align-items:center">
-          <input id="pilotSearch" placeholder="Search pilot…" style="background:var(--bg1);border:1px solid var(--border);border-radius:6px;padding:9px 14px;color:var(--text);font-family:var(--font-body);font-size:13px;outline:none;width:200px" oninput="filterPilots()" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'"/>
+        <div style="display:flex;gap:12px;align-items:center">
+          <button class="toggle-btn" id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme" style="background:var(--bg1);border:1px solid var(--border);border-radius:6px;width:38px;height:38px;cursor:pointer">☀️</button>
+          <button class="toggle-btn" onclick="toggleDir()" title="Toggle Direction" style="background:var(--bg1);border:1px solid var(--border);border-radius:6px;width:38px;height:38px;cursor:pointer">🌐</button>
+          <input id="pilotSearch" placeholder="Search pilot…" style="background:var(--bg1);border:1px solid var(--border);border-radius:6px;padding:9px 14px;color:var(--text);font-family:var(--font-body);font-size:13px;outline:none;width:180px" oninput="filterPilots()" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'"/>
           <a href="contact.html" class="btn-primary" style="padding:10px 20px;font-size:12px">Register</a>
         </div>
       </div>
@@ -790,6 +793,12 @@ function switchView(btn, viewId){
   // Auto-close sidebar on mobile after selection
   if(window.innerWidth <= 900) {
     toggleSidebar();
+  }
+}
+
+function confirmLogout() {
+  if (confirm("Are you sure you want to logout?")) {
+    window.location.href = "../index.html";
   }
 }
 

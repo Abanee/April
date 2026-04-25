@@ -253,38 +253,52 @@ select.form-input{cursor:pointer}
   </div>
 </section>
 
-<!-- ── LOCATIONS MAP PLACEHOLDER ── -->
-<section style="padding:0;background:var(--bg0);border-top:1px solid var(--border)">
-  <div class="container" style="padding-top:60px;padding-bottom:60px">
-    <div style="text-align:center;margin-bottom:40px">
+<!-- ── LOCATIONS MAP ── -->
+<section style="padding:80px 0;background:var(--bg0);border-top:1px solid var(--border)">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:60px">
       <div class="section-tag" style="justify-content:center">Global Presence</div>
-      <h2 class="display" style="font-size:clamp(36px,4vw,52px)">OUR <span style="color:var(--orange)">LOCATIONS</span></h2>
+      <h2 class="display" style="font-size:clamp(36px,4vw,64px)">FOLLOW THE <span style="color:var(--orange)">CIRCUIT</span></h2>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px">
-      <div style="background:var(--bg1);border:1px solid var(--border);border-radius:10px;padding:20px;text-align:center;transition:all 0.2s" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
-        <div style="font-size:24px;margin-bottom:8px">🇺🇸</div>
-        <div style="font-family:var(--font-heading);font-size:14px;font-weight:700">Austin, TX</div>
-        <div style="font-family:var(--font-mono);font-size:10px;color:var(--orange);margin-top:4px">HQ</div>
+
+    <!-- Real Map -->
+    <div style="width:100%;height:450px;border-radius:16px;overflow:hidden;border:1px solid var(--border);margin-bottom:60px;position:relative">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1024.1!2d-97.712!3d30.267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644b59b!2sAustin%2C%20TX!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
+        width="100%" 
+        height="100%" 
+        style="border:0;filter: grayscale(100%) invert(90%) contrast(1.1) brightness(0.9);" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));gap:20px">
+      <div style="background:var(--bg1);border:1px solid var(--border);border-radius:10px;padding:24px;text-align:center;transition:all 0.3s" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
+        <div style="font-size:32px;margin-bottom:12px">🇺🇸</div>
+        <div style="font-family:var(--font-heading);font-size:16px;font-weight:800">Austin, TX</div>
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--orange);margin-top:6px;letter-spacing:0.1em">GLOBAL HQ</div>
       </div>
-      <div style="background:var(--bg1);border:1px solid var(--border);border-radius:10px;padding:20px;text-align:center;transition:all 0.2s" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
-        <div style="font-size:24px;margin-bottom:8px">🇬🇧</div>
-        <div style="font-family:var(--font-heading);font-size:14px;font-weight:700">London, UK</div>
-        <div style="font-family:var(--font-mono);font-size:10px;color:var(--blue);margin-top:4px">Academy</div>
+      <div style="background:var(--bg1);border:1px solid var(--border);border-radius:10px;padding:24px;text-align:center;transition:all 0.3s" onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
+        <div style="font-size:32px;margin-bottom:12px">🇬🇧</div>
+        <div style="font-family:var(--font-heading);font-size:16px;font-weight:800">London, UK</div>
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--blue);margin-top:6px;letter-spacing:0.1em">ACADEMY</div>
       </div>
-      <div style="background:var(--bg1);border:1px solid var(--border);border-radius:10px;padding:20px;text-align:center;transition:all 0.2s" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
-        <div style="font-size:24px;margin-bottom:8px">🇰🇷</div>
-        <div style="font-family:var(--font-heading);font-size:14px;font-weight:700">Seoul, KR</div>
-        <div style="font-family:var(--font-mono);font-size:10px;color:var(--blue);margin-top:4px">Academy</div>
+      <div style="background:var(--bg1);border:1px solid var(--border);border-radius:10px;padding:24px;text-align:center;transition:all 0.3s" onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
+        <div style="font-size:32px;margin-bottom:12px">🇰🇷</div>
+        <div style="font-family:var(--font-heading);font-size:16px;font-weight:800">Seoul, KR</div>
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--blue);margin-top:6px;letter-spacing:0.1em">ACADEMY</div>
       </div>
-      <div style="background:var(--bg1);border:1px solid var(--border);border-radius:10px;padding:20px;text-align:center;transition:all 0.2s" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
-        <div style="font-size:24px;margin-bottom:8px">🇦🇪</div>
-        <div style="font-family:var(--font-heading);font-size:14px;font-weight:700">Dubai, UAE</div>
-        <div style="font-family:var(--font-mono);font-size:10px;color:var(--blue);margin-top:4px">Academy</div>
+      <div style="background:var(--bg1);border:1px solid var(--border);border-radius:10px;padding:24px;text-align:center;transition:all 0.3s" onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
+        <div style="font-size:32px;margin-bottom:12px">🇦🇪</div>
+        <div style="font-family:var(--font-heading);font-size:16px;font-weight:800">Dubai, UAE</div>
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--blue);margin-top:6px;letter-spacing:0.1em">ACADEMY</div>
       </div>
-      <div style="background:var(--bg1);border:1px solid var(--border);border-radius:10px;padding:20px;text-align:center;transition:all 0.2s" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
-        <div style="font-size:24px;margin-bottom:8px">🇦🇺</div>
-        <div style="font-family:var(--font-heading);font-size:14px;font-weight:700">Sydney, AU</div>
-        <div style="font-family:var(--font-mono);font-size:10px;color:var(--blue);margin-top:4px">Academy</div>
+      <div style="background:var(--bg1);border:1px solid var(--border);border-radius:10px;padding:24px;text-align:center;transition:all 0.3s" onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
+        <div style="font-size:32px;margin-bottom:12px">🇦🇺</div>
+        <div style="font-family:var(--font-heading);font-size:16px;font-weight:800">Sydney, AU</div>
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--blue);margin-top:6px;letter-spacing:0.1em">ACADEMY</div>
       </div>
     </div>
   </div>

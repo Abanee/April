@@ -87,12 +87,14 @@
   margin-bottom: 24px;
   color: #fff;
 }
-.hero-v2-sub {
-  font-size: clamp(16px, 2vw, 20px);
-  color: rgba(255,255,255,0.7);
-  max-width: 600px;
-  margin: 0 auto 40px;
-  line-height: 1.6;
+.hero-v2 .btn-outline {
+  color: #fff !important;
+  border-color: rgba(255,255,255,0.3) !important;
+  background: rgba(255,255,255,0.05) !important;
+}
+.hero-v2 .btn-outline:hover {
+  background: rgba(255,255,255,0.1) !important;
+  border-color: #fff !important;
 }
 
 /* ── DRONE VISUAL ── */
@@ -445,11 +447,10 @@
 
 <!-- ── TRAINING PROGRAMS ── -->
 <section class="padded grid-bg-orange">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-tag">FPV Academy</div>
-      <h2 class="section-title display">TRAINING <span>PROGRAMS</span></h2>
-      <p class="section-desc">From first-time flyers to competitive racers — our certified instructors will take you to the next level.</p>
+  <div class="container" style="padding-bottom:40px">
+    <div class="section-header" style="text-align:center;max-width:800px;margin:0 auto">
+      <h2 class="display" style="font-size:clamp(48px,6vw,84px);line-height:0.9;margin-bottom:20px">ELITE <span style="color:var(--orange)">TRAINING</span><br/>PROGRAMS</h2>
+      <p class="section-desc">From first-time flyers to competitive racers — our certified instructors will take you to the next level of FPV mastery.</p>
     </div>
   </div>
   <div class="training-grid">
@@ -525,6 +526,16 @@
     <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
       <a href="pages/services.html" class="btn-primary">Start Your Training</a>
       <a href="pages/contact.html" class="btn-outline">Talk to a Coach</a>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap;margin-top:60px">
+      <div style="font-family:var(--font-display);font-size:24px;color:var(--text-muted);letter-spacing:0.1em;opacity:0.5;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">BETAFPV</div>
+      <div style="font-family:var(--font-display);font-size:24px;color:var(--text-muted);letter-spacing:0.1em;opacity:0.5;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">FOXEER</div>
+      <div style="font-family:var(--font-display);font-size:24px;color:var(--text-muted);letter-spacing:0.1em;opacity:0.5;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">HOLYBRO</div>
+      <div style="font-family:var(--font-display);font-size:24px;color:var(--text-muted);letter-spacing:0.1em;opacity:0.5;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">SPEEDYBEE</div>
+      <div style="font-family:var(--font-display);font-size:24px;color:var(--text-muted);letter-spacing:0.1em;opacity:0.5;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">FLYWOO</div>
+      <div style="font-family:var(--font-display);font-size:24px;color:var(--text-muted);letter-spacing:0.1em;opacity:0.5;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">IFLIGHT</div>
+      <div style="font-family:var(--font-display);font-size:24px;color:var(--text-muted);letter-spacing:0.1em;opacity:0.5;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">LUMENIER</div>
+      <div style="font-family:var(--font-display);font-size:24px;color:var(--text-muted);letter-spacing:0.1em;opacity:0.5;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">T-MOTOR</div>
     </div>
     <!-- Stats row -->
     <div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;margin-top:60px;overflow:hidden;box-shadow:none">
