@@ -35,66 +35,285 @@
 .stat-num{font-family:var(--font-display);font-size:36px;color:var(--orange);display:block;line-height:1}
 .stat-label{font-family:var(--font-heading);font-size:11px;color:var(--text-dim);letter-spacing:0.08em;text-transform:uppercase;margin-top:4px}
 
-/* ── HERO V2 (CINEMATIC) ── */
-.hero-v2 {
+/* ── HOME HERO — SPLIT SCREEN ── */
+.home-hero {
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
   overflow: hidden;
   background: #000;
   padding-top: 68px;
 }
-.hero-v2-bg {
+.home-hero-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(5,5,10,0.4), rgba(5,5,10,0.9)), url('assets/img/hero_home.png');
-  background-size: cover;
-  background-position: center;
-  filter: saturate(1.1) brightness(0.9);
+  background: url('assets/img/hero_home_race.png') center center / cover no-repeat;
+  filter: brightness(0.28) saturate(1.4);
+  transform: scale(1.05);
+  transition: transform 8s ease;
 }
-.hero-v2-overlay {
+.home-hero:hover .home-hero-bg { transform: scale(1.0); }
+.home-hero-scanline {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, transparent 0%, rgba(5,5,10,0.8) 100%);
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0,0,0,0.12) 3px,
+    rgba(0,0,0,0.12) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
 }
-.hero-v2-content {
+.home-hero-diagonal {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, rgba(5,5,10,0.98) 48%, rgba(5,5,10,0.3) 100%);
+  z-index: 2;
+}
+.home-hero-glow {
+  position: absolute;
+  top: 50%;
+  right: 20%;
+  transform: translate(50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,85,0,0.12) 0%, transparent 70%);
+  z-index: 2;
+  pointer-events: none;
+}
+.home-hero-inner {
+  position: relative;
+  z-index: 3;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 60px 40px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: center;
+  width: 100%;
+}
+.home-hero-text {}
+.home-race-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 16px;
+  background: rgba(255,85,0,0.15);
+  border: 1px solid rgba(255,85,0,0.5);
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--orange);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.home-race-badge-dot {
+  width: 7px; height: 7px;
+  background: var(--orange);
+  border-radius: 50%;
+  animation: home-pulse 1.4s ease-in-out infinite;
+}
+@keyframes home-pulse {
+  0%,100% { opacity:1; box-shadow:0 0 0 0 rgba(255,85,0,0.7); }
+  50% { opacity:0.7; box-shadow:0 0 0 8px transparent; }
+}
+.home-hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(68px, 8vw, 110px);
+  line-height: 0.82;
+  color: #fff;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+.home-hero-headline .accent-line {
+  display: block;
+  background: linear-gradient(90deg, var(--orange) 0%, #ffaa00 60%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.home-hero-headline .white-line { display: block; color: #fff; }
+.home-hero-sub-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin: 18px 0 8px;
+}
+.home-hero-desc {
+  font-size: 16px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.75;
+  max-width: 480px;
+  margin-bottom: 36px;
+}
+.home-hero-cta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 52px;
+}
+.home-hero-statsbar {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  max-width: 480px;
+}
+.home-stat {
+  background: rgba(5,5,10,0.8);
+  padding: 16px 14px;
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+.home-stat-num {
+  font-family: var(--font-display);
+  font-size: 30px;
+  color: var(--orange);
+  display: block;
+  line-height: 1;
+}
+.home-stat-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 4px;
+  display: block;
+}
+/* HUD Visual Panel */
+.home-hero-hud {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 440px;
+}
+.hud-ring-outer {
+  position: absolute;
+  width: 360px; height: 360px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,85,0,0.2);
+  animation: hud-spin-cw 18s linear infinite;
+}
+.hud-ring-outer::before {
+  content: '';
+  position: absolute;
+  top: -4px; left: 50%; transform: translateX(-50%);
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--orange);
+  box-shadow: 0 0 12px var(--orange);
+}
+.hud-ring-mid {
+  position: absolute;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  border: 1px dashed rgba(0,102,255,0.25);
+  animation: hud-spin-ccw 12s linear infinite;
+}
+.hud-ring-inner {
+  position: absolute;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,85,0,0.4);
+  background: radial-gradient(circle, rgba(255,85,0,0.06) 0%, transparent 70%);
+  animation: hud-spin-cw 8s linear infinite;
+}
+.hud-ring-inner::after {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  background: rgba(5,5,10,0.6);
+  backdrop-filter: blur(4px);
+}
+.hud-center {
   position: relative;
   z-index: 2;
   text-align: center;
-  max-width: 1000px;
-  padding: 0 24px;
 }
-.live-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  background: rgba(255,85,0,0.2);
-  border: 1px solid rgba(255,85,0,0.4);
+.hud-speed {
+  font-family: var(--font-display);
+  font-size: 52px;
   color: var(--orange);
+  line-height: 1;
+  text-shadow: 0 0 30px rgba(255,85,0,0.5);
+}
+.hud-speed-unit {
   font-family: var(--font-mono);
   font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.15em;
+  display: block;
+  margin-top: 2px;
+}
+.hud-label-top {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  border-radius: 4px;
-  margin-bottom: 32px;
+  margin-bottom: 6px;
 }
-.hero-v2-title {
-  font-family: var(--font-display);
-  font-size: clamp(60px, 10vw, 140px);
-  line-height: 0.85;
-  margin-bottom: 24px;
+/* Floating HUD data boxes */
+.hud-databox {
+  position: absolute;
+  background: rgba(5,5,10,0.85);
+  border: 1px solid rgba(255,85,0,0.3);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  backdrop-filter: blur(10px);
+}
+.hud-databox-val {
+  font-size: 18px;
+  font-weight: 700;
   color: #fff;
+  line-height: 1;
 }
-.hero-v2 .btn-outline {
-  color: #fff !important;
-  border-color: rgba(255,255,255,0.3) !important;
-  background: rgba(255,255,255,0.05) !important;
+.hud-databox-key {
+  font-size: 9px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 3px;
 }
-.hero-v2 .btn-outline:hover {
-  background: rgba(255,255,255,0.1) !important;
-  border-color: #fff !important;
+.hud-db-tl { top: 20px; left: -10px; }
+.hud-db-tr { top: 20px; right: -10px; border-color: rgba(0,102,255,0.4); }
+.hud-db-tr .hud-databox-val { color: var(--blue); }
+.hud-db-bl { bottom: 30px; left: -10px; border-color: rgba(255,204,0,0.35); }
+.hud-db-bl .hud-databox-val { color: var(--gold); }
+.hud-db-br { bottom: 30px; right: -10px; }
+@keyframes hud-spin-cw  { from{transform:rotate(0)}   to{transform:rotate(360deg)} }
+@keyframes hud-spin-ccw { from{transform:rotate(0)}   to{transform:rotate(-360deg)} }
+/* Corner deco lines */
+.home-hero-corner {
+  position: absolute;
+  width: 48px; height: 48px;
+  pointer-events: none;
+}
+.home-hero-corner.tl { top: 40px; left: 40px; border-top: 2px solid var(--orange); border-left: 2px solid var(--orange); }
+.home-hero-corner.br { bottom: 80px; right: 40px; border-bottom: 2px solid var(--orange); border-right: 2px solid var(--orange); }
+@media(max-width:1024px) {
+  .home-hero-inner { grid-template-columns: 1fr; gap: 0; }
+  .home-hero-hud { display: none; }
+  .home-hero-diagonal { background: linear-gradient(rgba(5,5,10,0.85),rgba(5,5,10,0.92)); }
+}
+@media(max-width:600px){
+  .home-hero-inner { padding: 40px 20px; }
+  .home-hero-statsbar { grid-template-columns: 1fr 1fr 1fr; }
 }
 
 /* ── DRONE VISUAL ── */
@@ -261,27 +480,92 @@
   </div>
 </div>
 
-<!-- ── CINEMATIC HERO ── -->
-<section class="hero-v2 dark-hero">
-  <div class="hero-v2-bg"></div>
-  <div class="hero-v2-overlay"></div>
-  <div class="hero-v2-content">
-    <div class="live-badge">Season 8 Finals Now Live</div>
-    <h1 class="hero-v2-title display">RACE THE<br/><span style="color:var(--orange)">FUTURE</span></h1>
-    <p class="hero-v2-sub">Experience the adrenaline of high-speed FPV racing. The world's fastest sport is here at DRL.APEX.</p>
-    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-      <a href="pages/services.html" class="btn-primary">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1L15 8L8 15M1 8H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        Start Training
-      </a>
-      <a href="pages/events.html" class="btn-outline">Watch Live Race</a>
+<!-- ── HOME HERO — SPLIT SCREEN ── -->
+<section class="home-hero">
+  <div class="home-hero-bg"></div>
+  <div class="home-hero-scanline"></div>
+  <div class="home-hero-diagonal"></div>
+  <div class="home-hero-glow"></div>
+
+  <!-- Corner deco -->
+  <div class="home-hero-corner tl"></div>
+  <div class="home-hero-corner br"></div>
+
+  <div class="home-hero-inner">
+    <!-- LEFT: Text Column -->
+    <div class="home-hero-text">
+      <div class="home-race-badge">
+        <span class="home-race-badge-dot"></span>
+        Season 8 · Championships Now Live
+      </div>
+
+      <h1 class="home-hero-headline">
+        <span class="white-line">ENTER</span>
+        <span class="accent-line">THE APEX</span>
+      </h1>
+
+      <p class="home-hero-sub-label">// DRL.APEX — Season 8</p>
+      <p class="home-hero-desc">The world's most elite FPV drone racing circuit. Qualify, compete, and prove you're the fastest pilot on the planet.</p>
+
+      <div class="home-hero-cta">
+        <a href="pages/login.html" class="btn-primary">Join the League
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="margin-left:6px"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="pages/events.html" class="btn-outline" style="color:#fff!important;border-color:rgba(255,255,255,0.25)!important;background:rgba(255,255,255,0.05)!important">Race Calendar</a>
+      </div>
+
+      <div class="home-hero-statsbar">
+        <div class="home-stat">
+          <span class="home-stat-num">240+</span>
+          <span class="home-stat-label">Elite Pilots</span>
+        </div>
+        <div class="home-stat">
+          <span class="home-stat-num">$2M</span>
+          <span class="home-stat-label">Prize Pool</span>
+        </div>
+        <div class="home-stat">
+          <span class="home-stat-num">22</span>
+          <span class="home-stat-label">Countries</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: HUD Ring Panel -->
+    <div class="home-hero-hud">
+      <div class="hud-ring-outer"></div>
+      <div class="hud-ring-mid"></div>
+      <div class="hud-ring-inner"></div>
+
+      <div class="hud-center">
+        <div class="hud-label-top">TOP SPEED</div>
+        <div class="hud-speed">164</div>
+        <span class="hud-speed-unit">KM / H</span>
+      </div>
+
+      <!-- Floating data boxes -->
+      <div class="hud-databox hud-db-tl">
+        <div class="hud-databox-val">0.6s</div>
+        <div class="hud-databox-key">0-100 kph</div>
+      </div>
+      <div class="hud-databox hud-db-tr">
+        <div class="hud-databox-val">12ms</div>
+        <div class="hud-databox-key">Latency</div>
+      </div>
+      <div class="hud-databox hud-db-bl">
+        <div class="hud-databox-val">14.2:1</div>
+        <div class="hud-databox-key">Thrust/Wt</div>
+      </div>
+      <div class="hud-databox hud-db-br">
+        <div class="hud-databox-val">620g</div>
+        <div class="hud-databox-key">Dry Weight</div>
+      </div>
     </div>
   </div>
-  
-  <!-- Scroll indicator -->
-  <div style="position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.4);font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase">
-    <span>Scroll</span>
-    <div style="width:1px;height:40px;background:linear-gradient(to bottom,var(--orange),transparent)"></div>
+
+  <!-- Scroll cue -->
+  <div style="position:absolute;bottom:28px;left:40px;display:flex;align-items:center;gap:10px;z-index:4">
+    <div style="width:32px;height:1px;background:var(--orange)"></div>
+    <span style="font-family:var(--font-mono);font-size:9px;color:rgba(255,255,255,0.35);letter-spacing:0.2em;text-transform:uppercase">Scroll to Explore</span>
   </div>
 </section>
 

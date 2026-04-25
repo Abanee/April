@@ -10,76 +10,217 @@
 <link rel="icon" type="image/png" href="logo.png"/>
 <script src="assets/js/theme.js"></script>
 <style>
-/* ── CINEMATIC HERO ── */
-.hero-v2 {
+/* ── HOME 2 HERO — BROADCAST IMMERSION ── */
+.h2-hero {
   position: relative;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   background: #000;
+  padding-top: 68px;
 }
-.hero-v2-bg {
+.h2-hero-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(5,5,10,0.3), rgba(5,5,10,0.9)), url('assets/img/gallery_banner.png');
-  background-size: cover;
-  background-position: center;
-  filter: saturate(1.1) brightness(0.8);
+  background: url('assets/img/hero_home2_tech.png') center 40% / cover no-repeat;
+  filter: brightness(0.22) saturate(1.6) hue-rotate(-5deg);
+  transform: scale(1.08);
+  animation: h2-slow-zoom 14s ease-in-out infinite alternate;
 }
-.hero-v2-overlay {
+@keyframes h2-slow-zoom {
+  from { transform: scale(1.08); }
+  to   { transform: scale(1.0); }
+}
+.h2-hero-noise {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, transparent 0%, rgba(5,5,10,0.8) 100%);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  z-index: 1;
+  pointer-events: none;
 }
-.hero-v2-content {
-  position: relative;
+.h2-hero-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 35%, rgba(0,0,0,0.92) 100%);
   z-index: 2;
-  text-align: center;
-  max-width: 900px;
-  padding: 0 24px;
 }
-.live-badge {
+.h2-hero-stripe {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: -5%;
+  width: 52%;
+  background: linear-gradient(115deg, rgba(255,85,0,0.07) 0%, rgba(255,85,0,0.0) 100%);
+  border-right: 1px solid rgba(255,85,0,0.12);
+  transform: skewX(-12deg);
+  z-index: 2;
+  pointer-events: none;
+}
+.h2-hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 1100px;
+  padding: 0 32px;
+  width: 100%;
+}
+.h2-broadcast-badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  background: rgba(255,0,0,0.2);
-  border: 1px solid rgba(255,0,0,0.4);
-  color: #ff4d4d;
+  gap: 10px;
+  padding: 6px 18px;
+  background: rgba(255,20,20,0.18);
+  border: 1px solid rgba(255,50,50,0.45);
+  border-radius: 3px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10px;
+  color: #ff5555;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  border-radius: 4px;
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
-.live-badge::before {
-  content: '';
-  width: 8px;
-  height: 8px;
-  background: #ff4d4d;
+.h2-broadcast-dot {
+  width: 8px; height: 8px;
+  background: #ff4444;
   border-radius: 50%;
-  animation: pulse-red 1.5s infinite;
+  animation: h2-blink 1s step-start infinite;
 }
-@keyframes pulse-red {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.7); }
-  70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 77, 77, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 77, 77, 0); }
-}
-.hero-v2-title {
+@keyframes h2-blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.h2-hero-title {
   font-family: var(--font-display);
-  font-size: clamp(80px, 12vw, 160px);
+  font-size: clamp(52px, 9.5vw, 130px);
   line-height: 0.85;
-  margin-bottom: 24px;
   color: #fff;
+  margin-bottom: 12px;
+  letter-spacing: -2px;
+  text-transform: uppercase;
 }
-.hero-v2-sub {
-  font-size: 20px;
-  color: rgba(255,255,255,0.7);
-  max-width: 600px;
+.h2-hero-title .h2-accent {
+  display: block;
+  color: var(--orange);
+  text-shadow: 0 0 60px rgba(255,85,0,0.4);
+}
+.h2-hero-title .h2-white { display: block; }
+.h2-hero-divider {
+  width: 80px; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--orange), transparent);
+  margin: 28px auto;
+}
+.h2-hero-sub {
+  font-size: 17px;
+  color: rgba(255,255,255,0.6);
+  max-width: 560px;
   margin: 0 auto 40px;
-  line-height: 1.6;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+.h2-hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 56px;
+}
+/* Countdown */
+.h2-countdown-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 60px;
+}
+.h2-countdown-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-right: 20px;
+  white-space: nowrap;
+}
+.h2-cd-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  padding: 12px 18px;
+  min-width: 70px;
+}
+.h2-cd-num {
+  font-family: var(--font-display);
+  font-size: 38px;
+  color: #fff;
+  line-height: 1;
+}
+.h2-cd-unit {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.h2-cd-sep {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--orange);
+  opacity: 0.7;
+  padding: 0 4px;
+  align-self: flex-start;
+  margin-top: 8px;
+  animation: h2-blink 1s step-start infinite;
+}
+/* Bottom telemetry bar */
+.h2-telem-bar {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 4;
+  background: rgba(5,5,10,0.85);
+  border-top: 1px solid rgba(255,85,0,0.2);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+}
+.h2-telem-item {
+  flex: 1;
+  padding: 14px 20px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.h2-telem-item:last-child { border-right: none; }
+.h2-telem-key {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.h2-telem-val {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: #fff;
+  line-height: 1;
+}
+.h2-telem-val.orange { color: var(--orange); }
+.h2-telem-val.blue   { color: var(--blue); }
+.h2-telem-val.gold   { color: var(--gold); }
+.h2-telem-val.green  { color: #22C55E; }
+@media(max-width:768px) {
+  .h2-telem-bar { display: none; }
+  .h2-cd-block { padding: 10px 12px; min-width: 56px; }
+  .h2-cd-num { font-size: 28px; }
+  .h2-hero-title { letter-spacing: -1px; }
+  .h2-hero-stripe { display: none; }
+}
+@media(max-width:480px) {
+  .h2-countdown-wrap { flex-wrap: wrap; }
 }
 
 /* ── TECH CAROUSEL ── */
@@ -190,20 +331,95 @@
   </div>
 </div>
 
-<!-- ── HERO V2 ── -->
-<section class="hero-v2">
-  <div class="hero-v2-bg"></div>
-  <div class="hero-v2-overlay"></div>
-  <div class="hero-v2-content">
-    <div class="live-badge">Live Broadcast: Season 8 Finals</div>
-    <h1 class="hero-v2-title">RACE THE<br/><span style="color:var(--orange)">FUTURE</span></h1>
-    <p class="hero-v2-sub">Experience the adrenaline of high-speed FPV racing. The world's fastest sport is here.</p>
-    <div style="display:flex;gap:16px;justify-content:center">
-      <a href="pages/events.html" class="btn-primary">Watch Live</a>
-      <a href="pages/services.html" class="btn-outline" style="background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border-color:rgba(255,255,255,0.3);color:#fff">Start Flying</a>
+<!-- ── HOME 2 HERO — BROADCAST IMMERSION ── -->
+<section class="h2-hero">
+  <div class="h2-hero-bg"></div>
+  <div class="h2-hero-noise"></div>
+  <div class="h2-hero-vignette"></div>
+  <div class="h2-hero-stripe"></div>
+
+  <div class="h2-hero-content">
+    <div class="h2-broadcast-badge">
+      <span class="h2-broadcast-dot"></span>
+      Live Broadcast — Season 8 Finals
+    </div>
+
+    <h1 class="h2-hero-title">
+      <span class="h2-white">SPEED IS</span>
+      <span class="h2-accent">EVERYTHING</span>
+    </h1>
+
+    <div class="h2-hero-divider"></div>
+
+    <p class="h2-hero-sub">The fastest sport on earth, streamed live from iconic venues worldwide. Watch elite FPV pilots push physics to the limit.</p>
+
+    <div class="h2-hero-actions">
+      <a href="pages/events.html" class="btn-primary">Watch Live Now</a>
+      <a href="pages/services.html" class="btn-outline" style="color:#fff!important;border-color:rgba(255,255,255,0.25)!important;background:rgba(255,255,255,0.06)!important;backdrop-filter:blur(8px)">Start Flying</a>
+    </div>
+
+    <!-- Next Race Countdown -->
+    <div class="h2-countdown-wrap">
+      <span class="h2-countdown-label">Next Race In</span>
+      <div class="h2-cd-block"><span class="h2-cd-num" id="h2-days">08</span><span class="h2-cd-unit">Days</span></div>
+      <span class="h2-cd-sep">:</span>
+      <div class="h2-cd-block"><span class="h2-cd-num" id="h2-hours">14</span><span class="h2-cd-unit">Hours</span></div>
+      <span class="h2-cd-sep">:</span>
+      <div class="h2-cd-block"><span class="h2-cd-num" id="h2-mins">37</span><span class="h2-cd-unit">Mins</span></div>
+      <span class="h2-cd-sep">:</span>
+      <div class="h2-cd-block"><span class="h2-cd-num" id="h2-secs">00</span><span class="h2-cd-unit">Secs</span></div>
+    </div>
+  </div>
+
+  <!-- Bottom Telemetry Bar -->
+  <div class="h2-telem-bar">
+    <div class="h2-telem-item">
+      <span class="h2-telem-key">Race Round</span>
+      <span class="h2-telem-val orange">S8 R03</span>
+    </div>
+    <div class="h2-telem-item">
+      <span class="h2-telem-key">Location</span>
+      <span class="h2-telem-val">Dubai, UAE</span>
+    </div>
+    <div class="h2-telem-item">
+      <span class="h2-telem-key">Peak Speed</span>
+      <span class="h2-telem-val blue">164 km/h</span>
+    </div>
+    <div class="h2-telem-item">
+      <span class="h2-telem-key">Prize Pool</span>
+      <span class="h2-telem-val gold">$120,000</span>
+    </div>
+    <div class="h2-telem-item">
+      <span class="h2-telem-key">Lead Pilot</span>
+      <span class="h2-telem-val green">APEX — P1</span>
+    </div>
+    <div class="h2-telem-item">
+      <span class="h2-telem-key">Viewers</span>
+      <span class="h2-telem-val">1.2M Live</span>
     </div>
   </div>
 </section>
+
+<script>
+// Countdown to Seoul Night Race — May 3, 2025
+(function() {
+  var target = new Date('2025-05-03T20:00:00+09:00').getTime();
+  function tick() {
+    var now = Date.now(), diff = Math.max(0, target - now);
+    var d = Math.floor(diff/864e5),
+        h = Math.floor((diff%864e5)/36e5),
+        m = Math.floor((diff%36e5)/6e4),
+        s = Math.floor((diff%6e4)/1e3);
+    var pad = function(n){return n<10?'0'+n:''+n;};
+    document.getElementById('h2-days').textContent  = pad(d);
+    document.getElementById('h2-hours').textContent = pad(h);
+    document.getElementById('h2-mins').textContent  = pad(m);
+    document.getElementById('h2-secs').textContent  = pad(s);
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
 
 <!-- ── TECH SECTION ── -->
 <section class="tech-section grid-bg">
