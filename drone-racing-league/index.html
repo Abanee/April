@@ -170,6 +170,14 @@
   overflow: hidden;
   max-width: 480px;
 }
+@media (max-width: 500px) {
+  .home-hero-statsbar {
+    grid-template-columns: 1fr;
+  }
+  .home-stat {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+}
 .home-stat {
   background: rgba(5,5,10,0.8);
   padding: 16px 14px;
@@ -198,6 +206,31 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+@media (max-width: 1000px) {
+  .home-hero-hud {
+    display: none;
+  }
+  .home-hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .home-hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+  }
+  .home-hero-statsbar {
+    margin: 0 auto;
+  }
+  .home-hero-desc {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.home-hero-hud {
   height: 440px;
 }
 .hud-ring-outer {

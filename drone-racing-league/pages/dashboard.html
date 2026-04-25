@@ -34,10 +34,10 @@
 .stat-card-label{font-family:var(--font-heading);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted)}
 .stat-card-change{font-family:var(--font-mono);font-size:10px;margin-top:6px}
 /* Table */
-.table-wrap{background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:28px}
-.table-header{padding:18px 20px;border-bottom:1px solid var(--bg3);display:flex;align-items:center;justify-content:space-between}
+.table-wrap{background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow-x:auto;margin-bottom:28px;-webkit-overflow-scrolling:touch}
+.table-header{padding:18px 20px;border-bottom:1px solid var(--bg3);display:flex;align-items:center;justify-content:space-between;min-width:600px}
 .table-title{font-family:var(--font-heading);font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase}
-table{width:100%;border-collapse:collapse}
+table{width:100%;border-collapse:collapse;min-width:600px}
 thead th{text-align:left;padding:11px 16px;font-family:var(--font-heading);font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);background:var(--bg2);border-bottom:1px solid var(--bg3)}
 tbody td{padding:15px 16px;border-bottom:1px solid var(--bg3);font-size:13px;color:var(--text-dim);vertical-align:middle}
 tbody tr:last-child td{border-bottom:none}
@@ -96,6 +96,7 @@ tbody tr.highlight td{background:rgba(255,85,0,0.05)}
   .sidebar-toggles { display: flex !important; }
 }
 @media(max-width:768px){.nav-links{display:none}.stat-cards{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.stat-cards{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
