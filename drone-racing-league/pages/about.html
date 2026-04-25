@@ -11,6 +11,34 @@
 <script src="../assets/js/theme.js"></script>
 <style>
 @keyframes pulse{0%,100%{box-shadow:0 0 20px var(--orange-glow)}50%{box-shadow:0 0 40px var(--orange-glow)}}
+
+@media (max-width: 768px) {
+  .timeline-marker-line {
+    display: block !important;
+    left: 20px !important;
+    transform: none !important;
+    opacity: 1 !important;
+    background: var(--orange) !important;
+    width: 2px !important;
+  }
+  .timeline-item {
+    display: block !important;
+    padding-left: 50px !important;
+    margin-bottom: 40px !important;
+    position: relative !important;
+  }
+  .timeline-item > div:first-child,
+  .timeline-item > div:last-child {
+    text-align: left !important;
+    padding: 0 !important;
+  }
+  .timeline-marker {
+    display: flex !important;
+    position: absolute !important;
+    left: 12px !important;
+    top: 10px !important;
+  }
+}
 </style>
 </head>
 <body>

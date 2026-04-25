@@ -77,6 +77,25 @@
   font-size: 14px;
   margin-bottom: 20px;
 }
+
+@media (max-width: 1024px) {
+  .responsive-grid-3 {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 24px !important;
+  }
+  .responsive-grid-3 > * {
+    width: calc(50% - 12px) !important;
+    flex: 0 0 calc(50% - 12px) !important;
+  }
+}
+@media (max-width: 768px) {
+  .responsive-grid-3 > * {
+    width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+}
 </style>
 </head>
 <body>

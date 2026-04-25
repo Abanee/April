@@ -15,6 +15,25 @@
 .blog-card-text { color: var(--text); line-height: 1.6; font-size: 14px; margin-bottom: 20px; }
 .blog-card-meta { font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); margin-bottom: 12px; }
 @media(max-width:900px){.featured-post{grid-template-columns:1fr !important}}
+
+@media (max-width: 1024px) {
+  .blog-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 24px !important;
+  }
+  .blog-grid > article {
+    width: calc(50% - 12px) !important;
+    flex: 0 0 calc(50% - 12px) !important;
+  }
+}
+@media (max-width: 768px) {
+  .blog-grid > article {
+    width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+}
 </style>
 </head>
 <body>

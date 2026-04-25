@@ -18,6 +18,25 @@
 .plan-top-bar{position:absolute;top:0;left:0;right:0;height:3px}
 .stat-item { background: var(--bg1); padding: 30px; text-align: center; border-right: 1px solid var(--border); }
 .stat-item:last-child { border-right: none; }
+
+@media (max-width: 1024px) {
+  .plans-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 24px !important;
+  }
+  .plans-grid > * {
+    width: calc(50% - 12px) !important;
+    flex: 0 0 calc(50% - 12px) !important;
+  }
+}
+@media (max-width: 768px) {
+  .plans-grid > * {
+    width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+}
 </style>
 </head>
 <body>

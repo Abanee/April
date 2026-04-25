@@ -443,11 +443,25 @@
   .pilots-grid{grid-template-columns:repeat(2,1fr)}
   .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
   .drone-visual{display:none}
+  .training-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 24px !important;
+  }
+  .training-card {
+    width: calc(50% - 12px) !important;
+    flex: 0 0 calc(50% - 12px) !important;
+  }
 }
 @media(max-width:768px){
   .nav-links{display:none}
   .hamburger{display:flex}
   .pilots-grid{grid-template-columns:1fr 1fr}
+  .training-card {
+    width: 100% !important;
+    flex: 0 0 100% !important;
+  }
   .hero-stats{grid-template-columns:repeat(3,1fr)}
   .footer-grid{grid-template-columns:1fr}
   .events-table th:nth-child(n+3),.events-table td:nth-child(n+3){display:none}
