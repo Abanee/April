@@ -394,8 +394,21 @@
 
 /* ── TRAINING ── */
 .training-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1280px;margin:0 auto;padding:0 24px}
-@media(max-width:1024px){.training-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:768px){.training-grid{grid-template-columns:1fr}}
+@media(max-width:1024px){
+  .training-grid{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .training-card{
+    width:calc(50% - 12px);
+    flex-grow:0;
+  }
+}
+@media(max-width:768px){
+  .training-grid{display:grid;grid-template-columns:1fr}
+  .training-card{width:100%}
+}
 .training-card{background:var(--bg1);border:1px solid var(--border);border-radius:12px;padding:32px 28px;position:relative;overflow:hidden;transition:all 0.3s;display:flex;flex-direction:column}
 .training-card:hover{border-color:var(--orange);box-shadow:0 8px 40px var(--orange-glow);transform:translateY(-4px)}
 .training-card.featured{border-color:var(--orange);background:linear-gradient(135deg,rgba(255,85,0,0.06),var(--bg1))}
@@ -428,7 +441,6 @@
 @media(max-width:1024px){
   .hero-content{grid-template-columns:1fr;gap:40px}
   .pilots-grid{grid-template-columns:repeat(2,1fr)}
-  .training-grid{grid-template-columns:repeat(2,1fr)}
   .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
   .drone-visual{display:none}
 }
@@ -436,7 +448,6 @@
   .nav-links{display:none}
   .hamburger{display:flex}
   .pilots-grid{grid-template-columns:1fr 1fr}
-  .training-grid{grid-template-columns:1fr}
   .hero-stats{grid-template-columns:repeat(3,1fr)}
   .footer-grid{grid-template-columns:1fr}
   .events-table th:nth-child(n+3),.events-table td:nth-child(n+3){display:none}
