@@ -852,6 +852,8 @@ section.padded {
   font-size: 15px;
   outline: none;
   transition: all 0.2s;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .auth-input:focus {
