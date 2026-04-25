@@ -37,7 +37,7 @@
     </div>
     <div class="nav-cta">
       <button class="toggle-btn" id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">☀️</button>
-      <button class="toggle-btn" onclick="toggleDir()" title="Toggle Direction (LTR/RTL)">🌐</button>
+      <button class="toggle-btn" onclick="toggleDir()" title="Toggle Direction (LTR/RTL)" style="font-family:var(--font-mono);font-size:10px;font-weight:700">RTL/LTR</button>
       <a href="dashboard.html" class="btn-outline" style="padding:10px 16px;font-size:13px">Dashboard</a>
       <a href="login.html" class="btn-primary" style="padding:10px 22px;font-size:13px">Login</a>
     </div>
@@ -61,7 +61,7 @@
   </div>
   <div class="mobile-toggles">
     <button class="toggle-btn" onclick="toggleTheme()" title="Toggle Theme">☀️ Dark Mode</button>
-    <button class="toggle-btn" onclick="toggleDir()" title="Toggle Direction">🌐 RTL Mode</button>
+    <button class="toggle-btn" onclick="toggleDir()" title="Toggle Direction" style="font-family:var(--font-mono);font-size:10px;font-weight:700">RTL/LTR MODE</button>
   </div>
   <div class="mobile-cta">
     <a href="dashboard.html" class="btn-outline">Dashboard</a>
@@ -92,7 +92,7 @@
   <div class="container">
     <div style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1fr 1.2fr" class="featured-post">
       <!-- Thumbnail -->
-      <div style="background:url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=2070&auto=format&fit=crop');background-size:cover;background-position:center;min-height:360px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden">
+      <div style="background:url('../assets/img/blog_featured.png');background-size:cover;background-position:center;min-height:360px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden">
         <div style="position:absolute;inset:0;background:linear-gradient(rgba(5,5,10,0.4),rgba(5,5,10,0.1))"></div>
         <div style="position:absolute;top:16px;left:16px">
           <span class="tag-pill" style="background:var(--orange);color:#fff">Featured</span>
@@ -141,7 +141,7 @@
 
       <!-- Post 2 -->
       <article data-category="race" style="background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-        <div style="height:180px;background:url('https://images.unsplash.com/photo-1549416878-b9ca95e26903?q=80&w=1000&auto=format&fit=crop');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
+        <div style="height:180px;background:url('../assets/img/blog_report.png');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
           <div style="position:absolute;inset:0;background:rgba(5,5,10,0.15)"></div>
           <div style="position:absolute;top:12px;left:12px"><span class="tag-pill" style="background:rgba(255,85,0,0.12);color:var(--orange);border:1px solid rgba(255,85,0,0.2)">Race News</span></div>
           <div style="position:absolute;top:12px;right:12px"><span class="tag-pill" style="background:var(--orange);color:#fff">New</span></div>
@@ -198,7 +198,7 @@
 
       <!-- Post 6 -->
       <article data-category="training" style="background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-        <div style="height:180px;background:url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=1000&auto=format&fit=crop');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
+        <div style="height:180px;background:url('../assets/img/blog_mental.png');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
           <div style="position:absolute;inset:0;background:rgba(5,5,10,0.15)"></div>
           <div style="position:absolute;top:12px;left:12px"><span class="tag-pill" style="background:rgba(0,102,255,0.12);color:var(--blue);border:1px solid rgba(0,102,255,0.2)">Training</span></div>
         </div>
@@ -226,7 +226,7 @@
 
       <!-- Post 8 -->
       <article data-category="tech" style="background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-        <div style="height:180px;background:url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
+        <div style="height:180px;background:url('../assets/img/blog_battery.png');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
           <div style="position:absolute;inset:0;background:rgba(5,5,10,0.15)"></div>
           <div style="position:absolute;top:12px;left:12px"><span class="tag-pill" style="background:rgba(0,102,255,0.12);color:var(--blue);border:1px solid rgba(0,102,255,0.2)">Tech & Builds</span></div>
         </div>

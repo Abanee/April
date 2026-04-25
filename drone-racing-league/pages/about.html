@@ -33,7 +33,7 @@
     </div>
     <div class="nav-cta">
       <button class="toggle-btn" id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">☀️</button>
-      <button class="toggle-btn" onclick="toggleDir()" title="Toggle Direction (LTR/RTL)">🌐</button>
+      <button class="toggle-btn" onclick="toggleDir()" title="Toggle Direction (LTR/RTL)" style="font-family:var(--font-mono);font-size:10px;font-weight:700">RTL/LTR</button>
       <a href="dashboard.html" class="btn-outline" style="padding:10px 16px;font-size:13px">Dashboard</a>
       <a href="login.html" class="btn-primary" style="padding:10px 22px;font-size:13px">Login</a>
     </div>
@@ -57,7 +57,7 @@
   </div>
   <div class="mobile-toggles">
     <button class="toggle-btn" onclick="toggleTheme()" title="Toggle Theme">☀️ Dark Mode</button>
-    <button class="toggle-btn" onclick="toggleDir()" title="Toggle Direction">🌐 RTL Mode</button>
+    <button class="toggle-btn" onclick="toggleDir()" title="Toggle Direction" style="font-family:var(--font-mono);font-size:10px;font-weight:700">RTL/LTR MODE</button>
   </div>
   <div class="mobile-cta">
     <a href="dashboard.html" class="btn-outline">Dashboard</a>
@@ -206,7 +206,7 @@
       <div class="section-tag">What We Stand For</div>
       <h2 class="section-title display">LEAGUE <span>VALUES</span></h2>
     </div>
-    <div class="responsive-grid-3">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px">
       <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:32px;transition:all 0.3s" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
         <div style="width:52px;height:52px;background:rgba(255,85,0,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px">⚡</div>
         <div style="font-family:var(--font-heading);font-size:20px;font-weight:800;margin-bottom:10px">Speed First</div>
@@ -217,10 +217,15 @@
         <div style="font-family:var(--font-heading);font-size:20px;font-weight:800;margin-bottom:10px">Precision Wins</div>
         <p style="color:var(--text-dim);font-size:14px;line-height:1.7">Raw speed is nothing without control. We train pilots to fly with millimeter accuracy through complex gate sequences at full throttle.</p>
       </div>
-      <div style="background:var(--bg2);border:1px solid rgba(255,204,0,0.18);border-radius:12px;padding:32px;transition:all 0.3s" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(255,204,0,0.18)'">
-        <div style="width:52px;height:52px;background:rgba(255,204,0,0.10);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px">🌍</div>
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:32px;transition:all 0.3s" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="width:52px;height:52px;background:rgba(255,85,0,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px">🌍</div>
         <div style="font-family:var(--font-heading);font-size:20px;font-weight:800;margin-bottom:10px">Global Community</div>
         <p style="color:var(--text-dim);font-size:14px;line-height:1.7">From Austin to Seoul, our pilots form a tight-knit global family united by a shared obsession with FPV flight and competitive racing.</p>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--border-blue);border-radius:12px;padding:32px;transition:all 0.3s" onmouseover="this.style.borderColor='var(--blue)'" onmouseout="this.style.borderColor='var(--border-blue)'">
+        <div style="width:52px;height:52px;background:rgba(0,102,255,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px">💡</div>
+        <div style="font-family:var(--font-heading);font-size:20px;font-weight:800;margin-bottom:10px">Innovation Driven</div>
+        <p style="color:var(--text-dim);font-size:14px;line-height:1.7">We don't just race drones; we build the future. Our R&D team works daily to develop the next generation of high-speed propulsion and low-latency video links.</p>
       </div>
     </div>
   </div>

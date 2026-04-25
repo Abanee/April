@@ -252,6 +252,11 @@ body {
   box-shadow: 0 0 20px var(--orange-glow);
 }
 
+[data-theme="light"] .btn-outline {
+  border-color: var(--text-dim);
+  color: var(--text);
+}
+
 .btn-blue {
   display: inline-flex;
   align-items: center;
