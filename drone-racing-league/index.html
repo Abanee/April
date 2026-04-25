@@ -35,6 +35,66 @@
 .stat-num{font-family:var(--font-display);font-size:36px;color:var(--orange);display:block;line-height:1}
 .stat-label{font-family:var(--font-heading);font-size:11px;color:var(--text-dim);letter-spacing:0.08em;text-transform:uppercase;margin-top:4px}
 
+/* ── HERO V2 (CINEMATIC) ── */
+.hero-v2 {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+  padding-top: 68px;
+}
+.hero-v2-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(5,5,10,0.4), rgba(5,5,10,0.9)), url('assets/img/drl_racing_drone_tech_1776650035412.png');
+  background-size: cover;
+  background-position: center;
+  filter: saturate(1.1) brightness(0.9);
+}
+.hero-v2-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(5,5,10,0.8) 100%);
+}
+.hero-v2-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 1000px;
+  padding: 0 24px;
+}
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(255,85,0,0.2);
+  border: 1px solid rgba(255,85,0,0.4);
+  color: var(--orange);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  margin-bottom: 32px;
+}
+.hero-v2-title {
+  font-family: var(--font-display);
+  font-size: clamp(60px, 10vw, 140px);
+  line-height: 0.85;
+  margin-bottom: 24px;
+  color: #fff;
+}
+.hero-v2-sub {
+  font-size: clamp(16px, 2vw, 20px);
+  color: rgba(255,255,255,0.7);
+  max-width: 600px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
 /* ── DRONE VISUAL ── */
 .drone-visual{position:relative;display:flex;align-items:center;justify-content:center}
 .drone-ring{position:absolute;border-radius:50%;border:1px solid;animation:spin-slow linear infinite}
@@ -82,7 +142,7 @@
 .training-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1280px;margin:0 auto;padding:0 24px}
 @media(max-width:1024px){.training-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:768px){.training-grid{grid-template-columns:1fr}}
-.training-card{background:var(--bg1);border:1px solid var(--border);border-radius:12px;padding:32px 28px;position:relative;overflow:hidden;transition:all 0.3s}
+.training-card{background:var(--bg1);border:1px solid var(--border);border-radius:12px;padding:32px 28px;position:relative;overflow:hidden;transition:all 0.3s;display:flex;flex-direction:column}
 .training-card:hover{border-color:var(--orange);box-shadow:0 8px 40px var(--orange-glow);transform:translateY(-4px)}
 .training-card.featured{border-color:var(--orange);background:linear-gradient(135deg,rgba(255,85,0,0.06),var(--bg1))}
 .training-accent{position:absolute;top:0;left:0;right:0;height:3px}
@@ -93,19 +153,19 @@
 .training-modules{list-style:none;margin-bottom:24px}
 .training-modules li{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:13px;color:var(--text-dim);border-bottom:1px solid var(--bg3)}
 .training-modules li::before{content:'';width:5px;height:5px;background:var(--orange);border-radius:50%;flex-shrink:0}
-.training-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+.training-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:20px;border-top:1px solid var(--bg3)}
 .price{font-family:var(--font-heading);font-size:26px;font-weight:800;color:var(--text)}
 .price sup{font-size:14px;margin-right:2px;color:var(--text-dim)}
 .price span{font-size:12px;font-weight:400;color:var(--text-dim)}
 .popular-badge{position:absolute;top:16px;right:16px;background:var(--orange);color:#fff;font-family:var(--font-mono);font-size:10px;padding:4px 8px;border-radius:4px;letter-spacing:0.08em}
 
 /* ── CTA SECTION ── */
-.cta-section{padding:100px 0;position:relative;overflow:hidden}
-.cta-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,85,0,0.1),rgba(5,5,10,0.8)),url('https://images.unsplash.com/photo-1473968512647-3e4402324915?q=80&w=2070&auto=format&fit=crop');background-size:cover;background-position:center}
-.cta-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,85,0,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,85,0,0.05) 1px,transparent 1px);background-size:32px 32px}
-.cta-inner{position:relative;max-width:800px;margin:0 auto;padding:0 24px;text-align:center}
-.cta-title{font-family:var(--font-display);font-size:clamp(48px,6vw,80px);line-height:0.92;margin-bottom:20px}
-.cta-sub{font-size:17px;color:var(--text-dim);line-height:1.7;margin-bottom:40px}
+.cta-section{padding:120px 0;position:relative;overflow:hidden;background:#000}
+.cta-bg{position:absolute;inset:0;background:linear-gradient(rgba(5,5,10,0.4),rgba(5,5,10,0.9)),url('assets/img/auth_bg.png');background-size:cover;background-position:center}
+.cta-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,85,0,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,85,0,0.05) 1px,transparent 1px);background-size:32px 32px;opacity:0.3}
+.cta-inner{position:relative;max-width:800px;margin:0 auto;padding:0 24px;text-align:center;z-index:2}
+.cta-title{font-family:var(--font-display);font-size:clamp(48px,8vw,90px);line-height:0.9;margin-bottom:24px;color:#fff}
+.cta-sub{font-size:18px;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:44px}
 
 /* ── DIVIDER LINE ── */
 .divider{width:60px;height:3px;background:var(--orange);margin:20px auto}
@@ -199,119 +259,27 @@
   </div>
 </div>
 
-<!-- ── HERO ── -->
-<section class="hero dark-hero" style="margin-top:-10px">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="hero-left">
-      <div class="hero-eyebrow">
-        <span>Season 8 Now Live</span>
-      </div>
-      <h1 class="hero-title display">
-        <span style="display:block">DRONE</span>
-        <span class="line2" style="display:block;margin:-0.05em 0">RACING</span>
-        <span style="display:block">LEAGUE</span>
-      </h1>
-      <p class="hero-sub">The world's premier FPV drone racing competition and pilot training academy. Fly faster. Race smarter. Dominate the skies.</p>
-      <div class="hero-actions">
-        <a href="pages/services.html" class="btn-primary">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1L15 8L8 15M1 8H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          Start Training
-        </a>
-        <a href="pages/dashboard.html" class="btn-outline">View Leaderboard</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat-item">
-          <span class="stat-num">240+</span>
-          <div class="stat-label">Active Pilots</div>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">48</span>
-          <div class="stat-label">Race Events</div>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">$2M+</span>
-          <div class="stat-label">Prize Pool</div>
-        </div>
-      </div>
-    </div>
-    <div class="drone-visual" style="height:500px;width:100%">
-      <!-- Animated drone visualization -->
-      <svg width="440" height="440" viewBox="0 0 440 440" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Outer ring -->
-        <circle cx="220" cy="220" r="200" stroke="rgba(255,85,0,0.12)" stroke-width="1" stroke-dasharray="6 4"/>
-        <circle cx="220" cy="220" r="170" stroke="rgba(0,102,255,0.10)" stroke-width="1"/>
-        <circle cx="220" cy="220" r="140" stroke="rgba(255,85,0,0.08)" stroke-width="1" stroke-dasharray="2 6"/>
-        <!-- Speed marks -->
-        <g opacity="0.4">
-          <line x1="220" y1="22" x2="220" y2="42" stroke="#FF5500" stroke-width="2"/>
-          <line x1="418" y1="220" x2="398" y2="220" stroke="#FF5500" stroke-width="2"/>
-          <line x1="220" y1="418" x2="220" y2="398" stroke="#FF5500" stroke-width="2"/>
-          <line x1="22" y1="220" x2="42" y2="220" stroke="#FF5500" stroke-width="2"/>
-        </g>
-        <!-- Drone body frame -->
-        <g transform="translate(160,160)">
-          <!-- Center body -->
-          <rect x="42" y="42" width="36" height="36" rx="6" fill="#0A0A14" stroke="#FF5500" stroke-width="1.5"/>
-          <rect x="47" y="47" width="26" height="26" rx="4" fill="rgba(255,85,0,0.1)" stroke="rgba(255,85,0,0.3)" stroke-width="1"/>
-          <!-- FPV camera -->
-          <rect x="51" y="51" width="18" height="13" rx="2" fill="#0066FF" opacity="0.8"/>
-          <circle cx="60" cy="57" r="4" fill="rgba(0,200,255,0.5)" stroke="#00C8FF" stroke-width="1"/>
-          <!-- Arms (diagonal) -->
-          <line x1="60" y1="60" x2="15" y2="15" stroke="rgba(255,255,255,0.25)" stroke-width="3" stroke-linecap="round"/>
-          <line x1="60" y1="60" x2="105" y2="15" stroke="rgba(255,255,255,0.25)" stroke-width="3" stroke-linecap="round"/>
-          <line x1="60" y1="60" x2="15" y2="105" stroke="rgba(255,255,255,0.25)" stroke-width="3" stroke-linecap="round"/>
-          <line x1="60" y1="60" x2="105" y2="105" stroke="rgba(255,255,255,0.25)" stroke-width="3" stroke-linecap="round"/>
-          <!-- Motors -->
-          <circle cx="15" cy="15" r="10" fill="#0A0A14" stroke="rgba(255,85,0,0.5)" stroke-width="1.5"/>
-          <circle cx="105" cy="15" r="10" fill="#0A0A14" stroke="rgba(0,102,255,0.5)" stroke-width="1.5"/>
-          <circle cx="15" cy="105" r="10" fill="#0A0A14" stroke="rgba(0,102,255,0.5)" stroke-width="1.5"/>
-          <circle cx="105" cy="105" r="10" fill="#0A0A14" stroke="rgba(255,85,0,0.5)" stroke-width="1.5"/>
-          <!-- Motor dots -->
-          <circle cx="15" cy="15" r="4" fill="#FF5500" opacity="0.9"/>
-          <circle cx="105" cy="15" r="4" fill="#0066FF" opacity="0.9"/>
-          <circle cx="15" cy="105" r="4" fill="#0066FF" opacity="0.9"/>
-          <circle cx="105" cy="105" r="4" fill="#FF5500" opacity="0.9"/>
-          <!-- Props (dashed circles) -->
-          <circle cx="15" cy="15" r="17" stroke="rgba(255,85,0,0.3)" stroke-width="1" stroke-dasharray="3 2"/>
-          <circle cx="105" cy="15" r="17" stroke="rgba(0,102,255,0.3)" stroke-width="1" stroke-dasharray="3 2"/>
-          <circle cx="15" cy="105" r="17" stroke="rgba(0,102,255,0.3)" stroke-width="1" stroke-dasharray="3 2"/>
-          <circle cx="105" cy="105" r="17" stroke="rgba(255,85,0,0.3)" stroke-width="1" stroke-dasharray="3 2"/>
-        </g>
-        <!-- HUD Data points -->
-        <g font-family="'JetBrains Mono', monospace" font-size="11" fill="rgba(136,144,168,0.8)">
-          <!-- Top left -->
-          <text x="30" y="80">THROTTLE</text>
-          <text x="30" y="96" fill="#FF5500" font-size="20">87%</text>
-          <!-- Top right -->
-          <text x="320" y="80">SPEED</text>
-          <text x="320" y="96" fill="#FFCC00" font-size="20">142<tspan font-size="12" fill="rgba(136,144,168,0.6)">km/h</tspan></text>
-          <!-- Bottom left -->
-          <text x="30" y="350">ALT</text>
-          <text x="30" y="366" fill="#0066FF" font-size="20">48<tspan font-size="12" fill="rgba(136,144,168,0.6)">m</tspan></text>
-          <!-- Bottom right -->
-          <text x="320" y="350">RSSI</text>
-          <text x="320" y="366" fill="#FF5500" font-size="20">-68<tspan font-size="12" fill="rgba(136,144,168,0.6)">dBm</tspan></text>
-        </g>
-        <!-- Corner brackets -->
-        <path d="M30 30 L30 50 M30 30 L50 30" stroke="#FF5500" stroke-width="2" opacity="0.5"/>
-        <path d="M410 30 L410 50 M410 30 L390 30" stroke="#FF5500" stroke-width="2" opacity="0.5"/>
-        <path d="M30 410 L30 390 M30 410 L50 410" stroke="#FF5500" stroke-width="2" opacity="0.5"/>
-        <path d="M410 410 L410 390 M410 410 L390 410" stroke="#FF5500" stroke-width="2" opacity="0.5"/>
-        <!-- Center crosshair -->
-        <line x1="200" y1="220" x2="210" y2="220" stroke="rgba(255,85,0,0.4)" stroke-width="1"/>
-        <line x1="230" y1="220" x2="240" y2="220" stroke="rgba(255,85,0,0.4)" stroke-width="1"/>
-        <line x1="220" y1="200" x2="220" y2="210" stroke="rgba(255,85,0,0.4)" stroke-width="1"/>
-        <line x1="220" y1="230" x2="220" y2="240" stroke="rgba(255,85,0,0.4)" stroke-width="1"/>
-        <circle cx="220" cy="220" r="3" stroke="#FF5500" stroke-width="1.5" fill="none"/>
-      </svg>
+<!-- ── CINEMATIC HERO ── -->
+<section class="hero-v2 dark-hero">
+  <div class="hero-v2-bg"></div>
+  <div class="hero-v2-overlay"></div>
+  <div class="hero-v2-content">
+    <div class="live-badge">Season 8 Finals Now Live</div>
+    <h1 class="hero-v2-title display">RACE THE<br/><span style="color:var(--orange)">FUTURE</span></h1>
+    <p class="hero-v2-sub">Experience the adrenaline of high-speed FPV racing. The world's fastest sport is here at DRL.APEX.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <a href="pages/services.html" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1L15 8L8 15M1 8H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Start Training
+      </a>
+      <a href="pages/events.html" class="btn-outline">Watch Live Race</a>
     </div>
   </div>
+  
   <!-- Scroll indicator -->
-  <div style="position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--text-muted);font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase">
+  <div style="position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.4);font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase">
     <span>Scroll</span>
-    <div style="width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,85,0,0.5),transparent)"></div>
+    <div style="width:1px;height:40px;background:linear-gradient(to bottom,var(--orange),transparent)"></div>
   </div>
 </section>
 
@@ -539,7 +507,7 @@
       </ul>
       <div class="training-footer">
         <div class="price heading"><sup>$</sup>1,299<span>/month</span></div>
-        <a href="pages/services.html" class="btn-outline" style="padding:10px 20px;font-size:13px">Apply</a>
+        <a href="pages/services.html" class="btn-primary" style="padding:10px 20px;font-size:13px">Apply Now</a>
       </div>
     </div>
 

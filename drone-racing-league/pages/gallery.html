@@ -19,12 +19,12 @@
 }
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 250px;
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: 300px;
+  gap: 20px;
   padding: 0 24px;
   max-width: 1400px;
-  margin: 0 auto 100px;
+  margin: 60px auto 100px;
 }
 .gallery-item {
   position: relative;
@@ -42,8 +42,7 @@
 .gallery-item:hover img {
   transform: scale(1.1);
 }
-.item-tall { grid-row: span 2; }
-.item-wide { grid-column: span 2; }
+/* Standardized alignment utility removed */
 
 .gallery-overlay {
   position: absolute;
@@ -132,68 +131,84 @@
 
 <div class="gallery-grid">
   <div class="gallery-item">
-    <img src="../assets/img/gallery_1.png" alt="Nitro-Apex Drone">
-    <div class="gallery-overlay"><span>Apex-V1 Prototype</span></div>
+    <img src="../assets/img/1.jpg" alt="DRL Gallery 1">
+    <div class="gallery-overlay"><span>Drone Concept #1</span></div>
   </div>
   <div class="gallery-item">
-    <img src="../assets/img/gallery_2.png" alt="Neon Circuit Night">
-    <div class="gallery-overlay"><span>Tokyo Night Circuit</span></div>
+    <img src="../assets/img/2.jpg" alt="DRL Gallery 2">
+    <div class="gallery-overlay"><span>Race Circuit #2</span></div>
   </div>
   <div class="gallery-item">
-    <img src="../assets/img/gallery_3.png" alt="Pilot Focus">
-    <div class="gallery-overlay"><span>Elite Pilot Focus</span></div>
+    <img src="../assets/img/3.jpg" alt="DRL Gallery 3">
+    <div class="gallery-overlay"><span>Pilot Gear #3</span></div>
   </div>
   <div class="gallery-item">
-    <img src="../assets/img/gallery_4.png" alt="Stadium Aerial">
-    <div class="gallery-overlay"><span>Arena Championships</span></div>
+    <img src="../assets/img/4.jpg" alt="DRL Gallery 4">
+    <div class="gallery-overlay"><span>High Speed Action #4</span></div>
   </div>
   <div class="gallery-item">
-    <img src="../assets/img/gallery_5.png" alt="Forest Gate Speed">
-    <div class="gallery-overlay"><span>Pine Valley Sprint</span></div>
+    <img src="../assets/img/5.jpg" alt="DRL Gallery 5">
+    <div class="gallery-overlay"><span>Technical Inspection #5</span></div>
   </div>
   <div class="gallery-item">
-    <img src="../assets/img/gallery_6.png" alt="Drone Tech Lab">
-    <div class="gallery-overlay"><span>Engineering Unit 01</span></div>
+    <img src="../assets/img/6.jpg" alt="DRL Gallery 6">
+    <div class="gallery-overlay"><span>Arena Lights #6</span></div>
   </div>
   <div class="gallery-item">
-    <img src="../assets/img/gallery_7.png" alt="Podium Winners">
-    <div class="gallery-overlay"><span>Season 8 Victory</span></div>
+    <img src="../assets/img/7.jpg" alt="DRL Gallery 7">
+    <div class="gallery-overlay"><span>Victory Podium #7</span></div>
   </div>
   <div class="gallery-item">
-    <img src="../assets/img/gallery_8.png" alt="FPV Gate View">
-    <div class="gallery-overlay"><span>The Pilot's Eye</span></div>
+    <img src="../assets/img/8.jpg" alt="DRL Gallery 8">
+    <div class="gallery-overlay"><span>Pilot Focus #8</span></div>
   </div>
   <div class="gallery-item">
-    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop" alt="Retro Gaming Tech">
-    <div class="gallery-overlay"><span>Retro-Futurism Tech</span></div>
+    <img src="../assets/img/9.jpg" alt="DRL Gallery 9">
+    <div class="gallery-overlay"><span>Custom Parts #9</span></div>
   </div>
   <div class="gallery-item">
-    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" alt="Cyber Grid">
-    <div class="gallery-overlay"><span>Circuit Glow Grid</span></div>
+    <img src="../assets/img/10.jpg" alt="DRL Gallery 10">
+    <div class="gallery-overlay"><span>Aerial Mastery #10</span></div>
   </div>
   <div class="gallery-item">
-    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop" alt="Engineering Lab">
-    <div class="gallery-overlay"><span>Maintenance Bay</span></div>
+    <img src="../assets/img/11.jpg" alt="DRL Gallery 11">
+    <div class="gallery-overlay"><span>Circuit Layout #11</span></div>
   </div>
   <div class="gallery-item">
-    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=2076&auto=format&fit=crop" alt="Pilot Portrait">
-    <div class="gallery-overlay"><span>Champion Focus</span></div>
+    <img src="../assets/img/12.jpg" alt="DRL Gallery 12">
+    <div class="gallery-overlay"><span>Night Race #12</span></div>
   </div>
   <div class="gallery-item">
-    <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=1000&auto=format&fit=crop" alt="Drone Build">
-    <div class="gallery-overlay"><span>Custom Build #09</span></div>
+    <img src="../assets/img/13.jpg" alt="DRL Gallery 13">
+    <div class="gallery-overlay"><span>Team Strategy #13</span></div>
   </div>
   <div class="gallery-item">
-    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop" alt="Mountain Race">
-    <div class="gallery-overlay"><span>Peak Velocity</span></div>
+    <img src="../assets/img/14.jpg" alt="DRL Gallery 14">
+    <div class="gallery-overlay"><span>Pit Stop #14</span></div>
   </div>
   <div class="gallery-item">
-    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop" alt="Tech Circuit">
-    <div class="gallery-overlay"><span>Silicon Sprint</span></div>
+    <img src="../assets/img/15.jpg" alt="DRL Gallery 15">
+    <div class="gallery-overlay"><span>Fastest Lap #15</span></div>
   </div>
   <div class="gallery-item">
-    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop" alt="Office Tech">
-    <div class="gallery-overlay"><span>Command Center</span></div>
+    <img src="../assets/img/16.jpg" alt="DRL Gallery 16">
+    <div class="gallery-overlay"><span>Telemetry Data #16</span></div>
+  </div>
+  <div class="gallery-item">
+    <img src="../assets/img/17.jpg" alt="DRL Gallery 17">
+    <div class="gallery-overlay"><span>Fan Crowd #17</span></div>
+  </div>
+  <div class="gallery-item">
+    <img src="../assets/img/18.jpg" alt="DRL Gallery 18">
+    <div class="gallery-overlay"><span>Global Tour #18</span></div>
+  </div>
+  <div class="gallery-item">
+    <img src="../assets/img/19.jpg" alt="DRL Gallery 19">
+    <div class="gallery-overlay"><span>Champion Pulse #19</span></div>
+  </div>
+  <div class="gallery-item">
+    <img src="../assets/img/20.jpg" alt="DRL Gallery 20">
+    <div class="gallery-overlay"><span>Flight Mastery #20</span></div>
   </div>
 </div>
 
