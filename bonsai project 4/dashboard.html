@@ -192,6 +192,25 @@
 
 
     <div class="pt-4 mt-4 border-t border-stone-100 dark:border-stone-800">
+      <p class="text-[0.65rem] text-stone-400 dark:text-stone-600 uppercase tracking-widest font-semibold px-3 mb-3 flex items-center gap-2">
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        Site Navigation
+      </p>
+      <a href="index.html" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-stone-600 dark:text-stone-400 text-left transition-all">
+        Home
+      </a>
+      <a href="gallery.html" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-stone-600 dark:text-stone-400 text-left transition-all">
+        Gallery
+      </a>
+      <a href="blog.html" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-stone-600 dark:text-stone-400 text-left transition-all">
+        Blog
+      </a>
+      <a href="services.html" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-stone-600 dark:text-stone-400 text-left transition-all">
+        Workshops
+      </a>
+    </div>
+
+    <div class="pt-4 mt-4 border-t border-stone-100 dark:border-stone-800">
       <p class="text-[0.65rem] text-stone-400 dark:text-stone-600 uppercase tracking-widest font-semibold px-3 mb-3">Account</p>
       <button class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-stone-600 dark:text-stone-400 text-left transition-all">
         <svg class="w-[18px] h-[18px] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -777,6 +796,31 @@ function switchToSection(sectionName) {
     document.body.style.overflow = '';
   }
 }
+
+// ── Sidebar toggle ───────────────────────────────
+(function() {
+  const openBtn = document.getElementById('sidebarOpen');
+  const closeBtn = document.getElementById('sidebarClose');
+  const overlay = document.getElementById('sidebarOverlay');
+  const sidebar = document.getElementById('sidebar');
+
+  if (!openBtn || !sidebar) return;
+
+  openBtn.addEventListener('click', () => {
+    sidebar.classList.remove('-translate-x-full');
+    overlay.classList.remove('opacity-0', 'pointer-events-none');
+    document.body.style.overflow = 'hidden';
+  });
+
+  const close = () => {
+    sidebar.classList.add('-translate-x-full');
+    overlay.classList.add('opacity-0', 'pointer-events-none');
+    document.body.style.overflow = '';
+  };
+
+  closeBtn?.addEventListener('click', close);
+  overlay?.addEventListener('click', close);
+})();
 
 // Wire up nav items
 document.querySelectorAll('[data-nav-item]').forEach(item => {
