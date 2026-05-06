@@ -122,7 +122,12 @@ html.light ::-webkit-scrollbar-thumb {
 
   /* Theme-aware primary accent */
   --bg-theme: #080808;
-  --accent-brand: #e8ff00;
+  --accent-brand: #39ff14; /* Swapped to Neon Green */
+  --accent-brand-rgb: 57, 255, 20;
+  --neon-pink: #ff2d78;
+  --neon-pink-rgb: 255, 45, 120;
+  --neon-cyan-rgb: 0, 240, 255;
+  --neon-green-rgb: 57, 255, 20;
   --accent-text: #080808;
   --hero-overlay: linear-gradient(135deg, rgba(8, 8, 8, 0.95) 0%, rgba(8, 8, 8, 0.7) 60%, rgba(8, 8, 8, 0.85) 100%);
 }
@@ -137,6 +142,7 @@ html.light {
   --text-muted:  #444444;
   
   --accent-brand: #0d0d0d;
+  --accent-brand-rgb: 13, 13, 13;
   --accent-text:  #ffffff;
   --hero-overlay: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.2) 60%, rgba(255,255,255,0.9) 100%);
   --h1-shadow: none;
@@ -242,13 +248,15 @@ html.light .nav-glass {
   padding: .4rem 1rem;
   border: 1px solid var(--urban-border);
   border-radius: 2px;
-  color: var(--text-muted);
+  color: var(--text-main); /* Changed from text-muted for better visibility */
+  background: rgba(255, 255, 255, 0.05);
   transition: all .3s;
 }
 
 .btn-nav-outline:hover {
   border-color: var(--accent-brand);
   color: var(--accent-brand);
+  background: rgba(var(--accent-brand-rgb), 0.08);
 }
 
 .btn-nav-fill {
@@ -266,6 +274,49 @@ html.light .nav-glass {
 .btn-nav-fill:hover {
   opacity: .85;
   transform: translateY(-1px);
+}
+
+/* ── Toggle buttons (Dir/Theme) ─────────────────────────── */
+.btn-toggle-dir {
+  font-family: 'DM Mono', monospace;
+  font-size: .62rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: .4rem .8rem;
+  border: 1px solid var(--urban-border);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all .3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-toggle-dir:hover {
+  border-color: var(--accent-brand);
+  color: var(--accent-brand);
+  background: rgba(var(--accent-brand-rgb), 0.05);
+}
+
+.btn-toggle-theme {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--urban-border);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.btn-toggle-theme:hover {
+  border-color: var(--accent-brand);
+  background: rgba(var(--accent-brand-rgb), 0.05);
 }
 
 /* Centering utility for mobile */
@@ -386,59 +437,59 @@ html.light .btn-outline-dark {
 .tag {
   display: inline-block;
   font-family: 'DM Mono', monospace;
-  font-size: .62rem;
+  font-size: .65rem;
+  font-weight: 500;
   letter-spacing: .12em;
   text-transform: uppercase;
-  padding: .22rem .65rem;
+  padding: .3rem .8rem;
   border-radius: 2px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all .3s ease;
 }
 
 .tag-y {
-  background: rgba(var(--accent-brand-rgb), .12);
-  color: var(--accent-brand);
-  border: 1px solid rgba(var(--accent-brand-rgb), .2);
+  background: rgba(var(--accent-brand-rgb), .85);
+  color: var(--accent-text);
+  border: 1px solid rgba(var(--accent-brand-rgb), .3);
 }
 
 .tag-p {
-  background: rgba(255, 45, 120, .12);
-  color: var(--neon-pink);
-  border: 1px solid rgba(255, 45, 120, .2);
+  background: rgba(var(--neon-pink-rgb), .85);
+  color: #fff;
+  border: 1px solid rgba(var(--neon-pink-rgb), .3);
 }
 
 .tag-c {
-  background: rgba(0, 240, 255, .12);
-  color: var(--neon-cyan);
-  border: 1px solid rgba(0, 240, 255, .2);
+  background: rgba(var(--neon-cyan-rgb), .85);
+  color: #080808;
+  border: 1px solid rgba(var(--neon-cyan-rgb), .3);
 }
 
 .tag-g {
-  background: rgba(57, 255, 20, .10);
-  color: var(--neon-green);
-  border: 1px solid rgba(57, 255, 20, .2);
+  background: rgba(var(--neon-green-rgb), .85);
+  color: #080808;
+  border: 1px solid rgba(var(--neon-green-rgb), .3);
 }
 
 html.light .tag-y {
-  background: rgba(var(--accent-text-rgb), .1);
-  color: var(--accent-brand);
-  border-color: rgba(var(--accent-text-rgb), .2);
+  background: rgba(var(--accent-brand-rgb), .9);
+  color: var(--accent-text);
 }
 
 html.light .tag-p {
-  background: rgba(255, 45, 120, .15);
-  color: #d0155b;
-  border-color: rgba(255, 45, 120, .25);
+  background: rgba(var(--neon-pink-rgb), .9);
+  color: #fff;
 }
 
 html.light .tag-c {
-  background: rgba(0, 180, 200, .15);
-  color: #00606b;
-  border-color: rgba(0, 100, 120, .25);
+  background: rgba(var(--neon-cyan-rgb), .9);
+  color: #080808;
 }
 
 html.light .tag-g {
-  background: rgba(30, 180, 10, .15);
-  color: #1a8a0a;
-  border-color: rgba(30, 180, 10, .25);
+  background: rgba(var(--neon-green-rgb), .9);
+  color: #080808;
 }
 
 /* ── Accent mark ─────────────────────────────────────────── */
@@ -539,11 +590,24 @@ html.light .grunge-divider {
   justify-content: flex-end;
   padding: 1.25rem;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.96) 0%, rgba(0, 0, 0, 0.5) 40%, transparent 80%);
-  opacity: 0;
-  transform: translateY(8px);
+  opacity: 1; /* Tags always visible */
+  transform: translateY(0);
   transition: opacity .4s ease, transform .4s ease;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
   color: #fff;
+}
+
+.gallery-overlay h3,
+.gallery-overlay p {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all .4s ease;
+}
+
+.gallery-item:hover .gallery-overlay h3,
+.gallery-item:hover .gallery-overlay p {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .gallery-item:hover .gallery-overlay {

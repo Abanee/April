@@ -30,17 +30,14 @@
       <li><a href="faq.html"        class="nav-link">FAQ</a></li>
       <li><a href="commission.html" class="nav-link">Commission</a></li>
       <li><a href="contact.html"    class="nav-link active">Contact</a></li>
-      <li><a href="dashboard.html"  class="nav-link">Dashboard</a></li>
     </ul>
     <div class="flex items-center gap-2 xl:gap-3">
       <div class="hidden lg:flex items-center gap-2 mr-2">
         <a href="login.html" class="btn-nav-outline">Sign In</a>
         <a href="signup.html" class="btn-nav-fill">Sign Up</a>
       </div>
-      <button id="dir-toggle" onclick="toggleDir()" aria-label="Toggle text direction"
-        style="font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .75rem;border:1px solid #2c2c2c;border-radius:2px;background:transparent;color:#888;cursor:pointer;transition:all .3s;">RTL</button>
-      <button onclick="toggleTheme()" aria-label="Toggle theme"
-        style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid var(--urban-border);border-radius:2px;background:transparent;cursor:pointer;transition:border-color .3s;">
+      <button id="dir-toggle" onclick="toggleDir()" aria-label="Toggle text direction" class="btn-toggle-dir">RTL</button>
+      <button onclick="toggleTheme()" aria-label="Toggle theme" class="btn-toggle-theme">
         <svg class="dark-icon" style="width:16px;height:16px;color:var(--accent-brand);" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
         <svg class="light-icon" style="width:16px;height:16px;color:var(--text-main);display:none;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
       </button>
@@ -61,7 +58,6 @@
       <li><a href="faq.html"        class="nav-link">FAQ</a></li>
       <li><a href="commission.html" class="nav-link">Commission</a></li>
       <li><a href="contact.html"    class="nav-link active">Contact</a></li>
-      <li><a href="dashboard.html"  class="nav-link">Dashboard</a></li>
       <li><a href="login.html"      class="nav-link">Sign In</a></li>
       <li><a href="signup.html"     class="nav-link">Sign Up</a></li>
     </ul>
@@ -77,18 +73,18 @@
     <div style="position:absolute;inset:0;background:linear-gradient(to bottom, transparent 0%, var(--bg-theme) 100%);"></div>
   </div>
 
-  <div class="max-w-site relative z-10 w-full">
+  <div class="max-w-site relative z-10 w-full text-center mx-auto">
     <p class="section-label reveal mb-4">— Get in Touch</p>
-    <h1 class="headline-xl reveal rd1" style="color:var(--text-main); line-height: 0.85;">
+    <h1 class="headline-xl reveal rd1 mx-auto" style="color:var(--text-main); line-height: 0.85;">
       TALK TO<br>
-      <span style="color:#00f0ff;" class="glow-c">THE CREW.</span>
+      <span style="color:var(--accent-brand);" class="glow-c">THE CREW.</span>
     </h1>
   </div>
   
   <!-- Paint drip -->
   <svg class="paint-drip" viewBox="0 0 600 900" style="opacity: 0.15;">
-    <path d="M400 0 Q450 300 420 600 Q390 850 430 900" stroke="#00f0ff" stroke-width="4" fill="none"/>
-    <circle cx="430" cy="880" r="15" fill="#00f0ff" opacity="0.6"/>
+    <path d="M400 0 Q450 300 420 600 Q390 850 430 900" stroke="var(--accent-brand)" stroke-width="4" fill="none"/>
+    <circle cx="430" cy="880" r="15" fill="var(--accent-brand)" opacity="0.6"/>
   </svg>
 </section>
 
@@ -132,7 +128,7 @@
           <h2 class="headline-md mb-8" style="color:var(--text-main);">Global <span style="color:#ff2d78;">Hubs.</span></h2>
           <div class="grid grid-cols-1 gap-8">
             <div class="card p-6">
-              <div class="card-accent" style="background:#00f0ff;"></div>
+              <div class="card-accent" style="background:var(--accent-brand);"></div>
               <h3 class="font-display text-2xl mb-2" style="color:var(--text-main);">Berlin Studio</h3>
               <p style="color:var(--text-muted);">Heide Straße 12, 10557 Berlin, DE</p>
               <p style="color:var(--text-muted);">Our main research lab and central fabrication facility.</p>
@@ -156,7 +152,7 @@
           <h4 class="section-label mb-6">Direct Channels</h4>
           <div class="space-y-4">
             <div class="flex items-center gap-4 group cursor-pointer">
-              <div class="w-10 h-10 border flex items-center justify-center group-hover:border-[#00f0ff] transition-colors" style="border-color: var(--urban-border);">
+              <div class="w-10 h-10 border flex items-center justify-center group-hover:border-[var(--accent-brand)] transition-colors" style="border-color: var(--urban-border);">
                 <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="color:var(--text-main);"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
               </div>
               <span style="color:var(--text-muted);">studio@crux.com</span>
