@@ -67,11 +67,23 @@
 
 <!-- HERO -->
 <section class="hero-bg relative" style="padding-top:11rem;padding-bottom:7rem;overflow:hidden;">
-  <div style="position:absolute;inset:0;">
-    <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=1600&auto=format&fit=crop" alt="" aria-hidden="true" 
-         style="width:100%;height:100%;object-fit:cover;opacity:.12;filter:grayscale(1) contrast(1.1);"/>
-    <div style="position:absolute;inset:0;background:var(--hero-overlay);"></div>
+  <div class="hero-media-wrap">
+    <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=1600&auto=format&fit=crop" alt="" aria-hidden="true" class="hero-image" />
+    <div class="hero-overlay-layer"></div>
   </div>
+
+  <!-- Paint drip SVG -->
+  <svg class="hero-drip" viewBox="0 0 600 900" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M120 0 Q160 200 140 400 Q120 600 160 900" stroke="var(--accent-brand)" stroke-width="3" fill="none" />
+    <path d="M200 0 Q180 150 200 350 Q220 550 180 900" stroke="#ff2d78" stroke-width="2" fill="none" />
+    <path d="M300 0 Q340 300 300 500 Q260 700 310 900" stroke="var(--accent-brand)" stroke-width="1.5" fill="none" />
+    <ellipse cx="160" cy="900" rx="26" ry="42" fill="var(--accent-brand)" opacity=".55" />
+    <ellipse cx="180" cy="880" rx="18" ry="30" fill="#ff2d78" opacity=".45" />
+    <ellipse cx="310" cy="895" rx="20" ry="36" fill="var(--accent-brand)" opacity=".4" />
+    <circle cx="100" cy="610" r="7" fill="var(--accent-brand)" opacity=".45" />
+    <path d="M80 0 Q110 100 90 250 Q70 400 100 600" stroke="var(--accent-brand)" stroke-width="1" opacity=".35" fill="none" />
+    <path d="M440 0 Q470 180 450 380 Q430 520 460 700" stroke="#ff2d78" stroke-width="1.5" opacity=".25" fill="none" />
+  </svg>
   <div class="max-w-site relative mx-auto text-center">
     <p class="section-label reveal mb-4">Architecture of Intervention</p>
     <h1 class="headline-xl reveal rd1 mx-auto" style="color:var(--text-main);max-width:800px;">
