@@ -445,6 +445,7 @@ nav {
   border-radius: 6px;
   background: var(--bg2);
   border: 1px solid var(--border);
+  flex-shrink: 0;
 }
 
 .hamburger span {
@@ -561,10 +562,30 @@ nav {
 
 @media (max-width: 768px) {
   .nav-logo {
-    font-size: 20px;
+    font-size: 18px;
+    gap: 6px;
   }
   .nav-logo img {
-    height: 26px;
+    height: 24px;
+  }
+  .nav-inner {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-logo {
+    font-size: 15px;
+    gap: 4px;
+  }
+  .nav-logo img {
+    height: 20px;
+  }
+  .nav-inner {
+    padding: 0 10px;
+  }
+  .hamburger {
+    padding: 6px;
   }
 }
 
@@ -781,7 +802,7 @@ section.padded {
 .auth-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(rgba(5,5,10,0.6), rgba(5,5,10,0.6)), url('../img/fpv_racing_bg.png');
+  background: linear-gradient(rgba(5,5,10,0.6), rgba(5,5,10,0.6)), url('../img/auth_bg_fpv.png');
   background-size: cover;
   background-position: center;
   filter: saturate(1.2);

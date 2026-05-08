@@ -37,6 +37,18 @@
     flex: 0 0 100% !important;
   }
 }
+.workshop-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .workshop-grid {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
 </head>
 <body>
@@ -90,7 +102,7 @@
 </div>
 
 <!-- HERO -->
-<section class="dark-hero" style="padding:160px 0 100px;position:relative;overflow:hidden;background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.85)),url('../assets/img/hero_training.png');background-size:cover;background-position:center;background-attachment:fixed">
+<section class="dark-hero" style="padding:160px 0 100px;position:relative;overflow:hidden;background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.85)),url('../assets/img/hero_training_fpv.png');background-size:cover;background-position:center;background-attachment:fixed">
   <div style="position:absolute;inset:0" class="grid-bg-orange"></div>
   <div class="container" style="position:relative;text-align:center">
     <h1 class="hero-title display" style="font-size:clamp(60px,10vw,120px);margin-bottom:20px;line-height:0.85;color:#fff">ELITE <span style="color:var(--orange)">TRAINING</span></h1>
@@ -204,7 +216,7 @@
       <div class="section-tag" style="justify-content:center">Standalone</div>
       <h2 class="display" style="font-size:clamp(40px,5vw,60px)">WORKSHOPS & <span style="color:var(--orange)">BOOTCAMPS</span></h2>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:960px;margin:0 auto">
+    <div class="workshop-grid">
       <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:28px;display:flex;gap:20px;align-items:flex-start;transition:all 0.3s" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
         <div style="width:48px;height:48px;background:rgba(255,85,0,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">🔧</div>
         <div>
@@ -226,7 +238,7 @@
         <div>
           <div style="font-family:var(--font-heading);font-size:16px;font-weight:800;margin-bottom:6px">Advanced PID Tuning Bootcamp</div>
           <p style="color:var(--text-dim);font-size:13px;line-height:1.6;margin-bottom:12px">Weekend intensive on Betaflight PID tuning, filters, and blackbox analysis with real flight data.</p>
-          <div style="font-family:var(--font-mono);font-size:11px;color:#B28F00">2 Days · $349 · Intermediate+</div>
+          <div style="font-family:var(--font-mono);font-size:11px;color:#917400">2 Days · $349 · Intermediate+</div>
         </div>
       </div>
       <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:28px;display:flex;gap:20px;align-items:flex-start;transition:all 0.3s" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
