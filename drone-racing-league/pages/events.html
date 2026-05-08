@@ -30,6 +30,8 @@
   border-radius: 16px;
   overflow: hidden;
   transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
 }
 .event-item:hover {
   transform: translateY(-8px);
@@ -55,6 +57,9 @@
 }
 .event-details {
   padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 .event-date {
   font-family: var(--font-mono);
@@ -76,6 +81,9 @@
   color: var(--text-dim);
   font-size: 14px;
   margin-bottom: 20px;
+}
+.event-details .btn-primary {
+  margin-top: auto;
 }
 
 @media (max-width: 1024px) {
@@ -173,7 +181,7 @@
         <div class="event-details">
           <span class="event-date">APRIL 19-21, 2025</span>
           <h3 class="event-title">DUBAI GRAND PRIX</h3>
-          <div class="event-loc">📍 Dubai Design District, UAE</div>
+          <div class="event-loc">Dubai Design District, UAE</div>
           <p style="color:var(--text-dim);font-size:14px;margin-bottom:24px">The ultimate desert showdown. High-speed straights and grueling heat tests Every pilot's resolve.</p>
           <a href="#" class="btn-primary" style="width:100%;justify-content:center">Buy Tickets</a>
         </div>
@@ -186,7 +194,7 @@
         <div class="event-details">
           <span class="event-date">MAY 3-5, 2025</span>
           <h3 class="event-title">SEOUL NIGHT RACE</h3>
-          <div class="event-loc">📍 Lotte World Tower, South Korea</div>
+          <div class="event-loc">Lotte World Tower, South Korea</div>
           <p style="color:var(--text-dim);font-size:14px;margin-bottom:24px">A neon-lit masterclass through the heart of Seoul. Precision is everything in this tight urban circuit.</p>
           <a href="#" class="btn-primary" style="width:100%;justify-content:center">Set Reminder</a>
         </div>
@@ -199,7 +207,7 @@
         <div class="event-details">
           <span class="event-date">JUNE 12-14, 2025</span>
           <h3 class="event-title">TOKYO SKYLINE</h3>
-          <div class="event-loc">📍 Shibuya Crossing, Japan</div>
+          <div class="event-loc">Shibuya Crossing, Japan</div>
           <p style="color:var(--text-dim);font-size:14px;margin-bottom:24px">Highest altitude race of the season. Fly between the skyscrapers of the world's busiest intersection.</p>
           <a href="#" class="btn-primary" style="width:100%;justify-content:center">Set Reminder</a>
         </div>
@@ -212,7 +220,7 @@
         <div class="event-details">
           <span class="event-date">JULY 4-6, 2025</span>
           <h3 class="event-title">PARIS IRON SPRINT</h3>
-          <div class="event-loc">📍 Champ de Mars, France</div>
+          <div class="event-loc">Champ de Mars, France</div>
           <p style="color:var(--text-dim);font-size:14px;margin-bottom:24px">Speed through the iron framework of the Eiffel Tower. A test of nerves and technical mastery.</p>
           <a href="#" class="btn-primary" style="width:100%;justify-content:center">Set Reminder</a>
         </div>
@@ -225,7 +233,7 @@
         <div class="event-details">
           <span class="event-date">AUGUST 15-17, 2025</span>
           <h3 class="event-title">LONDON OVERDRIVE</h3>
-          <div class="event-loc">📍 Canary Wharf, UK</div>
+          <div class="event-loc">Canary Wharf, UK</div>
           <p style="color:var(--text-dim);font-size:14px;margin-bottom:24px">High-speed navigation through the financial district's glass canyons. A true test of signal stability.</p>
           <a href="#" class="btn-primary" style="width:100%;justify-content:center">Set Reminder</a>
         </div>
@@ -238,7 +246,7 @@
         <div class="event-details">
           <span class="event-date">SEPTEMBER 5-7, 2025</span>
           <h3 class="event-title">BERLIN TECHNO-LOOP</h3>
-          <div class="event-loc">📍 Tempelhof Airport, Germany</div>
+          <div class="event-loc">Tempelhof Airport, Germany</div>
           <p style="color:var(--text-dim);font-size:14px;margin-bottom:24px">Open-air sprint on the historic runways. Maximum throttle and extreme endurance required.</p>
           <a href="#" class="btn-primary" style="width:100%;justify-content:center">Set Reminder</a>
         </div>

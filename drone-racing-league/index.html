@@ -124,7 +124,7 @@
 }
 .home-hero-headline {
   font-family: var(--font-display);
-  font-size: clamp(68px, 8vw, 110px);
+  font-size: clamp(42px, 10vw, 110px);
   line-height: 0.82;
   color: #fff;
   margin-bottom: 8px;
@@ -428,7 +428,7 @@
 
 /* ── CTA SECTION ── */
 .cta-section{padding:120px 0;position:relative;overflow:hidden;background:#000}
-.cta-bg{position:absolute;inset:0;background:linear-gradient(rgba(5,5,10,0.4),rgba(5,5,10,0.9)),url('assets/img/auth_bg.png');background-size:cover;background-position:center}
+.cta-bg{position:absolute;inset:0;background:linear-gradient(rgba(5,5,10,0.7),rgba(5,5,10,0.95)),url('assets/img/fpv_racing_bg.png');background-size:cover;background-position:center}
 .cta-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,85,0,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,85,0,0.05) 1px,transparent 1px);background-size:32px 32px;opacity:0.3}
 .cta-inner{position:relative;max-width:800px;margin:0 auto;padding:0 24px;text-align:center;z-index:2}
 .cta-title{font-family:var(--font-display);font-size:clamp(48px,8vw,90px);line-height:0.9;margin-bottom:24px;color:#fff}
@@ -466,6 +466,23 @@
   .footer-grid{grid-template-columns:1fr}
   .events-table th:nth-child(n+3),.events-table td:nth-child(n+3){display:none}
 }
+
+@media(max-width:480px){
+  .nav-inner { padding: 0 16px; }
+  .nav-logo { font-size: 20px; gap: 6px; }
+  .nav-logo img { height: 26px; }
+  .home-hero-inner { padding: 30px 16px; }
+  .home-hero-headline { font-size: clamp(38px, 12vw, 80px); }
+  .home-hero-cta { flex-direction: column; gap: 12px; }
+  .home-hero-cta .btn-primary, .home-hero-cta .btn-outline { width: 100%; justify-content: center; }
+  .home-hero-statsbar { grid-template-columns: 1fr; }
+  .pilots-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .training-card { padding: 24px 18px !important; }
+  .training-footer { flex-direction: column; gap: 16px; align-items: flex-start; }
+  .training-footer .btn-primary { width: 100%; justify-content: center; }
+  .cta-section { padding: 80px 0; }
+  .cta-title { font-size: clamp(36px, 12vw, 60px); }
+}
 </style>
 </head>
 <body>
@@ -488,10 +505,9 @@
       <a href="pages/contact.html">Contact</a>
     </div>
     <div class="nav-cta">
-      <button class="toggle-btn" id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">☀️</button>
-      <button class="toggle-btn" onclick="toggleDir()" title="Toggle Direction (LTR/RTL)" style="font-family:var(--font-mono);font-size:10px;font-weight:700">RTL/LTR</button>
-      <a href="pages/dashboard.html" class="btn-outline" style="padding:10px 16px;font-size:13px">Dashboard</a>
-      <a href="pages/login.html" class="btn-primary" style="padding:10px 22px;font-size:13px">Login</a>
+      <button class="toggle-btn" onclick="toggleDir()" title="Toggle Direction (LTR/RTL)" style="font-family:var(--font-mono);font-size:13px;font-weight:700;padding:0 18px;height:38px;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;vertical-align:middle">RTL/LTR</button>
+      <a href="pages/dashboard.html" class="btn-outline" style="padding:10px 16px;font-size:13px;height:38px;display:inline-flex;align-items:center;box-sizing:border-box;vertical-align:middle">Dashboard</a>
+      <a href="pages/login.html" class="btn-primary" style="padding:10px 22px;font-size:13px;height:38px;display:inline-flex;align-items:center;box-sizing:border-box;vertical-align:middle">Login</a>
     </div>
     <div class="hamburger">
       <span></span><span></span><span></span>
@@ -512,8 +528,7 @@
     <a href="pages/contact.html">Contact</a>
   </div>
   <div class="mobile-toggles">
-    <button class="toggle-btn" onclick="toggleTheme()" title="Toggle Theme">☀️ Dark Mode</button>
-    <button class="toggle-btn" onclick="toggleDir()" title="Toggle Direction" style="font-family:var(--font-mono);font-size:10px;font-weight:700">RTL/LTR MODE</button>
+    <button class="toggle-btn" onclick="toggleDir()" title="Toggle Direction" style="font-family:var(--font-mono);font-size:12px;font-weight:700;flex:1;padding:12px">RTL/LTR MODE</button>
   </div>
   <div class="mobile-cta">
     <a href="pages/dashboard.html" class="btn-outline">Dashboard</a>
@@ -821,8 +836,8 @@
 
     <div class="training-card featured">
       <div class="training-accent" style="background:linear-gradient(90deg,var(--orange),var(--gold))"></div>
-      <div class="popular-badge">MOST POPULAR</div>
-      <div class="training-level" style="background:rgba(255,85,0,0.12);color:var(--orange);border:1px solid rgba(255,85,0,0.2)">Intermediate</div>
+      <div class="popular-badge" style="padding:6px 14px;font-size:11px">MOST POPULAR</div>
+      <div class="training-level" style="background:rgba(255,85,0,0.12);color:var(--orange);border:1px solid rgba(255,85,0,0.2);padding:6px 14px;font-size:11px">Intermediate</div>
       <div class="training-icon" style="background:rgba(255,85,0,0.12);color:var(--orange)">🏁</div>
       <div class="training-name heading">Race Ready</div>
       <p class="training-desc">Tune your drone, master race lines, and compete in qualifier rounds. Go from hobbyist to competitive pilot.</p>
@@ -866,7 +881,7 @@
   <div class="cta-bg"></div>
   <div class="cta-grid-bg"></div>
   <div class="cta-inner">
-    <div class="section-tag" style="justify-content:center">Join the League</div>
+    <div class="section-tag" style="justify-content:center;background:rgba(255,85,0,0.1);padding:6px 16px;border-radius:4px;border:1px solid rgba(255,85,0,0.3)">Join the League</div>
     <h2 class="cta-title display">READY TO <span style="color:var(--orange)">FLY</span><br/>FASTER?</h2>
     <p class="cta-sub">Join 240+ pilots competing at the highest level of FPV drone racing. No experience needed — just the drive to win.</p>
     <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
