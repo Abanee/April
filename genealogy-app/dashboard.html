@@ -25,6 +25,9 @@
     }
   </script>
   <style>
+    :root { --color-bg: #FFFFFF; }
+    .dark { --color-bg: #121212; }
+    
     /* ── Dashboard Layout ──────────────────────────────────── */
 
     /* Tree viewport */
@@ -48,6 +51,35 @@
       transition: transform 0.05s linear;
       padding: 4rem 6rem;
       gap: 4rem;
+    }
+
+    @media (max-width: 480px) {
+      #tree-canvas {
+        padding: 2rem 1rem;
+        gap: 2rem;
+      }
+      .main-content header {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+        gap: 0.5rem !important;
+      }
+      .panel {
+        padding: 1rem 0.75rem !important;
+        gap: 1.5rem !important;
+      }
+      .stat-card {
+        padding: 0.75rem !important;
+      }
+      h1, .text-4xl {
+        font-size: 1.75rem !important;
+        line-height: 1.2 !important;
+      }
+      .text-2xl {
+        font-size: 1.25rem !important;
+      }
+      #tree-viewport {
+        min-height: 380px !important;
+      }
     }
 
     /* Stat card glow on hover */
@@ -146,7 +178,7 @@
   </style>
 </head>
 
-<body class="texture-parchment">
+<body>
 
   <!-- Sidebar Overlay (mobile) -->
   <div id="sidebar-overlay" class="opacity-0 pointer-events-none lg:hidden" aria-hidden="true"></div>
@@ -265,12 +297,6 @@
       </a>
 
       <hr class="my-2" style="border-color:var(--color-border)" />
-      <p class="font-ui text-xs tracking-widest uppercase px-3 mb-1" style="color:var(--color-text-faint)">Site</p>
-      <a href="index.html" data-vt class="nav-link">Home</a>
-      <a href="home2.html" data-vt class="nav-link">Home 2</a>
-      <a href="ancestors.html" data-vt class="nav-link">Ancestors</a>
-
-      <hr class="my-2" style="border-color:var(--color-border)" />
       <p class="font-ui text-xs tracking-widest uppercase px-3 mb-1" style="color:var(--color-text-faint)">Settings</p>
 
       <a href="#" class="nav-link">
@@ -300,35 +326,6 @@
       </a>
     </nav>
 
-    <!-- Theme + Dir toggles at bottom of sidebar -->
-    <div class="px-4 py-4 border-t flex items-center gap-2" style="border-color:var(--color-border)">
-      <button data-theme-toggle aria-label="Toggle theme"
-        class="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-all font-ui text-xs"
-        style="color:var(--color-text-muted)">
-        <svg class="icon-moon w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-        </svg>
-        <svg class="icon-sun w-3.5 h-3.5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="5" />
-          <line x1="12" y1="1" x2="12" y2="3" />
-          <line x1="12" y1="21" x2="12" y2="23" />
-        </svg>
-        <span class="icon-moon-label">Dark</span>
-        <span class="icon-sun-label hidden">Light</span>
-      </button>
-      <button data-dir-toggle
-        class="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-all font-ui text-xs"
-        style="color:var(--color-text-muted)">
-        <span data-dir-label>RTL</span>
-      </button>
-      <a href="index.html" data-vt
-        class="flex items-center justify-center w-8 h-8 rounded-lg border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-all"
-        title="Back to site" aria-label="Back to main site">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" d="M3 12h18M3 12l6-6M3 12l6 6" />
-        </svg>
-      </a>
-    </div>
   </aside>
 
 
@@ -352,44 +349,34 @@
 
         <!-- Breadcrumb -->
         <nav aria-label="Breadcrumb">
-          <ol class="flex items-center gap-2 font-ui text-sm" style="color:var(--color-text-faint)">
-            <li><a href="index.html" data-vt class="hover:opacity-80"
+          <ol class="flex items-center gap-1.5 font-ui text-sm" style="color:var(--color-text-faint)">
+            <li class="hidden sm:inline"><a href="index.html" data-vt class="hover:opacity-80"
                 style="color:var(--color-text-faint)">Rootbound</a></li>
-            <li aria-hidden="true">/</li>
+            <li class="hidden sm:inline" aria-hidden="true">/</li>
             <li id="breadcrumb-page" style="color:var(--color-accent)" aria-current="page">Overview</li>
           </ol>
         </nav>
       </div>
 
       <!-- Right controls -->
-      <div class="flex items-center gap-3">
-        <!-- Notification bell -->
-        <button
-          class="relative w-9 h-9 flex items-center justify-center rounded-lg border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-all"
-          aria-label="Notifications (2 unread)">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-            aria-hidden="true">
-            <path stroke-linecap="round"
-              d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+      <div class="flex items-center gap-2">
+        <!-- Theme Toggle -->
+        <button data-theme-toggle aria-label="Switch to dark mode" class="header-control">
+          <svg class="icon-moon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
           </svg>
-          <span class="notif-dot" aria-hidden="true"></span>
+          <svg class="icon-sun w-4 h-4 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </svg>
         </button>
 
-        <!-- Genealogist quick-contact -->
-        <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[var(--color-border)]"
-          style="background:var(--color-bg-card)">
-          <img src="assets/team-siobhan.png" alt="Dr. Siobhán Brennan" class="w-7 h-7 rounded-full object-cover shrink-0">
-          <div>
-            <p class="font-ui text-xs font-medium leading-none">Dr. Siobhán Brennan</p>
-            <p class="font-ui text-xs leading-none" style="color:var(--color-text-faint)">Your Genealogist</p>
-          </div>
-          <span class="w-2 h-2 rounded-full ms-1 shrink-0" style="background:#27AE60" aria-label="Online"
-            title="Online"></span>
-        </div>
-
-        <!-- Avatar -->
-        <button class="w-9 h-9 rounded-full overflow-hidden border border-[var(--color-border)] shrink-0" aria-label="Account menu">
-          <img src="assets/client-yara.png" alt="Eleanor Harrington" class="w-full h-full object-cover">
+        <!-- RTL Toggle -->
+        <button data-dir-toggle aria-label="Switch layout direction" class="header-control font-ui text-xs font-medium">
+          <span data-dir-label>RTL</span>
         </button>
       </div>
     </header>
@@ -694,7 +681,7 @@
   ═══════════════════════════════════════════════════════════════ -->
     <div id="panel-tree" class="panel hidden flex-1 p-6 flex-col gap-6 page-content" role="region"
       aria-labelledby="tree-heading">
-      <div class="flex items-center justify-between flex-wrap gap-4">
+      <div class="flex items-center justify-between flex-wrap gap-y-4">
         <div>
           <h1 id="tree-heading" class="font-display text-4xl font-semibold">My Family Tree</h1>
           <p class="font-body mt-1" style="color:var(--color-text-muted)">38 ancestors across 5 generations · Scroll to
@@ -813,7 +800,7 @@
       </div>
 
       <!-- Tree legend -->
-      <div class="flex flex-wrap gap-4 font-ui text-xs" style="color:var(--color-text-faint)">
+      <div class="flex flex-wrap gap-3 sm:gap-4 font-ui text-[10px] sm:text-xs" style="color:var(--color-text-faint)">
         <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm"
             style="background:var(--color-border);border:1px solid var(--color-border-strong)"></span> Standard
           ancestor</span>

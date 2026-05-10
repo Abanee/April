@@ -51,19 +51,16 @@
       </nav>
 
       <div class="flex items-center gap-3">
-        <button data-theme-toggle aria-label="Toggle theme"
-          class="w-9 h-9 rounded-lg flex items-center justify-center border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-all">
+        <button data-theme-toggle aria-label="Toggle theme" class="hidden md:flex header-control">
           <svg class="icon-moon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           <svg class="icon-sun w-4 h-4 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
         </button>
-        <button data-dir-toggle class="hidden xl:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-ui border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all" style="color:var(--color-text-muted)">
+        <button data-dir-toggle aria-label="Toggle direction" class="hidden md:flex header-control text-xs font-ui" style="color:var(--color-text-muted)">
           <span data-dir-label>RTL</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M3 12h18M15 6l6 6-6 6"/></svg>
         </button>
-        <a href="login.html" data-vt class="hidden sm:inline-flex btn-ghost py-2 px-4 text-sm">Sign In</a>
-        <a href="dashboard.html" data-vt class="btn-primary py-2 px-4 text-sm">Dashboard</a>
-        <button id="mobile-nav-toggle" aria-label="Toggle mobile menu" aria-expanded="false"
-          class="xl:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-lg border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-all">
+        <a href="login.html" data-vt class="hidden sm:inline-flex header-btn btn-ghost">Sign In</a>
+        <a href="dashboard.html" data-vt class="hidden md:inline-flex header-btn btn-primary">Dashboard</a>
+        <button id="mobile-nav-toggle" aria-label="Toggle mobile menu" aria-expanded="false" class="xl:hidden header-control flex-col gap-1">
           <span class="w-5 h-0.5 rounded-full bg-current transition-all"></span>
           <span class="w-4 h-0.5 rounded-full bg-current transition-all"></span>
           <span class="w-5 h-0.5 rounded-full bg-current transition-all"></span>
@@ -78,7 +75,31 @@
       <a href="ancestors.html" data-vt class="nav-link">Ancestors</a>
       <a href="blog.html"      data-vt class="nav-link">Blog</a>
       <a href="contact.html"   data-vt class="nav-link">Contact</a>
-      <a href="login.html"     data-vt class="nav-link">Sign In / Register</a>
+      <!-- Appearance (Theme/Dir) - Only show in menu if hidden in header -->
+      <div class="md:hidden">
+        <hr class="my-2 border-[var(--color-border)]">
+        <div class="flex items-center justify-between px-3 py-2">
+          <span class="font-ui text-sm" style="color:var(--color-text-muted)">Appearance</span>
+          <div class="flex items-center gap-2">
+            <button data-theme-toggle class="header-control">
+              <svg class="icon-moon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
+              <svg class="icon-sun w-4 h-4 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" /><line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" /></svg>
+            </button>
+            <button data-dir-toggle class="header-control text-xs font-ui">
+              <span data-dir-label>RTL</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Mobile CTAs - Only show in menu if hidden in header -->
+      <div class="md:hidden">
+        <a href="dashboard.html" data-vt class="btn-primary w-full mt-2 justify-center">Go to Dashboard</a>
+      </div>
+      <div class="sm:hidden">
+        <a href="login.html" data-vt class="btn-ghost w-full justify-center">Sign In / Register</a>
+      </div>
     </div>
   </header>
 
@@ -86,7 +107,7 @@
 
     <!-- ═══════════ STORY HERO ═══════════ -->
     <section class="hero-section" aria-labelledby="h2-hero-headline">
-      <div class="hero-bg hero-bg-img" data-parallax="0.3" aria-hidden="true"></div>
+      <div class="hero-bg hero-bg-img" data-parallax="0.3" aria-hidden="true" style="background-image: url('assets/hero_bg.png'); filter: brightness(0.65) contrast(1.1);"></div>
 
       <!-- Decorative ornament -->
       <div class="absolute top-1/3 end-[6%] opacity-[0.06] animate-drift pointer-events-none" aria-hidden="true">
@@ -102,24 +123,27 @@
       <div class="relative z-10 w-full max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-2 gap-16 items-center">
         <!-- Left: Text -->
         <div class="max-w-4xl">
-          <p class="section-eyebrow mb-8 animate-fade-in-up justify-start">A Real Story from Our Archive</p>
-          <h1 id="h2-hero-headline" class="font-display display-xl font-semibold mb-6 animate-fade-in-up-d1" style="line-height:1.06">
+          <p class="section-eyebrow mb-8 animate-fade-in-up justify-start" style="color:rgba(255,255,255,0.8)">A Real Story from Our Archive</p>
+          <h1 id="h2-hero-headline" class="font-display display-xl font-semibold mb-6 animate-fade-in-up-d1" style="line-height:1.06; color: #fff;">
             She was born in<br/>
             <em class="text-gradient not-italic">Inverness, 1847.</em><br/>
             Her family forgot her name.
           </h1>
-          <p class="font-body text-xl lg:text-2xl mb-8 animate-fade-in-up-d2 max-w-2xl" style="color:var(--color-text-muted)">
+          <p class="font-body text-xl lg:text-2xl mb-8 animate-fade-in-up-d2 max-w-2xl" style="color:rgba(255,255,255,0.7)">
             Elspeth Morag MacAllister emigrated alone at 24 — no husband, no escort — arriving at Ellis Island with a single trunk and a loom. Her five great-grandchildren didn't know she existed until a Rootbound genealogist found her naturalization papers buried in a New York county archive.
           </p>
-          <div class="pull-quote animate-fade-in-up-d3 mb-10">
-            <p>"She built something from nothing. Knowing that changed how I see myself." — Claire M., client, 2024</p>
+          <div class="pull-quote animate-fade-in-up-d3 mb-10" style="border-left-color: rgba(255,255,255,0.3)">
+            <p style="color:rgba(255,255,255,0.9)">"She built something from nothing. Knowing that changed how I see myself." — Claire M., client, 2024</p>
           </div>
           <div class="flex flex-wrap gap-4 animate-fade-in-up-d4">
-            <a href="services.html" data-vt class="btn-primary animate-pulse-sepia dark:animate-pulse-gold">
+            <a href="services.html" data-vt class="btn-primary animate-pulse-sepia dark:animate-pulse-gold group">
               Uncover Your Story
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" class="group-hover:translate-x-1 transition-transform"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
-            <a href="ancestors.html" data-vt class="btn-ghost">Read More Stories</a>
+            <a href="ancestors.html" data-vt class="btn-ghost group">
+              Start Your Discovery
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="group-hover:translate-x-1 transition-transform opacity-60"><path stroke-linecap="round" d="M13 5l7 7-7 7M5 5l7 7-7 7"/></svg>
+            </a>
           </div>
         </div>
 
@@ -144,7 +168,8 @@
 
 
     <!-- ═══════════ ANIMATED STAT COUNTERS ═══════════ -->
-    <section class="py-16 px-6" style="background:var(--color-bg-alt)" aria-label="Company statistics">
+    <section class="py-20 px-6 relative overflow-hidden" style="background:var(--color-bg-alt)" aria-label="Company statistics">
+      <div class="absolute inset-0 opacity-[0.08] pointer-events-none" style="background-image: url('assets/stats_bg.png'); background-size: cover; background-position: center;"></div>
       <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div class="reveal">
@@ -279,22 +304,24 @@
             <div class="story-card-img h-48 overflow-hidden">
               <img src="assets/doc-manifest.png" alt="Ship Manifest" class="w-full h-full object-cover">
             </div>
-            <div class="p-6">
+            <div class="p-6 flex flex-col h-full">
               <span class="badge mb-3">DNA + Document</span>
               <h3 class="font-display text-2xl font-semibold mt-2">The Kowalczyk Brothers</h3>
               <p class="font-body mt-2" style="color:var(--color-text-muted)">Two Polish brothers separated during WWI. A DNA match 104 years later revealed living descendants on both sides of the Atlantic.</p>
-              <a href="ancestors.html" data-vt class="inline-flex items-center gap-1 font-ui text-sm mt-4" style="color:var(--color-accent)">Read story →</a>
+              <div class="mt-auto pt-4">
+                <a href="ancestors.html" data-vt class="inline-flex items-center gap-1 font-ui text-sm" style="color:var(--color-accent)">Read story →</a>
+              </div>
             </div>
           </div>
           <div class="story-card reveal" style="animation-delay:0.15s">
             <div class="story-card-img h-48 overflow-hidden">
               <img src="assets/ottoman_registry.png" alt="Ottoman Registry" class="w-full h-full object-cover">
             </div>
-            <div class="p-6">
+            <div class="p-6 flex flex-col h-full">
               <span class="badge mb-3">International Archive</span>
               <h3 class="font-display text-2xl font-semibold mt-2">The Al-Rashidi Lineage</h3>
               <p class="font-body mt-2" style="color:var(--color-text-muted)">Tracing a London family's roots through Ottoman records, uncovering a lineage of merchants stretching back to 17th-century Baghdad.</p>
-              <div class="mt-6 flex items-center justify-between border-t border-[var(--color-border)] pt-4">
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-[var(--color-border)]">
                 <a href="ancestors.html" data-vt class="inline-flex items-center gap-1 font-ui text-sm" style="color:var(--color-accent)">Read story →</a>
                 <p class="font-ui text-[10px] tracking-widest uppercase" style="color:var(--color-text-faint)">Baghdad · 1891</p>
               </div>
@@ -350,6 +377,7 @@
             <svg viewBox="0 0 600 320" class="w-full" aria-label="World map showing countries where Rootbound researches">
               <!-- Background -->
               <rect width="600" height="320" rx="12" fill="var(--color-bg-alt)"/>
+              <image href="assets/stats_bg.png" x="0" y="0" width="600" height="320" preserveAspectRatio="xMidYMid slice" opacity="0.05" />
               <!-- Refined minimal world map -->
               <g fill="var(--color-border)" opacity="0.4">
                 <!-- North America -->
@@ -404,11 +432,13 @@
               <img src="assets/doc-europe-trio.png" alt="Handwritten Records" class="w-full h-full object-cover">
               <div class="absolute inset-0 bg-black/10"></div>
             </div>
-            <div class="p-6">
+            <div class="p-6 flex flex-col h-full">
               <span class="badge mb-3">Research Guide</span>
               <h3 class="font-display text-xl font-semibold mt-2">How to Decode Handwritten Archives</h3>
               <p class="font-body mt-2 text-sm" style="color:var(--color-text-muted)">The abbreviations, Latin phrases, and ink degradation of old records can defeat even experienced researchers. Our guide explains every shorthand.</p>
-              <a href="blog.html" data-vt class="inline-flex items-center gap-1 font-ui text-sm mt-4" style="color:var(--color-accent)">Read article →</a>
+              <div class="mt-auto pt-4">
+                <a href="blog.html" data-vt class="inline-flex items-center gap-1 font-ui text-sm" style="color:var(--color-accent)">Read article →</a>
+              </div>
             </div>
           </article>
 
@@ -417,11 +447,13 @@
               <img src="assets/blog-dna.png" alt="DNA and Records" class="w-full h-full object-cover">
               <div class="absolute inset-0 bg-black/10"></div>
             </div>
-            <div class="p-6">
+            <div class="p-6 flex flex-col h-full">
               <span class="badge mb-3">DNA Genealogy</span>
               <h3 class="font-display text-xl font-semibold mt-2">When Your DNA Results Contradict the Records</h3>
               <p class="font-body mt-2 text-sm" style="color:var(--color-text-muted)">A non-paternity event, adoption, or name change — understanding genetic surprises without erasing family identity.</p>
-              <a href="blog.html" data-vt class="inline-flex items-center gap-1 font-ui text-sm mt-4" style="color:var(--color-accent)">Read article →</a>
+              <div class="mt-auto pt-4">
+                <a href="blog.html" data-vt class="inline-flex items-center gap-1 font-ui text-sm" style="color:var(--color-accent)">Read article →</a>
+              </div>
             </div>
           </article>
 
@@ -430,11 +462,13 @@
               <img src="assets/blog-overlooked.png" alt="Preserving Photographs" class="w-full h-full object-cover">
               <div class="absolute inset-0 bg-black/10"></div>
             </div>
-            <div class="p-6">
+            <div class="p-6 flex flex-col h-full">
               <span class="badge mb-3">Preservation</span>
               <h3 class="font-display text-xl font-semibold mt-2">Digitising &amp; Archiving Old Photographs Correctly</h3>
               <p class="font-body mt-2 text-sm" style="color:var(--color-text-muted)">Scanner settings, file formats, metadata tagging — the professional approach to preserving images that will outlast you.</p>
-              <a href="blog.html" data-vt class="inline-flex items-center gap-1 font-ui text-sm mt-4" style="color:var(--color-accent)">Read article →</a>
+              <div class="mt-auto pt-4">
+                <a href="blog.html" data-vt class="inline-flex items-center gap-1 font-ui text-sm" style="color:var(--color-accent)">Read article →</a>
+              </div>
             </div>
           </article>
 
@@ -444,8 +478,9 @@
 
 
     <!-- ═══════════ NEWSLETTER STRIP ═══════════ -->
-    <section class="newsletter-strip py-20 px-6" aria-labelledby="newsletter-heading">
-      <div class="max-w-3xl mx-auto text-center reveal">
+    <section class="newsletter-strip py-24 px-6 relative overflow-hidden" aria-labelledby="newsletter-heading">
+      <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: url('assets/newsletter_bg.png'); background-size: cover; background-position: center;"></div>
+      <div class="max-w-3xl mx-auto text-center reveal relative z-10">
         <p class="section-eyebrow mb-6">Heritage Dispatch — Monthly</p>
         <h2 id="newsletter-heading" class="font-display display-md font-semibold mb-4">
           Stories of Discovery,<br/><em class="text-gradient">Delivered to Your Inbox</em>

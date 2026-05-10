@@ -75,8 +75,7 @@
       <!-- Controls -->
       <div class="flex items-center gap-3">
         <!-- Dark Mode Toggle -->
-        <button data-theme-toggle aria-label="Switch to dark mode"
-          class="w-9 h-9 rounded-lg flex items-center justify-center transition-all hover:bg-[var(--color-bg-alt)] border border-[var(--color-border)]">
+        <button data-theme-toggle aria-label="Switch to dark mode" class="hidden md:flex header-control">
           <!-- Moon (light mode → click for dark) -->
           <svg class="icon-moon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
             aria-hidden="true">
@@ -99,22 +98,17 @@
 
         <!-- RTL Toggle -->
         <button data-dir-toggle aria-label="Switch to RTL"
-          class="hidden xl:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-ui border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all"
+          class="hidden md:flex header-control text-xs font-ui"
           style="color:var(--color-text-muted)">
           <span data-dir-label>RTL</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            aria-hidden="true">
-            <path stroke-linecap="round" d="M3 12h18M15 6l6 6-6 6" />
-          </svg>
         </button>
 
         <!-- Login CTA -->
-        <a href="login.html" data-vt class="hidden sm:inline-flex btn-ghost py-2 px-4 text-sm">Sign In</a>
-        <a href="dashboard.html" data-vt class="btn-primary py-2 px-4 text-sm">Dashboard</a>
+        <a href="login.html" data-vt class="hidden sm:inline-flex header-btn btn-ghost">Sign In</a>
+        <a href="dashboard.html" data-vt class="hidden md:inline-flex header-btn btn-primary">Dashboard</a>
 
         <!-- Mobile Hamburger -->
-        <button id="mobile-nav-toggle" aria-label="Toggle mobile menu" aria-expanded="false"
-          class="xl:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-lg border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-all">
+        <button id="mobile-nav-toggle" aria-label="Toggle mobile menu" aria-expanded="false" class="xl:hidden header-control flex-col gap-1">
           <span class="w-5 h-0.5 rounded-full bg-current transition-all"></span>
           <span class="w-4 h-0.5 rounded-full bg-current transition-all"></span>
           <span class="w-5 h-0.5 rounded-full bg-current transition-all"></span>
@@ -133,7 +127,32 @@
       <a href="ancestors.html" data-vt class="nav-link">Ancestors</a>
       <a href="blog.html" data-vt class="nav-link">Blog</a>
       <a href="contact.html" data-vt class="nav-link">Contact</a>
-      <a href="login.html" data-vt class="nav-link">Sign In / Register</a>
+      
+      <!-- Appearance (Theme/Dir) - Only show in menu if hidden in header -->
+      <div class="md:hidden">
+        <hr class="my-2 border-[var(--color-border)]">
+        <div class="flex items-center justify-between px-3 py-2">
+          <span class="font-ui text-sm" style="color:var(--color-text-muted)">Appearance</span>
+          <div class="flex items-center gap-2">
+            <button data-theme-toggle class="header-control">
+              <svg class="icon-moon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
+              <svg class="icon-sun w-4 h-4 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" /><line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" /></svg>
+            </button>
+            <button data-dir-toggle class="header-control text-xs font-ui">
+              <span data-dir-label>RTL</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Mobile CTAs - Only show in menu if hidden in header -->
+      <div class="md:hidden">
+        <a href="dashboard.html" data-vt class="btn-primary w-full mt-2 justify-center">Go to Dashboard</a>
+      </div>
+      <div class="sm:hidden">
+        <a href="login.html" data-vt class="btn-ghost w-full justify-center">Sign In / Register</a>
+      </div>
     </div>
   </header>
 

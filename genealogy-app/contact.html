@@ -49,21 +49,19 @@
         <a href="contact.html"   data-vt class="nav-link active font-ui text-sm">Contact</a>
       </nav>
       <div class="flex items-center gap-3">
-        <button data-theme-toggle aria-label="Toggle theme" class="w-9 h-9 rounded-lg flex items-center justify-center border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-all">
+        <button data-theme-toggle aria-label="Toggle theme" class="hidden md:flex header-control">
           <svg class="icon-moon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           <svg class="icon-sun w-4 h-4 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
         </button>
-        <button data-dir-toggle class="hidden xl:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-ui border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all" style="color:var(--color-text-muted)">
+        <button data-dir-toggle aria-label="Toggle direction" class="hidden md:flex header-control text-xs font-ui" style="color:var(--color-text-muted)">
           <span data-dir-label>RTL</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M3 12h18M15 6l6 6-6 6"/></svg>
         </button>
-        <a href="login.html" data-vt class="hidden sm:inline-flex btn-ghost py-2 px-4 text-sm">Sign In</a>
-        <a href="dashboard.html" data-vt class="btn-primary py-2 px-4 text-sm">Dashboard</a>
-        <button id="mobile-nav-toggle" aria-label="Toggle mobile menu" aria-expanded="false"
-          class="xl:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-lg border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-all">
-          <span class="w-5 h-0.5 rounded-full bg-current"></span>
-          <span class="w-4 h-0.5 rounded-full bg-current"></span>
-          <span class="w-5 h-0.5 rounded-full bg-current"></span>
+        <a href="login.html" data-vt class="hidden sm:inline-flex header-btn btn-ghost">Sign In</a>
+        <a href="dashboard.html" data-vt class="hidden md:inline-flex header-btn btn-primary">Dashboard</a>
+        <button id="mobile-nav-toggle" aria-label="Toggle mobile menu" aria-expanded="false" class="xl:hidden header-control flex-col gap-1">
+          <span class="w-5 h-0.5 rounded-full bg-current transition-all"></span>
+          <span class="w-4 h-0.5 rounded-full bg-current transition-all"></span>
+          <span class="w-5 h-0.5 rounded-full bg-current transition-all"></span>
         </button>
       </div>
     </div>
@@ -75,7 +73,38 @@
       <a href="ancestors.html" data-vt class="nav-link">Ancestors</a>
       <a href="blog.html"      data-vt class="nav-link">Blog</a>
       <a href="contact.html"   data-vt class="nav-link active">Contact</a>
-      <a href="login.html"     data-vt class="nav-link">Sign In / Register</a>
+      <!-- Appearance (Theme/Dir) - Only show in menu if hidden in header -->
+      <div class="md:hidden">
+        <hr class="my-2 border-[var(--color-border)]">
+        <div class="flex items-center justify-between px-3 py-2">
+          <span class="font-ui text-sm" style="color:var(--color-text-muted)">Appearance</span>
+          <div class="flex items-center gap-2">
+            <button data-theme-toggle class="header-control">
+              <svg class="icon-moon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
+              <svg class="icon-sun w-4 h-4 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" /><line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" /></svg>
+            </button>
+            <button data-dir-toggle class="header-control text-xs font-ui">
+              <span data-dir-label>RTL</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RTL Toggle only (for tablet view where theme/dashboard are in header but RTL is not) -->
+      <div class="hidden md:flex xl:hidden items-center justify-between px-3 py-2 border-t border-[var(--color-border)] mt-2">
+        <span class="font-ui text-sm" style="color:var(--color-text-muted)">Layout Direction</span>
+        <button data-dir-toggle class="header-control text-xs font-ui">
+          <span data-dir-label>RTL</span>
+        </button>
+      </div>
+
+      <!-- Mobile CTAs - Only show in menu if hidden in header -->
+      <div class="md:hidden">
+        <a href="dashboard.html" data-vt class="btn-primary w-full mt-2 justify-center">Go to Dashboard</a>
+      </div>
+      <div class="sm:hidden">
+        <a href="login.html" data-vt class="btn-ghost w-full justify-center">Sign In / Register</a>
+      </div>
     </div>
   </header>
 
@@ -302,45 +331,65 @@
           <h2 id="contact-faq-heading" class="font-display text-4xl font-semibold">Common Questions</h2>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-5 reveal" data-accordion data-accordion-single>
+        <div class="max-w-3xl mx-auto reveal accordion-group" data-accordion data-accordion-single>
 
-          <div class="glass-card overflow-hidden" data-accordion-item>
-            <button class="w-full flex items-center justify-between gap-4 p-5 text-start font-display text-lg font-semibold" data-accordion-trigger aria-expanded="false">
-              How quickly will you reply?
-              <svg class="w-5 h-5 shrink-0 transition-transform duration-300" data-accordion-icon viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M19 9l-7 7-7-7"/></svg>
+          <!-- FAQ Item 1 -->
+          <div class="accordion-item" data-accordion-item>
+            <button class="accordion-trigger" data-accordion-trigger aria-expanded="false">
+              <span>How quickly will you reply?</span>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
             </button>
-            <div data-accordion-content class="px-5 pb-5">
-              <p class="font-body" style="color:var(--color-text-muted)">We reply to all messages within one business day, usually much faster. For urgent research questions, phone during office hours for an immediate response.</p>
+            <div class="accordion-content" data-accordion-content>
+              <div class="pb-6">
+                <p class="font-body text-base" style="color:var(--color-text-muted)">
+                  We reply to all messages within one business day, usually much faster. For urgent research questions, phone during office hours for an immediate response.
+                </p>
+              </div>
             </div>
           </div>
 
-          <div class="glass-card overflow-hidden" data-accordion-item>
-            <button class="w-full flex items-center justify-between gap-4 p-5 text-start font-display text-lg font-semibold" data-accordion-trigger aria-expanded="false">
-              Is the initial consultation really free?
-              <svg class="w-5 h-5 shrink-0 transition-transform duration-300" data-accordion-icon viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M19 9l-7 7-7-7"/></svg>
+          <!-- FAQ Item 2 -->
+          <div class="accordion-item" data-accordion-item>
+            <button class="accordion-trigger" data-accordion-trigger aria-expanded="false">
+              <span>Is the initial consultation really free?</span>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
             </button>
-            <div data-accordion-content class="px-5 pb-5">
-              <p class="font-body" style="color:var(--color-text-muted)">Yes — completely free with no obligation. A 20-minute call with a genealogist who can assess your research scope and recommend the most appropriate package.</p>
+            <div class="accordion-content" data-accordion-content>
+              <div class="pb-6">
+                <p class="font-body text-base" style="color:var(--color-text-muted)">
+                  Yes — completely free with no obligation. A 20-minute call with a genealogist who can assess your research scope and recommend the most appropriate package.
+                </p>
+              </div>
             </div>
           </div>
 
-          <div class="glass-card overflow-hidden" data-accordion-item>
-            <button class="w-full flex items-center justify-between gap-4 p-5 text-start font-display text-lg font-semibold" data-accordion-trigger aria-expanded="false">
-              Can I send physical documents?
-              <svg class="w-5 h-5 shrink-0 transition-transform duration-300" data-accordion-icon viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M19 9l-7 7-7-7"/></svg>
+          <!-- FAQ Item 3 -->
+          <div class="accordion-item" data-accordion-item>
+            <button class="accordion-trigger" data-accordion-trigger aria-expanded="false">
+              <span>Can I send physical documents?</span>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
             </button>
-            <div data-accordion-content class="px-5 pb-5">
-              <p class="font-body" style="color:var(--color-text-muted)">Yes. Physical documents (letters, certificates, photographs) can be posted to our Edinburgh office. All originals are catalogued, high-resolution scanned, and returned by tracked post within 10 days.</p>
+            <div class="accordion-content" data-accordion-content>
+              <div class="pb-6">
+                <p class="font-body text-base" style="color:var(--color-text-muted)">
+                  Yes. Physical documents (letters, certificates, photographs) can be posted to our Edinburgh office. All originals are catalogued, high-resolution scanned, and returned by tracked post within 10 days.
+                </p>
+              </div>
             </div>
           </div>
 
-          <div class="glass-card overflow-hidden" data-accordion-item>
-            <button class="w-full flex items-center justify-between gap-4 p-5 text-start font-display text-lg font-semibold" data-accordion-trigger aria-expanded="false">
-              Do you work with international clients?
-              <svg class="w-5 h-5 shrink-0 transition-transform duration-300" data-accordion-icon viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M19 9l-7 7-7-7"/></svg>
+          <!-- FAQ Item 4 -->
+          <div class="accordion-item" data-accordion-item>
+            <button class="accordion-trigger" data-accordion-trigger aria-expanded="false">
+              <span>Do you work with international clients?</span>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
             </button>
-            <div data-accordion-content class="px-5 pb-5">
-              <p class="font-body" style="color:var(--color-text-muted)">Absolutely. Around 60% of our clients are based outside the UK — primarily in the United States, Canada, Australia, and across Europe. All consultations are conducted via video call or phone.</p>
+            <div class="accordion-content" data-accordion-content>
+              <div class="pb-6">
+                <p class="font-body text-base" style="color:var(--color-text-muted)">
+                  Absolutely. Around 60% of our clients are based outside the UK — primarily in the United States, Canada, Australia, and across Europe. All consultations are conducted via video call or phone.
+                </p>
+              </div>
             </div>
           </div>
 
