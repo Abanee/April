@@ -70,7 +70,8 @@
       <a href="contact.html">Contact</a>
     </div>
     <div class="nav-cta">
-      <button class="toggle-btn" onclick="toggleDir()" title="Toggle Direction (LTR/RTL)" style="font-family:var(--font-mono);font-size:12px;font-weight:700;padding:10px 16px;height:38px;display:flex;align-items:center;box-sizing:border-box">RTL/LTR</button>
+      <button class="toggle-btn theme-toggle" onclick="toggleTheme()" title="Toggle Theme">☀️</button>
+      <button class="toggle-btn dir-toggle" onclick="toggleDir()" title="Toggle Direction">LTR</button>
       <a href="dashboard.html" class="btn-outline" style="padding:10px 16px;font-size:13px">Dashboard</a>
       <a href="login.html" class="btn-primary" style="padding:10px 22px;font-size:13px">Login</a>
     </div>
@@ -93,7 +94,8 @@
     <a href="contact.html">Contact</a>
   </div>
   <div class="mobile-toggles">
-    <button class="toggle-btn" onclick="toggleDir()" title="Toggle Direction" style="font-family:var(--font-mono);font-size:12px;font-weight:700;flex:1;padding:12px">RTL/LTR MODE</button>
+    <button class="toggle-btn theme-toggle" onclick="toggleTheme()" title="Toggle Theme">☀️</button>
+    <button class="toggle-btn dir-toggle" onclick="toggleDir()" title="Toggle Direction">LTR</button>
   </div>
   <div class="mobile-cta">
     <a href="dashboard.html" class="btn-outline">Dashboard</a>
@@ -160,8 +162,8 @@
       <!-- Intermediate FEATURED -->
       <div class="plan-card featured" style="transform:scale(1.02)">
         <div class="plan-top-bar" style="background:linear-gradient(90deg,var(--orange),var(--gold))"></div>
-        <div style="position:absolute;top:16px;right:16px;background:var(--orange);color:#fff;font-family:var(--font-mono);font-size:10px;padding:6px 14px;border-radius:4px;letter-spacing:0.08em;line-height:1">MOST POPULAR</div>
-        <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);background:rgba(255,85,0,0.12);border:1px solid rgba(255,85,0,0.2);border-radius:4px;padding:6px 14px;display:inline-block;margin-bottom:20px;line-height:1">Level 02 — Intermediate</div>
+        <div style="position:absolute;top:14px;right:16px;background:var(--orange);color:#fff;font-family:var(--font-mono);font-size:10px;padding:5px 12px;border-radius:4px;letter-spacing:0.08em;line-height:1;z-index:5">MOST POPULAR</div>
+        <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);background:rgba(255,85,0,0.12);border:1px solid rgba(255,85,0,0.2);border-radius:4px;padding:6px 14px;display:inline-block;margin-bottom:20px;line-height:1;margin-top:12px">Level 02 — Intermediate</div>
         <div style="font-size:30px;margin-bottom:16px">🏁</div>
         <h3 class="heading" style="font-size:24px;margin-bottom:8px">Race Ready</h3>
         <p style="color:var(--text-dim);font-size:14px;line-height:1.7;margin-bottom:24px">Step up to competitive racing. Tune your build, nail race lines, and compete in your first official DRL qualifier events.</p>

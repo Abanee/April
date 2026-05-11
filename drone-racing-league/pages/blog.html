@@ -55,7 +55,8 @@
       <a href="contact.html">Contact</a>
     </div>
     <div class="nav-cta">
-      <button class="toggle-btn" onclick="toggleDir()" title="Toggle Direction (LTR/RTL)" style="font-family:var(--font-mono);font-size:12px;font-weight:700;padding:10px 16px;height:38px;display:flex;align-items:center;box-sizing:border-box">RTL/LTR</button>
+      <button class="toggle-btn theme-toggle" onclick="toggleTheme()" title="Toggle Theme">☀️</button>
+      <button class="toggle-btn dir-toggle" onclick="toggleDir()" title="Toggle Direction">LTR</button>
       <a href="dashboard.html" class="btn-outline" style="padding:10px 16px;font-size:13px">Dashboard</a>
       <a href="login.html" class="btn-primary" style="padding:10px 22px;font-size:13px">Login</a>
     </div>
@@ -78,8 +79,8 @@
     <a href="contact.html">Contact</a>
   </div>
   <div class="mobile-toggles">
-    <button class="toggle-btn" onclick="toggleTheme()" title="Toggle Theme">☀️ Dark Mode</button>
-    <button class="toggle-btn" onclick="toggleDir()" title="Toggle Direction" style="font-family:var(--font-mono);font-size:10px;font-weight:700">RTL/LTR MODE</button>
+    <button class="toggle-btn theme-toggle" onclick="toggleTheme()" title="Toggle Theme">☀️</button>
+    <button class="toggle-btn dir-toggle" onclick="toggleDir()" title="Toggle Direction">LTR</button>
   </div>
   <div class="mobile-cta">
     <a href="dashboard.html" class="btn-outline">Dashboard</a>
@@ -110,7 +111,7 @@
   <div class="container">
     <div style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1fr 1.2fr" class="featured-post">
       <!-- Thumbnail -->
-      <div style="background:url('../assets/img/drone/blog hero 1.png');background-size:cover;background-position:center;min-height:360px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden">
+      <div style="width:100%;background:url('../assets/img/drone/blog_hero_1.png') center/cover no-repeat;min-height:360px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background-color:#1a1a2e">
         <div style="position:absolute;inset:0;background:linear-gradient(rgba(5,5,10,0.4),rgba(5,5,10,0.1))"></div>
         <div style="position:absolute;top:16px;left:16px">
           <span class="tag-pill" style="background:var(--orange);color:#fff">Featured</span>
@@ -145,7 +146,7 @@
 
       <!-- Post 1 -->
       <article class="blog-card" data-category="tech" style="background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-        <div style="height:180px;background:url('../assets/img/drone/blog 1.png');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
+        <div style="width:100%;height:180px;background:url('../assets/img/drone/blog_1.png') center/cover no-repeat;display:flex;align-items:center;justify-content:center;position:relative;background-color:#1a1a2e">
           <div style="position:absolute;inset:0;background:rgba(5,5,10,0.15)"></div>
           <div style="position:absolute;top:12px;left:12px"><span class="tag-pill" style="background:rgba(0,102,255,0.12);color:var(--blue);border:1px solid rgba(0,102,255,0.2)">Tech & Builds</span></div>
         </div>
@@ -159,7 +160,7 @@
 
       <!-- Post 2 -->
       <article data-category="race" style="background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-        <div style="height:180px;background:url('../assets/img/drone/blog 2.png');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
+        <div style="width:100%;height:180px;background:url('../assets/img/drone/blog_2.png') center/cover no-repeat;display:flex;align-items:center;justify-content:center;position:relative;background-color:#1a1a2e">
           <div style="position:absolute;inset:0;background:rgba(5,5,10,0.15)"></div>
           <div style="position:absolute;top:12px;left:12px"><span class="tag-pill" style="background:rgba(255,85,0,0.12);color:var(--orange);border:1px solid rgba(255,85,0,0.2)">Race News</span></div>
           <div style="position:absolute;top:12px;right:12px"><span class="tag-pill" style="background:var(--orange);color:#fff">New</span></div>
@@ -174,7 +175,7 @@
 
       <!-- Post 3 -->
       <article data-category="pilots" style="background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-        <div style="height:180px;background:url('../assets/img/drone/blog 3.png');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
+        <div style="width:100%;height:180px;background:url('../assets/img/drone/blog_3.png') center/cover no-repeat;display:flex;align-items:center;justify-content:center;position:relative;background-color:#1a1a2e">
           <div style="position:absolute;inset:0;background:rgba(5,5,10,0.15)"></div>
           <div style="position:absolute;top:12px;left:12px"><span class="tag-pill" style="background:rgba(255,204,0,0.10);color:var(--gold);border:1px solid rgba(255,204,0,0.2)">Pilot Spotlight</span></div>
         </div>
@@ -188,7 +189,7 @@
 
       <!-- Post 4 -->
       <article data-category="training" style="background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-        <div style="height:180px;background:url('../assets/img/drone/blog 4.png');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
+        <div style="width:100%;height:180px;background:url('../assets/img/drone/blog_4.png') center/cover no-repeat;display:flex;align-items:center;justify-content:center;position:relative;background-color:#1a1a2e">
           <div style="position:absolute;inset:0;background:rgba(5,5,10,0.15)"></div>
           <div style="position:absolute;top:12px;left:12px"><span class="tag-pill" style="background:rgba(0,102,255,0.12);color:var(--blue);border:1px solid rgba(0,102,255,0.2)">Training</span></div>
         </div>
@@ -202,7 +203,7 @@
 
       <!-- Post 5 -->
       <article data-category="tech" style="background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-        <div style="height:180px;background:url('../assets/img/drone/blog 5.png');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
+        <div style="width:100%;height:180px;background:url('../assets/img/drone/blog_5.png') center/cover no-repeat;display:flex;align-items:center;justify-content:center;position:relative;background-color:#1a1a2e">
           <div style="position:absolute;inset:0;background:rgba(5,5,10,0.15)"></div>
           <div style="position:absolute;top:12px;left:12px"><span class="tag-pill" style="background:rgba(0,102,255,0.12);color:var(--blue);border:1px solid rgba(0,102,255,0.2)">Tech & Builds</span></div>
         </div>
@@ -216,7 +217,7 @@
 
       <!-- Post 6 -->
       <article data-category="training" style="background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-        <div style="height:180px;background:url('../assets/img/drone/blog 6.png');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
+        <div style="width:100%;height:180px;background:url('../assets/img/drone/blog_6.png') center/cover no-repeat;display:flex;align-items:center;justify-content:center;position:relative;background-color:#1a1a2e">
           <div style="position:absolute;inset:0;background:rgba(5,5,10,0.15)"></div>
           <div style="position:absolute;top:12px;left:12px"><span class="tag-pill" style="background:rgba(0,102,255,0.12);color:var(--blue);border:1px solid rgba(0,102,255,0.2)">Training</span></div>
         </div>
@@ -230,7 +231,7 @@
 
       <!-- Post 7 -->
       <article data-category="pilots" style="background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-        <div style="height:180px;background:url('../assets/img/drone/blog 7.png');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
+        <div style="width:100%;height:180px;background:url('../assets/img/drone/blog_7.png') center/cover no-repeat;display:flex;align-items:center;justify-content:center;position:relative;background-color:#1a1a2e">
           <div style="position:absolute;inset:0;background:rgba(5,5,10,0.15)"></div>
           <div style="position:absolute;top:12px;left:12px"><span class="tag-pill" style="background:rgba(255,204,0,0.1);color:var(--gold);border:1px solid rgba(255,204,0,0.2)">Pilot Spotlight</span></div>
         </div>
@@ -244,7 +245,7 @@
 
       <!-- Post 8 -->
       <article data-category="tech" style="background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-        <div style="height:180px;background:url('../assets/img/drone/blog 8.png');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
+        <div style="width:100%;height:180px;background:url('../assets/img/drone/blog_8.png') center/cover no-repeat;display:flex;align-items:center;justify-content:center;position:relative;background-color:#1a1a2e">
           <div style="position:absolute;inset:0;background:rgba(5,5,10,0.15)"></div>
           <div style="position:absolute;top:12px;left:12px"><span class="tag-pill" style="background:rgba(0,102,255,0.12);color:var(--blue);border:1px solid rgba(0,102,255,0.2)">Tech & Builds</span></div>
         </div>
@@ -258,7 +259,7 @@
 
       <!-- Post 9 -->
       <article data-category="race" style="background:var(--bg1);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-        <div style="height:180px;background:url('../assets/img/drone/blog 9.png');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative">
+        <div style="width:100%;height:180px;background:url('../assets/img/drone/blog_9.png') center/cover no-repeat;display:flex;align-items:center;justify-content:center;position:relative;background-color:#1a1a2e">
           <div style="position:absolute;inset:0;background:rgba(5,5,10,0.15)"></div>
           <div style="position:absolute;top:12px;left:12px"><span class="tag-pill" style="background:rgba(255,85,0,0.12);color:var(--orange);border:1px solid rgba(255,85,0,0.2)">Race News</span></div>
         </div>

@@ -20,13 +20,23 @@
     const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
     html.setAttribute('dir', newDir);
     localStorage.setItem('dir', newDir);
+    updateToggles();
   };
 
   function updateToggles() {
-    const themeBtn = document.getElementById('theme-toggle');
-    if (themeBtn) {
-      themeBtn.innerHTML = html.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
-    }
+    // Update Theme Toggles
+    const themeToggles = document.querySelectorAll('.theme-toggle');
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    themeToggles.forEach(btn => {
+      btn.innerHTML = isDark ? '☀️' : '🌙';
+    });
+
+    // Update Dir Toggles
+    const dirToggles = document.querySelectorAll('.dir-toggle');
+    const isRtl = html.getAttribute('dir') === 'rtl';
+    dirToggles.forEach(btn => {
+      btn.innerHTML = isRtl ? 'RTL' : 'LTR';
+    });
   }
 
   // Mobile Menu Logic

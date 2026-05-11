@@ -393,7 +393,7 @@
 .status-past{background:var(--bg3);color:var(--text-muted);border:1px solid rgba(255,255,255,0.08)}
 
 /* ── TRAINING ── */
-.training-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1280px;margin:0 auto;padding:0 24px}
+.training-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1280px;margin:50px auto 0;padding:0 24px}
 @media(max-width:1024px){
   .training-grid{
     display:flex;
@@ -413,7 +413,7 @@
 .training-card:hover{border-color:var(--orange);box-shadow:0 8px 40px var(--orange-glow);transform:translateY(-4px)}
 .training-card.featured{border-color:var(--orange);background:linear-gradient(135deg,rgba(255,85,0,0.06),var(--bg1))}
 .training-accent{position:absolute;top:0;left:0;right:0;height:3px}
-.training-level{font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:16px;display:inline-block;padding:4px 10px;border-radius:4px}
+.training-level{font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:16px;display:inline-block;padding:4px 10px;border-radius:4px;margin-top:12px}
 .training-icon{width:52px;height:52px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:24px}
 .training-name{font-family:var(--font-heading);font-size:22px;font-weight:800;margin-bottom:10px}
 .training-desc{color:var(--text-dim);font-size:14px;line-height:1.7;margin-bottom:20px}
@@ -424,7 +424,7 @@
 .price{font-family:var(--font-heading);font-size:26px;font-weight:800;color:var(--text)}
 .price sup{font-size:14px;margin-right:2px;color:var(--text-dim)}
 .price span{font-size:12px;font-weight:400;color:var(--text-dim)}
-.popular-badge{position:absolute;top:16px;right:16px;background:var(--orange);color:#fff;font-family:var(--font-mono);font-size:10px;padding:4px 8px;border-radius:4px;letter-spacing:0.08em}
+.popular-badge{position:absolute;top:14px;right:16px;background:var(--orange);color:#fff;font-family:var(--font-mono);font-size:10px;padding:5px 12px;border-radius:4px;letter-spacing:0.08em;z-index:5}
 
 /* ── CTA SECTION ── */
 .cta-section{padding:120px 0;position:relative;overflow:hidden;background:#000}
@@ -448,6 +448,7 @@
     flex-wrap: wrap !important;
     justify-content: center !important;
     gap: 24px !important;
+    margin-top: 50px !important;
   }
   .training-card {
     width: calc(50% - 12px) !important;
@@ -505,7 +506,8 @@
       <a href="pages/contact.html">Contact</a>
     </div>
     <div class="nav-cta">
-      <button class="toggle-btn" onclick="toggleDir()" title="Toggle Direction (LTR/RTL)" style="font-family:var(--font-mono);font-size:13px;font-weight:700;padding:0 18px;height:38px;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;vertical-align:middle">RTL/LTR</button>
+      <button class="toggle-btn theme-toggle" onclick="toggleTheme()" title="Toggle Theme">☀️</button>
+      <button class="toggle-btn dir-toggle" onclick="toggleDir()" title="Toggle Direction">LTR</button>
       <a href="pages/dashboard.html" class="btn-outline" style="padding:10px 16px;font-size:13px;height:38px;display:inline-flex;align-items:center;box-sizing:border-box;vertical-align:middle">Dashboard</a>
       <a href="pages/login.html" class="btn-primary" style="padding:10px 22px;font-size:13px;height:38px;display:inline-flex;align-items:center;box-sizing:border-box;vertical-align:middle">Login</a>
     </div>
@@ -528,7 +530,8 @@
     <a href="pages/contact.html">Contact</a>
   </div>
   <div class="mobile-toggles">
-    <button class="toggle-btn" onclick="toggleDir()" title="Toggle Direction" style="font-family:var(--font-mono);font-size:12px;font-weight:700;flex:1;padding:12px">RTL/LTR MODE</button>
+    <button class="toggle-btn theme-toggle" onclick="toggleTheme()" title="Toggle Theme">☀️</button>
+    <button class="toggle-btn dir-toggle" onclick="toggleDir()" title="Toggle Direction">LTR</button>
   </div>
   <div class="mobile-cta">
     <a href="pages/dashboard.html" class="btn-outline">Dashboard</a>
