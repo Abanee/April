@@ -862,10 +862,9 @@ section.padded {
 .auth-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(rgba(5,5,10,0.6), rgba(5,5,10,0.6)), url('../img/auth_bg_fpv.png');
   background-size: cover;
   background-position: center;
-  filter: saturate(1.2);
+  filter: saturate(1.1) brightness(0.7);
 }
 
 .auth-toggles {
