@@ -562,14 +562,61 @@ nav {
 }
 
 @media (max-width: 1250px) {
-  .nav-links, .nav-cta {
+  .nav-links {
     display: none;
   }
   .hamburger {
     display: flex;
+    order: 3; /* Ensure hamburger is last */
+  }
+  .nav-cta {
+    margin-left: auto;
+    order: 2;
+    gap: 12px;
+  }
+  .nav-logo {
+    order: 1;
   }
   .nav-inner {
     height: 68px;
+    gap: 16px;
+  }
+  /* Hide duplicates in mobile menu when they are visible in navbar */
+  .mobile-menu .mobile-toggles,
+  .mobile-menu .mobile-cta {
+    display: none;
+  }
+  /* Refine button sizes for tablet */
+  .nav-cta a {
+    padding: 8px 12px !important;
+    font-size: 11px !important;
+    height: 34px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+  .toggle-btn {
+    height: 34px !important;
+    font-size: 12px !important;
+  }
+  .theme-toggle {
+    width: 38px !important;
+  }
+  .dir-toggle {
+    width: 50px !important;
+  }
+}
+
+/* Hide CTA in navbar only on small mobile devices and show them in hamburger instead */
+@media (max-width: 600px) {
+  .nav-cta {
+    display: none;
+  }
+  .mobile-menu .mobile-toggles,
+  .mobile-menu .mobile-cta {
+    display: flex;
+  }
+  .nav-logo {
+    font-size: 20px;
   }
 }
 
