@@ -678,6 +678,7 @@ a:hover { opacity: 0.82; }
   .grid.md\:grid-cols-4  { grid-template-columns: repeat(2, 1fr); }
 }
 
+
 /* ── ACCORDION REFINEMENT ────────────────────────────────── */
 .accordion-group {
   border-radius: var(--radius-card);
