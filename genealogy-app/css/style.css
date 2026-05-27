@@ -654,6 +654,10 @@ a:hover { opacity: 0.82; }
     gap: 1.5rem; 
     justify-content: flex-start;
   }
+  .fade-x {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
   .nav-header .font-display { font-size: 1.25rem; }
 }
 
