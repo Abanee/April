@@ -60,6 +60,20 @@
   color: var(--hero-text-muted) !important;
 }
 
+.dark-hero .section-tag {
+  color: #FF8533 !important;
+  background: rgba(255, 85, 0, 0.15) !important;
+  border: 1px solid rgba(255, 85, 0, 0.45) !important;
+  padding: 6px 14px !important;
+  border-radius: 4px !important;
+  text-shadow: 0 0 8px rgba(255, 85, 0, 0.3) !important;
+}
+
+.dark-hero .section-tag::before,
+.dark-hero .section-tag::after {
+  display: none !important;
+}
+
 .dark-hero .btn-outline,
 .dark-hero button:not(.btn-primary) {
   color: var(--hero-text-dim) !important;
