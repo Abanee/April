@@ -187,7 +187,7 @@
       </div>
 
       <!-- Hero Content -->
-      <div class="relative z-10 w-full max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="relative z-10 w-full max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
 
         <!-- Left: Text -->
         <div>
@@ -238,10 +238,10 @@
         </div>
 
         <!-- Right: Sample Ancestor Card Stack -->
-        <div class="relative flex justify-center animate-fade-in-up-d3 hidden lg:flex"
+        <div class="relative flex justify-center animate-fade-in-up-d3 hidden md:flex"
           aria-label="Sample ancestor cards illustration">
           <!-- Stacked ancestor cards visual -->
-          <div class="relative w-72 h-96">
+          <div class="relative w-full max-w-[20rem] lg:max-w-[26rem] aspect-[3/4]">
             <!-- Card 3 (back) -->
             <div
               class="absolute inset-0 rounded-2xl border border-[var(--color-border)] rotate-6 translate-y-4 translate-x-4 opacity-50"
@@ -255,20 +255,20 @@
               class="absolute inset-0 rounded-2xl border border-[var(--color-border-strong)] flex flex-col overflow-hidden"
               style="background:var(--color-bg-card); box-shadow:0 24px 64px rgba(28,16,5,0.15)">
               <!-- Photo slot -->
-              <div class="h-48 overflow-hidden border-b border-[var(--color-border)]">
+              <div class="h-[55%] overflow-hidden border-b border-[var(--color-border)]">
                 <img src="assets/ancestor-elspeth.png" alt="Elspeth Morag MacAllister"
                   class="w-full h-full object-cover">
               </div>
               <!-- Card body -->
-              <div class="p-5 flex flex-col gap-2">
-                <span class="badge">Great-Great-Grandmother</span>
-                <h3 class="font-display text-xl font-semibold mt-1">Elspeth Morag<br />MacAllister</h3>
-                <div class="font-ui text-xs flex items-center gap-2 mt-1" style="color:var(--color-text-faint)">
+              <div class="p-6 lg:p-8 flex flex-col justify-center h-[45%]">
+                <span class="badge self-start mb-2 lg:mb-3">Great-Great-Grandmother</span>
+                <h3 class="font-display text-2xl lg:text-3xl font-semibold">Elspeth Morag<br />MacAllister</h3>
+                <div class="font-ui text-sm lg:text-base flex items-center gap-2 mt-2" style="color:var(--color-text-faint)">
                   <span>b. 1847</span>
                   <span style="color:var(--color-border-strong)">•</span>
                   <span>d. 1921</span>
                 </div>
-                <p class="font-body text-sm" style="color:var(--color-text-muted)">Inverness, Scotland → New York, 1872
+                <p class="font-body text-base lg:text-lg mt-2 leading-tight" style="color:var(--color-text-muted)">Inverness, Scotland → New York, 1872
                 </p>
               </div>
             </div>
